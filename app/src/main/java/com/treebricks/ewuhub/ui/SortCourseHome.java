@@ -1,15 +1,24 @@
 package com.treebricks.ewuhub.ui;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 
 import com.treebricks.ewuhub.R;
 
-public class SortCourseHome extends AppCompatActivity {
+public class SortCourseHome extends AppCompatActivity
+{
+
+
+    public static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
+    private int totalNumberOfCourse = 0;
+    private String totalNumberOfCourseString = null;
+    EditText totalCourseEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +27,38 @@ public class SortCourseHome extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            public void onClick(View view)
+            {
+
+                //Get total number of course from edit text
+                totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
+                totalNumberOfCourseString = totalCourseEditText.getText().toString();
+                totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
+
+                Snackbar.make(view, String.valueOf(totalNumberOfCourse) + " number of subjects need to be sorted.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+
+        outState.putInt(NUMBEROFCOURSES, totalNumberOfCourse);
+        super.onSaveInstanceState(outState, outPersistentState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        totalNumberOfCourse = savedInstanceState.getInt(NUMBEROFCOURSES);
     }
 
 }

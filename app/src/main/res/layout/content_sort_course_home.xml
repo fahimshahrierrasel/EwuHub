@@ -8,8 +8,61 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#4642AB"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.treebricks.ewuhub.ui.SortCourseHome"
     tools:showIn="@layout/activity_sort_course_home">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/secondary_frame_rl_sv">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondary_frame_rl_sv_rl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sort_course_description"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textColor="#fbfbfb"
+                android:textAlignment="center"
+                android:text="@string/sort_course_description"
+                android:textSize="30sp"/>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sort_course_description"
+                android:layout_marginTop="25dp"
+                app:mtf_image="@drawable/ic_number"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/total_course_edit_text"
+                    android:hint="Number of Subjects"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:numeric="integer"/>
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -3,7 +3,6 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
+    <string name="sort_course_description">Please, Input total number of subjects you want to sort for advising.</string>
     <string name="title_activity_sort_course_home">Sort Courses</string>
 </resources>

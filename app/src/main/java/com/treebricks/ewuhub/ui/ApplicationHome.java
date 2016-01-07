@@ -1,5 +1,6 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,7 +52,9 @@ public class ApplicationHome extends AppCompatActivity
 
         if (id == R.id.nav_sort_course)
         {
-            Toast.makeText(this, "Sort Course Pressed", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Sort Course Pressed", Toast.LENGTH_SHORT).show();
+            Intent sortCourse = new Intent(this, SortCourseHome.class);
+            startActivity(sortCourse);
         }
         else if (id == R.id.nav_result)
         {
