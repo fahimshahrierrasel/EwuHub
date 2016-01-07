@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub;
+package com.treebricks.ewuhub.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,13 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class HomePage extends AppCompatActivity
+import com.treebricks.ewuhub.R;
+
+public class ApplicationHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_application_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
