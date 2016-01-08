@@ -5,4 +5,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="sort_course_description">Please, Input total number of subjects you want to sort for advising.</string>
     <string name="title_activity_sort_course_home">Sort Courses</string>
+    <string name="title_activity_course_input">Sort Courses</string>
+    <string name="course_input_description">Please, Input name of the subjects you want to sort.</string>
 </resources>

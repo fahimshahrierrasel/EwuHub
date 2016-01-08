@@ -1,5 +1,6 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
 
@@ -38,10 +40,28 @@ public class SortCourseHome extends AppCompatActivity
                 //Get total number of course from edit text
                 totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
                 totalNumberOfCourseString = totalCourseEditText.getText().toString();
-                totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
 
-                Snackbar.make(view, String.valueOf(totalNumberOfCourse) + " number of subjects need to be sorted.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(!totalNumberOfCourseString.equals(""))
+                {
+                    totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
+                }
+
+                if(totalNumberOfCourse == 3 || totalNumberOfCourse == 4)
+                {
+                    Intent courseInputIntent = new Intent(SortCourseHome.this, CourseInput.class);
+
+                    // Send data to other activity using bundle
+                    Bundle infoBundle = new Bundle();
+                    infoBundle.putInt(NUMBEROFCOURSES, totalNumberOfCourse);
+                    courseInputIntent.putExtras(infoBundle);
+
+                    startActivity(courseInputIntent);
+                }
+                else
+                {
+                    Toast.makeText(SortCourseHome.this, "You Inputed "+ String.valueOf(totalNumberOfCourse) +". Please, Input 3 or 4 to go next!",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
