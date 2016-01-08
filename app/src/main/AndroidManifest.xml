@@ -21,11 +21,22 @@
         <activity
             android:name=".ui.SortCourseHome"
             android:label="@string/title_activity_sort_course_home"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:parentActivityName=".ui.ApplicationHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.ApplicationHome" />
+        </activity>
+        <activity
+            android:name=".ui.CourseInput"
+            android:label="@string/title_activity_course_input"
+            android:parentActivityName=".ui.SortCourseHome"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
         </activity>
     </application>
 

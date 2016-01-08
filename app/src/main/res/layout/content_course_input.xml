@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#4642AB"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.treebricks.ewuhub.ui.CourseInput"
+    tools:showIn="@layout/activity_course_input">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/secondary_frame_rl_sv">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondary_frame_rl_sv_rl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/course_input_description"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:textColor="#fbfbfb"
+                android:textAlignment="center"
+                android:text="@string/course_input_description"
+                android:textSize="30sp"/>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/course_one_edit_text_holder"
+                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                android:layout_below="@+id/course_input_description"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course_one_edit_text"
+                    android:hint="Name of Subject-1"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                android:id="@+id/course_two_edit_text_holder"
+                android:layout_below="@+id/course_one_edit_text_holder"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course_two_edit_text"
+                    android:hint="Name of Subject-2"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                android:id="@+id/course_three_edit_text_holder"
+                android:layout_below="@+id/course_two_edit_text_holder"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course_three_edit_text"
+                    android:hint="Name of Subject-3"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                android:id="@+id/course_four_edit_text_holder"
+                android:layout_below="@+id/course_three_edit_text_holder"
+                android:layout_centerHorizontal="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course_four_edit_text"
+                    android:hint="Name of Subject-4"
+                    android:textColor="#333"
+                    android:textColorHint="#666"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
