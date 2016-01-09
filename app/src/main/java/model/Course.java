@@ -134,6 +134,11 @@ public class Course
 
     @Override
     public String toString() {
+        return courseTitle+courseCode + "   Section: " + String.valueOf(section);
+    }
+
+    public String courseName()
+    {
         return courseTitle+courseCode;
     }
 }

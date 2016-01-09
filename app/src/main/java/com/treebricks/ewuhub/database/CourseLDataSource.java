@@ -62,8 +62,9 @@ public class CourseLDataSource
                 courseL.setLabTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeFrom"))));
                 courseL.setLabTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeTo"))));
                 courseL.setLabWeekDay(cursor.getString(cursor.getColumnIndex("LabWeekDay")));
-                if(courseName.equals(courseL.getCourseTitle()+courseL.getCourseCode()))
+                if((courseL.getCourseTitle()+courseL.getCourseCode()).equals(courseName))
                 {
+                    Log.i(LOGTAG,"Need " + courseName + " & " + (courseL.getCourseTitle()+courseL.getCourseCode()) + " found!");
                     allCourses.add(courseL);
                 }
             }while(cursor.moveToNext());

@@ -56,8 +56,9 @@ public class CourseDataSource
                 course.setTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeFrom"))));
                 course.setTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeTo"))));
                 course.setWeekDay(cursor.getString(cursor.getColumnIndex("WeekDay")));
-                if(courseName.equals(course.getCourseTitle()+course.getCourseCode()))
+                if((course.getCourseTitle()+course.getCourseCode()).equals(courseName))
                 {
+                    Log.i(LOGTAG,"Need " + courseName + " & " + (course.getCourseTitle()+course.getCourseCode()) + " found!");
                     allCourses.add(course);
                 }
 

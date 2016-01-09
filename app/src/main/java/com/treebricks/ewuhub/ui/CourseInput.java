@@ -1,11 +1,13 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -19,6 +21,8 @@ public class CourseInput extends AppCompatActivity {
     public static final String SECONDCOURSE = "SECONDCOURSE";
     public static final String THIRDCOURSE = "THIRDCOURSE";
     public static final String FOURTHCOURSE = "FOURTHCOURSE";
+    public static final String LOGTAG = "EwuHuB";
+
     private int totalSubjects = 0;
     private String firstCourse = null;
     private String secondCourse = null;
@@ -76,6 +80,10 @@ public class CourseInput extends AppCompatActivity {
                 sentBundle.putString(SECONDCOURSE, secondCourse);
                 sentBundle.putString(THIRDCOURSE, thirdCourse);
                 sentBundle.putString(FOURTHCOURSE, fourthCourse);
+                Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
+                Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
+                showSortCourses.putExtras(sentBundle);
+                startActivity(showSortCourses);
 
             }
         });
