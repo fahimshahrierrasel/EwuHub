@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.github.florent37.materialtextfield.MaterialTextField;
 import com.treebricks.ewuhub.R;
@@ -71,19 +72,33 @@ public class CourseInput extends AppCompatActivity {
                 firstCourse = editText1.getText().toString().toUpperCase();
                 secondCourse = editText2.getText().toString().toUpperCase();
                 thirdCourse = editText3.getText().toString().toUpperCase();
-                fourthCourse = editText4.getText().toString().toUpperCase();
+                if(totalSubjects == 4)
+                {
+                    fourthCourse = editText4.getText().toString().toUpperCase();
+                }
+                else
+                    fourthCourse = "NULL";
 
-                // send Data to next activity
-                Bundle sentBundle = new Bundle();
-                sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
-                sentBundle.putString(FIRSTCOURSE, firstCourse);
-                sentBundle.putString(SECONDCOURSE, secondCourse);
-                sentBundle.putString(THIRDCOURSE, thirdCourse);
-                sentBundle.putString(FOURTHCOURSE, fourthCourse);
-                Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
-                Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
-                showSortCourses.putExtras(sentBundle);
-                startActivity(showSortCourses);
+                if(!"".equals(firstCourse) && !"".equals(secondCourse) && !"".equals(thirdCourse)
+                        && !"".equals(fourthCourse))
+                {
+                    // send Data to next activity
+                    Bundle sentBundle = new Bundle();
+                    sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
+                    sentBundle.putString(FIRSTCOURSE, firstCourse);
+                    sentBundle.putString(SECONDCOURSE, secondCourse);
+                    sentBundle.putString(THIRDCOURSE, thirdCourse);
+                    sentBundle.putString(FOURTHCOURSE, fourthCourse);
+                    Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
+                    Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
+                    showSortCourses.putExtras(sentBundle);
+                    startActivity(showSortCourses);
+                }
+                else
+                {
+                    Toast.makeText(CourseInput.this,"Subject name is empty! Please input subject name properly.",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
