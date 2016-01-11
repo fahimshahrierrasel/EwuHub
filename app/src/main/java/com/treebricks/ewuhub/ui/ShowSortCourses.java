@@ -70,10 +70,6 @@ public class ShowSortCourses extends AppCompatActivity
         ArrayList<String> lCrs = labDataSource.findAll(ShowSortCourses.this);
         labCourse = lCrs.toArray();
 
-        /*for(int i = 0; i < labCourse.length; i++)
-        {
-            System.out.println(String.valueOf(labCourse[i]));
-        }*/
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
@@ -229,9 +225,9 @@ public class ShowSortCourses extends AppCompatActivity
                                         wOLab2.get(loop2).courseName() + ", " +
                                         wOLab3.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wOLab1.get(loop1).toString(),
-                                        wOLab2.get(loop2).toString(),
-                                        wOLab3.get(loop3).toString());
+                                Viewer viewer = new Viewer(header, wOLab1.get(loop1),
+                                        wOLab2.get(loop2),
+                                        wOLab3.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -263,9 +259,9 @@ public class ShowSortCourses extends AppCompatActivity
                                         wOLab2.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
                                 Viewer viewer = new Viewer(header,
-                                        wLab.get(loop1).toString(),
-                                        wOLab1.get(loop2).toString(),
-                                        wOLab2.get(loop3).toString());
+                                        wLab.get(loop1),
+                                        wOLab1.get(loop2),
+                                        wOLab2.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -296,9 +292,9 @@ public class ShowSortCourses extends AppCompatActivity
                                         wOLab.get(loop3).courseName();
 
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wLab1.get(loop1).toString(),
-                                        wLab2.get(loop2).toString(),
-                                        wOLab.get(loop3).toString());
+                                Viewer viewer = new Viewer(header, wLab1.get(loop1),
+                                        wLab2.get(loop2),
+                                        wOLab.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -328,9 +324,9 @@ public class ShowSortCourses extends AppCompatActivity
                                         wLab2.get(loop2).courseName() + ", " +
                                         wLab3.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wLab1.get(loop1).toString(),
-                                        wLab2.get(loop2).toString(),
-                                        wLab3.get(loop3).toString());
+                                Viewer viewer = new Viewer(header, wLab1.get(loop1),
+                                        wLab2.get(loop2),
+                                        wLab3.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }

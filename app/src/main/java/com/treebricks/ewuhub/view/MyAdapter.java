@@ -80,7 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position)
     {
-        final String name = mDataset.get(position).getvHeader();
+        final String name = mDataset.get(position).getvHeader().toString();
         holder.txtHeader.setText(name);
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +90,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                         .setAction("Action", null).show();
             }
         });
-        holder.textC1.setText(mDataset.get(position).getvFirstCourse());
-        holder.textC2.setText(mDataset.get(position).getvSecondCourse());
-        holder.textC3.setText(mDataset.get(position).getvThirdCourse());
+        holder.textC1.setText(mDataset.get(position).getvFirstCourse().toString());
+        holder.textC2.setText(mDataset.get(position).getvSecondCourse().toString());
+        holder.textC3.setText(mDataset.get(position).getvThirdCourse().toString());
         if(totalCourse == 4)
         {
-            holder.textC4.setText("4th Course");
+            holder.textC4.setText(mDataset.get(position).getvFourthCourse().toString());
         }
         else
         {
