@@ -204,30 +204,27 @@ public class ShowSortCourses extends AppCompatActivity
         {
             if(totalLabCourse == 0)
             {
-                ArrayList<Course> wOLab1 = (ArrayList<Course>) withoutLab[0];
-                ArrayList<Course> wOLab2 = (ArrayList<Course>) withoutLab[1];
-                ArrayList<Course> wOLab3 = (ArrayList<Course>) withoutLab[2];
-                for(int loop1 = 0; loop1 < wOLab1.size(); loop1++)
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                ArrayList<Course> withOutLab2 = (ArrayList<Course>) withoutLab[1];
+                ArrayList<Course> withOutLab3 = (ArrayList<Course>) withoutLab[2];
+                for(int loop1 = 0; loop1 < withOutLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wOLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withOutLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab3.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab3.size(); loop3++)
                         {
-                            if(wOLab1.get(loop1).findConfliction(wOLab2.get(loop2)) && wOLab1.get(loop1).findConfliction(wOLab3.get(loop3))
-                                    && wOLab2.get(loop2).findConfliction(wOLab3.get(loop3)))
+                            if(withOutLab1.get(loop1).findConfliction(withOutLab2.get(loop2)) && withOutLab1.get(loop1).findConfliction(withOutLab3.get(loop3))
+                                    && withOutLab2.get(loop2).findConfliction(withOutLab3.get(loop3)))
                             {
-                                /*System.out.println("course");
-                                System.out.println(wOLab1.get(loop1).printCourse());
-                                System.out.println(wOLab2.get(loop2).printCourse());
-                                System.out.println(wOLab3.get(loop3).printCourse());*/
 
-                                String header = wOLab1.get(loop1).courseName() + ", " +
-                                        wOLab2.get(loop2).courseName() + ", " +
-                                        wOLab3.get(loop3).courseName();
+
+                                String header = withOutLab1.get(loop1).courseName() + ", " +
+                                        withOutLab2.get(loop2).courseName() + ", " +
+                                        withOutLab3.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wOLab1.get(loop1),
-                                        wOLab2.get(loop2),
-                                        wOLab3.get(loop3));
+                                Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+                                        withOutLab2.get(loop2),
+                                        withOutLab3.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -236,32 +233,29 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 1)
             {
-                ArrayList<CourseL> wLab = (ArrayList<CourseL>) withLab[0];
-                ArrayList<Course> wOLab1 = (ArrayList<Course>) withoutLab[0];
-                ArrayList<Course> wOLab2 = (ArrayList<Course>) withoutLab[1];
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                ArrayList<Course> withOutLab2 = (ArrayList<Course>) withoutLab[1];
 
-                for(int loop1 = 0; loop1 < wLab.size(); loop1++)
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wOLab1.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withOutLab1.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab2.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab2.size(); loop3++)
                         {
-                            if(wLab.get(loop1).findConfliction(wOLab1.get(loop2)) && wLab.get(loop1).findConfliction(wOLab2.get(loop3))
-                                    && wOLab1.get(loop2).findConfliction(wOLab2.get(loop3)))
+                            if(withLab1.get(loop1).findConfliction(withOutLab1.get(loop2)) && withLab1.get(loop1).findConfliction(withOutLab2.get(loop3))
+                                    && withOutLab1.get(loop2).findConfliction(withOutLab2.get(loop3)))
                             {
-                                /*System.out.println("course");
-                                System.out.println(wLab.get(loop1).printCourse());
-                                System.out.println(wOLab1.get(loop2).printCourse());
-                                System.out.println(wOLab2.get(loop3).printCourse());*/
 
-                                String header = wLab.get(loop1).courseName() + ", " +
-                                        wOLab1.get(loop2).courseName() + ", " +
-                                        wOLab2.get(loop3).courseName();
+
+                                String header = withLab1.get(loop1).courseName() + ", " +
+                                        withOutLab1.get(loop2).courseName() + ", " +
+                                        withOutLab2.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
                                 Viewer viewer = new Viewer(header,
-                                        wLab.get(loop1),
-                                        wOLab1.get(loop2),
-                                        wOLab2.get(loop3));
+                                        withLab1.get(loop1),
+                                        withOutLab1.get(loop2),
+                                        withOutLab2.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -270,31 +264,28 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 2)
             {
-                ArrayList<CourseL> wLab1 = (ArrayList<CourseL>) withLab[0];
-                ArrayList<CourseL> wLab2 = (ArrayList<CourseL>) withLab[1];
-                ArrayList<Course> wOLab = (ArrayList<Course>) withoutLab[0];
-                for(int loop1 = 0; loop1 < wLab1.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<CourseL> withLab2 = (ArrayList<CourseL>) withLab[1];
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab1.size(); loop3++)
                         {
-                            if(wLab1.get(loop1).findConfliction(wLab2.get(loop2)) && wLab1.get(loop1).findConfliction(wOLab.get(loop3))
-                                    && wLab2.get(loop2).findConfliction(wOLab.get(loop3)))
+                            if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withOutLab1.get(loop3))
+                                    && withLab2.get(loop2).findConfliction(withOutLab1.get(loop3)))
                             {
-                                /*System.out.println("course");
-                                System.out.println(wLab1.get(loop1).printCourse());
-                                System.out.println(wLab2.get(loop2).printCourse());
-                                System.out.println(wOLab.get(loop3).printCourse());*/
 
-                                String header = wLab1.get(loop1).courseName() + ", " +
-                                        wLab2.get(loop2).courseName() + ", " +
-                                        wOLab.get(loop3).courseName();
+
+                                String header = withLab1.get(loop1).courseName() + ", " +
+                                        withLab2.get(loop2).courseName() + ", " +
+                                        withOutLab1.get(loop3).courseName();
 
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wLab1.get(loop1),
-                                        wLab2.get(loop2),
-                                        wOLab.get(loop3));
+                                Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                        withLab2.get(loop2),
+                                        withOutLab1.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -303,30 +294,27 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 3)
             {
-                ArrayList<CourseL> wLab1 = (ArrayList<CourseL>) withLab[0];
-                ArrayList<CourseL> wLab2 = (ArrayList<CourseL>) withLab[1];
-                ArrayList<CourseL> wLab3 = (ArrayList<CourseL>) withLab[2];
-                for(int loop1 = 0; loop1 < wLab1.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<CourseL> withLab2 = (ArrayList<CourseL>) withLab[1];
+                ArrayList<CourseL> withLab3 = (ArrayList<CourseL>) withLab[2];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wLab3.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withLab3.size(); loop3++)
                         {
-                            if(wLab1.get(loop1).findConfliction(wLab2.get(loop2)) && wLab1.get(loop1).findConfliction(wLab3.get(loop3))
-                                    && wLab2.get(loop2).findConfliction(wLab3.get(loop3)))
+                            if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withLab3.get(loop3))
+                                    && withLab2.get(loop2).findConfliction(withLab3.get(loop3)))
                             {
-                                /*System.out.println("course");
-                                System.out.println(wLab1.get(loop1).printCourse());
-                                System.out.println(wLab2.get(loop2).printCourse());
-                                System.out.println(wLab3.get(loop3).printCourse());*/
 
-                                String header = wLab1.get(loop1).courseName() + ", " +
-                                        wLab2.get(loop2).courseName() + ", " +
-                                        wLab3.get(loop3).courseName();
+
+                                String header = withLab1.get(loop1).courseName() + ", " +
+                                        withLab2.get(loop2).courseName() + ", " +
+                                        withLab3.get(loop3).courseName();
                                 Log.i(LOGTAG, "COURSE Found !");
-                                Viewer viewer = new Viewer(header, wLab1.get(loop1),
-                                        wLab2.get(loop2),
-                                        wLab3.get(loop3));
+                                Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                        withLab2.get(loop2),
+                                        withLab3.get(loop3));
                                 recycleView.add(viewer);
                             }
                         }
@@ -338,27 +326,33 @@ public class ShowSortCourses extends AppCompatActivity
         {
             if(totalLabCourse == 0)
             {
-                ArrayList<Course> wOLab1 = (ArrayList<Course>) withoutLab[0];
-                ArrayList<Course> wOLab2 = (ArrayList<Course>) withoutLab[1];
-                ArrayList<Course> wOLab3 = (ArrayList<Course>) withoutLab[2];
-                ArrayList<Course> wOLab4 = (ArrayList<Course>) withoutLab[3];
-                for(int loop1 = 0; loop1 < wOLab1.size(); loop1++)
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                ArrayList<Course> withOutLab2 = (ArrayList<Course>) withoutLab[1];
+                ArrayList<Course> withOutLab3 = (ArrayList<Course>) withoutLab[2];
+                ArrayList<Course> withOutLab4 = (ArrayList<Course>) withoutLab[3];
+                for(int loop1 = 0; loop1 < withOutLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wOLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withOutLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab3.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab3.size(); loop3++)
                         {
-                            for(int loop4 = 0; loop4 < wOLab4.size(); loop4++)
+                            for(int loop4 = 0; loop4 < withOutLab4.size(); loop4++)
                             {
-                                if(wOLab1.get(loop1).findConfliction(wOLab2.get(loop2)) && wOLab1.get(loop1).findConfliction(wOLab3.get(loop3))
-                                        && wOLab1.get(loop1).findConfliction(wOLab4.get(loop4)) && wOLab2.get(loop2).findConfliction(wOLab3.get(loop3))
-                                        && wOLab2.get(loop2).findConfliction(wOLab4.get(loop4)) && wOLab3.get(loop3).findConfliction(wOLab4.get(loop4)))
+                                if(withOutLab1.get(loop1).findConfliction(withOutLab2.get(loop2)) && withOutLab1.get(loop1).findConfliction(withOutLab3.get(loop3))
+                                        && withOutLab1.get(loop1).findConfliction(withOutLab4.get(loop4)) && withOutLab2.get(loop2).findConfliction(withOutLab3.get(loop3))
+                                        && withOutLab2.get(loop2).findConfliction(withOutLab4.get(loop4)) && withOutLab3.get(loop3).findConfliction(withOutLab4.get(loop4)))
                                 {
-                                    System.out.println("course");
-                                    System.out.println(wOLab1.get(loop1).printCourse());
-                                    System.out.println(wOLab2.get(loop2).printCourse());
-                                    System.out.println(wOLab3.get(loop3).printCourse());
-                                    System.out.println(wOLab4.get(loop4).printCourse());
+
+
+                                    String header = withOutLab1.get(loop1).courseName() + ", " +
+                                            withOutLab2.get(loop2).courseName() + ", " +
+                                            withOutLab3.get(loop3).courseName() + "," +
+                                            withOutLab4.get(loop4).courseName();
+                                    Log.i(LOGTAG, "COURSE Found !");
+                                    Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+                                            withOutLab2.get(loop2),
+                                            withOutLab3.get(loop3),withOutLab4.get(loop4));
+                                    recycleView.add(viewer);
                                 }
                             }
                         }
@@ -367,27 +361,33 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 1)
             {
-                ArrayList<CourseL> wLab = (ArrayList<CourseL>) withLab[0];
-                ArrayList<Course> wOLab1 = (ArrayList<Course>) withoutLab[0];
-                ArrayList<Course> wOLab2 = (ArrayList<Course>) withoutLab[1];
-                ArrayList<Course> wOLab3 = (ArrayList<Course>) withoutLab[2];
-                for(int loop1 = 0; loop1 < wLab.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                ArrayList<Course> withOutLab2 = (ArrayList<Course>) withoutLab[1];
+                ArrayList<Course> withOutLab3 = (ArrayList<Course>) withoutLab[2];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wOLab1.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withOutLab1.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab2.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab2.size(); loop3++)
                         {
-                            for(int loop4 = 0; loop4 < wOLab3.size(); loop4++)
+                            for(int loop4 = 0; loop4 < withOutLab3.size(); loop4++)
                             {
-                                if(wLab.get(loop1).findConfliction(wOLab1.get(loop2)) && wLab.get(loop1).findConfliction(wOLab2.get(loop3))
-                                        && wLab.get(loop1).findConfliction(wOLab3.get(loop4)) && wOLab1.get(loop2).findConfliction(wOLab2.get(loop3))
-                                        && wOLab1.get(loop2).findConfliction(wOLab3.get(loop4)) && wOLab2.get(loop3).findConfliction(wOLab3.get(loop4)))
+                                if(withLab1.get(loop1).findConfliction(withOutLab1.get(loop2)) && withLab1.get(loop1).findConfliction(withOutLab2.get(loop3))
+                                        && withLab1.get(loop1).findConfliction(withOutLab3.get(loop4)) && withOutLab1.get(loop2).findConfliction(withOutLab2.get(loop3))
+                                        && withOutLab1.get(loop2).findConfliction(withOutLab3.get(loop4)) && withOutLab2.get(loop3).findConfliction(withOutLab3.get(loop4)))
                                 {
-                                    System.out.println("course");
-                                    System.out.println(wLab.get(loop1).printCourse());
-                                    System.out.println(wOLab1.get(loop2).printCourse());
-                                    System.out.println(wOLab2.get(loop3).printCourse());
-                                    System.out.println(wOLab3.get(loop4).printCourse());
+
+                                    String header = withLab1.get(loop1).courseName() + ", " +
+                                            withOutLab1.get(loop2).courseName() + ", " +
+                                            withOutLab2.get(loop3).courseName() +
+                                            "," + withOutLab3.get(loop4).courseName();
+                                    Log.i(LOGTAG, "COURSE Found !");
+                                    Viewer viewer = new Viewer(header,
+                                            withLab1.get(loop1),
+                                            withOutLab1.get(loop2),
+                                            withOutLab2.get(loop3),withOutLab3.get(loop4));
+                                    recycleView.add(viewer);
                                 }
                             }
                         }
@@ -396,27 +396,34 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 2)
             {
-                ArrayList<CourseL> wLab1 = (ArrayList<CourseL>) withLab[0];
-                ArrayList<CourseL> wLab2 = (ArrayList<CourseL>) withLab[1];
-                ArrayList<Course> wOLab1 = (ArrayList<Course>) withoutLab[0];
-                ArrayList<Course> wOLab2 = (ArrayList<Course>) withoutLab[1];
-                for(int loop1 = 0; loop1 < wLab1.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<CourseL> withLab2 = (ArrayList<CourseL>) withLab[1];
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                ArrayList<Course> withOutLab2 = (ArrayList<Course>) withoutLab[1];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wOLab1.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withOutLab1.size(); loop3++)
                         {
-                            for(int loop4 = 0; loop4 < wOLab2.size(); loop4++)
+                            for(int loop4 = 0; loop4 < withOutLab2.size(); loop4++)
                             {
-                                if(wLab1.get(loop1).findConfliction(wLab2.get(loop2)) && wLab1.get(loop1).findConfliction(wOLab1.get(loop3))
-                                        && wLab1.get(loop1).findConfliction(wOLab2.get(loop4)) && wLab2.get(loop2).findConfliction(wOLab1.get(loop3))
-                                        && wLab2.get(loop2).findConfliction(wOLab2.get(loop4)) && wOLab1.get(loop3).findConfliction(wOLab2.get(loop4)))
+                                if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withOutLab1.get(loop3))
+                                        && withLab1.get(loop1).findConfliction(withOutLab2.get(loop4)) && withLab2.get(loop2).findConfliction(withOutLab1.get(loop3))
+                                        && withLab2.get(loop2).findConfliction(withOutLab2.get(loop4)) && withOutLab1.get(loop3).findConfliction(withOutLab2.get(loop4)))
                                 {
-                                    System.out.println("course");
-                                    System.out.println(wLab1.get(loop1).printCourse());
-                                    System.out.println(wLab2.get(loop2).printCourse());
-                                    System.out.println(wOLab1.get(loop3).printCourse());
-                                    System.out.println(wOLab2.get(loop4).printCourse());
+
+                                    String header = withLab1.get(loop1).courseName() + ", " +
+                                            withLab2.get(loop2).courseName() + ", " +
+                                            withOutLab1.get(loop3).courseName() +
+                                            "," + withOutLab2.get(loop4).courseName();
+
+                                    Log.i(LOGTAG, "COURSE Found !");
+                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                            withLab2.get(loop2),
+                                            withOutLab1.get(loop3),
+                                            withOutLab2.get(loop4));
+                                    recycleView.add(viewer);
                                 }
                             }
                         }
@@ -425,27 +432,35 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 3)
             {
-                ArrayList<CourseL> wLab1 = (ArrayList<CourseL>) withLab[0];
-                ArrayList<CourseL> wLab2 = (ArrayList<CourseL>) withLab[1];
-                ArrayList<CourseL> wLab3 = (ArrayList<CourseL>) withLab[2];
-                ArrayList<Course> wOLab = (ArrayList<Course>) withoutLab[0];
-                for(int loop1 = 0; loop1 < wLab1.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<CourseL> withLab2 = (ArrayList<CourseL>) withLab[1];
+                ArrayList<CourseL> withLab3 = (ArrayList<CourseL>) withLab[2];
+                ArrayList<Course> withOutLab1 = (ArrayList<Course>) withoutLab[0];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wLab3.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withLab3.size(); loop3++)
                         {
-                            for(int loop4 = 0; loop4 < wOLab.size(); loop4++)
+                            for(int loop4 = 0; loop4 < withOutLab1.size(); loop4++)
                             {
-                                if(wLab1.get(loop1).findConfliction(wLab2.get(loop2)) && wLab1.get(loop1).findConfliction(wLab3.get(loop3))
-                                        && wLab1.get(loop1).findConfliction(wOLab.get(loop4)) && wLab2.get(loop2).findConfliction(wLab3.get(loop3))
-                                        && wLab2.get(loop2).findConfliction(wOLab.get(loop4)) && wLab3.get(loop3).findConfliction(wOLab.get(loop4)))
+                                if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withLab3.get(loop3))
+                                        && withLab1.get(loop1).findConfliction(withOutLab1.get(loop4)) && withLab2.get(loop2).findConfliction(withLab3.get(loop3))
+                                        && withLab2.get(loop2).findConfliction(withOutLab1.get(loop4)) && withLab3.get(loop3).findConfliction(withOutLab1.get(loop4)))
                                 {
-                                    System.out.println("course");
-                                    System.out.println(wLab1.get(loop1).printCourse());
-                                    System.out.println(wLab2.get(loop2).printCourse());
-                                    System.out.println(wLab3.get(loop3).printCourse());
-                                    System.out.println(wOLab.get(loop4).printCourse());
+
+
+                                    String header = withLab1.get(loop1).courseName() + ", " +
+                                            withLab2.get(loop2).courseName() + ", " +
+                                            withLab3.get(loop3).courseName() + "," +
+                                            withOutLab1.get(loop4).courseName();
+
+                                    Log.i(LOGTAG, "COURSE Found !");
+                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                            withLab2.get(loop2),
+                                            withLab3.get(loop3),
+                                            withOutLab1.get(loop4));
+                                    recycleView.add(viewer);
 
                                 }
                             }
@@ -455,27 +470,34 @@ public class ShowSortCourses extends AppCompatActivity
             }
             else if(totalLabCourse == 4)
             {
-                ArrayList<CourseL> wLab1 = (ArrayList<CourseL>) withLab[0];
-                ArrayList<CourseL> wLab2 = (ArrayList<CourseL>) withLab[1];
-                ArrayList<CourseL> wLab3 = (ArrayList<CourseL>) withLab[2];
-                ArrayList<CourseL> wLab4 = (ArrayList<CourseL>) withLab[3];
-                for(int loop1 = 0; loop1 < wLab1.size(); loop1++)
+                ArrayList<CourseL> withLab1 = (ArrayList<CourseL>) withLab[0];
+                ArrayList<CourseL> withLab2 = (ArrayList<CourseL>) withLab[1];
+                ArrayList<CourseL> withLab3 = (ArrayList<CourseL>) withLab[2];
+                ArrayList<CourseL> withLab4 = (ArrayList<CourseL>) withLab[3];
+                for(int loop1 = 0; loop1 < withLab1.size(); loop1++)
                 {
-                    for(int loop2 = 0; loop2 < wLab2.size(); loop2++)
+                    for(int loop2 = 0; loop2 < withLab2.size(); loop2++)
                     {
-                        for(int loop3 = 0; loop3 < wLab3.size(); loop3++)
+                        for(int loop3 = 0; loop3 < withLab3.size(); loop3++)
                         {
-                            for(int loop4 = 0; loop4 < wLab4.size(); loop4++)
+                            for(int loop4 = 0; loop4 < withLab4.size(); loop4++)
                             {
-                                if(wLab1.get(loop1).findConfliction(wLab2.get(loop2)) && wLab1.get(loop1).findConfliction(wLab3.get(loop3))
-                                        && wLab1.get(loop1).findConfliction(wLab4.get(loop4)) && wLab2.get(loop2).findConfliction(wLab3.get(loop3))
-                                        && wLab2.get(loop2).findConfliction(wLab4.get(loop4)) && wLab3.get(loop3).findConfliction(wLab4.get(loop4)))
+                                if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withLab3.get(loop3))
+                                        && withLab1.get(loop1).findConfliction(withLab4.get(loop4)) && withLab2.get(loop2).findConfliction(withLab3.get(loop3))
+                                        && withLab2.get(loop2).findConfliction(withLab4.get(loop4)) && withLab3.get(loop3).findConfliction(withLab4.get(loop4)))
                                 {
-                                    System.out.println("course");
-                                    System.out.println(wLab1.get(loop1).printCourse());
-                                    System.out.println(wLab2.get(loop2).printCourse());
-                                    System.out.println(wLab3.get(loop3).printCourse());
-                                    System.out.println(wLab4.get(loop4).printCourse());
+
+                                    String header = withLab1.get(loop1).courseName() + ", " +
+                                            withLab2.get(loop2).courseName() + ", " +
+                                            withLab3.get(loop3).courseName() + "," +
+                                            withLab4.get(loop4).courseName();
+
+                                    Log.i(LOGTAG, "COURSE Found !");
+                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                            withLab2.get(loop2),
+                                            withLab3.get(loop3),
+                                            withLab4.get(loop4));
+                                    recycleView.add(viewer);
 
                                 }
                             }
