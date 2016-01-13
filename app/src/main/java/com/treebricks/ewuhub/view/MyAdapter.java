@@ -2,6 +2,7 @@ package com.treebricks.ewuhub.view;
 
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_list,parent,false);
-        v.setBackgroundColor(Color.parseColor(colors[randomNumber.nextInt(12)]));
+        ((CardView)v).setCardBackgroundColor(Color.parseColor(colors[randomNumber.nextInt(12)]));
         ViewHolder viewHolder = new ViewHolder(v);
 
 
