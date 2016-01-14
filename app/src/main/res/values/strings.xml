@@ -8,4 +8,5 @@
     <string name="title_activity_course_input">Sort Courses</string>
     <string name="course_input_description">Please, Input name of the subjects you want to sort.</string>
     <string name="title_activity_show_sort_courses">Sort Courses</string>
+    <string name="title_activity_course_details">Subject Details</string>
 </resources>

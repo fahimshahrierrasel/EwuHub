@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.treebricks.ewuhub.ui.CourseDetails"
+    tools:showIn="@layout/activity_course_details">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/secondary_frame_rl_sv">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondary_frame_rl_sv_rl">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/course_name"
+                android:text="Course Name"
+                android:textSize="42sp"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/course_name"
+                android:id="@+id/section"
+                android:text="Section : "
+                android:textSize="30sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/section"
+                android:layout_below="@+id/course_name"
+                android:id="@+id/section_number"
+                android:text="Section Number"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Week Day : "
+                android:id="@+id/week"
+                android:textSize="30sp"
+                android:layout_below="@+id/section"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMTWT"
+                android:textSize="30sp"
+                android:id="@+id/week_day"
+                android:layout_below="@+id/section_number"
+                android:layout_toRightOf="@+id/week"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time From : "
+                android:textSize="30sp"
+                android:id="@+id/timef"
+                android:layout_below="@+id/week"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="## : ##"
+                android:id="@+id/time_from"
+                android:textSize="30sp"
+                android:layout_below="@+id/week_day"
+                android:layout_toRightOf="@+id/timef"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time To : "
+                android:textSize="30sp"
+                android:id="@+id/timet"
+                android:layout_below="@+id/timef"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="## : ##"
+                android:textSize="30sp"
+                android:id="@+id/time_to"
+                android:layout_below="@+id/time_from"
+                android:layout_toRightOf="@+id/timet" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="Lab Week Day : "
+                android:id="@+id/labw"
+                android:layout_below="@+id/timet"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMTWT"
+                android:textSize="30sp"
+                android:id="@+id/lab_week_day"
+                android:layout_below="@+id/time_to"
+                android:layout_toRightOf="@+id/labw"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="Lab Time From : "
+                android:id="@+id/labtimef"
+                android:layout_below="@+id/labw"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="## : ##"
+                android:id="@+id/lab_time_from"
+                android:layout_below="@+id/lab_week_day"
+                android:layout_toRightOf="@+id/labtimef" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="Lab Time To : "
+                android:id="@+id/labtimet"
+                android:layout_below="@+id/labtimef"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="## : ##"
+                android:id="@+id/lab_time_to"
+                android:layout_below="@+id/lab_time_from"
+                android:layout_toRightOf="@+id/labtimet" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
