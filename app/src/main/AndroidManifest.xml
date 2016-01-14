@@ -20,8 +20,8 @@
         </activity>
         <activity
             android:name=".ui.SortCourseHome"
-            android:label="@string/title_activity_sort_course_home"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_activity_sort_course_home"
             android:parentActivityName=".ui.ApplicationHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -30,13 +30,31 @@
         </activity>
         <activity
             android:name=".ui.CourseInput"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_course_input"
             android:parentActivityName=".ui.SortCourseHome"
-            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
+        </activity>
+        <activity
+            android:name=".ui.ShowSortCourses"
+            android:label="@string/title_activity_show_sort_courses"
+            android:parentActivityName=".ui.CourseInput"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.CourseInput" />
+        </activity>
+        <activity
+            android:name=".ui.CourseDetails"
+            android:label="@string/title_activity_course_details"
+            android:parentActivityName=".ui.ShowSortCourses"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
         </activity>
     </application>
 
