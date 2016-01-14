@@ -79,7 +79,7 @@ public class CourseDetails extends AppCompatActivity
 
         courseNameTextView = (TextView) findViewById(R.id.course_name);
         sectionNumberTextView = (TextView) findViewById(R.id.section_number);
-        weekDayTextView = (TextView) findViewById(R.id.lab_week_day);
+        weekDayTextView = (TextView) findViewById(R.id.week_day);
         timeFromTextView = (TextView) findViewById(R.id.time_from);
         timeToTextView = (TextView) findViewById(R.id.time_to);
         labWeekTextView = (TextView) findViewById(R.id.labw);
