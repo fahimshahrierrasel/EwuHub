@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.treebricks.ewuhub">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -10,16 +11,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.ApplicationHome"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+
+        <activity android:name=".ui.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar">>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.ApplicationHome"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <activity
             android:name=".ui.SortCourseHome"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -30,6 +38,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.ApplicationHome" />
         </activity>
+
         <activity
             android:name=".ui.CourseInput"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -40,6 +49,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
         </activity>
+
         <activity
             android:name=".ui.ShowSortCourses"
             android:label="@string/title_activity_show_sort_courses"
@@ -49,6 +59,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.CourseInput" />
         </activity>
+
         <activity
             android:name=".ui.CourseDetails"
             android:label="@string/title_activity_course_details"
@@ -58,12 +69,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
         </activity>
-        <activity android:name=".ui.AllWebView"
+
+        <activity
+            android:name=".ui.AllWebView"
             android:label="Result">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.ApplicationHome"/>
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
+
     </application>
 
 </manifest>
