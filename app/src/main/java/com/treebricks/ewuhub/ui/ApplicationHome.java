@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
@@ -70,7 +71,7 @@ public class ApplicationHome extends AppCompatActivity
         {
             startNewTask();
             try {
-                Thread.sleep(500);                 //1000 milliseconds is one second.
+                Thread.sleep(400);                 //1000 milliseconds is one second.
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
@@ -78,6 +79,9 @@ public class ApplicationHome extends AppCompatActivity
             {
 
                 Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                Bundle sentData = new Bundle();
+                sentData.putString("URL", "http://result.ewubd.edu");
+                i.putExtras(sentData);
                 startActivity(i);
 
             }
@@ -123,6 +127,30 @@ public class ApplicationHome extends AppCompatActivity
             return true;
         }
         return false;
+    }
+
+    public void aplicaiton_home_onclick_listener(View view)
+    {
+        startNewTask();
+        try {
+            Thread.sleep(400);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        if(hasInternetConnection)
+        {
+
+            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+            Bundle sentData = new Bundle();
+            sentData.putString("URL", "http://www.ewubd.edu/");
+            i.putExtras(sentData);
+            startActivity(i);
+
+        }
+        else
+        {
+            Toast.makeText(ApplicationHome.this,"You are not connected to internet",Toast.LENGTH_LONG).show();
+        }
     }
 
 

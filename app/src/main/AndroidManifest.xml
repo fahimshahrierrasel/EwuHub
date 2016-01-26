@@ -72,10 +72,11 @@
 
         <activity
             android:name=".ui.AllWebView"
-            android:label="Result">
+            android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome"
+                />
         </activity>
 
     </application>

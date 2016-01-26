@@ -6,18 +6,24 @@ import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.treebricks.ewuhub.R;
 
 public class AllWebView extends AppCompatActivity {
 
 
     WebView myWebView;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_web_view);
+
+        Bundle recievedBundle = getIntent().getExtras();
+        if(recievedBundle != null) {
+            url = recievedBundle.getString("URL");
+        }
+
 
 
         myWebView = (WebView) findViewById(R.id.webview);
@@ -25,8 +31,15 @@ public class AllWebView extends AppCompatActivity {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
         webSettings.setSupportZoom(true);
+        webSettings.setJavaScriptEnabled(true);
+
+        if(!("http://result.ewubd.edu").equals(url))
+        {
+            myWebView.setInitialScale(90);
+        }
+
         myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl("http://result.ewubd.edu");
+        myWebView.loadUrl(url);
 
     }
 
