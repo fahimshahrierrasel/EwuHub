@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FFDF00</color>
+    <color name="book_loading_background">#3F51B5</color>
+    <color name="book_loading_book">#ffffff</color>
+    <color name="book_loading_page">#3F51B5</color>
 </resources>

@@ -104,7 +104,8 @@ public class ApplicationHome extends AppCompatActivity
         }
         else if (id == R.id.nav_about)
         {
-            Toast.makeText(this, "About Pressed", Toast.LENGTH_SHORT).show();
+            Intent about = new Intent(this, About.class);
+            startActivity(about);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
