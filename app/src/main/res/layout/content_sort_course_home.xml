@@ -37,29 +37,31 @@
                 android:textSize="30sp"/>
 
 
-            <com.github.florent37.materialtextfield.MaterialTextField
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sort_course_description"
                 android:layout_marginTop="25dp"
-                app:mtf_image="@drawable/ic_number"
+                android:layout_below="@+id/sort_course_description"
                 android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                app:hintTextAppearance="@style/MyHintText">
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/total_course_edit_text"
                     android:hint="Number of Subjects"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
+                    android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAlignment="center"
+                    android:gravity="center"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:numeric="integer"/>
+                    android:theme="@style/MyEditText"
+                    />
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 

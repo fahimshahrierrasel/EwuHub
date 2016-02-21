@@ -30,18 +30,19 @@
                 android:id="@+id/course_input_description"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="50dp"
                 android:textColor="#fbfbfb"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:text="@string/course_input_description"
                 android:textSize="30sp"/>
 
 
-            <com.github.florent37.materialtextfield.MaterialTextField
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/course_one_edit_text_holder"
-                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                app:hintTextAppearance="@style/MyHintText"
                 android:layout_below="@+id/course_input_description"
                 android:layout_centerHorizontal="true">
 
@@ -49,21 +50,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/course_one_edit_text"
-                    android:hint="Name of Subject-1"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
+                    android:hint="Name of Subject-1(Ex:CSE107)"
+                    android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAlignment="center"
+                    android:gravity="center"
                     android:inputType="text"
                     android:maxLines="1"
                     />
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.github.florent37.materialtextfield.MaterialTextField
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                app:hintTextAppearance="@style/MyHintText"
                 android:id="@+id/course_two_edit_text_holder"
                 android:layout_below="@+id/course_one_edit_text_holder"
                 android:layout_centerHorizontal="true">
@@ -72,22 +72,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/course_two_edit_text"
-                    android:hint="Name of Subject-2"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
+                    android:hint="Name of Subject-2(Ex-PHY109)"
+                    android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAlignment="center"
+                    android:gravity="center"
                     android:inputType="text"
                     android:maxLines="1"
                     />
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
+            </android.support.design.widget.TextInputLayout>
 
 
-            <com.github.florent37.materialtextfield.MaterialTextField
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                app:hintTextAppearance="@style/MyHintText"
                 android:id="@+id/course_three_edit_text_holder"
                 android:layout_below="@+id/course_two_edit_text_holder"
                 android:layout_centerHorizontal="true">
@@ -96,21 +95,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/course_three_edit_text"
-                    android:hint="Name of Subject-3"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
+                    android:hint="Name of Subject-3(Ex:MAT205)"
+                    android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAlignment="center"
+                    android:gravity="center"
                     android:inputType="text"
                     android:maxLines="1"
                     />
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.github.florent37.materialtextfield.MaterialTextField
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:mtf_image="@drawable/ic_mail_grey600_24dp"
+                app:hintTextAppearance="@style/MyHintText"
                 android:id="@+id/course_four_edit_text_holder"
                 android:layout_below="@+id/course_three_edit_text_holder"
                 android:layout_centerHorizontal="true">
@@ -119,16 +117,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/course_four_edit_text"
-                    android:hint="Name of Subject-4"
-                    android:textColor="#333"
-                    android:textColorHint="#666"
+                    android:hint="Name of Subject-4(Ex:ENG101)"
+                    android:textColor="#fff"
                     android:textSize="18sp"
-                    android:textAlignment="center"
+                    android:gravity="center"
                     android:inputType="text"
                     android:maxLines="1"
                     />
 
-            </com.github.florent37.materialtextfield.MaterialTextField>
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 

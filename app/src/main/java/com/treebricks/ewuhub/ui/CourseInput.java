@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -33,7 +34,7 @@ public class CourseInput extends AppCompatActivity {
     EditText editText2;
     EditText editText3;
     EditText editText4;
-    MaterialTextField textField4;
+    TextInputLayout textField4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,7 +55,7 @@ public class CourseInput extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.course_two_edit_text);
         editText3 = (EditText) findViewById(R.id.course_three_edit_text);
         editText4 = (EditText) findViewById(R.id.course_four_edit_text);
-        textField4 = (MaterialTextField) findViewById(R.id.course_four_edit_text_holder);
+        textField4 = (TextInputLayout) findViewById(R.id.course_four_edit_text_holder);
 
         if(totalSubjects != 4)
         {
@@ -102,7 +103,7 @@ public class CourseInput extends AppCompatActivity {
 
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
