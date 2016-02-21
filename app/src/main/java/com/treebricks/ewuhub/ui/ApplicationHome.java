@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
@@ -70,7 +71,7 @@ public class ApplicationHome extends AppCompatActivity
         {
             startNewTask();
             try {
-                Thread.sleep(500);                 //1000 milliseconds is one second.
+                Thread.sleep(400);                 //400 milliseconds is one second.
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
@@ -78,6 +79,9 @@ public class ApplicationHome extends AppCompatActivity
             {
 
                 Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                Bundle sentData = new Bundle();
+                sentData.putString("URL", "http://www.ewubd.edu/ewu/showDocument.php?documentid=200&id=4948&view=2&more=1&dc=");
+                i.putExtras(sentData);
                 startActivity(i);
 
             }
@@ -94,13 +98,18 @@ public class ApplicationHome extends AppCompatActivity
         {
             Toast.makeText(this, "Notice Board Pressed", Toast.LENGTH_SHORT).show();
         }
-        else if (id == R.id.nav_settings)
+        else if (id == R.id.nav_preferences)
         {
             Toast.makeText(this, "Settings Pressed", Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.nav_about)
         {
-            Toast.makeText(this, "About Pressed", Toast.LENGTH_SHORT).show();
+            Intent about = new Intent(this, About.class);
+            startActivity(about);
+        }
+        else if (id == R.id.ewusprit)
+        {
+            Toast.makeText(this, "EwuSprit Pressed", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -123,6 +132,30 @@ public class ApplicationHome extends AppCompatActivity
             return true;
         }
         return false;
+    }
+
+    public void aplicaiton_home_onclick_listener(View view)
+    {
+        startNewTask();
+        try {
+            Thread.sleep(400);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        if(hasInternetConnection)
+        {
+
+            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+            Bundle sentData = new Bundle();
+            sentData.putString("URL", "http://www.ewubd.edu/");
+            i.putExtras(sentData);
+            startActivity(i);
+
+        }
+        else
+        {
+            Toast.makeText(ApplicationHome.this,"You are not connected to internet",Toast.LENGTH_LONG).show();
+        }
     }
 
 

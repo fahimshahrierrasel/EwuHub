@@ -9,4 +9,37 @@
     <string name="course_input_description">Please, Input name of the subjects you want to sort.</string>
     <string name="title_activity_show_sort_courses">Sort Courses</string>
     <string name="title_activity_course_details">Subject Details</string>
+    <string name="ewu_history">The idea of establishing a private university
+        to provide quality education at an affordable cost in Bangladesh was
+        first mooted by a group of prominent academics, business leaders, professionals
+        and education enthusiasts led by Dr. Mohammed Farashuddin. With this end in view,
+        this group formed a non-profit, non-political, charitable organization called Progoti
+        Foundation for Education and Development (PFED). East West University is its first major
+        project. Members of the Board of Directors of the University are: Mr. Jalaluddin Ahmed,
+        Mr. S.M. Nousher Ali, Mr. Farooque B. Chaudhury, Dr. Rafiqul Huda Chaudhury,
+        Mr. Syed Manzur Elahi, Dr. Mohammed Farashuddin, Mr. Mohammed Zahidul Haque R.Ph.,
+        Dr. Saidur Rahman Lasker, Dr. Muhammad A. Mannan, Professor M. Mosleh-Uddin, Mr. Shelley
+        A. Mubdi, Mr. M.A. Mumin, Dr. Khalil Rahman, Mr. H.N. Ashequr Rahman and Mrs. Razia
+        Samad. After being accorded permission by the Government under the Private University
+        Act (Act 34) of 1992, East West University was launched in 1996. Classes started in
+        September 1996 with 6 faculty members and 20 students in the campus located at 43
+        Mohakhali C/A, Dhaka-1212. Today there are over 281 faculty members and approximately
+        8000 students enrolled through a process of selection.</string>
+
+    <string name="ewu_mission_statement">In keeping with its name, East West University, rated
+        among the top private universities of Bangladesh, is an institution that promotes
+        eastern culture and values, and meaningfully blends eastern and western thought and
+        innovation. As an institution of higher learning that promotes and inculcates ethical
+        standards, values and norms, East West University (EWU) is committed to the ideals of
+        equal opportunity, transparency, and non-discrimination. The primary mission of EWU is
+        to provide, at a reasonable cost, tertiary education characterized by academic
+        excellence in a range of subjects that are particularly relevant to current and
+        anticipated societal needs. Central to the university’s mission is its intention to
+        provide students with opportunities, resources and expertise to achieve academic,
+        personal and career goals within a stimulating and supportive environment. EWU is
+        striving not only to maintain high quality in both instruction and research, it is
+        also rendering community service through dissemination of information, organization
+        of training programs and other activities. Sensitive to the needs of its students and
+        staff, EWU is committed to providing a humane, responsive and invigorating atmosphere
+        for productive learning and innovative thinking.</string>
 </resources>

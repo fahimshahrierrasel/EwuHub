@@ -17,8 +17,6 @@ import android.widget.TextView;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.ui.CourseDetails;
 
-import java.io.Serializable;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -44,7 +42,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
     private ArrayList<Viewer> mDataset;
     private int totalCourse = 0;
-    public static int counter = 0;
     public Random randomNumber = new Random();
     public String[] colors = {"#E57373", "#F48FB1", "#CE93D8", "#B39DDB", "#9FA8DA", "#42A5F5",
             "#00ACC1", "#00897B", "#4CAF50", "#AFB42B", "#FF7043", "#90A4AE"};
@@ -60,7 +57,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         public TextView textC3;
         public TextView textC4;
 
-        public RelativeLayout relativeLayout;
+        //public RelativeLayout relativeLayout;
 
 
         public ViewHolder(View v)

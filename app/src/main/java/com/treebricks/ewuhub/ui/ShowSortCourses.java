@@ -1,6 +1,5 @@
 package com.treebricks.ewuhub.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.CourseDataSource;
 import com.treebricks.ewuhub.database.CourseLDataSource;
@@ -85,7 +82,7 @@ public class ShowSortCourses extends AppCompatActivity
         }
 
         // add course to subjects.
-        setSubjects(numberOfCourse);
+        setSubjects();
         totalLabCourse = findTotalLabCourse();
         getCourseFromDataBase();
         findConflictFreeCourse();
@@ -106,7 +103,7 @@ public class ShowSortCourses extends AppCompatActivity
         mRecyclerView.setAdapter(mAdapter);
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -147,7 +144,7 @@ public class ShowSortCourses extends AppCompatActivity
     // Method for sorting
 
 
-    public void setSubjects(int number)
+    public void setSubjects()
     {
         if(numberOfCourse == 3)
         {
@@ -521,5 +518,4 @@ public class ShowSortCourses extends AppCompatActivity
             }
         }
     }
-
 }

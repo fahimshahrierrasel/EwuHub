@@ -18,13 +18,17 @@
             android:id="@+id/nav_notice_board"
             android:icon="@drawable/ic_menu_notice_board"
             android:title="Notice Board" />
+        <item
+            android:id="@+id/ewusprit"
+            android:icon="@drawable/ic_ewu_sprit"
+            android:title="EwuSpirit"/>
     </group>
-    <item android:title="Communicate">
+    <item android:title="Settings and Communication">
         <menu>
             <item
-                android:id="@+id/nav_settings"
+                android:id="@+id/nav_preferences"
                 android:icon="@drawable/ic_menu_settings"
-                android:title="Settings" />
+                android:title="Preferences" />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_about"
