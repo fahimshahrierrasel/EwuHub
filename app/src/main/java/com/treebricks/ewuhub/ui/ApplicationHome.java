@@ -71,7 +71,7 @@ public class ApplicationHome extends AppCompatActivity
         {
             startNewTask();
             try {
-                Thread.sleep(400);                 //1000 milliseconds is one second.
+                Thread.sleep(400);                 //400 milliseconds is one second.
             } catch(InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
@@ -80,7 +80,7 @@ public class ApplicationHome extends AppCompatActivity
 
                 Intent i = new Intent(ApplicationHome.this, AllWebView.class);
                 Bundle sentData = new Bundle();
-                sentData.putString("URL", "http://result.ewubd.edu");
+                sentData.putString("URL", "http://www.ewubd.edu/ewu/showDocument.php?documentid=200&id=4948&view=2&more=1&dc=");
                 i.putExtras(sentData);
                 startActivity(i);
 
@@ -98,7 +98,7 @@ public class ApplicationHome extends AppCompatActivity
         {
             Toast.makeText(this, "Notice Board Pressed", Toast.LENGTH_SHORT).show();
         }
-        else if (id == R.id.nav_settings)
+        else if (id == R.id.nav_preferences)
         {
             Toast.makeText(this, "Settings Pressed", Toast.LENGTH_SHORT).show();
         }
@@ -106,6 +106,10 @@ public class ApplicationHome extends AppCompatActivity
         {
             Intent about = new Intent(this, About.class);
             startActivity(about);
+        }
+        else if (id == R.id.ewusprit)
+        {
+            Toast.makeText(this, "EwuSprit Pressed", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
