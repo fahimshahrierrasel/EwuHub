@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -21,6 +21,7 @@ public class SortCourseHome extends AppCompatActivity
     private int totalNumberOfCourse = 0;
     private String totalNumberOfCourseString = null;
     EditText totalCourseEditText;
+    TextInputLayout textInputLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +39,21 @@ public class SortCourseHome extends AppCompatActivity
             {
 
                 //Get total number of course from edit text
+                textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
                 totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
+
                 totalNumberOfCourseString = totalCourseEditText.getText().toString();
+
 
                 if(!totalNumberOfCourseString.equals(""))
                 {
                     totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
+                    textInputLayout.setError(null);
+
+                }
+                else
+                {
+                    textInputLayout.setError("Valid number of subject is required!");
                 }
 
                 if(totalNumberOfCourse == 3 || totalNumberOfCourse == 4)
@@ -54,7 +64,6 @@ public class SortCourseHome extends AppCompatActivity
                     Bundle infoBundle = new Bundle();
                     infoBundle.putInt(NUMBEROFCOURSES, totalNumberOfCourse);
                     courseInputIntent.putExtras(infoBundle);
-
                     startActivity(courseInputIntent);
                 }
                 else

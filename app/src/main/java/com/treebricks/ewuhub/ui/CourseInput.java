@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.florent37.materialtextfield.MaterialTextField;
 import com.treebricks.ewuhub.R;
 
 public class CourseInput extends AppCompatActivity {
@@ -34,6 +32,10 @@ public class CourseInput extends AppCompatActivity {
     EditText editText2;
     EditText editText3;
     EditText editText4;
+
+    TextInputLayout textField1;
+    TextInputLayout textField2;
+    TextInputLayout textField3;
     TextInputLayout textField4;
 
     @Override
@@ -55,7 +57,11 @@ public class CourseInput extends AppCompatActivity {
         editText2 = (EditText) findViewById(R.id.course_two_edit_text);
         editText3 = (EditText) findViewById(R.id.course_three_edit_text);
         editText4 = (EditText) findViewById(R.id.course_four_edit_text);
-        textField4 = (TextInputLayout) findViewById(R.id.course_four_edit_text_holder);
+        textField1 = (TextInputLayout) findViewById(R.id.text_field_one);
+        textField2 = (TextInputLayout) findViewById(R.id.text_field_two);
+        textField3 = (TextInputLayout) findViewById(R.id.text_field_three);
+        textField4 = (TextInputLayout) findViewById(R.id.text_field_four);
+
 
         if(totalSubjects != 4)
         {
@@ -70,12 +76,45 @@ public class CourseInput extends AppCompatActivity {
             public void onClick(View view)
             {
                 // get text from the edit text
+
                 firstCourse = editText1.getText().toString().toUpperCase();
                 secondCourse = editText2.getText().toString().toUpperCase();
                 thirdCourse = editText3.getText().toString().toUpperCase();
+                if("".equals(firstCourse))
+                {
+                    textField1.setError("Subject-1 is required!");
+                }
+                else
+                {
+                    textField1.setError(null);
+                }
+                if("".equals(secondCourse))
+                {
+                    textField2.setError("Subject-2 is required!");
+                }
+                else
+                {
+                    textField2.setError(null);
+                }
+                if("".equals(thirdCourse))
+                {
+                    textField3.setError("Subject-3 is required!");
+                }
+                else
+                {
+                    textField3.setError(null);
+                }
                 if(totalSubjects == 4)
                 {
                     fourthCourse = editText4.getText().toString().toUpperCase();
+                    if("".equals(fourthCourse))
+                    {
+                        textField4.setError("Subject-4 is required!");
+                    }
+                    else
+                    {
+                        textField4.setError(null);
+                    }
                 }
                 else
                     fourthCourse = "NULL";
@@ -93,6 +132,10 @@ public class CourseInput extends AppCompatActivity {
                     Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
                     Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
                     showSortCourses.putExtras(sentBundle);
+                    textField1.setError(null);
+                    textField2.setError(null);
+                    textField3.setError(null);
+                    textField4.setError(null);
                     startActivity(showSortCourses);
                 }
                 else
@@ -103,7 +146,7 @@ public class CourseInput extends AppCompatActivity {
 
             }
         });
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

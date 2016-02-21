@@ -41,9 +41,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/course_one_edit_text_holder"
+                android:id="@+id/text_field_one"
                 app:hintTextAppearance="@style/MyHintText"
                 android:layout_below="@+id/course_input_description"
+                app:errorEnabled="true"
                 android:layout_centerHorizontal="true">
 
                 <EditText
@@ -64,8 +65,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/MyHintText"
-                android:id="@+id/course_two_edit_text_holder"
-                android:layout_below="@+id/course_one_edit_text_holder"
+                android:id="@+id/text_field_two"
+                android:layout_below="@+id/text_field_one"
+                app:errorEnabled="true"
                 android:layout_centerHorizontal="true">
 
                 <EditText
@@ -87,8 +89,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/MyHintText"
-                android:id="@+id/course_three_edit_text_holder"
-                android:layout_below="@+id/course_two_edit_text_holder"
+                android:id="@+id/text_field_three"
+                android:layout_below="@+id/text_field_two"
+                app:errorEnabled="true"
                 android:layout_centerHorizontal="true">
 
                 <EditText
@@ -109,8 +112,9 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/MyHintText"
-                android:id="@+id/course_four_edit_text_holder"
-                android:layout_below="@+id/course_three_edit_text_holder"
+                android:id="@+id/text_field_four"
+                android:layout_below="@+id/text_field_three"
+                app:errorEnabled="true"
                 android:layout_centerHorizontal="true">
 
                 <EditText

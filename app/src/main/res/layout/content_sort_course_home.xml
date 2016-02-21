@@ -32,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:textColor="#fbfbfb"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:text="@string/sort_course_description"
                 android:textSize="30sp"/>
 
@@ -43,9 +43,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:id="@+id/number_input_layout"
                 android:layout_below="@+id/sort_course_description"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
+                app:errorEnabled="true"
                 app:hintTextAppearance="@style/MyHintText">
 
                 <EditText
