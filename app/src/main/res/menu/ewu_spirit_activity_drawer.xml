@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/nav_faculty_evaluation"
+            android:icon="@drawable/ic_evaluation"
+            android:title="Faculy Evaluation" />
+        <item
+            android:id="@+id/nav_class_schedule"
+            android:icon="@drawable/ic_class_schedule"
+            android:title="Class Schedule/Routine" />
+        <item
+            android:id="@+id/nav_available_seat"
+            android:icon="@drawable/ic_available_seat"
+            android:title="Check Available Seat" />
+        <item
+            android:id="@+id/nav_credit_info"
+            android:icon="@drawable/ic_credit_info"
+            android:title="Credit Info" />
+        <item
+            android:id="@+id/nav_advisior"
+            android:icon="@drawable/ic_advisor"
+            android:title="Check Advisior" />
+        <item
+            android:id="@+id/nav_advising_schedule"
+            android:icon="@drawable/ic_advising_time"
+            android:title="Advising Time Schedule" />
+    </group>
+    <item android:title="Additional Info">
+        <menu>
+            <item
+                android:title="Ewu Spirit HomePage"
+                android:id="@+id/nav_ewu_sprit_homepage"
+                android:icon="@drawable/ic_ewu_sprit"
+            />
+        </menu>
+    </item>
+
+</menu>

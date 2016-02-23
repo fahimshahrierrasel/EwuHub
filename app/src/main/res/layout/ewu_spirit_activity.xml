@@ -9,7 +9,7 @@
     tools:openDrawer="start">
 
     <include
-        layout="@layout/app_bar_application_home"
+        layout="@layout/app_bar_ewu_spirit"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -18,9 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ffffff"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_application_home"
-        app:menu="@menu/activity_application_home_drawer" />
+        app:headerLayout="@layout/nav_header_ewu_spirit"
+        app:menu="@menu/ewu_spirit_activity_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
