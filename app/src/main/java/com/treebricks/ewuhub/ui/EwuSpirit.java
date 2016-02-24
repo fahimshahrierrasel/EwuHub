@@ -1,5 +1,10 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -7,10 +12,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
 
@@ -18,6 +25,7 @@ public class EwuSpirit extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     WebView spiritWebView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,35 +78,150 @@ public class EwuSpirit extends AppCompatActivity
 
         if (id == R.id.nav_faculty_evaluation)
         {
-            spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if (id == R.id.nav_class_schedule)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/registration/routine.php");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/routine.php");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if (id == R.id.nav_available_seat)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if (id == R.id.nav_credit_info)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if (id == R.id.nav_advisior)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if (id == R.id.nav_advising_schedule)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
         else if(id == R.id.nav_ewu_sprit_homepage)
         {
-            spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
+
+            if(getCurrentSsid(getApplicationContext()).equals("ewuwifi"))
+            {
+                spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
+            }
+            else if(getCurrentSsid(getApplicationContext()).equals("NotConnected"))
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static String getCurrentSsid(Context context) {
+        String ssid = "ElseWifi";
+
+        if (isDeviceOnline(context)) {
+            final WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+            if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+                ssid = connectionInfo.getSSID();
+            }
+        }
+        else
+        {
+            ssid = "NotConnected";
+        }
+        return ssid;
+    }
+    public static boolean isDeviceOnline(Context context) {
+        boolean isConnectionAvail = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if(netInfo != null)
+                return netInfo.isConnected();
+            else
+                return isConnectionAvail;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isConnectionAvail;
     }
 }
