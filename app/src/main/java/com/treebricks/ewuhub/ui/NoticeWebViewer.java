@@ -17,7 +17,6 @@ public class NoticeWebViewer extends AppCompatActivity {
 
 
     android.webkit.WebView noticeWebView;
-    private String url;
     private String jsonData;
 
     @Override
@@ -27,7 +26,7 @@ public class NoticeWebViewer extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        url = getIntent().getExtras().getString("URL");
+        String url = getIntent().getExtras().getString("URL");
         jsonData = getIntent().getExtras().getString("JSON_DATA");
 
         noticeWebView = (android.webkit.WebView) findViewById(R.id.notice_web_view);

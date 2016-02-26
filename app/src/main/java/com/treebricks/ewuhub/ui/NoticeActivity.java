@@ -18,9 +18,6 @@ public class NoticeActivity extends AppCompatActivity
     String jsonString;
     JSONObject jsonObject;
     JSONArray jsonArray;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<NoticeView> recycleView = new ArrayList<NoticeView>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +33,18 @@ public class NoticeActivity extends AppCompatActivity
         createRecyclerView();
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.notice_recycler_view);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.notice_recycler_view);
 
 
 
         mRecyclerView.setHasFixedSize(true);
 
 
-        mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-        mAdapter = new NoticeAdapter(recycleView, NoticeActivity.this, jsonString);
+        RecyclerView.Adapter mAdapter = new NoticeAdapter(recycleView, NoticeActivity.this, jsonString);
         mRecyclerView.setAdapter(mAdapter);
 
 
