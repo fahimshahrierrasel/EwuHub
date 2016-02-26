@@ -106,6 +106,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
+        <activity
+            android:name=".ui.NoticeWebViewer"
+            android:label="@string/title_activity_notice_web_viewer"
+            android:parentActivityName=".ui.NoticeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.NoticeActivity" />
+        </activity>
     </application>
 
 </manifest>
