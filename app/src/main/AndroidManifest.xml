@@ -51,19 +51,11 @@
             android:name=".ui.ShowSortCourses"
             android:label="@string/title_activity_show_sort_courses"
             android:parentActivityName=".ui.CourseInput"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.CourseInput" />
-        </activity>
-        <activity
-            android:name=".ui.CourseDetails"
-            android:label="@string/title_activity_course_details"
-            android:parentActivityName=".ui.ShowSortCourses"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
         </activity>
         <activity
             android:name=".ui.AllWebView"
@@ -114,6 +106,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.NoticeActivity" />
+        </activity>
+        <activity
+            android:name=".ui.Details"
+            android:label="@string/title_activity_details"
+            android:parentActivityName=".ui.ShowSortCourses"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
         </activity>
     </application>
 

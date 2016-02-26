@@ -2,6 +2,7 @@ package com.treebricks.ewuhub.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,11 +10,8 @@ import android.widget.TextView;
 
 import com.treebricks.ewuhub.R;
 
-import model.CourseL;
-
-public class CourseDetails extends AppCompatActivity
+public class Details extends AppCompatActivity
 {
-
 
     public static final String HASLAB = "HASLAB";
     public static final String COURSENAME = "COURSENAME";
@@ -49,12 +47,14 @@ public class CourseDetails extends AppCompatActivity
     private boolean hasLab = false;
     Bundle showSortCourseBundle = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_details);
+        setContentView(R.layout.activity_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         Bundle recivedBundle = getIntent().getExtras();
         showSortCourseBundle = getIntent().getBundleExtra(SHOWSORTCOURSEBUNDLE);
@@ -109,7 +109,8 @@ public class CourseDetails extends AppCompatActivity
             labTimeToTextView.setVisibility(View.INVISIBLE);
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public String time12HourFormat(int time)
@@ -122,9 +123,9 @@ public class CourseDetails extends AppCompatActivity
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Intent i = new Intent(CourseDetails.this, ShowSortCourses.class);
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(Details.this, ShowSortCourses.class);
         if(showSortCourseBundle != null)
         {
             i.putExtras(showSortCourseBundle);

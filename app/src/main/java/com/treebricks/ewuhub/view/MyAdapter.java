@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.treebricks.ewuhub.R;
-import com.treebricks.ewuhub.ui.CourseDetails;
+import com.treebricks.ewuhub.ui.Details;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -153,7 +153,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
                 }
 
-                Intent courseDetail = new Intent(context, CourseDetails.class);
+                Intent courseDetail = new Intent(context, Details.class);
                 courseDetail.putExtras(sentBundle);
                 if(showSortCourseBundle != null)
                 {
@@ -197,7 +197,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
                 }
 
-                Intent courseDetail = new Intent(context, CourseDetails.class);
+                Intent courseDetail = new Intent(context, Details.class);
                 courseDetail.putExtras(sentBundle);
                 if(showSortCourseBundle != null)
                 {
@@ -241,7 +241,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
                 }
 
-                Intent courseDetail = new Intent(context, CourseDetails.class);
+                Intent courseDetail = new Intent(context, Details.class);
                 courseDetail.putExtras(sentBundle);
                 if(showSortCourseBundle != null)
                 {
@@ -287,7 +287,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 
                     }
 
-                    Intent courseDetail = new Intent(context, CourseDetails.class);
+                    Intent courseDetail = new Intent(context, Details.class);
                     courseDetail.putExtras(sentBundle);
                     if(showSortCourseBundle != null)
                     {
