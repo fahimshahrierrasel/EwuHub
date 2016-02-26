@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.treebricks.ewuhub.ui.NoticeActivity"
-    tools:showIn="@layout/activity_notice">
+    tools:context="com.treebricks.ewuhub.ui.NoticeWebViewer"
+    tools:showIn="@layout/notice_web_viewer_activity">
 
-    <android.support.v7.widget.RecyclerView
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/notice_recycler_view"
-        android:scrollbars="vertical">
-    </android.support.v7.widget.RecyclerView>
+        android:id="@+id/notice_web_view">
+
+    </WebView>
 
 </RelativeLayout>
