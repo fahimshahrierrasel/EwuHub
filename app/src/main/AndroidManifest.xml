@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -82,6 +82,24 @@
         <activity
             android:name=".ui.EwuSpirit"
             android:label="@string/title_activity_ewu_spirit"
+            android:parentActivityName=".ui.ApplicationHome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
+        </activity>
+        <activity
+            android:name=".ui.AcademicCalendarActivity"
+            android:label="@string/title_activity_academic_calendar"
+            android:parentActivityName=".ui.ApplicationHome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
+        </activity>
+        <activity
+            android:name=".ui.NoticeActivity"
+            android:label="@string/title_activity_notice"
             android:parentActivityName=".ui.ApplicationHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
