@@ -15,10 +15,9 @@ public class CourseLDataSource
 {
     public static final String LOGTAG = "EwuHub";
     Cursor cursor = null;
-    private String table = "COURSEWITHLAB";
+    private String table = "WithLab";
     private static final String[] allCloumns = {
             "CourseName",
-            "CourseCode",
             "Section",
             "TimeFrom",
             "TimeTo",
@@ -53,8 +52,7 @@ public class CourseLDataSource
             do
             {
                 CourseL courseL = new CourseL();
-                courseL.setCourseTitle(cursor.getString(cursor.getColumnIndex("CourseName")));
-                courseL.setCourseCode(cursor.getString(cursor.getColumnIndex("CourseCode")));
+                courseL.setCourseName(cursor.getString(cursor.getColumnIndex("CourseName")));
                 courseL.setSection(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("Section"))));
                 courseL.setTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeFrom"))));
                 courseL.setTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeTo"))));
@@ -62,9 +60,9 @@ public class CourseLDataSource
                 courseL.setLabTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeFrom"))));
                 courseL.setLabTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeTo"))));
                 courseL.setLabWeekDay(cursor.getString(cursor.getColumnIndex("LabWeekDay")));
-                if((courseL.getCourseTitle()+courseL.getCourseCode()).equals(courseName))
+                if((courseL.getCourseName()).equals(courseName))
                 {
-                    Log.i(LOGTAG,"Need " + courseName + " & " + (courseL.getCourseTitle()+courseL.getCourseCode()) + " found!");
+                    Log.i(LOGTAG,"Need " + courseName + " & " + courseL.getCourseName() + " found!");
                     allCourses.add(courseL);
                 }
             }while(cursor.moveToNext());

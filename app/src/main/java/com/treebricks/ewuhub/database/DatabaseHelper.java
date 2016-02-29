@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +16,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends SQLiteOpenHelper
 {
     String DATABASE_PATH = null;
-    private static String DATABASE_NAME = "COURSES.db";
+    private static String DATABASE_NAME = "CoursesDatabase.db";
     private SQLiteDatabase myDataBase;
     private final Context myContext;
     private final String TABLE;

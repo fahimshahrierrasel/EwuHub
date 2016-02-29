@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.util.Log;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,9 +12,9 @@ public class LabDataSource
 {
     public static final String LOGTAG = "ProjectZero";
     Cursor cursor = null;
-    private String table = "LABCOURSES";
+    private String table = "LabCourses";
     private static final String[] allCloumns = {
-            "LAB"
+            "CourseName"
     };
     public ArrayList<String> findAll(Context context)
     {
@@ -38,7 +37,7 @@ public class LabDataSource
 
         if (cursor.moveToFirst()) {
             do {
-                String string = cursor.getString(cursor.getColumnIndex("LAB"));
+                String string = cursor.getString(cursor.getColumnIndex("CourseName"));
                 allLabs.add(string);
             } while (cursor.moveToNext());
             if (cursor != null && !cursor.isClosed()) {

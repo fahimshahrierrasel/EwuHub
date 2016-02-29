@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.util.Log;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,10 +14,9 @@ public class CourseDataSource
 {
     public static final String LOGTAG = "EwuHub";
     Cursor cursor = null;
-    private String table = "COURSEWITHOUTLAB";
+    private String table = "WithoutLab";
     private static final String[] allCloumns = {
             "CourseName",
-            "CourseCode",
             "Section",
             "TimeFrom",
             "TimeTo",
@@ -50,15 +48,14 @@ public class CourseDataSource
             do
             {
                 Course course = new Course();
-                course.setCourseTitle(cursor.getString(cursor.getColumnIndex("CourseName")));
-                course.setCourseCode(cursor.getString(cursor.getColumnIndex("CourseCode")));
+                course.setCourseName(cursor.getString(cursor.getColumnIndex("CourseName")));
                 course.setSection(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("Section"))));
                 course.setTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeFrom"))));
                 course.setTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeTo"))));
                 course.setWeekDay(cursor.getString(cursor.getColumnIndex("WeekDay")));
-                if((course.getCourseTitle()+course.getCourseCode()).equals(courseName))
+                if((course.getCourseName()).equals(courseName))
                 {
-                    Log.i(LOGTAG,"Need " + courseName + " & " + (course.getCourseTitle()+course.getCourseCode()) + " found!");
+                    Log.i(LOGTAG,"Need " + courseName + " & " + course.getCourseName() + " found!");
                     allCourses.add(course);
                 }
 

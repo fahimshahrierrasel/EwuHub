@@ -2,8 +2,7 @@ package model;
 
 public class Course
 {
-    protected String courseTitle;
-    protected String courseCode;
+    protected String courseName;
     protected int section;
     protected int timeFrom;
     protected int timeTo;
@@ -12,39 +11,29 @@ public class Course
 
     public Course()
     {
-        courseTitle = "NULL";
-        courseCode = "NULL";
+        courseName = "NULL";
         section = 0;
         timeFrom = 0000;
         timeTo = 0000;
         weekDay = "NULL";
     }
 
-    public Course(String courseTitle, String courseCode, int section, int timeFrom, int timeTo, String weekDay)
+    public Course(String courseName, int section, int timeFrom, int timeTo, String weekDay)
     {
-        this.courseTitle = courseTitle;
-        this.courseCode = courseCode;
+        this.courseName = courseName;
         this.section = section;
         this.timeFrom = timeFrom;
         this.timeTo = timeTo;
         this.weekDay = weekDay;
     }
 
-    public String getCourseTitle() {
+    public String getCourseName() {
 
-        return courseTitle;
+        return courseName;
     }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
-    }
-
-    public String getCourseCode() {
-        return courseCode;
-    }
-
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getTimeFrom() {
@@ -128,17 +117,17 @@ public class Course
 
     public String printCourse()
     {
-        return (courseTitle + courseCode + "     " + section + "     " +
+        return (courseName + "     " + section + "     " +
                 timeFrom + "     " + timeTo + "     " + weekDay);
     }
 
     @Override
     public String toString() {
-        return courseTitle+courseCode + "   Section: " + String.valueOf(section);
+        return courseName + "   Section: " + String.valueOf(section);
     }
 
     public String courseName()
     {
-        return courseTitle+courseCode;
+        return courseName ;
     }
 }
