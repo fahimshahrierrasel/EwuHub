@@ -7,19 +7,18 @@ import android.util.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-public class LabDataSource
+public class AllCoursesDataSource
 {
     public static final String LOGTAG = "EwuHub";
     Cursor cursor = null;
-    private String table = "LabCourses";
+    private String table = "AllCourses";
     private static final String[] allCloumns = {
             "CourseName"
     };
     public ArrayList<String> findAll(Context context)
     {
         DatabaseHelper dbhelper = new DatabaseHelper(context, table);
-        ArrayList<String> allLabs = new ArrayList<String>();
+        ArrayList<String> allCourses = new ArrayList<String>();
         try {
             dbhelper.createDataBase();
         } catch (IOException ioe) {
@@ -38,12 +37,13 @@ public class LabDataSource
         if (cursor.moveToFirst()) {
             do {
                 String string = cursor.getString(cursor.getColumnIndex("CourseName"));
-                allLabs.add(string);
+                allCourses.add(string);
             } while (cursor.moveToNext());
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
             }
         }
-        return allLabs;
+        return allCourses;
     }
+
 }

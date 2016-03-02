@@ -13,6 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.database.AllCoursesDataSource;
+
+import java.util.ArrayList;
+
+import model.Course;
 
 public class CourseInput extends AppCompatActivity {
 
@@ -22,6 +27,8 @@ public class CourseInput extends AppCompatActivity {
     public static final String THIRDCOURSE = "THIRDCOURSE";
     public static final String FOURTHCOURSE = "FOURTHCOURSE";
     public static final String LOGTAG = "EwuHuB";
+    AllCoursesDataSource allCoursesDataSource;
+    private Object[] allCourses;
 
     private int totalSubjects = 0;
     private String firstCourse = null;
@@ -53,6 +60,11 @@ public class CourseInput extends AppCompatActivity {
             totalSubjects = recievedBundle.getInt(NUMBEROFCOURSES);
         }
 
+        allCoursesDataSource = new AllCoursesDataSource();
+        ArrayList<String> allCrs = allCoursesDataSource.findAll(CourseInput.this);
+        allCourses = allCrs.toArray();
+
+
         editText1 = (EditText) findViewById(R.id.course_one_edit_text);
         editText2 = (EditText) findViewById(R.id.course_two_edit_text);
         editText3 = (EditText) findViewById(R.id.course_three_edit_text);
@@ -69,13 +81,16 @@ public class CourseInput extends AppCompatActivity {
             editText4.setVisibility(View.INVISIBLE);
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 // get text from the edit text
+
+
+                boolean allright = true;
 
                 firstCourse = editText1.getText().toString().toUpperCase();
                 secondCourse = editText2.getText().toString().toUpperCase();
@@ -123,30 +138,58 @@ public class CourseInput extends AppCompatActivity {
                         && !"".equals(fourthCourse))
                 {
                     // send Data to next activity
-                    Bundle sentBundle = new Bundle();
-                    sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
-                    sentBundle.putString(FIRSTCOURSE, firstCourse);
-                    sentBundle.putString(SECONDCOURSE, secondCourse);
-                    sentBundle.putString(THIRDCOURSE, thirdCourse);
-                    sentBundle.putString(FOURTHCOURSE, fourthCourse);
-                    Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
-                    Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
-                    showSortCourses.putExtras(sentBundle);
+
                     textField1.setError(null);
                     textField2.setError(null);
                     textField3.setError(null);
                     textField4.setError(null);
-                    startActivity(showSortCourses);
+
+                    if(!isSubjectValid(firstCourse))
+                    {
+                        allright = false;
+                        Toast.makeText(CourseInput.this, firstCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                    }
+                    if(!isSubjectValid(secondCourse))
+                    {
+                        allright = false;
+                        Toast.makeText(CourseInput.this, secondCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                    }
+                    if(!isSubjectValid(thirdCourse))
+                    {
+                        allright = false;
+                        Toast.makeText(CourseInput.this, thirdCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                    }
+                    if(!isSubjectValid(fourthCourse) && totalSubjects == 4)
+                    {
+                        allright = false;
+                        Toast.makeText(CourseInput.this, fourthCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(allright)
+                    {
+                        Bundle sentBundle = new Bundle();
+                        sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
+                        sentBundle.putString(FIRSTCOURSE, firstCourse);
+                        sentBundle.putString(SECONDCOURSE, secondCourse);
+                        sentBundle.putString(THIRDCOURSE, thirdCourse);
+                        sentBundle.putString(FOURTHCOURSE, fourthCourse);
+                        Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
+                        showSortCourses.putExtras(sentBundle);
+                        startActivity(showSortCourses);
+
+                    }
+
+
+
+
+
                 }
-                else
-                {
-                    Toast.makeText(CourseInput.this,"Subject name is empty! Please input subject name properly.",Toast.LENGTH_SHORT).show();
-                }
+
 
 
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -171,6 +214,20 @@ public class CourseInput extends AppCompatActivity {
         editText2.setText(savedInstanceState.getString(SECONDCOURSEEDITTEXT));
         editText3.setText(savedInstanceState.getString(THIRDCOURSEEDITTEXT));
         editText4.setText(savedInstanceState.getString(FOURTHCOURSEEDITTEXT));*/
+    }
+
+    boolean isSubjectValid(String subject)
+    {
+        boolean valid = false;
+        for(int i = 0; i < allCourses.length; i++)
+        {
+            if(allCourses[i].toString().equals(subject))
+            {
+                valid = true;
+                break;
+            }
+        }
+        return valid;
     }
 
 }

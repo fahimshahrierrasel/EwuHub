@@ -3,8 +3,10 @@ package com.treebricks.ewuhub.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -73,6 +75,11 @@ public class Details extends AppCompatActivity
                 labTimeTo = recivedBundle.getInt(LABTIMETO);
             }
         }
+        if(showSortCourseBundle != null)
+        {
+            System.out.println(showSortCourseBundle.getString("FIRSTCOURSE"));
+            Log.i("Detail Class", "showSortCourseBundle Recived by Details class!");
+        }
 
 
         courseNameTextView = (TextView) findViewById(R.id.course_name);
@@ -125,10 +132,12 @@ public class Details extends AppCompatActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Log.i("Detail Class", "On Back pressed is sending");
         Intent i = new Intent(Details.this, ShowSortCourses.class);
         if(showSortCourseBundle != null)
         {
             i.putExtras(showSortCourseBundle);
+            Log.i("Detail Class", "showSortCourseBundle is sending");
         }
         startActivity(i);
         finish();
