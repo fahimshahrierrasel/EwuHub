@@ -1,5 +1,6 @@
 package com.treebricks.ewuhub.ui;
 
+import android.support.v7.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ public class NoticeWebViewer extends AppCompatActivity {
 
     android.webkit.WebView noticeWebView;
     private String jsonData;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,11 @@ public class NoticeWebViewer extends AppCompatActivity {
         System.out.println("Json Data in WebView is : "+jsonData);
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)

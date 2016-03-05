@@ -1,10 +1,13 @@
 package com.treebricks.ewuhub.ui;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.NoticeAdapter;
 import com.treebricks.ewuhub.view.NoticeView;
@@ -19,6 +22,9 @@ public class NoticeActivity extends AppCompatActivity
     JSONObject jsonObject;
     JSONArray jsonArray;
     ArrayList<NoticeView> recycleView = new ArrayList<NoticeView>();
+    ActionBar actionBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,7 @@ public class NoticeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         jsonString = getIntent().getExtras().getString("JSON_DATA");
+        System.out.println("Json String : " + jsonString);
 
 
 
@@ -49,7 +56,12 @@ public class NoticeActivity extends AppCompatActivity
 
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
 

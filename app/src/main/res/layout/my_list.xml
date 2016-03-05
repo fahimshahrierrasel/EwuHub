@@ -4,11 +4,11 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-
-
     android:layout_marginBottom="2dip"
     card_view:cardUseCompatPadding="true"
-    android:elevation="5dp">
+    card_view:cardElevation="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardPreventCornerOverlap="true">
 
 
     <RelativeLayout
@@ -23,12 +23,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/header_line"
             android:layout_marginRight="6dp"
-            android:layout_alignParentRight="true"
             android:layout_marginLeft="6dp"
             android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="true"
-            android:textAlignment="center"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="All Course Name"
             android:textSize="16sp"/>
 
@@ -38,8 +36,7 @@
             android:id="@+id/first_line"
             android:layout_below="@+id/header_line"
             android:layout_marginRight="6dp"
-            android:layout_alignParentRight="true"
-            android:textAlignment="center"
+            android:gravity="center"
             android:layout_marginLeft="6dp"
             android:ellipsize="marquee"
             android:singleLine="true"
@@ -50,8 +47,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/first_line"
-            android:textAlignment="center"
-            android:layout_alignParentRight="true"
+            android:gravity="center"
             android:layout_marginRight="6dp"
             android:ellipsize="marquee"
             android:layout_marginLeft="6dp"
@@ -65,8 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/second_line"
             android:layout_marginRight="6dp"
-            android:layout_alignParentRight="true"
-            android:textAlignment="center"
+            android:gravity="center"
             android:ellipsize="marquee"
             android:layout_marginLeft="6dp"
             android:text="3rd Course Name and Section"
@@ -80,8 +75,7 @@
             android:layout_below="@+id/third_line"
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_alignParentRight="true"
-            android:textAlignment="center"
+            android:gravity="center"
             android:ellipsize="marquee"
             android:text="4th Course Name and Section"
             android:singleLine="true"

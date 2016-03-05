@@ -2,6 +2,7 @@ package com.treebricks.ewuhub.ui;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,7 +53,7 @@ public class ShowSortCourses extends AppCompatActivity
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<Viewer> recycleView = new ArrayList<Viewer>();
-
+    ActionBar actionBar;
 
 
     @Override
@@ -104,6 +105,11 @@ public class ShowSortCourses extends AppCompatActivity
 
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

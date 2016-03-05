@@ -48,6 +48,8 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 app:errorEnabled="true"
+                app:counterEnabled="true"
+                app:counterMaxLength="1"
                 app:hintTextAppearance="@style/MyHintText">
 
                 <EditText
@@ -60,6 +62,7 @@
                     android:gravity="center"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:maxLength="1"
                     android:theme="@style/MyEditText"
                     />
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <Preference
+        android:title="Update Database"
+        android:icon="@drawable/ic_update_db"
+        android:summary="Update courses Database. This update needs at the beginning of the Advising and after application update."
+        android:key="updatedb">
+    </Preference>
+
+    <Preference
+        android:title="Open Source"
+        android:icon="@drawable/ic_open_source"
+        android:summary="Soon we will make all our work open source."
+        android:key="getpref">
+    </Preference>
+
+</PreferenceScreen>

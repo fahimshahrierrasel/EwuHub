@@ -27,4 +27,8 @@
         <item name="colorControlActivated">#FFDF00</item>
     </style>
 
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/gold</item>
+    </style>
+
 </resources>

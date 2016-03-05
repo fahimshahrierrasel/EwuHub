@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class CourseInput extends AppCompatActivity {
     TextInputLayout textField2;
     TextInputLayout textField3;
     TextInputLayout textField4;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -190,6 +192,11 @@ public class CourseInput extends AppCompatActivity {
             }
         });
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

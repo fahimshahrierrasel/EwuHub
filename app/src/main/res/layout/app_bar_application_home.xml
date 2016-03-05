@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
@@ -52,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@color/white"
             android:paddingTop="2dp">
 
             <TextView
@@ -59,30 +61,30 @@
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:typeface="serif"
+                android:fontFamily="serif"
+                android:textColor="@color/article_title"
                 android:text="History"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:textStyle="normal"
+                android:fontFamily="serif"
                 android:gravity="center"
-                android:typeface="serif"
                 android:text="@string/ewu_history"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:typeface="serif"
+                android:fontFamily="serif"
+                android:textColor="@color/purple"
                 android:text="Mission Statement"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:gravity="center"
-                android:typeface="serif"
-                android:textStyle="normal"
+                android:fontFamily="serif"
                 android:text="@string/ewu_mission_statement"/>
 
 
@@ -96,6 +98,7 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@drawable/ic_public_black_48dp"
+        app:rippleColor="@color/purple"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"
         android:onClick="aplicaiton_home_onclick_listener"/>

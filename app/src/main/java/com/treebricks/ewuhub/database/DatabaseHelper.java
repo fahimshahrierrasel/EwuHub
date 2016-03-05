@@ -60,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
             myOutPut.write(buffer, 0, length);
         }
+        Log.e("DataBase Information : ", "Database copying from assets.");
         myOutPut.flush();
         myOutPut.close();
         myInput.close();

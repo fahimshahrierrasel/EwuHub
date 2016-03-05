@@ -8,7 +8,11 @@
     android:layout_marginRight="@dimen/activity_vertical_margin"
     android:layout_marginTop="2dip"
     android:layout_marginBottom="2dip"
-    card_view:cardUseCompatPadding="true">
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardPreventCornerOverlap="true"
+    >
 
 
     <RelativeLayout
@@ -26,6 +30,7 @@
             android:layout_marginLeft="6dp"
             android:text="Notice Title"
             android:textSize="24sp"/>
+
 
         <TextView
             android:layout_width="fill_parent"
