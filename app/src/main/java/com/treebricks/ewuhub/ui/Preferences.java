@@ -138,7 +138,7 @@ public class Preferences extends PreferenceActivity
                 OutputStream output = null;
                 HttpURLConnection connection = null;
                 try {
-                    URL url = new URL("http://treebricks.twomini.com/CoursesDatabase.db");
+                    URL url = new URL("http://www.treebricks.com/CoursesDatabase.db");
                     connection = (HttpURLConnection) url.openConnection();
                     connection.connect();
 

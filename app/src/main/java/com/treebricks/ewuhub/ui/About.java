@@ -59,7 +59,7 @@ public class About extends AppCompatActivity {
 
     public void officialWebsiteOnClickHandler(View view)
     {
-        String url = "http://www.treebricks.twomini.com";
+        String url = "http://www.treebricks.com";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
