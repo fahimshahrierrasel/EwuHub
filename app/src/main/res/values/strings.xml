@@ -51,6 +51,25 @@
     <string name="title_activity_course_details_activty">Course Detail</string>
     <string name="title_activity_details">Course Details</string>
     <string name="title_activity_preferences">Preferences</string>
+    <string name="advising_helper">Advising Helper</string>
+    <string name="result">Result</string>
+    <string name="academic_calender">Academic Calender</string>
+    <string name="notice_board">Notice Board</string>
+    <string name="ewuspirit">EwuSpirit</string>
+    <string name="secondary_group_app_home">Settings and Communication</string>
+    <string name="preferences">Preferences</string>
+    <string name="about">About</string>
+    <string name="faculy_evaluation">Faculy Evaluation</string>
+    <string name="class_schedule_routine">Class Schedule/Routine</string>
+    <string name="check_available_seat">Check Available Seat</string>
+    <string name="credit_info">Credit Info</string>
+    <string name="check_advisior">Check Advisior</string>
+    <string name="advising_time_schedule">Advising Time Schedule</string>
+    <string name="additional_info">Additional Info</string>
+    <string name="ewu_spirit_homepage">Ewu Spirit HomePage</string>
+    <string name="advising_list">Advising List</string>
+    <string name="ewu_library">Ewu Library</string>
+    <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
 
 
 </resources>

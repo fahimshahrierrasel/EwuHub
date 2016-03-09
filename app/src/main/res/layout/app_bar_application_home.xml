@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_public_black_48dp"
+        android:src="@drawable/ic_web"
         app:rippleColor="@color/purple"
         android:layout_margin="@dimen/fab_margin"
         android:clickable="true"

@@ -5,32 +5,37 @@
         <item
             android:id="@+id/nav_faculty_evaluation"
             android:icon="@drawable/ic_evaluation"
-            android:title="Faculy Evaluation" />
+            android:title="@string/faculy_evaluation" />
         <item
             android:id="@+id/nav_class_schedule"
             android:icon="@drawable/ic_class_schedule"
-            android:title="Class Schedule/Routine" />
+            android:title="@string/class_schedule_routine" />
         <item
             android:id="@+id/nav_available_seat"
             android:icon="@drawable/ic_available_seat"
-            android:title="Check Available Seat" />
+            android:title="@string/check_available_seat" />
         <item
             android:id="@+id/nav_credit_info"
             android:icon="@drawable/ic_credit_info"
-            android:title="Credit Info" />
+            android:title="@string/credit_info" />
         <item
             android:id="@+id/nav_advisior"
             android:icon="@drawable/ic_advisor"
-            android:title="Check Advisior" />
+            android:title="@string/check_advisior" />
         <item
             android:id="@+id/nav_advising_schedule"
             android:icon="@drawable/ic_advising_time"
-            android:title="Advising Time Schedule" />
+            android:title="@string/advising_time_schedule" />
+        <item
+            android:id="@+id/advising_sheet"
+            android:icon="@drawable/ic_advising_sheet"
+            android:title="@string/advising_list"
+            />
     </group>
-    <item android:title="Additional Info">
+    <item android:title="@string/additional_info">
         <menu>
             <item
-                android:title="Ewu Spirit HomePage"
+                android:title="@string/ewu_spirit_homepage"
                 android:id="@+id/nav_ewu_sprit_homepage"
                 android:icon="@drawable/ic_ewu_sprit"
             />

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -101,7 +100,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
-                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/routine.php");
+                spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/index.php?option=room&op=student&act=check");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
             {
@@ -191,6 +190,10 @@ public class EwuSpirit extends AppCompatActivity
             {
                 Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
             }
+        }
+        else if(id == R.id.advising_sheet)
+        {
+            spiritWebView.loadUrl("file:///android_asset/advising_list.html");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

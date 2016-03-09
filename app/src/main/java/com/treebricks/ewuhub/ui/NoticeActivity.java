@@ -1,13 +1,12 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.NoticeAdapter;
 import com.treebricks.ewuhub.view.NoticeView;
@@ -80,13 +79,18 @@ public class NoticeActivity extends AppCompatActivity
                 noticeUrl = jObject.getString("NoticeUrl");
                 NoticeView viewer  = new NoticeView(noticeTitle,noticeDate,noticeUrl);
                 recycleView.add(viewer);
-
                 count++;
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.out.println("Back pressed");
+        this.finish();
     }
 
 }

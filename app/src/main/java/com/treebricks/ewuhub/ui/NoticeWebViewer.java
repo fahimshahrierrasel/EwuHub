@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -37,6 +38,7 @@ public class NoticeWebViewer extends AppCompatActivity {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
         webSettings.setSupportZoom(true);
+        //webSettings.setJavaScriptEnabled(true);
 
         noticeWebView.setInitialScale(1);
         webSettings.setLoadWithOverviewMode(true);
@@ -46,18 +48,18 @@ public class NoticeWebViewer extends AppCompatActivity {
         System.out.println("Json Data in WebView is : "+jsonData);
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        actionBar = getSupportActionBar();
+        /*actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        }*/
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if((keyCode == KeyEvent.KEYCODE_BACK) && noticeWebView.canGoBack())
         {
-            System.out.println("Json Data in WebView when click back button is : "+jsonData);
+            System.out.println("Json Data in WebView when click keydown button is : "+jsonData);
             Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
             notice.putExtra("JSON_DATA", jsonData);
             startActivity(notice);
@@ -66,6 +68,15 @@ public class NoticeWebViewer extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.out.println("Json Data in WebView when click back button is : "+jsonData);
+        Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
+        notice.putExtra("JSON_DATA", jsonData);
+        startActivity(notice);
+        finish();
     }
 
 }

@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.ui.NoticeWebViewer;
-
 import java.util.ArrayList;
 import java.util.Random;
 
