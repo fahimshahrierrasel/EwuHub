@@ -2,33 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#3746a1"
     android:layout_height="match_parent"
     tools:context="com.treebricks.ewuhub.ui.SplashScreen">
 
-
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/web_hi_res_512"
-        android:layout_alignParentTop="true"
+        android:text="@string/app_name"
+        android:textSize="72sp"
+        android:textColor="@color/white"
+        android:fontFamily="serif"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        />
+        android:layout_marginTop="80dp"/>
 
     <ImageView
         android:layout_width="220dp"
         android:layout_height="180dp"
         android:id="@+id/splash_dev_logo"
         android:layout_below="@id/imageView"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="140dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/treebricks_dev_logo"
         android:contentDescription="@string/tree_bricks_logo" />
-
-
-
-
 
 </RelativeLayout>

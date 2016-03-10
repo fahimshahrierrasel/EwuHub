@@ -29,6 +29,8 @@ public class ApplicationIntro extends AppIntro {
         setBarColor(Color.parseColor("#3F51B5"));
         setSeparatorColor(Color.parseColor("#2196F3"));
 
+        setFlowAnimation();
+
         // Hide Skip/Done button.
         showSkipButton(true);
         setProgressButtonEnabled(true);
@@ -43,6 +45,7 @@ public class ApplicationIntro extends AppIntro {
     {
         Intent intent = new Intent(this, ApplicationHome.class);
         startActivity(intent);
+        finish();
     }
 
 
