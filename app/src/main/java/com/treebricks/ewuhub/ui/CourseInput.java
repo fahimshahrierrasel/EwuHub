@@ -40,7 +40,6 @@ public class CourseInput extends AppCompatActivity {
     EditText editText2;
     EditText editText3;
     EditText editText4;
-
     TextInputLayout textField1;
     TextInputLayout textField2;
     TextInputLayout textField3;
@@ -167,6 +166,24 @@ public class CourseInput extends AppCompatActivity {
                         Toast.makeText(CourseInput.this, fourthCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
                     }
 
+                    if(totalSubjects == 4)
+                    {
+                        if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || firstCourse.equals(fourthCourse) ||
+                                secondCourse.equals(thirdCourse) || secondCourse.equals(fourthCourse) || thirdCourse.equals(fourthCourse))
+                        {
+                            allright = false;
+                            Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else if(totalSubjects == 3)
+                    {
+                        if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || secondCourse.equals(thirdCourse))
+                        {
+                            allright = false;
+                            Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
                     if(allright)
                     {
                         Bundle sentBundle = new Bundle();
@@ -178,17 +195,9 @@ public class CourseInput extends AppCompatActivity {
                         Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
                         showSortCourses.putExtras(sentBundle);
                         startActivity(showSortCourses);
-
                     }
 
-
-
-
-
                 }
-
-
-
             }
         });
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -226,15 +235,15 @@ public class CourseInput extends AppCompatActivity {
     boolean isSubjectValid(String subject)
     {
         boolean valid = false;
-        for(int i = 0; i < allCourses.length; i++)
-        {
-            if(allCourses[i].toString().equals(subject))
-            {
+        for (Object allCourse : allCourses) {
+            if (allCourse.toString().equals(subject)) {
                 valid = true;
                 break;
             }
         }
         return valid;
     }
+
+
 
 }

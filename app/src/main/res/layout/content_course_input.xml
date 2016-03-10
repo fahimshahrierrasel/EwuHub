@@ -45,7 +45,7 @@
                 app:hintTextAppearance="@style/MyHintText"
                 android:layout_below="@+id/course_input_description"
                 app:errorEnabled="true"
-                app:counterMaxLength="6"
+                app:counterMaxLength="7"
                 app:counterOverflowTextAppearance="@color/colorAccent"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
@@ -59,7 +59,7 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:inputType="text"
-                    android:maxLength="6"
+                    android:maxLength="7"
                     android:maxLines="1"
                     />
 
@@ -72,7 +72,7 @@
                 android:id="@+id/text_field_two"
                 android:layout_below="@+id/text_field_one"
                 app:errorEnabled="true"
-                app:counterMaxLength="6"
+                app:counterMaxLength="7"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
 
@@ -85,7 +85,7 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:inputType="text"
-                    android:maxLength="6"
+                    android:maxLength="7"
                     android:maxLines="1"
                     />
 
@@ -99,7 +99,7 @@
                 android:id="@+id/text_field_three"
                 android:layout_below="@+id/text_field_two"
                 app:errorEnabled="true"
-                app:counterMaxLength="6"
+                app:counterMaxLength="7"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
 
@@ -111,7 +111,7 @@
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:gravity="center"
-                    android:maxLength="6"
+                    android:maxLength="7"
                     android:inputType="text"
                     android:maxLines="1"
                     />
@@ -125,7 +125,7 @@
                 android:id="@+id/text_field_four"
                 android:layout_below="@+id/text_field_three"
                 app:errorEnabled="true"
-                app:counterMaxLength="6"
+                app:counterMaxLength="7"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
 
@@ -137,7 +137,7 @@
                     android:textColor="#fff"
                     android:textSize="18sp"
                     android:gravity="center"
-                    android:maxLength="6"
+                    android:maxLength="7"
                     android:inputType="text"
                     android:maxLines="1"
                     />
