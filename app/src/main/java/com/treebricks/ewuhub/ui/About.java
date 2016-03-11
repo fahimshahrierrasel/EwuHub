@@ -27,9 +27,9 @@ public class About extends AppCompatActivity {
                 "<html>\n" +
                 "\t<body>\n" +
                 "\t\t<p><b>treebricks</b> is an application studio created by some <b>EWU</b> students.\n" +
-                "\t\tThe developers of the <b>treebricks</b> love to be anonymous. <b>treebricks</b> loves to solve the problem\n" +
+                "\t\t<b>treebricks</b> loves to solve problem\n" +
                 "\t\t we everyday face. We also love the problem solver. Anyone can solve any problem. You are not alone with any particular problem. There are thousands of people facing the same problem you face everyday. But if you solve the problem then thousands of people will be benifited. <b>treebricks</b> loves problem solver and who try to solve.</p>\n" +
-                "\t\t<h2>Goto our website to know about us more. </h2>\n" +
+                "\t\t<h2>treebricks</h2>\n" +
                 "\t</body>\n" +
                 "</html>";
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -138,11 +138,11 @@ public class About extends AppCompatActivity {
                 "\t<body>\n" +
                 "\t\t<p><b>treebricks</b> is very happy bring this application to main stream. This can not be done without \n" +
                 "\t\tthe help of many people.</p>\n" +
-                "\t\t<p>First we like to thank our sir <b>K.M. Imtiaz Ud-Din</b>(Senior Lecterur, Dept. of CSE) for his advice and inspiration. Without his inspiration this application can not here today. Because he taught us how to do anything if you has confidence.</p>\n" +
+                "\t\t<p>First we like to thank our sir <b>K.M. Imtiaz Ud-Din</b>(Senior Lecterur, Dept. of CSE) for his advice and inspiration. Without his inspiration this application can not here today.</p>\n" +
                 "\t\t<p>We specially thanks <b>Sathil Islam</b> for his beautiful photograph.</p>\n" +
-                "\t\t<p>We also greatful to our friends who also help us to imporve our algorithm for the application.</p>\n" +
+                "\t\t<p>We also greatful to our friends who also help us to improve our algorithm for the application.</p>\n" +
                 "\t\t<p>We also greatful to our beta and alpha tester who advice us how we can better this application.</p>\n" +
-                "\t\t<p>We are also very greatful who are using this application. Don't bother to feedback about this application. This is for you. You have to act to become it better.</p>\n" +
+                "\t\t<p>We are also very greatful who are using this application. Don't bother to feedback about this application. This is for you. With your help we can make this application even better..</p>\n" +
                 "\t</body>\n" +
                 "</html>";
 

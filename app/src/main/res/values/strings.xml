@@ -70,6 +70,17 @@
     <string name="advising_list">Advising List</string>
     <string name="ewu_library">Ewu Library</string>
     <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
-
+    <string name="feedback_summary">Send us your feedback about this application if you have any suggestion and if you face any problem. Feel free to feedback us. Your opinion will help us to make this application better</string>
+    <string name="update_summary">Update courses Database. This update needs at the beginning of the Advising and after application update.</string>
+    <string name="slide1des">Slide from left to right of your mobile screen to see the EwuHub\'s features.</string>
+    <string name="slide1">Where is the EwuHub features?</string>
+    <string name="slide2">EwuHub Features</string>
+    <string name="slide2des">Select features from Drawer. Be patience and give EwuHub sometime to load the feature.</string>
+    <string name="slide3">Advising Helper</string>
+    <string name="slide3des">Advising Helper will help you to find the combination of sections of the courses without any conflict between section.</string>
+    <string name="slide4">Input the Subjects for Advising Helper</string>
+    <string name="slide4des">For finding conflict free combination of sections input the course names properly.</string>
+    <string name="slide5">EwuSpirit now on Pocket</string>
+    <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
 
 </resources>

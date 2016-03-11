@@ -1,9 +1,11 @@
 package com.treebricks.ewuhub.ui;
 
+import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -14,6 +16,11 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.treebricks.ewuhub.R;
 import java.io.BufferedInputStream;
@@ -116,7 +123,15 @@ public class Preferences extends PreferenceActivity
 
 
             }
-            else if(key.equals("getpref"))
+            else if(key.equals("feedback"))
+            {
+                Intent Email = new Intent(Intent.ACTION_SEND);
+                Email.setType("text/email");
+                Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "feedback@treebricks.com" });
+                Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
+                startActivity(Intent.createChooser(Email, "Send Feedback:"));
+            }
+            else if(key.equals("opensrc"))
             {
                 Toast.makeText(getActivity(),"Soon you will see us.",Toast.LENGTH_LONG).show();
             }

@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.ui.CourseDetails;
 import com.treebricks.ewuhub.ui.Details;
 
 import java.util.ArrayList;
@@ -22,8 +23,6 @@ import java.util.Random;
 
 import model.Course;
 import model.CourseL;
-
-
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
@@ -37,6 +36,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public static final String LABTIMEFROM = "LABTIMEFROM";
     public static final String LABTIMETO = "LABTIMETO";
     public static final String LOGTAG = "EwuHub";
+    public static final String FIRSTCOURSE = "FIRSTCOURSE";
+    public static final String SECONDCOURSE = "SECONDCOURSE";
+    public static final String THIRDCOURSE = "THIRDCOURSE";
+    public static final String FOURTHCOURSE = "FOURTHCOURSE";
     public static final String SHOWSORTCOURSEBUNDLE = "SHOWSORTCOURSEBUNDLE";
 
 
@@ -69,12 +72,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             textC3 = (TextView) v.findViewById(R.id.third_line);
             textC4 = (TextView) v.findViewById(R.id.fourth_line);
         }
+
+
     }
 
     public void add(int position, Viewer item)
     {
         mDataset.add(position,item);
-
         notifyItemInserted(position);
     }
 
@@ -107,10 +111,135 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position)
     {
+        final Bundle firstBundle = new Bundle();
+        final Bundle secondBundle = new Bundle();
+        final Bundle thirdBundle = new Bundle();
+        final Bundle fourthBundle = new Bundle();
+
+
         final String name = mDataset.get(position).getvHeader().toString();
-
-
         holder.txtHeader.setText(name);
+        final Object data1 = mDataset.get(position).getvFirstCourse();
+        holder.textC1.setText(data1.toString());
+        final Object data2 = mDataset.get(position).getvSecondCourse();
+        holder.textC2.setText(data2.toString());
+        final Object data3 = mDataset.get(position).getvThirdCourse();
+        holder.textC3.setText(data3.toString());
+
+
+        if (CourseL.class.isInstance(data1)) {
+            CourseL courseL = CourseL.class.cast(data1);
+            firstBundle.putBoolean(HASLAB, true);
+            firstBundle.putString(COURSENAME, courseL.courseName());
+            firstBundle.putInt(SECTION, courseL.getSection());
+            firstBundle.putString(WEEKDAY, courseL.getWeekDay());
+            firstBundle.putInt(TIMEFROM, courseL.getTimeFrom());
+            firstBundle.putInt(TIMETO, courseL.getTimeTo());
+            firstBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
+            firstBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
+            firstBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+
+        }
+        else
+        {
+            Course course = Course.class.cast(data1);
+            firstBundle.putBoolean(HASLAB, false);
+            firstBundle.putString(COURSENAME, course.courseName());
+            firstBundle.putInt(SECTION, course.getSection());
+            firstBundle.putString(WEEKDAY, course.getWeekDay());
+            firstBundle.putInt(TIMEFROM, course.getTimeFrom());
+            firstBundle.putInt(TIMETO, course.getTimeTo());
+
+        }
+
+        if (CourseL.class.isInstance(data2)) {
+            CourseL courseL = CourseL.class.cast(data2);
+            secondBundle.putBoolean(HASLAB, true);
+            secondBundle.putString(COURSENAME, courseL.courseName());
+            secondBundle.putInt(SECTION, courseL.getSection());
+            secondBundle.putString(WEEKDAY, courseL.getWeekDay());
+            secondBundle.putInt(TIMEFROM, courseL.getTimeFrom());
+            secondBundle.putInt(TIMETO, courseL.getTimeTo());
+            secondBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
+            secondBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
+            secondBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+
+        }
+        else
+        {
+            Course course = Course.class.cast(data2);
+            secondBundle.putBoolean(HASLAB, false);
+            secondBundle.putString(COURSENAME, course.courseName());
+            secondBundle.putInt(SECTION, course.getSection());
+            secondBundle.putString(WEEKDAY, course.getWeekDay());
+            secondBundle.putInt(TIMEFROM, course.getTimeFrom());
+            secondBundle.putInt(TIMETO, course.getTimeTo());
+
+        }
+
+        if (CourseL.class.isInstance(data3)) {
+            CourseL courseL = CourseL.class.cast(data3);
+            thirdBundle.putBoolean(HASLAB, true);
+            thirdBundle.putString(COURSENAME, courseL.courseName());
+            thirdBundle.putInt(SECTION, courseL.getSection());
+            thirdBundle.putString(WEEKDAY, courseL.getWeekDay());
+            thirdBundle.putInt(TIMEFROM, courseL.getTimeFrom());
+            thirdBundle.putInt(TIMETO, courseL.getTimeTo());
+            thirdBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
+            thirdBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
+            thirdBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+
+        }
+        else
+        {
+            Course course = Course.class.cast(data3);
+            thirdBundle.putBoolean(HASLAB, false);
+            thirdBundle.putString(COURSENAME, course.courseName());
+            thirdBundle.putInt(SECTION, course.getSection());
+            thirdBundle.putString(WEEKDAY, course.getWeekDay());
+            thirdBundle.putInt(TIMEFROM, course.getTimeFrom());
+            thirdBundle.putInt(TIMETO, course.getTimeTo());
+
+        }
+
+
+
+        if(totalCourse == 4)
+        {
+            final Object data4 = mDataset.get(position).getvFourthCourse();
+            holder.textC4.setText(data4.toString());
+
+
+            if (CourseL.class.isInstance(data4)) {
+                CourseL courseL = CourseL.class.cast(data4);
+                fourthBundle.putBoolean(HASLAB, true);
+                fourthBundle.putString(COURSENAME, courseL.courseName());
+                fourthBundle.putInt(SECTION, courseL.getSection());
+                fourthBundle.putString(WEEKDAY, courseL.getWeekDay());
+                fourthBundle.putInt(TIMEFROM, courseL.getTimeFrom());
+                fourthBundle.putInt(TIMETO, courseL.getTimeTo());
+                fourthBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
+                fourthBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
+                fourthBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+
+            }
+            else
+            {
+                Course course = Course.class.cast(data4);
+                fourthBundle.putBoolean(HASLAB, false);
+                fourthBundle.putString(COURSENAME, course.courseName());
+                fourthBundle.putInt(SECTION, course.getSection());
+                fourthBundle.putString(WEEKDAY, course.getWeekDay());
+                fourthBundle.putInt(TIMEFROM, course.getTimeFrom());
+                fourthBundle.putInt(TIMETO, course.getTimeTo());
+
+            }
+        }
+        else
+        {
+            holder.textC4.setVisibility(View.INVISIBLE);
+        }
+
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,42 +248,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             }
         });
 
-
-        final Object data1 = mDataset.get(position).getvFirstCourse();
-        holder.textC1.setText(data1.toString());
         holder.textC1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Bundle sentBundle = new Bundle();
 
-                if (CourseL.class.isInstance(data1)) {
-                    CourseL courseL = CourseL.class.cast(data1);
-                    sentBundle.putBoolean(HASLAB, true);
-                    sentBundle.putString(COURSENAME, courseL.courseName());
-                    sentBundle.putInt(SECTION, courseL.getSection());
-                    sentBundle.putString(WEEKDAY, courseL.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, courseL.getTimeFrom());
-                    sentBundle.putInt(TIMETO, courseL.getTimeTo());
-                    sentBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
-                    sentBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
-                    sentBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
-                    
-                }
-                else
-                {
-                    Course course = Course.class.cast(data1);
-                    sentBundle.putBoolean(HASLAB, false);
-                    sentBundle.putString(COURSENAME, course.courseName());
-                    sentBundle.putInt(SECTION, course.getSection());
-                    sentBundle.putString(WEEKDAY, course.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, course.getTimeFrom());
-                    sentBundle.putInt(TIMETO, course.getTimeTo());
-
-                }
-
-                Intent courseDetail = new Intent(context, Details.class);
-                courseDetail.putExtras(sentBundle);
+                Intent courseDetail = new Intent(context, CourseDetails.class);
+                courseDetail.putExtra(FIRSTCOURSE, firstBundle);
+                courseDetail.putExtra(SECONDCOURSE, secondBundle);
+                courseDetail.putExtra(THIRDCOURSE, thirdBundle);
+                if(totalCourse == 4)
+                    courseDetail.putExtra(FOURTHCOURSE, fourthBundle);
                 if(showSortCourseBundle != null)
                 {
                     courseDetail.putExtra(SHOWSORTCOURSEBUNDLE, showSortCourseBundle);
@@ -163,42 +267,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             }
         });
 
-
-        final Object data2 = mDataset.get(position).getvSecondCourse();
-        holder.textC2.setText(data2.toString());
         holder.textC2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                Bundle sentBundle = new Bundle();
 
-                if (CourseL.class.isInstance(data2)) {
-                    CourseL courseL = CourseL.class.cast(data2);
-                    sentBundle.putBoolean(HASLAB, true);
-                    sentBundle.putString(COURSENAME, courseL.courseName());
-                    sentBundle.putInt(SECTION, courseL.getSection());
-                    sentBundle.putString(WEEKDAY, courseL.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, courseL.getTimeFrom());
-                    sentBundle.putInt(TIMETO, courseL.getTimeTo());
-                    sentBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
-                    sentBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
-                    sentBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
 
-                }
-                else
-                {
-                    Course course = Course.class.cast(data2);
-                    sentBundle.putBoolean(HASLAB, false);
-                    sentBundle.putString(COURSENAME, course.courseName());
-                    sentBundle.putInt(SECTION, course.getSection());
-                    sentBundle.putString(WEEKDAY, course.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, course.getTimeFrom());
-                    sentBundle.putInt(TIMETO, course.getTimeTo());
 
-                }
-
-                Intent courseDetail = new Intent(context, Details.class);
-                courseDetail.putExtras(sentBundle);
+                Intent courseDetail = new Intent(context, CourseDetails.class);
+                courseDetail.putExtra(FIRSTCOURSE, firstBundle);
+                courseDetail.putExtra(SECONDCOURSE, secondBundle);
+                courseDetail.putExtra(THIRDCOURSE, thirdBundle);
+                if(totalCourse == 4)
+                    courseDetail.putExtra(FOURTHCOURSE, fourthBundle);
                 if(showSortCourseBundle != null)
                 {
                     courseDetail.putExtra(SHOWSORTCOURSEBUNDLE, showSortCourseBundle);
@@ -207,42 +288,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             }
         });
 
-
-        final Object data3 = mDataset.get(position).getvThirdCourse();
-        holder.textC3.setText(data3.toString());
         holder.textC3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                Bundle sentBundle = new Bundle();
 
-                if (CourseL.class.isInstance(data3)) {
-                    CourseL courseL = CourseL.class.cast(data3);
-                    sentBundle.putBoolean(HASLAB, true);
-                    sentBundle.putString(COURSENAME, courseL.courseName());
-                    sentBundle.putInt(SECTION, courseL.getSection());
-                    sentBundle.putString(WEEKDAY, courseL.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, courseL.getTimeFrom());
-                    sentBundle.putInt(TIMETO, courseL.getTimeTo());
-                    sentBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
-                    sentBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
-                    sentBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
 
-                }
-                else
-                {
-                    Course course = Course.class.cast(data3);
-                    sentBundle.putBoolean(HASLAB, false);
-                    sentBundle.putString(COURSENAME, course.courseName());
-                    sentBundle.putInt(SECTION, course.getSection());
-                    sentBundle.putString(WEEKDAY, course.getWeekDay());
-                    sentBundle.putInt(TIMEFROM, course.getTimeFrom());
-                    sentBundle.putInt(TIMETO, course.getTimeTo());
 
-                }
-
-                Intent courseDetail = new Intent(context, Details.class);
-                courseDetail.putExtras(sentBundle);
+                Intent courseDetail = new Intent(context, CourseDetails.class);
+                courseDetail.putExtra(FIRSTCOURSE, firstBundle);
+                courseDetail.putExtra(SECONDCOURSE, secondBundle);
+                courseDetail.putExtra(THIRDCOURSE, thirdBundle);
+                if(totalCourse == 4)
+                    courseDetail.putExtra(FOURTHCOURSE, fourthBundle);
                 if(showSortCourseBundle != null)
                 {
                     courseDetail.putExtra(SHOWSORTCOURSEBUNDLE, showSortCourseBundle);
@@ -251,57 +309,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             }
         });
 
+        holder.textC4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
 
-        if(totalCourse == 4)
-        {
-            final Object data4 = mDataset.get(position).getvFourthCourse();
-            holder.textC4.setText(data4.toString());
-            holder.textC4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
+                Intent courseDetail = new Intent(context, CourseDetails.class);
+                courseDetail.putExtra(FIRSTCOURSE, firstBundle);
+                courseDetail.putExtra(SECONDCOURSE, secondBundle);
+                courseDetail.putExtra(THIRDCOURSE, thirdBundle);
+                courseDetail.putExtra(FOURTHCOURSE, fourthBundle);
+                if(showSortCourseBundle != null)
                 {
-                    Bundle sentBundle = new Bundle();
-
-                    if (CourseL.class.isInstance(data4)) {
-                        CourseL courseL = CourseL.class.cast(data4);
-                        sentBundle.putBoolean(HASLAB, true);
-                        sentBundle.putString(COURSENAME, courseL.courseName());
-                        sentBundle.putInt(SECTION, courseL.getSection());
-                        sentBundle.putString(WEEKDAY, courseL.getWeekDay());
-                        sentBundle.putInt(TIMEFROM, courseL.getTimeFrom());
-                        sentBundle.putInt(TIMETO, courseL.getTimeTo());
-                        sentBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
-                        sentBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
-                        sentBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
-
-                    }
-                    else
-                    {
-                        Course course = Course.class.cast(data4);
-                        sentBundle.putBoolean(HASLAB, false);
-                        sentBundle.putString(COURSENAME, course.courseName());
-                        sentBundle.putInt(SECTION, course.getSection());
-                        sentBundle.putString(WEEKDAY, course.getWeekDay());
-                        sentBundle.putInt(TIMEFROM, course.getTimeFrom());
-                        sentBundle.putInt(TIMETO, course.getTimeTo());
-
-                    }
-
-                    Intent courseDetail = new Intent(context, Details.class);
-                    courseDetail.putExtras(sentBundle);
-                    if(showSortCourseBundle != null)
-                    {
-                        courseDetail.putExtra(SHOWSORTCOURSEBUNDLE, showSortCourseBundle);
-                    }
-                    context.startActivity(courseDetail);
-
+                    courseDetail.putExtra(SHOWSORTCOURSEBUNDLE, showSortCourseBundle);
                 }
-            });
-        }
-        else
-        {
-            holder.textC4.setVisibility(View.INVISIBLE);
-        }
+                context.startActivity(courseDetail);
+
+            }
+        });
+
         Log.i("RecyclerView", "Showing RecyclerView");
     }
 
@@ -309,5 +335,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public int getItemCount() {
         return mDataset.size();
     }
+
+
 }
 

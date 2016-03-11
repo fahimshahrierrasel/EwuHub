@@ -4,7 +4,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,12 +12,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.treebricks.ewuhub.R;
-
 import model.CalendarData;
 
 public class AcademicCalendarActivity extends AppCompatActivity {
@@ -55,12 +51,10 @@ public class AcademicCalendarActivity extends AppCompatActivity {
 
     }
 
-
-
-
     /**
      * A placeholder fragment containing a simple view.
      */
+
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
