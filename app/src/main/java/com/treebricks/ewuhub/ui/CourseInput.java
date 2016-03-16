@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.AllCoursesDataSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import model.Course;
 
@@ -81,6 +85,9 @@ public class CourseInput extends AppCompatActivity {
             textField4.setVisibility(View.INVISIBLE);
             editText4.setVisibility(View.INVISIBLE);
         }
+
+
+
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()

@@ -82,5 +82,19 @@
     <string name="slide4des">For finding conflict free combination of sections input the course names properly.</string>
     <string name="slide5">EwuSpirit now on Pocket</string>
     <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
+    <string name="sort_section_dialog_text">"Enter the section of "</string>
+
+
+    <string-array name="course_list">
+        <item>CSE245</item>
+        <item>CSE248</item>
+        <item>ECO101</item>
+        <item>ECO102</item>
+        <item>CSE251</item>
+        <item>CSE207</item>
+        <item>CSE225</item>
+        <item>CSE205</item>
+    </string-array>
+
 
 </resources>

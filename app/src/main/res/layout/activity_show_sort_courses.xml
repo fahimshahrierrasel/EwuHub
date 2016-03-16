@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context="com.treebricks.ewuhub.ui.ShowSortCourses">
 
@@ -23,5 +24,30 @@
 
     <include layout="@layout/content_show_sort_courses" />
 
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/menu_item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_tick"
+        fab:fab_size="mini"
+        fab:fab_label="Sort by Section" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/menu_item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_tick"
+        fab:fab_size="mini"
+        fab:fab_label="Sort by Weekday" />
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

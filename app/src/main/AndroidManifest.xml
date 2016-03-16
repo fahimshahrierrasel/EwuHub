@@ -51,11 +51,11 @@
             android:name=".ui.ShowSortCourses"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_show_sort_courses"
-            android:parentActivityName=".ui.CourseInput"
+            android:parentActivityName=".ui.SortCourseHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.CourseInput" />
+                android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
         </activity>
         <activity
             android:name=".ui.AllWebView"
