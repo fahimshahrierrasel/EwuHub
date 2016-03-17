@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.treebricks.ewuhub.ui.ShowSortCourses">
+    tools:context="com.treebricks.ewuhub.ui.AcademicCalendar">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -22,10 +22,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_show_sort_courses" />
+    <include layout="@layout/content_academic_calendar" />
 
     <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_menu"
+        android:id="@+id/calendar_fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -34,23 +34,40 @@
         android:layout_marginRight="10dp">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item1"
+            android:id="@+id/undergraduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_action_tick"
-            fab:fab_size="mini"
-            fab:fab_label="Sort by Section" />
+            fab:fab_label="Undergraduate"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item2"
+            android:id="@+id/pharmacyundergraduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_action_tick"
-            fab:fab_size="mini"
-            fab:fab_label="Sort by Weekday" />
+            fab:fab_label="Pharmacy Undergraduate"
+            fab:fab_size="mini" />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/graduate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_tick"
+            fab:fab_label="Graduate"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/pharmacygraduate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_tick"
+            fab:fab_label="Pharmacy Graduate"
+            fab:fab_size="mini" />
 
 
     </com.github.clans.fab.FloatingActionMenu>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
