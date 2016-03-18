@@ -27,15 +27,12 @@ public class EwuSpirit extends AppCompatActivity
     WebView spiritWebView;
     String advising_list;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         // spritWebView
         spiritWebView = (WebView) findViewById(R.id.ewu_spirit_webview);
         WebSettings webSettings = spiritWebView.getSettings();
@@ -50,10 +47,6 @@ public class EwuSpirit extends AppCompatActivity
         spiritWebView.setWebViewClient(new WebViewClient());
         spiritWebView.loadUrl(ewuspirit);
 
-
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -62,8 +55,6 @@ public class EwuSpirit extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
     }
 
     @Override
@@ -75,14 +66,11 @@ public class EwuSpirit extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_faculty_evaluation)
         {
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))

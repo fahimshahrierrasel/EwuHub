@@ -40,12 +40,8 @@ public class AcademicCalendar extends AppCompatActivity {
         calendarWebView.setWebViewClient(new WebViewClient());
         calendarWebView.loadUrl(undergraduate);
 
-
         // Fab menu
-
         final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
-
-
         final com.github.clans.fab.FloatingActionButton undergraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.undergraduate);
         undergraduateFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +81,6 @@ public class AcademicCalendar extends AppCompatActivity {
                 calendarWebView.loadUrl(graduatePharmacy);
             }
         });
-        //
-
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBar = getSupportActionBar();

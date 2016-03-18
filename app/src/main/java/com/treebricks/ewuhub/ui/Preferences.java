@@ -31,8 +31,6 @@ import java.net.URL;
 
 public class Preferences extends PreferenceActivity
 {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,25 +39,18 @@ public class Preferences extends PreferenceActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(android.R.id.content, prefFragment);
         fragmentTransaction.commit();
-
-
     }
     public static class MyPreferenceFragment extends PreferenceFragment
     {
-
         ProgressDialog progressDialog;
         public boolean hasInternetConnection = false;
         public boolean downloaded = false;
         boolean successfull = true;
 
-
-
         @Override
         public void onCreate(final Bundle savedInstanceState) {
-
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
-
         }
 
         @Override
@@ -82,7 +73,6 @@ public class Preferences extends PreferenceActivity
                     public void run() {
                         if(hasInternetConnection)
                         {
-
                             downloadDBTask.execute();
                             final Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
@@ -118,15 +108,8 @@ public class Preferences extends PreferenceActivity
             }
             else if(key.equals("updateac"))
             {
-
-
-
-
-
-
-
                 progressDialog = new ProgressDialog(getActivity());
-                progressDialog.setMessage("Updating the Database.\nPlease be patience..");
+                progressDialog.setMessage("Updating the Academic Calendar.\nPlease be patience..");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
@@ -142,6 +125,46 @@ public class Preferences extends PreferenceActivity
                             graduateTask();
                             pharmacyUndergraduateTask();
                             pharmacyGraduateTask();
+                            if(successfull)
+                            {
+                                progressDialog.hide();
+                                progressDialog.cancel();
+                                Toast.makeText(getActivity(), "Update Successful!!", Toast.LENGTH_LONG).show();
+                            }
+                            else
+                            {
+                                progressDialog.hide();
+                                progressDialog.cancel();
+                                Toast.makeText(getActivity(), "Update Failed!!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        else
+                        {
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                            Toast.makeText(getActivity(),"You are not connected to internet",Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                }, 2000);
+
+            }
+
+            else if(key.equals("updatelist"))
+            {
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Updating the Advising List.\nPlease be patience..");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setIndeterminate(true);
+                progressDialog.show();
+
+                new NetworkUtility().execute();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(hasInternetConnection)
+                        {
                             advisingListTask();
                             if(successfull)
                             {
@@ -167,6 +190,7 @@ public class Preferences extends PreferenceActivity
                 }, 2000);
 
             }
+
             else if(key.equals("feedback"))
             {
                 Intent Email = new Intent(Intent.ACTION_SEND);
@@ -260,12 +284,9 @@ public class Preferences extends PreferenceActivity
                 }
             }, 3000);
         }
-
         private class DownloadDBTask extends AsyncTask<Void, Integer, String>
         {
-
             private Context context;
-
             public DownloadDBTask(Context context) {
                 this.context = context;
             }
@@ -279,7 +300,6 @@ public class Preferences extends PreferenceActivity
                     URL url = new URL("http://www.treebricks.com/ewuhub/CoursesDatabase.db");
                     connection = (HttpURLConnection) url.openConnection();
                     connection.connect();
-
                     // expect HTTP 200 OK, so we don't mistakenly save error report
                     // instead of the file
                     if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
@@ -288,22 +308,19 @@ public class Preferences extends PreferenceActivity
                         Log.i("Download Error Log :",temp);
                         return temp;
                     }
-
                     //File root = android.os.Environment.getDataDirectory();
                     File dir = new File(context.getApplicationInfo().dataDir + "/databases");
                     if(!dir.exists()){
                         dir.mkdirs();
                         Log.i("Directory Log :","Directory Created" + dir);
                     }
-
                     // this will be useful to display download percentage
                     // might be -1: server did not report the length
                     int fileLength = connection.getContentLength();
-
                     // download the file
                     input = new BufferedInputStream(url.openStream());
                     output = new FileOutputStream(dir+ "/CoursesDatabase.db");
-
+                    // Creating buffer
                     byte data[] = new byte[1024];
                     long total = 0;
                     int count;
@@ -346,7 +363,6 @@ public class Preferences extends PreferenceActivity
             }
         }
 
-
         private class downloadHtmlTask extends AsyncTask<Void, Void, String>
         {
             private Context context;
@@ -361,7 +377,6 @@ public class Preferences extends PreferenceActivity
                 this.choice = choice;
                 this.fileName = fileName;
             }
-
 
             @Override
             protected String doInBackground(Void... Void) {
@@ -394,7 +409,6 @@ public class Preferences extends PreferenceActivity
                         Log.i("Download Error Log :",temp);
                         return temp;
                     }
-
                     //set the path where we want to save the file
                     File dir = new File (context.getApplicationInfo().dataDir + "/html");
                     if(!dir.exists())
@@ -403,34 +417,28 @@ public class Preferences extends PreferenceActivity
                         Log.i("Directory Log :","Directory Created" + dir);
                     }
                     File file = new File(dir, fileName);  //any name abc.html
-
                     //this will be used to write the downloaded data into the file we created
                     fileOutput = new FileOutputStream(file);
-
                     //this will be used in reading the data from the internet
                     inputStream = urlConnection.getInputStream();
-
                     //this is the total size of the file
                     int totalSize = urlConnection.getContentLength();
                     //variable to store total downloaded bytes
                     int downloadedSize = 0;
-
                     //create a buffer...
                     byte[] buffer = new byte[1024];
                     int bufferLength = 0; //used to store a temporary size of the buffer
-
                     //write the contents to the file
                     while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
                         fileOutput.write(buffer, 0, bufferLength);
                     }
-                    //close the output stream when done
-
                     //catch some possible errors...
                 } catch (IOException e) {
                     return e.toString();
                 }
                 finally
                 {
+                    //close the output stream when done
                     try {
                         if (fileOutput != null)
                             fileOutput.close();
@@ -438,14 +446,11 @@ public class Preferences extends PreferenceActivity
                             inputStream.close();
                     } catch (IOException ignored) {
                     }
-
                     if (urlConnection != null)
                         urlConnection.disconnect();
                 }
-
                 return null;
             }
-
 
             @Override
             protected void onPostExecute(String result) {
@@ -459,8 +464,6 @@ public class Preferences extends PreferenceActivity
                 }
             }
         }
-
-
 
         public class NetworkUtility extends AsyncTask<Void, Void, Void>
         {
@@ -506,9 +509,6 @@ public class Preferences extends PreferenceActivity
             }
         }
 
-
-
-
         private boolean isNetworkAvailable() {
             ConnectivityManager connectivityManager
                     = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -519,10 +519,5 @@ public class Preferences extends PreferenceActivity
             }
             return false;
         }
-
-
-
     }
-
-
 }

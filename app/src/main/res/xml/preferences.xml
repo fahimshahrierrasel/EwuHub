@@ -5,7 +5,7 @@
     tools:context="com.treebricks.ewuhub.ui.Preferences">
     >
     <Preference
-        android:title="Update Database"
+        android:title="Update Course Database"
         android:icon="@drawable/ic_update_db"
         android:summary="@string/update_summary"
         android:key="updatedb">
@@ -13,9 +13,16 @@
 
     <Preference
         android:title="Update Academic Calender"
-        android:icon="@drawable/ic_update_db"
-        android:summary="Update the Academic Calendar. This is needed for beginning of the semister."
+        android:icon="@drawable/ic_update_calendar"
+        android:summary="@string/update_academic_calendar"
         android:key="updateac">
+    </Preference>
+
+    <Preference
+        android:title="Update Advising List"
+        android:icon="@drawable/ic_update_list"
+        android:summary="@string/update_advising_list"
+        android:key="updatelist">
     </Preference>
 
     <Preference

@@ -83,6 +83,8 @@
     <string name="slide5">EwuSpirit now on Pocket</string>
     <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
     <string name="sort_section_dialog_text">"Enter the section of "</string>
+    <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semister.</string>
+    <string name="update_advising_list">Update the advising list for advising.</string>
 
 
     <string-array name="course_list">
