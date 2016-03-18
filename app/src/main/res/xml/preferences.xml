@@ -12,6 +12,13 @@
     </Preference>
 
     <Preference
+        android:title="Update Academic Calender"
+        android:icon="@drawable/ic_update_db"
+        android:summary="Update the Academic Calendar. This is needed for beginning of the semister."
+        android:key="updateac">
+    </Preference>
+
+    <Preference
         android:title="Feedback"
         android:icon="@drawable/ic_feedback"
         android:summary="@string/feedback_summary"

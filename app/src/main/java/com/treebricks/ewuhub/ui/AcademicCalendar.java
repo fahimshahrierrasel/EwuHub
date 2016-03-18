@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +31,20 @@ public class AcademicCalendar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        final String undergraduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/undergraduate.html";
+        final String undergraduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacyundergraduate.html";
+        final String graduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/graduate.html";
+        final String graduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacygraduate.html";
 
         final WebView calendarWebView = (WebView) findViewById(R.id.calendar_web_view);
         calendarWebView.setWebViewClient(new WebViewClient());
-        calendarWebView.loadUrl("file:///android_asset/undergraduate.html");
-
+        calendarWebView.loadUrl(undergraduate);
 
 
         // Fab menu
 
         final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
+
 
         final com.github.clans.fab.FloatingActionButton undergraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.undergraduate);
         undergraduateFab.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +52,7 @@ public class AcademicCalendar extends AppCompatActivity {
             public void onClick(View view)
             {
                 fabmenu.close(true);
-                calendarWebView.loadUrl("file:///android_asset/undergraduate.html");
+                calendarWebView.loadUrl(undergraduate);
             }
         });
 
@@ -57,7 +62,7 @@ public class AcademicCalendar extends AppCompatActivity {
             public void onClick(View view)
             {
                 fabmenu.close(true);
-                calendarWebView.loadUrl("file:///android_asset/pharmacyundergraduate.html");
+                calendarWebView.loadUrl(undergraduatePharmacy);
             }
         });
 
@@ -67,7 +72,7 @@ public class AcademicCalendar extends AppCompatActivity {
             public void onClick(View view)
             {
                 fabmenu.close(true);
-                calendarWebView.loadUrl("file:///android_asset/graduate.html");
+                calendarWebView.loadUrl(graduate);
             }
         });
 
@@ -77,7 +82,7 @@ public class AcademicCalendar extends AppCompatActivity {
             public void onClick(View view)
             {
                 fabmenu.close(true);
-                calendarWebView.loadUrl("file:///android_asset/pharmacygraduate.html");
+                calendarWebView.loadUrl(graduatePharmacy);
             }
         });
         //
@@ -90,5 +95,4 @@ public class AcademicCalendar extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-
 }

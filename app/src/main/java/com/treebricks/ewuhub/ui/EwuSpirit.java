@@ -25,6 +25,7 @@ public class EwuSpirit extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     WebView spiritWebView;
+    String advising_list;
 
 
 
@@ -43,9 +44,11 @@ public class EwuSpirit extends AppCompatActivity
         webSettings.setSupportZoom(true);
         webSettings.setJavaScriptEnabled(true);
 
+        final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
+        advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
 
         spiritWebView.setWebViewClient(new WebViewClient());
-        spiritWebView.loadUrl("file:///android_asset/ewuspirit.html");
+        spiritWebView.loadUrl(ewuspirit);
 
 
 
@@ -193,7 +196,7 @@ public class EwuSpirit extends AppCompatActivity
         }
         else if(id == R.id.advising_sheet)
         {
-            spiritWebView.loadUrl("file:///android_asset/advising_list.html");
+            spiritWebView.loadUrl(advising_list);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
