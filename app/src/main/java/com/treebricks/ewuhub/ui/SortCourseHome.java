@@ -45,7 +45,9 @@ public class SortCourseHome extends AppCompatActivity
                     textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
                     totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
 
-                    totalNumberOfCourseString = totalCourseEditText.getText().toString();
+                    if (totalCourseEditText != null) {
+                        totalNumberOfCourseString = totalCourseEditText.getText().toString();
+                    }
 
 
                     if(!totalNumberOfCourseString.equals(""))

@@ -9,8 +9,8 @@ public class CourseL extends Course
     public CourseL()
     {
         super();
-        labTimeFrom = 0000;
-        labTimeTo = 0000;
+        labTimeFrom = 0;
+        labTimeTo = 0;
         labWeekDay = "NULL";
 
     }
@@ -132,7 +132,7 @@ public class CourseL extends Course
     {
         boolean result = false;
 
-        String otherWeekDay = otherCourse.getWeekDay();
+        //String otherWeekDay = otherCourse.getWeekDay();
 
         if(identicalClass(otherCourse) && otherCourse.identiClassWithLab(labWeekDay))
         {

@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.ui.CourseDetails;
-import com.treebricks.ewuhub.ui.Details;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -328,7 +325,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             }
         });
 
-        Log.i("RecyclerView", "Showing RecyclerView");
     }
 
     @Override

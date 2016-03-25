@@ -3,7 +3,6 @@ package com.treebricks.ewuhub.ui;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.treebricks.ewuhub.R;
@@ -26,10 +25,13 @@ public class ApplicationIntro extends AppIntro {
 
         // OPTIONAL METHODS
         // Override bar/separator color.
-        setBarColor(Color.parseColor("#3F51B5"));
-        setSeparatorColor(Color.parseColor("#2196F3"));
+        showStatusBar(false);
+        //setBarColor(Color.parseColor("#3F51B5"));
 
-        setFlowAnimation();
+        //setSeparatorColor(Color.parseColor("#2196F3"));
+
+        //setFlowAnimation();
+        //setFadeAnimation();
 
         // Hide Skip/Done button.
         showSkipButton(true);

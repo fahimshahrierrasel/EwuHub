@@ -13,8 +13,8 @@ public class Course
     {
         courseName = "NULL";
         section = 0;
-        timeFrom = 0000;
-        timeTo = 0000;
+        timeFrom = 0;
+        timeTo = 0;
         weekDay = "NULL";
     }
 

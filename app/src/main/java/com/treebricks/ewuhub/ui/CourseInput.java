@@ -8,21 +8,12 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.AllCoursesDataSource;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import model.Course;
 
 public class CourseInput extends AppCompatActivity {
 
@@ -31,7 +22,6 @@ public class CourseInput extends AppCompatActivity {
     public static final String SECONDCOURSE = "SECONDCOURSE";
     public static final String THIRDCOURSE = "THIRDCOURSE";
     public static final String FOURTHCOURSE = "FOURTHCOURSE";
-    public static final String LOGTAG = "EwuHuB";
     AllCoursesDataSource allCoursesDataSource;
     private Object[] allCourses;
 
@@ -82,7 +72,9 @@ public class CourseInput extends AppCompatActivity {
 
         if(totalSubjects != 4)
         {
-            textField4.setVisibility(View.INVISIBLE);
+            if (textField4 != null) {
+                textField4.setVisibility(View.INVISIBLE);
+            }
             editText4.setVisibility(View.INVISIBLE);
         }
 
@@ -209,7 +201,7 @@ public class CourseInput extends AppCompatActivity {
                 }
             });
         }
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
@@ -222,10 +214,11 @@ public class CourseInput extends AppCompatActivity {
     {
 
         outState.putInt(NUMBEROFCOURSES, totalSubjects);
-        /*outState.putString(FIRSTCOURSEEDITTEXT, String.valueOf(editText1));
-        outState.putString(SECONDCOURSEEDITTEXT, String.valueOf(editText2));
-        outState.putString(THIRDCOURSEEDITTEXT, String.valueOf(editText3));
-        outState.putString(FOURTHCOURSEEDITTEXT, String.valueOf(editText4));*/
+        outState.putString(FIRSTCOURSE, String.valueOf(editText1));
+        outState.putString(SECONDCOURSE, String.valueOf(editText2));
+        outState.putString(THIRDCOURSE, String.valueOf(editText3));
+        if(totalSubjects == 4)
+            outState.putString(FOURTHCOURSE, String.valueOf(editText4));
         super.onSaveInstanceState(outState, outPersistentState);
 
     }
@@ -235,10 +228,11 @@ public class CourseInput extends AppCompatActivity {
     {
         super.onRestoreInstanceState(savedInstanceState);
         totalSubjects = savedInstanceState.getInt(NUMBEROFCOURSES);
-        /*editText1.setText(savedInstanceState.getString(FIRSTCOURSEEDITTEXT));
-        editText2.setText(savedInstanceState.getString(SECONDCOURSEEDITTEXT));
-        editText3.setText(savedInstanceState.getString(THIRDCOURSEEDITTEXT));
-        editText4.setText(savedInstanceState.getString(FOURTHCOURSEEDITTEXT));*/
+        editText1.setText(savedInstanceState.getString(FIRSTCOURSE));
+        editText2.setText(savedInstanceState.getString(SECONDCOURSE));
+        editText3.setText(savedInstanceState.getString(THIRDCOURSE));
+        if(totalSubjects == 4)
+            editText4.setText(savedInstanceState.getString(FOURTHCOURSE));
     }
 
     boolean isSubjectValid(String subject)

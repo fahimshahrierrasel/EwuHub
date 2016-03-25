@@ -1,8 +1,6 @@
 package com.treebricks.ewuhub.view;
 
-/**
- * Created by fahimshahrier on 2/26/16.
- */
+
 public class NoticeView
 {
     private String noticeTitle;

@@ -1,5 +1,6 @@
 package com.treebricks.ewuhub.ui;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -26,6 +27,7 @@ public class EwuSpirit extends AppCompatActivity
 
     WebView spiritWebView;
     String advising_list;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,20 @@ public class EwuSpirit extends AppCompatActivity
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        progressDialog = new ProgressDialog(EwuSpirit.this);
+        progressDialog.setMessage("We are almost there :):)\n" +
+                "Please be patience!");
         // spritWebView
         spiritWebView = (WebView) findViewById(R.id.ewu_spirit_webview);
-        WebSettings webSettings = spiritWebView.getSettings();
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setDisplayZoomControls(false);
-        webSettings.setSupportZoom(true);
-        webSettings.setJavaScriptEnabled(true);
+        WebSettings webSettings = null;
+        if (spiritWebView != null) {
+            webSettings = spiritWebView.getSettings();
+            webSettings.setBuiltInZoomControls(true);
+            webSettings.setDisplayZoomControls(false);
+            webSettings.setSupportZoom(true);
+            webSettings.setJavaScriptEnabled(true);
+        }
+
 
         final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
         advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
@@ -50,20 +59,26 @@ public class EwuSpirit extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        if (drawer != null) {
+            drawer.addDrawerListener(toggle);
+        }
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+        }
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if (drawer != null) {
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
         }
     }
     @SuppressWarnings("StatementWithEmptyBody")
@@ -75,6 +90,8 @@ public class EwuSpirit extends AppCompatActivity
         {
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -91,6 +108,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/index.php?option=room&op=student&act=check");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -107,6 +126,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -123,6 +144,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -139,6 +162,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -155,6 +180,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -171,6 +198,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.show();
+                spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
@@ -184,11 +213,15 @@ public class EwuSpirit extends AppCompatActivity
         }
         else if(id == R.id.advising_sheet)
         {
+            progressDialog.show();
+            spiritWebView.setWebViewClient(new MyWebViewClient());
             spiritWebView.loadUrl(advising_list);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if (drawer != null) {
+            drawer.closeDrawer(GravityCompat.START);
+        }
         return true;
     }
 
@@ -210,6 +243,28 @@ public class EwuSpirit extends AppCompatActivity
         System.out.println("Current SSID is : " + ssid);
         return ssid;
     }
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+
+            if (!progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+
+            return true;
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+        }
+    }
+
     public static boolean isDeviceOnline(Context context) {
         boolean isConnectionAvail = false;
         try {

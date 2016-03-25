@@ -59,11 +59,21 @@
             android:text="Privacy Policy"
             android:textAllCaps="false" />
         <Button
-            android:id="@+id/credits"
+            android:id="@+id/terms_of_use"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@+id/privacy_policy"
+            android:theme="@style/MyButton"
+            android:onClick="termsOnClickHandler"
+            android:text="Terms of Use"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/credits"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/terms_of_use"
             android:theme="@style/MyButton"
             android:onClick="creditsOnClickHandler"
             android:text="Credits"

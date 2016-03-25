@@ -113,8 +113,9 @@ public class ShowSortCourses extends AppCompatActivity
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
 
-
-        mRecyclerView.setHasFixedSize(true);
+        if (mRecyclerView != null) {
+            mRecyclerView.setHasFixedSize(true);
+        }
 
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -134,7 +135,9 @@ public class ShowSortCourses extends AppCompatActivity
                 @Override
                 public void onClick(View view)
                 {
-                    fabmenu.close(true);
+                    if (fabmenu != null) {
+                        fabmenu.close(true);
+                    }
                     //String inputedText;
                     LayoutInflater inflater = LayoutInflater.from(ShowSortCourses.this);
                     View viewInflated = inflater.inflate(R.layout.section_sort, null);

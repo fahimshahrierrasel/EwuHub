@@ -1,6 +1,5 @@
 package com.treebricks.ewuhub.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,9 +31,6 @@ public class NoticeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         jsonString = getIntent().getExtras().getString("JSON_DATA");
-        System.out.println("Json String : " + jsonString);
-
-
 
         createRecyclerView();
 
@@ -42,20 +38,23 @@ public class NoticeActivity extends AppCompatActivity
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.notice_recycler_view);
 
 
-
-        mRecyclerView.setHasFixedSize(true);
+        if (mRecyclerView != null) {
+            mRecyclerView.setHasFixedSize(true);
+        }
 
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        if (mRecyclerView != null) {
+            mRecyclerView.setLayoutManager(mLayoutManager);
+        }
 
 
         RecyclerView.Adapter mAdapter = new NoticeAdapter(recycleView, NoticeActivity.this, jsonString);
-        mRecyclerView.setAdapter(mAdapter);
+        if (mRecyclerView != null) {
+            mRecyclerView.setAdapter(mAdapter);
+        }
 
 
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
@@ -89,7 +88,6 @@ public class NoticeActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        System.out.println("Back pressed");
         this.finish();
     }
 
