@@ -29,7 +29,7 @@ public class CourseLDataSource
 
     public ArrayList<CourseL> findAll(Context context, String courseName)
     {
-        DatabaseHelper dbhelper  = new DatabaseHelper(context, table);
+        DatabaseHelper dbhelper  = new DatabaseHelper(context);
         ArrayList<CourseL> allCourses = new ArrayList<CourseL>();
         try {
             dbhelper.createDataBase();
@@ -46,7 +46,7 @@ public class CourseLDataSource
             e.printStackTrace();
         }
         cursor = dbhelper.query(table, allCloumns, null, null, null, null, null);
-        Log.i(LOGTAG, "Database Successfully Connected!");
+        Log.i(LOGTAG, "Database Successfully Connected! With Lab");
         if(cursor.moveToFirst())
         {
             do
@@ -60,6 +60,7 @@ public class CourseLDataSource
                 courseL.setLabTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeFrom"))));
                 courseL.setLabTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeTo"))));
                 courseL.setLabWeekDay(cursor.getString(cursor.getColumnIndex("LabWeekDay")));
+
                 if((courseL.getCourseName()).equals(courseName))
                 {
                     Log.i(LOGTAG,"Need " + courseName + " & " + courseL.getCourseName() + " found!");

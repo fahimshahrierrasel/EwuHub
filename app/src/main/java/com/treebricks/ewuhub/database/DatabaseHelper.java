@@ -19,14 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static String DATABASE_NAME = "CoursesDatabase.db";
     private SQLiteDatabase myDataBase;
     private final Context myContext;
-    private final String TABLE;
 
-    public DatabaseHelper(Context context, String table)
+    public DatabaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, 1);
         this.myContext = context;
         this.DATABASE_PATH = context.getApplicationInfo().dataDir + "/databases/";
-        TABLE = table;
+
         Log.e("DataBase Path : ", DATABASE_PATH);
     }
 
@@ -46,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
             checkDatabase.close();
         }
-        return (checkDatabase != null ? true : false);
+        return (checkDatabase != null);
     }
 
     private void copyDataBase() throws IOException
@@ -127,6 +126,6 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
 
     public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return myDataBase.query(TABLE, null, null, null, null, null, null);
+        return myDataBase.query(table, null, null, null, null, null, null);
     }
 }

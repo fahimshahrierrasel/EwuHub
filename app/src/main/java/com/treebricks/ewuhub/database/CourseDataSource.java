@@ -14,7 +14,6 @@ public class CourseDataSource
 {
     public static final String LOGTAG = "EwuHub";
     Cursor cursor = null;
-    private String table = "WithoutLab";
     private static final String[] allCloumns = {
             "CourseName",
             "Section",
@@ -25,7 +24,8 @@ public class CourseDataSource
 
     public ArrayList<Course> findAll(Context context, String courseName)
     {
-        DatabaseHelper dbhelper  = new DatabaseHelper(context, table);
+        String table = "WithoutLab";
+        DatabaseHelper dbhelper  = new DatabaseHelper(context);
         ArrayList<Course> allCourses = new ArrayList<Course>();
         try {
             dbhelper.createDataBase();

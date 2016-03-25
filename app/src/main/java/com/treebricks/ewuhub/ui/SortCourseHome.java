@@ -35,47 +35,49 @@ public class SortCourseHome extends AppCompatActivity
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-
-                //Get total number of course from edit text
-                textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
-                totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
-
-                totalNumberOfCourseString = totalCourseEditText.getText().toString();
-
-
-                if(!totalNumberOfCourseString.equals(""))
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
                 {
-                    totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
-                    textInputLayout.setError(null);
-                    if(totalNumberOfCourse == 3 || totalNumberOfCourse == 4)
-                    {
-                        Intent courseInputIntent = new Intent(SortCourseHome.this, CourseInput.class);
 
-                        // Send data to other activity using bundle
-                        Bundle infoBundle = new Bundle();
+                    //Get total number of course from edit text
+                    textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
+                    totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
+
+                    totalNumberOfCourseString = totalCourseEditText.getText().toString();
+
+
+                    if(!totalNumberOfCourseString.equals(""))
+                    {
+                        totalNumberOfCourse = Integer.parseInt(totalNumberOfCourseString);
                         textInputLayout.setError(null);
-                        infoBundle.putInt(NUMBEROFCOURSES, totalNumberOfCourse);
-                        courseInputIntent.putExtras(infoBundle);
-                        startActivity(courseInputIntent);
+                        if(totalNumberOfCourse == 3 || totalNumberOfCourse == 4)
+                        {
+                            Intent courseInputIntent = new Intent(SortCourseHome.this, CourseInput.class);
+
+                            // Send data to other activity using bundle
+                            Bundle infoBundle = new Bundle();
+                            textInputLayout.setError(null);
+                            infoBundle.putInt(NUMBEROFCOURSES, totalNumberOfCourse);
+                            courseInputIntent.putExtras(infoBundle);
+                            startActivity(courseInputIntent);
+                        }
+                        else
+                        {
+
+                            Toast.makeText(SortCourseHome.this, "You Inputed "+ String.valueOf(totalNumberOfCourse) +". Please, Input 3 or 4 to go next!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                     else
                     {
-
-                        Toast.makeText(SortCourseHome.this, "You Inputed "+ String.valueOf(totalNumberOfCourse) +". Please, Input 3 or 4 to go next!",
-                                Toast.LENGTH_SHORT).show();
+                        textInputLayout.setError("Valid number of subject is required!");
                     }
-
                 }
-                else
-                {
-                    textInputLayout.setError("Valid number of subject is required!");
-                }
-            }
-        });
+            });
+        }
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.

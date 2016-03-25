@@ -17,7 +17,7 @@ public class AllCoursesDataSource
     };
     public ArrayList<String> findAll(Context context)
     {
-        DatabaseHelper dbhelper = new DatabaseHelper(context, table);
+        DatabaseHelper dbhelper = new DatabaseHelper(context);
         ArrayList<String> allCourses = new ArrayList<String>();
         try {
             dbhelper.createDataBase();

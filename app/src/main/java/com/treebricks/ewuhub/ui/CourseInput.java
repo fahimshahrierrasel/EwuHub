@@ -90,123 +90,125 @@ public class CourseInput extends AppCompatActivity {
 
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener()
             {
-                // get text from the edit text
+                @Override
+                public void onClick(View view)
+                {
+                    // get text from the edit text
 
 
-                boolean allright = true;
+                    boolean allright = true;
 
-                firstCourse = editText1.getText().toString().toUpperCase();
-                secondCourse = editText2.getText().toString().toUpperCase();
-                thirdCourse = editText3.getText().toString().toUpperCase();
-                if("".equals(firstCourse))
-                {
-                    textField1.setError("Subject-1 is required!");
-                }
-                else
-                {
-                    textField1.setError(null);
-                }
-                if("".equals(secondCourse))
-                {
-                    textField2.setError("Subject-2 is required!");
-                }
-                else
-                {
-                    textField2.setError(null);
-                }
-                if("".equals(thirdCourse))
-                {
-                    textField3.setError("Subject-3 is required!");
-                }
-                else
-                {
-                    textField3.setError(null);
-                }
-                if(totalSubjects == 4)
-                {
-                    fourthCourse = editText4.getText().toString().toUpperCase();
-                    if("".equals(fourthCourse))
+                    firstCourse = editText1.getText().toString().toUpperCase();
+                    secondCourse = editText2.getText().toString().toUpperCase();
+                    thirdCourse = editText3.getText().toString().toUpperCase();
+                    if("".equals(firstCourse))
                     {
-                        textField4.setError("Subject-4 is required!");
+                        textField1.setError("Subject-1 is required!");
                     }
                     else
                     {
-                        textField4.setError(null);
+                        textField1.setError(null);
                     }
-                }
-                else
-                    fourthCourse = "NULL";
-
-                if(!"".equals(firstCourse) && !"".equals(secondCourse) && !"".equals(thirdCourse)
-                        && !"".equals(fourthCourse))
-                {
-                    // send Data to next activity
-
-                    textField1.setError(null);
-                    textField2.setError(null);
-                    textField3.setError(null);
-                    textField4.setError(null);
-
-                    if(!isSubjectValid(firstCourse))
+                    if("".equals(secondCourse))
                     {
-                        allright = false;
-                        Toast.makeText(CourseInput.this, firstCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        textField2.setError("Subject-2 is required!");
                     }
-                    if(!isSubjectValid(secondCourse))
+                    else
                     {
-                        allright = false;
-                        Toast.makeText(CourseInput.this, secondCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        textField2.setError(null);
                     }
-                    if(!isSubjectValid(thirdCourse))
+                    if("".equals(thirdCourse))
                     {
-                        allright = false;
-                        Toast.makeText(CourseInput.this, thirdCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        textField3.setError("Subject-3 is required!");
                     }
-                    if(!isSubjectValid(fourthCourse) && totalSubjects == 4)
+                    else
                     {
-                        allright = false;
-                        Toast.makeText(CourseInput.this, fourthCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        textField3.setError(null);
                     }
-
                     if(totalSubjects == 4)
                     {
-                        if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || firstCourse.equals(fourthCourse) ||
-                                secondCourse.equals(thirdCourse) || secondCourse.equals(fourthCourse) || thirdCourse.equals(fourthCourse))
+                        fourthCourse = editText4.getText().toString().toUpperCase();
+                        if("".equals(fourthCourse))
                         {
-                            allright = false;
-                            Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                            textField4.setError("Subject-4 is required!");
+                        }
+                        else
+                        {
+                            textField4.setError(null);
                         }
                     }
-                    else if(totalSubjects == 3)
+                    else
+                        fourthCourse = "NULL";
+
+                    if(!"".equals(firstCourse) && !"".equals(secondCourse) && !"".equals(thirdCourse)
+                            && !"".equals(fourthCourse))
                     {
-                        if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || secondCourse.equals(thirdCourse))
+                        // send Data to next activity
+
+                        textField1.setError(null);
+                        textField2.setError(null);
+                        textField3.setError(null);
+                        textField4.setError(null);
+
+                        if(!isSubjectValid(firstCourse))
                         {
                             allright = false;
-                            Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CourseInput.this, firstCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
                         }
-                    }
+                        if(!isSubjectValid(secondCourse))
+                        {
+                            allright = false;
+                            Toast.makeText(CourseInput.this, secondCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        }
+                        if(!isSubjectValid(thirdCourse))
+                        {
+                            allright = false;
+                            Toast.makeText(CourseInput.this, thirdCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        }
+                        if(!isSubjectValid(fourthCourse) && totalSubjects == 4)
+                        {
+                            allright = false;
+                            Toast.makeText(CourseInput.this, fourthCourse + " is not a correct subject! Please give a correct Subject.",Toast.LENGTH_SHORT).show();
+                        }
 
-                    if(allright)
-                    {
-                        Bundle sentBundle = new Bundle();
-                        sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
-                        sentBundle.putString(FIRSTCOURSE, firstCourse);
-                        sentBundle.putString(SECONDCOURSE, secondCourse);
-                        sentBundle.putString(THIRDCOURSE, thirdCourse);
-                        sentBundle.putString(FOURTHCOURSE, fourthCourse);
-                        Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
-                        showSortCourses.putExtras(sentBundle);
-                        startActivity(showSortCourses);
-                    }
+                        if(totalSubjects == 4)
+                        {
+                            if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || firstCourse.equals(fourthCourse) ||
+                                    secondCourse.equals(thirdCourse) || secondCourse.equals(fourthCourse) || thirdCourse.equals(fourthCourse))
+                            {
+                                allright = false;
+                                Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else if(totalSubjects == 3)
+                        {
+                            if(firstCourse.equals(secondCourse) || firstCourse.equals(thirdCourse) || secondCourse.equals(thirdCourse))
+                            {
+                                allright = false;
+                                Toast.makeText(CourseInput.this, "You may have inputed the same course twice!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
+                        if(allright)
+                        {
+                            Bundle sentBundle = new Bundle();
+                            sentBundle.putInt(NUMBEROFCOURSES, totalSubjects);
+                            sentBundle.putString(FIRSTCOURSE, firstCourse);
+                            sentBundle.putString(SECONDCOURSE, secondCourse);
+                            sentBundle.putString(THIRDCOURSE, thirdCourse);
+                            sentBundle.putString(FOURTHCOURSE, fourthCourse);
+                            Intent showSortCourses = new Intent(CourseInput.this, ShowSortCourses.class);
+                            showSortCourses.putExtras(sentBundle);
+                            startActivity(showSortCourses);
+                        }
+
+                    }
                 }
-            }
-        });
+            });
+        }
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBar = getSupportActionBar();
         if (actionBar != null) {

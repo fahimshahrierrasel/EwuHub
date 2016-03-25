@@ -129,83 +129,105 @@ public class ShowSortCourses extends AppCompatActivity
         //  Fab Menu
         final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.fab_menu);
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.menu_item1);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                fabmenu.close(true);
-                //String inputedText;
-                LayoutInflater inflater = LayoutInflater.from(ShowSortCourses.this);
-                View viewInflated = inflater.inflate(R.layout.section_sort, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(ShowSortCourses.this);
-                builder.setTitle("Sort by Section");
-                // Set up the input
-                final TextView firstTextView = (TextView) viewInflated.findViewById(R.id.textview1);
-                final TextView secondTextView = (TextView) viewInflated.findViewById(R.id.textview2);
-                final TextView thirdTextView = (TextView) viewInflated.findViewById(R.id.textview3);
-                final TextView fourthTextView = (TextView) viewInflated.findViewById(R.id.textview4);
-
-
-                final EditText firstInput = (EditText) viewInflated.findViewById(R.id.input);
-                final EditText secondInput = (EditText) viewInflated.findViewById(R.id.input2);
-                final EditText thirdInput = (EditText) viewInflated.findViewById(R.id.input3);
-                final EditText fourthInput = (EditText) viewInflated.findViewById(R.id.input4);
-
-                final TextInputLayout textInputFourth = (TextInputLayout) viewInflated.findViewById(R.id.textinput4);
-
-                firstTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(0)));
-                secondTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(1)));
-                thirdTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(2)));
-                if(numberOfCourse == 3)
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
                 {
-                    fourthTextView.setVisibility(View.GONE);
-                    textInputFourth.setVisibility(View.GONE);
-                    fourthInput.setVisibility(View.GONE);
+                    fabmenu.close(true);
+                    //String inputedText;
+                    LayoutInflater inflater = LayoutInflater.from(ShowSortCourses.this);
+                    View viewInflated = inflater.inflate(R.layout.section_sort, null);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ShowSortCourses.this);
+                    builder.setTitle("Sort by Section");
+                    // Set up the input
+                    final TextView firstTextView = (TextView) viewInflated.findViewById(R.id.textview1);
+                    final TextView secondTextView = (TextView) viewInflated.findViewById(R.id.textview2);
+                    final TextView thirdTextView = (TextView) viewInflated.findViewById(R.id.textview3);
+                    final TextView fourthTextView = (TextView) viewInflated.findViewById(R.id.textview4);
 
-                }
-                else
-                {
-                    fourthTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(3)));
-                }
 
-                builder.setView(viewInflated);
+                    final EditText firstInput = (EditText) viewInflated.findViewById(R.id.input);
+                    final EditText secondInput = (EditText) viewInflated.findViewById(R.id.input2);
+                    final EditText thirdInput = (EditText) viewInflated.findViewById(R.id.input3);
+                    final EditText fourthInput = (EditText) viewInflated.findViewById(R.id.input4);
 
-                // Set up the buttons
-                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        String inputedText = firstInput.getText().toString();
-                        firstSection = Integer.parseInt(inputedText);
-                        inputedText = secondInput.getText().toString();
-                        secondSection = Integer.parseInt(inputedText);
-                        inputedText = thirdInput.getText().toString();
-                        thirdSection = Integer.parseInt(inputedText);
-                        if(numberOfCourse == 4)
-                        {
-                            inputedText = fourthInput.getText().toString();
-                            fourthSection = Integer.parseInt(inputedText);
+                    final TextInputLayout textInputFourth = (TextInputLayout) viewInflated.findViewById(R.id.textinput4);
+
+                    firstTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(0)));
+                    secondTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(1)));
+                    thirdTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(2)));
+                    if(numberOfCourse == 3)
+                    {
+                        fourthTextView.setVisibility(View.GONE);
+                        textInputFourth.setVisibility(View.GONE);
+                        fourthInput.setVisibility(View.GONE);
+
+                    }
+                    else
+                    {
+                        fourthTextView.setText(String.format("%s%s", getString(R.string.sort_section_dialog_text), showSubjects.get(3)));
+                    }
+
+                    builder.setView(viewInflated);
+
+                    // Set up the buttons
+                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            String firstInputText = firstInput.getText().toString();
+
+                            String secondInputText = secondInput.getText().toString();
+
+                            String thirdInputText = thirdInput.getText().toString();
+
+                            String fourthInputText = "NULL";
+                            if(numberOfCourse == 4)
+                            {
+                                fourthInputText = fourthInput.getText().toString();
+                            }
+
+                            if(!("".equals(firstInputText)) &&
+                                    !("".equals(secondInputText)) &&
+                                    !("".equals(thirdInputText)) &&
+                                    !("".equals(fourthInputText)))
+                            {
+                                firstSection = Integer.parseInt(firstInputText);
+                                secondSection = Integer.parseInt(secondInputText);
+                                thirdSection = Integer.parseInt(thirdInputText);
+                                if(numberOfCourse == 4)
+                                {
+                                    fourthSection = Integer.parseInt(fourthInputText);
+                                }
+
+                                recycleView.clear();
+                                findConflictFreeSortCourse();
+                                mAdapter = new MyAdapter(recycleView, numberOfCourse, ShowSortCourses.this, bundle);
+                                mRecyclerView.setAdapter(mAdapter);
+                            }
+                            else
+                            {
+
+                                dialog.cancel();
+                                Toast.makeText(ShowSortCourses.this, "Please input the section numbers!",Toast.LENGTH_SHORT).show();
+                            }
+
+
                         }
+                    });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
 
-                        recycleView.clear();
-                        findConflictFreeSortCourse();
-                        mAdapter = new MyAdapter(recycleView, numberOfCourse, ShowSortCourses.this, bundle);
-                        mRecyclerView.setAdapter(mAdapter);
+                    builder.show();
 
-
-                    }
-                });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-
-            }
-        });
+                }
+            });
+        }
 
         //
 

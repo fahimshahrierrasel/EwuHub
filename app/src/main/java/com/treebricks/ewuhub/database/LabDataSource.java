@@ -18,7 +18,7 @@ public class LabDataSource
     };
     public ArrayList<String> findAll(Context context)
     {
-        DatabaseHelper dbhelper = new DatabaseHelper(context, table);
+        DatabaseHelper dbhelper = new DatabaseHelper(context);
         ArrayList<String> allLabs = new ArrayList<String>();
         try {
             dbhelper.createDataBase();
