@@ -18,14 +18,16 @@
             android:id="@+id/nav_notice_board"
             android:icon="@drawable/ic_noticeboard"
             android:title="@string/notice_board" />
-        <item
-            android:id="@+id/ewusprit"
-            android:icon="@drawable/ic_ewu_sprit"
-            android:title="@string/ewuspirit"/>
+
         <item
             android:id="@+id/nav_library"
             android:icon="@drawable/ic_library"
             android:title="@string/ewu_library" />
+
+        <item
+            android:id="@+id/ewusprit"
+            android:icon="@drawable/ic_ewu_sprit"
+            android:title="@string/ewuspirit"/>
     </group>
     <item android:title="@string/secondary_group_app_home">
         <menu>

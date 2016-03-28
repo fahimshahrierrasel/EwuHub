@@ -17,23 +17,11 @@ public class NoticeView
         return noticeTitle;
     }
 
-    public void setNoticeTitle(String noticeTitle) {
-        this.noticeTitle = noticeTitle;
-    }
-
     public String getNoticeDate() {
         return noticeDate;
     }
 
-    public void setNoticeDate(String noticeDate) {
-        this.noticeDate = noticeDate;
-    }
-
     public String getNoticeUrl() {
         return noticeUrl;
-    }
-
-    public void setNoticeUrl(String noticeUrl) {
-        this.noticeUrl = noticeUrl;
     }
 }

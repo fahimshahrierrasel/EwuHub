@@ -21,6 +21,9 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+
+import java.security.SecureRandom;
 
 public class EwuSpirit extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +31,8 @@ public class EwuSpirit extends AppCompatActivity
     WebView spiritWebView;
     String advising_list;
     ProgressDialog progressDialog;
+    ProgressDialogQuotes progressDialogQuotes;
+    SecureRandom secureRandom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +40,10 @@ public class EwuSpirit extends AppCompatActivity
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        secureRandom = new SecureRandom();
         progressDialog = new ProgressDialog(EwuSpirit.this);
-        progressDialog.setMessage("We are almost there :):)\n" +
-                "Please be patience!");
+        progressDialogQuotes = new ProgressDialogQuotes();
+        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
         // spritWebView
         spiritWebView = (WebView) findViewById(R.id.ewu_spirit_webview);
         WebSettings webSettings = null;
@@ -90,6 +96,7 @@ public class EwuSpirit extends AppCompatActivity
         {
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
@@ -108,6 +115,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/index.php?option=room&op=student&act=check");
@@ -126,6 +134,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
@@ -144,6 +153,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
@@ -162,6 +172,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
@@ -180,6 +191,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
@@ -198,6 +210,7 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
                 spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
@@ -213,6 +226,7 @@ public class EwuSpirit extends AppCompatActivity
         }
         else if(id == R.id.advising_sheet)
         {
+            progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
             progressDialog.show();
             spiritWebView.setWebViewClient(new MyWebViewClient());
             spiritWebView.loadUrl(advising_list);
@@ -250,6 +264,7 @@ public class EwuSpirit extends AppCompatActivity
             view.loadUrl(url);
 
             if (!progressDialog.isShowing()) {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
             }
 

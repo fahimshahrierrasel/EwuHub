@@ -16,6 +16,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+
+import java.security.SecureRandom;
 
 public class NoticeWebViewer extends AppCompatActivity {
 
@@ -24,16 +27,18 @@ public class NoticeWebViewer extends AppCompatActivity {
     private String jsonData;
     ActionBar actionBar;
     ProgressDialog progressDialog;
+    ProgressDialogQuotes progressDialogQuotes;
+    SecureRandom secureRandom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notice_web_viewer_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        progressDialogQuotes = new ProgressDialogQuotes();
+        secureRandom = new SecureRandom();
         String url = getIntent().getExtras().getString("URL");
         jsonData = getIntent().getExtras().getString("JSON_DATA");
-
         noticeWebView = (android.webkit.WebView) findViewById(R.id.notice_web_view);
 
         WebSettings webSettings = null;
@@ -48,7 +53,7 @@ public class NoticeWebViewer extends AppCompatActivity {
             webSettings.setLoadWithOverviewMode(true);
             webSettings.setUseWideViewPort(true);
             progressDialog = new ProgressDialog(NoticeWebViewer.this);
-            progressDialog.setMessage("Please be patience!\nNotice is Loading......");
+            progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
             progressDialog.show();
             noticeWebView.setWebViewClient(new MyWebViewClient());
             noticeWebView.loadUrl(url);
@@ -83,6 +88,7 @@ public class NoticeWebViewer extends AppCompatActivity {
             view.loadUrl(url);
 
             if (!progressDialog.isShowing()) {
+                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
             }
 
