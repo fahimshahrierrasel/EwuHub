@@ -1,6 +1,7 @@
 package com.treebricks.ewuhub.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +43,7 @@ public class CourseDetails extends AppCompatActivity {
     public static final String SECONDCOURSE = "SECONDCOURSE";
     public static final String THIRDCOURSE = "THIRDCOURSE";
     public static final String FOURTHCOURSE = "FOURTHCOURSE";
+    public static final String FACULTY = "FACULTY";
     public static final String SHOWSORTCOURSEBUNDLE = "SHOWSORTCOURSEBUNDLE";
     public static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
     int numberSubject;
@@ -51,7 +53,6 @@ public class CourseDetails extends AppCompatActivity {
     public static Bundle thirdCourseBundle = null;
     public static Bundle fourthCourseBundle = null;
     public static Bundle showSortCourseBundle = null;
-    public static ArrayList<String> courseList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +64,6 @@ public class CourseDetails extends AppCompatActivity {
         secondCourseBundle = getIntent().getBundleExtra(SECONDCOURSE);
         thirdCourseBundle = getIntent().getBundleExtra(THIRDCOURSE);
         fourthCourseBundle = getIntent().getBundleExtra(FOURTHCOURSE);
-        courseList.add(firstCourseBundle.getString(COURSENAME));
-        courseList.add(secondCourseBundle.getString(COURSENAME));
-        courseList.add(thirdCourseBundle.getString(COURSENAME));
-        if(numberSubject == 4)
-        {
-            courseList.add(fourthCourseBundle.getString(FOURTHCOURSE));
-        }
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -100,7 +93,6 @@ public class CourseDetails extends AppCompatActivity {
         if(showSortCourseBundle != null)
         {
             i.putExtras(showSortCourseBundle);
-            Log.i("Detail Class", "showSortCourseBundle is sending");
         }
         startActivity(i);
         finish();
@@ -123,6 +115,7 @@ public class CourseDetails extends AppCompatActivity {
         public static final String LABWEEKDAY = "LABWEEKDAY";
         public static final String LABTIMEFROM = "LABTIMEFROM";
         public static final String LABTIMETO = "LABTIMETO";
+        public static final String FACULTY = "FACULTY";
 
         public PlaceholderFragment() {
         }
@@ -147,6 +140,7 @@ public class CourseDetails extends AppCompatActivity {
                     args.putString(WEEKDAY, firstCourseBundle.getString(WEEKDAY));
                     args.putInt(TIMEFROM,firstCourseBundle.getInt(TIMEFROM));
                     args.putInt(TIMETO, firstCourseBundle.getInt(TIMETO));
+                    args.putString(FACULTY, firstCourseBundle.getString(FACULTY));
                     if(hasLab)
                     {
                         args.putString(LABWEEKDAY, firstCourseBundle.getString(LABWEEKDAY));
@@ -161,6 +155,7 @@ public class CourseDetails extends AppCompatActivity {
                     args.putString(WEEKDAY, secondCourseBundle.getString(WEEKDAY));
                     args.putInt(TIMEFROM, secondCourseBundle.getInt(TIMEFROM));
                     args.putInt(TIMETO, secondCourseBundle.getInt(TIMETO));
+                    args.putString(FACULTY, secondCourseBundle.getString(FACULTY));
                     if(hasLab)
                     {
                         args.putString(LABWEEKDAY, secondCourseBundle.getString(LABWEEKDAY));
@@ -175,6 +170,7 @@ public class CourseDetails extends AppCompatActivity {
                     args.putString(WEEKDAY, thirdCourseBundle.getString(WEEKDAY));
                     args.putInt(TIMEFROM, thirdCourseBundle.getInt(TIMEFROM));
                     args.putInt(TIMETO, thirdCourseBundle.getInt(TIMETO));
+                    args.putString(FACULTY, thirdCourseBundle.getString(FACULTY));
                     if(hasLab)
                     {
                         args.putString(LABWEEKDAY, thirdCourseBundle.getString(LABWEEKDAY));
@@ -189,6 +185,7 @@ public class CourseDetails extends AppCompatActivity {
                     args.putString(WEEKDAY, fourthCourseBundle.getString(WEEKDAY));
                     args.putInt(TIMEFROM, fourthCourseBundle.getInt(TIMEFROM));
                     args.putInt(TIMETO, fourthCourseBundle.getInt(TIMETO));
+                    args.putString(FACULTY, fourthCourseBundle.getString(FACULTY));
                     if(hasLab)
                     {
                         args.putString(LABWEEKDAY, fourthCourseBundle.getString(LABWEEKDAY));
@@ -217,10 +214,12 @@ public class CourseDetails extends AppCompatActivity {
             TextView labTimeFromTextView;
             TextView labTimeTTextView;
             TextView labTimeToTextView;
+            TextView facultyTextView;
             sectionNumberTextView = (TextView) rootView.findViewById(R.id.section_number);
             weekDayTextView = (TextView) rootView.findViewById(R.id.week_day);
             timeFromTextView = (TextView) rootView.findViewById(R.id.time_from);
             timeToTextView = (TextView) rootView.findViewById(R.id.time_to);
+            facultyTextView = (TextView) rootView.findViewById(R.id.faculty);
             labWeekTextView = (TextView) rootView.findViewById(R.id.labw);
             labWeekDayTextView = (TextView) rootView.findViewById(R.id.lab_week_day);
             labTimeFTextView = (TextView) rootView.findViewById(R.id.labtimef);
@@ -232,6 +231,8 @@ public class CourseDetails extends AppCompatActivity {
             weekDayTextView.setText(getArguments().getString(WEEKDAY));
             timeFromTextView.setText(time12HourFormat(getArguments().getInt(TIMEFROM)));
             timeToTextView.setText(time12HourFormat(getArguments().getInt(TIMETO)));
+            facultyTextView.setTextColor(Color.parseColor("#009688"));
+            facultyTextView.setText(getArguments().getString(FACULTY));
             if(getArguments().getBoolean(HASLAB))
             {
                 labWeekDayTextView.setText(getArguments().getString(LABWEEKDAY));

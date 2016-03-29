@@ -14,9 +14,9 @@ public class CourseL extends Course
         labWeekDay = "NULL";
 
     }
-    public CourseL(String courseTitle, int section, int timeFrom, int timeTo, String weekDay, int labTimeFrom, int labTimeTo, String labWeekDay)
+    public CourseL(String courseTitle, int section, int timeFrom, int timeTo, String weekDay, int labTimeFrom, int labTimeTo, String labWeekDay, String faculty)
     {
-        super(courseTitle, section, timeFrom, timeTo, weekDay);
+        super(courseTitle, section, timeFrom, timeTo, weekDay, faculty);
         this.labWeekDay = labWeekDay;
         this.labTimeFrom = labTimeFrom;
         this.labTimeTo = labTimeTo;
@@ -166,7 +166,7 @@ public class CourseL extends Course
     public String printCourse()
     {
         return (courseName + "     " + section + "     "  +
-                timeFrom + "     " + timeTo + "     " + weekDay + "     " +
+                timeFrom + "     " + timeTo + "     " + weekDay + "     " + "    " + faculty  + "    " +
                 labTimeFrom + "     " + labTimeTo + "     " + labWeekDay);
     }
 

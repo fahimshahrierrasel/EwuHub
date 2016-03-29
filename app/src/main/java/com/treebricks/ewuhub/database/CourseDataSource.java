@@ -19,7 +19,8 @@ public class CourseDataSource
             "Section",
             "TimeFrom",
             "TimeTo",
-            "WeekDay"
+            "WeekDay",
+            "Faculty"
     };
 
     public ArrayList<Course> findAll(Context context, String courseName)
@@ -53,9 +54,9 @@ public class CourseDataSource
                 course.setTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeFrom"))));
                 course.setTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("TimeTo"))));
                 course.setWeekDay(cursor.getString(cursor.getColumnIndex("WeekDay")));
+                course.setFaculty(cursor.getString(cursor.getColumnIndex("Faculty")));
                 if((course.getCourseName()).equals(courseName))
                 {
-                    Log.i(LOGTAG,"Need " + courseName + " & " + course.getCourseName() + " found!");
                     allCourses.add(course);
                 }
 

@@ -394,7 +394,6 @@ public class ShowSortCourses extends AppCompatActivity
                                 String header = withOutLab1.get(loop1).courseName() + ", " +
                                         withOutLab2.get(loop2).courseName() + ", " +
                                         withOutLab3.get(loop3).courseName();
-                                Log.i(LOGTAG, "COURSE Found !");
                                 Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
                                         withOutLab2.get(loop2),
                                         withOutLab3.get(loop3));
@@ -423,7 +422,7 @@ public class ShowSortCourses extends AppCompatActivity
                                 String header = withLab1.get(loop1).courseName() + ", " +
                                         withOutLab1.get(loop2).courseName() + ", " +
                                         withOutLab2.get(loop3).courseName();
-                                Log.i(LOGTAG, "COURSE Found !");
+
                                 Viewer viewer = new Viewer(header,
                                         withLab1.get(loop1),
                                         withOutLab1.get(loop2),
@@ -454,7 +453,7 @@ public class ShowSortCourses extends AppCompatActivity
                                         withLab2.get(loop2).courseName() + ", " +
                                         withOutLab1.get(loop3).courseName();
 
-                                Log.i(LOGTAG, "COURSE Found !");
+
                                 Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                         withLab2.get(loop2),
                                         withOutLab1.get(loop3));
@@ -483,7 +482,7 @@ public class ShowSortCourses extends AppCompatActivity
                                 String header = withLab1.get(loop1).courseName() + ", " +
                                         withLab2.get(loop2).courseName() + ", " +
                                         withLab3.get(loop3).courseName();
-                                Log.i(LOGTAG, "COURSE Found !");
+
                                 Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                         withLab2.get(loop2),
                                         withLab3.get(loop3));
@@ -520,7 +519,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withOutLab2.get(loop2).courseName() + ", " +
                                             withOutLab3.get(loop3).courseName() + "," +
                                             withOutLab4.get(loop4).courseName();
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
                                             withOutLab2.get(loop2),
                                             withOutLab3.get(loop3),withOutLab4.get(loop4));
@@ -554,7 +553,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withOutLab1.get(loop2).courseName() + ", " +
                                             withOutLab2.get(loop3).courseName() +
                                             "," + withOutLab3.get(loop4).courseName();
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header,
                                             withLab1.get(loop1),
                                             withOutLab1.get(loop2),
@@ -590,7 +589,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withOutLab1.get(loop3).courseName() +
                                             "," + withOutLab2.get(loop4).courseName();
 
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withOutLab1.get(loop3),
@@ -627,7 +626,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withLab3.get(loop3).courseName() + "," +
                                             withOutLab1.get(loop4).courseName();
 
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3),
@@ -664,7 +663,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withLab3.get(loop3).courseName() + "," +
                                             withLab4.get(loop4).courseName();
 
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3),
@@ -711,7 +710,7 @@ public class ShowSortCourses extends AppCompatActivity
                                     String header = withOutLab1.get(loop1).courseName() + ", " +
                                             withOutLab2.get(loop2).courseName() + ", " +
                                             withOutLab3.get(loop3).courseName();
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
                                             withOutLab2.get(loop2),
                                             withOutLab3.get(loop3));
@@ -747,7 +746,7 @@ public class ShowSortCourses extends AppCompatActivity
                                     String header = withLab1.get(loop1).courseName() + ", " +
                                             withOutLab1.get(loop2).courseName() + ", " +
                                             withOutLab2.get(loop3).courseName();
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header,
                                             withLab1.get(loop1),
                                             withOutLab1.get(loop2),
@@ -788,7 +787,7 @@ public class ShowSortCourses extends AppCompatActivity
                                             withLab2.get(loop2).courseName() + ", " +
                                             withOutLab1.get(loop3).courseName();
 
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withOutLab1.get(loop3));
@@ -824,7 +823,7 @@ public class ShowSortCourses extends AppCompatActivity
                                     String header = withLab1.get(loop1).courseName() + ", " +
                                             withLab2.get(loop2).courseName() + ", " +
                                             withLab3.get(loop3).courseName();
-                                    Log.i(LOGTAG, "COURSE Found !");
+
                                     Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3));
@@ -875,7 +874,7 @@ public class ShowSortCourses extends AppCompatActivity
                                                 withOutLab2.get(loop2).courseName() + ", " +
                                                 withOutLab3.get(loop3).courseName() + "," +
                                                 withOutLab4.get(loop4).courseName();
-                                        Log.i(LOGTAG, "COURSE Found !");
+
                                         Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
                                                 withOutLab2.get(loop2),
                                                 withOutLab3.get(loop3),withOutLab4.get(loop4));
@@ -926,7 +925,7 @@ public class ShowSortCourses extends AppCompatActivity
                                                 withOutLab1.get(loop2).courseName() + ", " +
                                                 withOutLab2.get(loop3).courseName() +
                                                 "," + withOutLab3.get(loop4).courseName();
-                                        Log.i(LOGTAG, "COURSE Found !");
+
                                         Viewer viewer = new Viewer(header,
                                                 withLab1.get(loop1),
                                                 withOutLab1.get(loop2),
@@ -980,7 +979,7 @@ public class ShowSortCourses extends AppCompatActivity
                                                 withOutLab1.get(loop3).courseName() +
                                                 "," + withOutLab2.get(loop4).courseName();
 
-                                        Log.i(LOGTAG, "COURSE Found !");
+
                                         Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withOutLab1.get(loop3),
@@ -1032,7 +1031,7 @@ public class ShowSortCourses extends AppCompatActivity
                                                 withLab3.get(loop3).courseName() + "," +
                                                 withOutLab1.get(loop4).courseName();
 
-                                        Log.i(LOGTAG, "COURSE Found !");
+
                                         Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withLab3.get(loop3),
@@ -1087,7 +1086,7 @@ public class ShowSortCourses extends AppCompatActivity
                                                 withLab3.get(loop3).courseName() + "," +
                                                 withLab4.get(loop4).courseName();
 
-                                        Log.i(LOGTAG, "COURSE Found !");
+
                                         Viewer viewer = new Viewer(header, withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withLab3.get(loop3),

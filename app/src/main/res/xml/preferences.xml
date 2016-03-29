@@ -32,11 +32,11 @@
         android:key="feedback">
     </Preference>
 
-    <Preference
+    <!--<Preference
         android:title="Open Source"
         android:icon="@drawable/ic_open_source"
         android:summary="Soon we will make all our work open source."
         android:key="opensrc">
-    </Preference>
+    </Preference>-->
 
 </PreferenceScreen>

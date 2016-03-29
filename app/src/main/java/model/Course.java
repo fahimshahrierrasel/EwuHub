@@ -7,6 +7,7 @@ public class Course
     protected int timeFrom;
     protected int timeTo;
     protected String weekDay;
+    protected String faculty;
 
 
     public Course()
@@ -16,15 +17,20 @@ public class Course
         timeFrom = 0;
         timeTo = 0;
         weekDay = "NULL";
+        faculty = "NULL";
     }
 
-    public Course(String courseName, int section, int timeFrom, int timeTo, String weekDay)
+
+
+    public Course(String courseName, int section, int timeFrom, int timeTo, String weekDay, String faculty)
     {
         this.courseName = courseName;
         this.section = section;
         this.timeFrom = timeFrom;
         this.timeTo = timeTo;
         this.weekDay = weekDay;
+        this.faculty = faculty;
+
     }
 
     public String getCourseName() {
@@ -66,6 +72,14 @@ public class Course
 
     public void setWeekDay(String weekDay) {
         this.weekDay = weekDay;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
     }
 
     public boolean identiClassWithLab(String labDay)
@@ -118,7 +132,7 @@ public class Course
     public String printCourse()
     {
         return (courseName + "     " + section + "     " +
-                timeFrom + "     " + timeTo + "     " + weekDay);
+                timeFrom + "     " + timeTo + "     " + weekDay + "    " + faculty);
     }
 
     @Override

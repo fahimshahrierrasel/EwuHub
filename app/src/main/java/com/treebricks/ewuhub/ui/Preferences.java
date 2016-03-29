@@ -197,10 +197,10 @@ public class Preferences extends PreferenceActivity
                 Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
                 startActivity(Intent.createChooser(Email, "Send Feedback:"));
             }
-            else if(key.equals("opensrc"))
+            /*else if(key.equals("opensrc"))
             {
                 Toast.makeText(getActivity(),"Soon you will see us.",Toast.LENGTH_LONG).show();
-            }
+            }*/
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
 

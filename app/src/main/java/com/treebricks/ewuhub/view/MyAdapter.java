@@ -32,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public static final String LABWEEKDAY = "LABWEEKDAY";
     public static final String LABTIMEFROM = "LABTIMEFROM";
     public static final String LABTIMETO = "LABTIMETO";
+    public static final String FACULTY = "FACULTY";
     public static final String LOGTAG = "EwuHub";
     public static final String FIRSTCOURSE = "FIRSTCOURSE";
     public static final String SECONDCOURSE = "SECONDCOURSE";
@@ -135,6 +136,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             firstBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
             firstBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
             firstBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+            firstBundle.putString(FACULTY,courseL.getFaculty());
 
         }
         else
@@ -146,7 +148,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             firstBundle.putString(WEEKDAY, course.getWeekDay());
             firstBundle.putInt(TIMEFROM, course.getTimeFrom());
             firstBundle.putInt(TIMETO, course.getTimeTo());
-
+            firstBundle.putString(FACULTY, course.getFaculty());
         }
 
         if (CourseL.class.isInstance(data2)) {
@@ -160,7 +162,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             secondBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
             secondBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
             secondBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
-
+            secondBundle.putString(FACULTY,courseL.getFaculty());
         }
         else
         {
@@ -171,6 +173,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             secondBundle.putString(WEEKDAY, course.getWeekDay());
             secondBundle.putInt(TIMEFROM, course.getTimeFrom());
             secondBundle.putInt(TIMETO, course.getTimeTo());
+            secondBundle.putString(FACULTY, course.getFaculty());
 
         }
 
@@ -185,6 +188,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             thirdBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
             thirdBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
             thirdBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+            thirdBundle.putString(FACULTY,courseL.getFaculty());
 
         }
         else
@@ -196,6 +200,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             thirdBundle.putString(WEEKDAY, course.getWeekDay());
             thirdBundle.putInt(TIMEFROM, course.getTimeFrom());
             thirdBundle.putInt(TIMETO, course.getTimeTo());
+            thirdBundle.putString(FACULTY, course.getFaculty());
 
         }
 
@@ -218,6 +223,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 fourthBundle.putString(LABWEEKDAY, courseL.getLabWeekDay());
                 fourthBundle.putInt(LABTIMEFROM, courseL.getLabTimeFrom());
                 fourthBundle.putInt(LABTIMETO, courseL.getLabTimeTo());
+                fourthBundle.putString(FACULTY,courseL.getFaculty());
 
             }
             else
@@ -229,6 +235,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 fourthBundle.putString(WEEKDAY, course.getWeekDay());
                 fourthBundle.putInt(TIMEFROM, course.getTimeFrom());
                 fourthBundle.putInt(TIMETO, course.getTimeTo());
+                fourthBundle.putString(FACULTY, course.getFaculty());
 
             }
         }
@@ -254,6 +261,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
                 courseDetail.putExtra(FIRSTCOURSE, firstBundle);
                 courseDetail.putExtra(SECONDCOURSE, secondBundle);
                 courseDetail.putExtra(THIRDCOURSE, thirdBundle);
+
                 if(totalCourse == 4)
                     courseDetail.putExtra(FOURTHCOURSE, fourthBundle);
                 if(showSortCourseBundle != null)

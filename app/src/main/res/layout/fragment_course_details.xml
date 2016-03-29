@@ -91,9 +91,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
+                android:text="Faculty"
+                android:id="@+id/facultyt"
+                android:layout_below="@+id/time_to"
+                android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="TBA"
+                android:id="@+id/faculty"
+                android:layout_below="@+id/facultyt"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
                 android:text="Lab Week Day"
                 android:id="@+id/labw"
-                android:layout_below="@+id/time_to"
+                android:layout_below="@+id/faculty"
                 android:layout_centerHorizontal="true" />
 
             <TextView

@@ -4,10 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.util.Log;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import model.CourseL;
 
 
@@ -15,7 +13,6 @@ public class CourseLDataSource
 {
     public static final String LOGTAG = "EwuHub";
     Cursor cursor = null;
-    private String table = "WithLab";
     private static final String[] allCloumns = {
             "CourseName",
             "Section",
@@ -24,11 +21,13 @@ public class CourseLDataSource
             "WeekDay",
             "LabTimeFrom",
             "LabTimeTo",
-            "LabWeekDay"
+            "LabWeekDay",
+            "Faculty"
     };
 
     public ArrayList<CourseL> findAll(Context context, String courseName)
     {
+        String table = "WithLab";
         DatabaseHelper dbhelper  = new DatabaseHelper(context);
         ArrayList<CourseL> allCourses = new ArrayList<CourseL>();
         try {
@@ -45,6 +44,7 @@ public class CourseLDataSource
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
+
         cursor = dbhelper.query(table, allCloumns, null, null, null, null, null);
         Log.i(LOGTAG, "Database Successfully Connected! With Lab");
         if(cursor.moveToFirst())
@@ -60,10 +60,9 @@ public class CourseLDataSource
                 courseL.setLabTimeFrom(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeFrom"))));
                 courseL.setLabTimeTo(Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow("LabTimeTo"))));
                 courseL.setLabWeekDay(cursor.getString(cursor.getColumnIndex("LabWeekDay")));
-
+                courseL.setFaculty(cursor.getString(cursor.getColumnIndex("Faculty")));
                 if((courseL.getCourseName()).equals(courseName))
                 {
-                    Log.i(LOGTAG,"Need " + courseName + " & " + courseL.getCourseName() + " found!");
                     allCourses.add(courseL);
                 }
             }while(cursor.moveToNext());

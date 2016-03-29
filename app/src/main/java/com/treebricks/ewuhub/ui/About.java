@@ -26,10 +26,11 @@ public class About extends AppCompatActivity {
         String web = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "\t<body>\n" +
-                "\t\t<p><b>treebricks</b> is an application studio created by some <b>EWU</b> students.\n" +
-                "\t\t<b>treebricks</b> loves to solve problem\n" +
-                "\t\t we everyday face. We also love the problem solver. Anyone can solve any problem. You are not alone with any particular problem. There are thousands of people facing the same problem you face everyday. But if you solve the problem then thousands of people will be benifited. <b>treebricks</b> loves problem solver and who try to solve.</p>\n" +
-                "\t\t<h2>treebricks</h2>\n" +
+                "<p><b>treebricks</b> is an application studio build by <b>EWU</b> students.\n" +
+                "EwuHub is treebricks first application. We worked" +
+                " a long time to bring this application before you. treebricks hope " +
+                "users will love this application.</p>\n" +
+                "<h2>treebricks</h2>\n" +
                 "\t</body>\n" +
                 "</html>";
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -124,6 +125,7 @@ public class About extends AppCompatActivity {
                 "\t\t<p>We specially thanks <b>Sathil Islam</b> for his beautiful photograph.</p>\n" +
                 "\t\t<p>We also greatful to our friends who also help us to improve our algorithm for the application.</p>\n" +
                 "\t\t<p>We also greatful to our beta and alpha tester who advice us how we can better this application.</p>\n" +
+                "\t\t<p>Thanks to our friends who helped us to update the database. Without them we could not bring the update of the database so quickly.</p>\n" +
                 "\t\t<p>We are also very greatful who are using this application. Don't bother to feedback about this application. This is for you. With your help we can make this application even better..</p>\n" +
                 "\t</body>\n" +
                 "</html>";
