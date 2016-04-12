@@ -33,7 +33,6 @@ public class SortCourseHome extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +79,7 @@ public class SortCourseHome extends AppCompatActivity
                 }
             });
         }
+
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Show the Up button in the action bar.
