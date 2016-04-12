@@ -81,6 +81,7 @@ public class CourseInput extends AppCompatActivity {
 
 
 
+
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener()
@@ -233,6 +234,10 @@ public class CourseInput extends AppCompatActivity {
         editText3.setText(savedInstanceState.getString(THIRDCOURSE));
         if(totalSubjects == 4)
             editText4.setText(savedInstanceState.getString(FOURTHCOURSE));
+    }
+    public void fhim()
+    {
+        String name = "Fahim";
     }
 
     boolean isSubjectValid(String subject)

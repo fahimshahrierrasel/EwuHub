@@ -6,7 +6,4 @@
 .DS_Store
 /build
 /captures
-
-app/src/main/java/com/treebricks/ewuhub/ui/AllWebView.java
-
-app/src/main/java/com/treebricks/ewuhub/ui/ApplicationHome.java
+*.jks
