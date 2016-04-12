@@ -235,10 +235,6 @@ public class CourseInput extends AppCompatActivity {
         if(totalSubjects == 4)
             editText4.setText(savedInstanceState.getString(FOURTHCOURSE));
     }
-    public void fhim()
-    {
-        String name = "Fahim";
-    }
 
     boolean isSubjectValid(String subject)
     {

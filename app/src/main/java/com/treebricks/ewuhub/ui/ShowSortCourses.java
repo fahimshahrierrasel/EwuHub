@@ -129,6 +129,18 @@ public class ShowSortCourses extends AppCompatActivity
 
         //  Fab Menu
         final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.fab_menu);
+        if(fabmenu != null)
+        {
+            mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy){
+                    if (dy > 0 && fabmenu.isShown())
+                        fabmenu.hideMenu(true);
+                    else if (dy < 0 && !fabmenu.isShown())
+                        fabmenu.showMenu(true);
+                }
+            });
+        }
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.menu_item1);
         if (fab != null) {
             fab.setOnClickListener(new View.OnClickListener() {

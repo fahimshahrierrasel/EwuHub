@@ -113,11 +113,6 @@ public class ApplicationHome extends AppCompatActivity
 
     }
 
-    public void fhim()
-    {
-        String name = "Fahim";
-    }
-
     public void newVersion()
     {
         int version = 0;
