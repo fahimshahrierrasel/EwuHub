@@ -2,11 +2,15 @@ package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -28,6 +32,8 @@ import java.security.SecureRandom;
 public class EwuSpirit extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    ChromeCustomTab chromeCustomTab;
     WebView spiritWebView;
     String advising_list;
     ProgressDialog progressDialog;
@@ -40,6 +46,7 @@ public class EwuSpirit extends AppCompatActivity
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        chromeCustomTab = new ChromeCustomTab(getApplicationContext(), EwuSpirit.this);
         secureRandom = new SecureRandom();
         progressDialog = new ProgressDialog(EwuSpirit.this);
         progressDialogQuotes = new ProgressDialogQuotes();
@@ -54,7 +61,6 @@ public class EwuSpirit extends AppCompatActivity
             webSettings.setSupportZoom(true);
             webSettings.setJavaScriptEnabled(true);
         }
-
 
         final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
         advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
@@ -98,8 +104,23 @@ public class EwuSpirit extends AppCompatActivity
             {
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+                if(chromeOk())
+                {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            chromeCustomTab.runOnCustomTab("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                        }
+                    }, 2000);
+                }
+                else
+                {
+                    spiritWebView.setWebViewClient(new MyWebViewClient());
+                    spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+                }
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
             {
@@ -212,8 +233,23 @@ public class EwuSpirit extends AppCompatActivity
             {
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
+                if(chromeOk())
+                {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            chromeCustomTab.runOnCustomTab("http://172.16.100.31:8020/webnet/");
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                        }
+                    }, 2000);
+                }
+                else
+                {
+                    spiritWebView.setWebViewClient(new MyWebViewClient());
+                    spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
+                }
             }
             else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
             {
@@ -254,7 +290,6 @@ public class EwuSpirit extends AppCompatActivity
             ssid = "\"NotConnected\"";
         }
         ssid = ssid.substring(1, ssid.length()-1);
-        System.out.println("Current SSID is : " + ssid);
         return ssid;
     }
 
@@ -294,5 +329,71 @@ public class EwuSpirit extends AppCompatActivity
             e.printStackTrace();
         }
         return isConnectionAvail;
+    }
+    private boolean chromeOk()
+    {
+        boolean result = false;
+        if(isAppInstalled("com.android.chrome") && isAppEnabled("com.android.chrome") && (chromeVersion() >= 45))
+        {
+            result = true;
+        }
+        return result;
+    }
+
+    private boolean isAppInstalled(String packageName) {
+        PackageManager pm = getPackageManager();
+        boolean installed = false;
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            installed = false;
+        }
+        return installed;
+    }
+    private boolean isAppEnabled(String packageName)
+    {
+        boolean appStatus = false;
+        try {
+            ApplicationInfo ai = getPackageManager().getApplicationInfo(packageName, 0);
+            appStatus = ai.enabled;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return appStatus;
+    }
+
+    private int chromeVersion()
+    {
+        int versionCode = 38;
+        String versionNumber;
+        PackageManager pm = getPackageManager();
+        PackageInfo pInfo = null;
+        try {
+            pInfo = pm.getPackageInfo("com.android.chrome", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (pInfo != null) {
+            String version = pInfo.versionName;
+            versionNumber = version.substring(0,2);
+            if(isNumeric(versionNumber))
+            {
+                versionCode = Integer.parseInt(versionNumber);
+            }
+        }
+        return versionCode;
+    }
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 }

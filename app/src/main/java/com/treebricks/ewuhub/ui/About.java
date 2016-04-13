@@ -14,11 +14,13 @@ import android.webkit.WebViewClient;
 import com.treebricks.ewuhub.R;
 
 public class About extends AppCompatActivity {
+    ChromeCustomTab chromeCustomTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        chromeCustomTab = new ChromeCustomTab(getApplicationContext(), About.this);
     }
 
     public void aboutDeveloperOnClickHandler(View view) {
@@ -60,10 +62,7 @@ public class About extends AppCompatActivity {
 
     public void officialWebsiteOnClickHandler(View view)
     {
-        String url = "http://www.treebricks.com";
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
+        chromeCustomTab.runOnCustomTab("http://www.treebricks.com");
     }
 
     public void privacyPolicyOnClickHandler(View view)

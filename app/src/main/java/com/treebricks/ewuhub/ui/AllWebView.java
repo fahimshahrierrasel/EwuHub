@@ -1,7 +1,14 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.net.Uri;
+import android.support.customtabs.CustomTabsClient;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.customtabs.CustomTabsServiceConnection;
+import android.support.customtabs.CustomTabsSession;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,7 +23,6 @@ import com.treebricks.ewuhub.view.ProgressDialogQuotes;
 import java.security.SecureRandom;
 
 public class AllWebView extends AppCompatActivity {
-
 
     WebView myWebView;
     private String url;
@@ -55,13 +61,14 @@ public class AllWebView extends AppCompatActivity {
             {
                 myWebView.setInitialScale(90);
             }
-            //myWebView.setWebViewClient(new WebChromeClient());
+
             myWebView.setWebViewClient(new MyWebViewClient());
             myWebView.loadUrl(url);
         }
 
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
 
     }
 
@@ -89,19 +96,6 @@ public class AllWebView extends AppCompatActivity {
         }
     }
 
-
-    private class MyChromeWebViewClient extends WebChromeClient
-    {
-        @Override
-        public void onProgressChanged(WebView view, int newProgress) {
-            if(newProgress == 100)
-            {
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-            }
-        }
-    }
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {

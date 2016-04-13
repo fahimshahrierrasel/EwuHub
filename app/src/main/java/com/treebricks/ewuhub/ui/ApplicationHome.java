@@ -1,12 +1,16 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -14,7 +18,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -53,6 +56,7 @@ public class ApplicationHome extends AppCompatActivity
     private ProgressDialog progressDialog;
     int versionCode;
     NotificationCompat.Builder builder;
+    ChromeCustomTab chromeCustomTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +95,13 @@ public class ApplicationHome extends AppCompatActivity
         });
         t.start();
         getNotification();
+
+        chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
+
         setContentView(R.layout.activity_application_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         // Create a new Boolean and preference and set it true
         versionCode = getPrefs.getInt("version_code",1);
@@ -181,7 +189,7 @@ public class ApplicationHome extends AppCompatActivity
                                     }
                                 }
 
-                                if(notificationNumber > notificationNum)
+                                if(notificationNumber >= notificationNum)
                                 {
 
                                     SharedPreferences.Editor e = getPrefs.edit();
@@ -191,26 +199,29 @@ public class ApplicationHome extends AppCompatActivity
 
                                     Notification notification = builder.
                                             setSmallIcon(R.drawable.ic_notification)
+                                            .setColor(Color.parseColor("#1A237E"))
                                             .setDefaults(Notification.DEFAULT_ALL)
                                             .setStyle(new NotificationCompat.BigTextStyle()
                                                     .bigText(notificationDescription)
                                                     .setBigContentTitle(notificationTitle)
                                                     .setSummaryText("Thanks for using EwuHub"))
+                                            .setAutoCancel(true)
+                                            .setVisibility(View.VISIBLE)
                                             .build();
 
 
-                                    NotificationManagerCompat notificationManager =
-                                            NotificationManagerCompat.from(getBaseContext());
+                                    NotificationManager notificationManager = (NotificationManager)
+                                            getSystemService(Context.NOTIFICATION_SERVICE);
 
-                                    notificationManager.notify(0x1234, notification);
+                                    notificationManager.notify(0, notification);
 
                                 }
                             }
                         }
-                    }, 2000);
+                    }, 1500);
                 }
             }
-        }, 2000);
+        }, 1500);
     }
 
     @Override
@@ -251,14 +262,22 @@ public class ApplicationHome extends AppCompatActivity
                 public void run() {
                     if (hasInternetConnection)
                     {
-
-                        Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                        Bundle sentData = new Bundle();
-                        sentData.putString("URL", "http://result.ewubd.edu/");
-                        i.putExtras(sentData);
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        startActivity(i);
+                        if(chromeOk())
+                        {
+                            chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                        }
+                        else
+                        {
+                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                            Bundle sentData = new Bundle();
+                            sentData.putString("URL", "http://result.ewubd.edu/");
+                            i.putExtras(sentData);
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                            startActivity(i);
+                        }
 
 
                     } else {
@@ -359,13 +378,23 @@ public class ApplicationHome extends AppCompatActivity
                 public void run() {
                     if (hasInternetConnection)
                     {
-                        Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                        Bundle sentData = new Bundle();
-                        sentData.putString("URL", "http://lib.ewubd.edu/");
-                        i.putExtras(sentData);
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        startActivity(i);
+                        if(chromeOk())
+                        {
+                            chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                        }
+                        else
+                        {
+                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                            Bundle sentData = new Bundle();
+                            sentData.putString("URL", "http://lib.ewubd.edu/");
+                            i.putExtras(sentData);
+                            progressDialog.hide();
+                            progressDialog.cancel();
+                            startActivity(i);
+                        }
+
                     }
                     else
                     {
@@ -411,13 +440,24 @@ public class ApplicationHome extends AppCompatActivity
             public void run() {
                 if (hasInternetConnection) {
 
-                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                    Bundle sentData = new Bundle();
-                    sentData.putString("URL", "http://www.ewubd.edu");
-                    i.putExtras(sentData);
-                    progressDialog.hide();
-                    progressDialog.cancel();
-                    startActivity(i);
+                    if(chromeOk())
+                    {
+                        chromeCustomTab.runOnCustomTab("http://www.ewubd.edu");
+                        progressDialog.hide();
+                        progressDialog.cancel();
+                    }
+                    else
+                    {
+                        Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                        Bundle sentData = new Bundle();
+                        sentData.putString("URL", "http://www.ewubd.edu");
+                        i.putExtras(sentData);
+                        progressDialog.hide();
+                        progressDialog.cancel();
+                        startActivity(i);
+                    }
+
+
                 } else {
                     progressDialog.hide();
                     progressDialog.cancel();
@@ -634,5 +674,72 @@ public class ApplicationHome extends AppCompatActivity
             } catch (IOException ignored) {
             }
         }
+    }
+
+    private boolean chromeOk()
+    {
+        boolean result = false;
+        if(isAppInstalled("com.android.chrome") && isAppEnabled("com.android.chrome") && (chromeVersion() >= 45))
+        {
+            result = true;
+        }
+        return result;
+    }
+
+    private boolean isAppInstalled(String packageName) {
+        PackageManager pm = getPackageManager();
+        boolean installed = false;
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            installed = false;
+        }
+        return installed;
+    }
+    private boolean isAppEnabled(String packageName)
+    {
+        boolean appStatus = false;
+        try {
+            ApplicationInfo ai = getPackageManager().getApplicationInfo(packageName, 0);
+            appStatus = ai.enabled;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return appStatus;
+    }
+
+    private int chromeVersion()
+    {
+        int versionCode = 38;
+        String versionNumber;
+        PackageManager pm = getPackageManager();
+        PackageInfo pInfo = null;
+        try {
+            pInfo = pm.getPackageInfo("com.android.chrome", 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (pInfo != null) {
+            String version = pInfo.versionName;
+            versionNumber = version.substring(0,2);
+            if(isNumeric(versionNumber))
+            {
+                versionCode = Integer.parseInt(versionNumber);
+            }
+        }
+        return versionCode;
+    }
+    public static boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 }
