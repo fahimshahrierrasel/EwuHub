@@ -41,6 +41,7 @@ public class AllCoursesDataSource
             } while (cursor.moveToNext());
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
+                dbhelper.close();
             }
         }
         return allCourses;
