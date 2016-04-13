@@ -189,7 +189,7 @@ public class ApplicationHome extends AppCompatActivity
                                     }
                                 }
 
-                                if(notificationNumber >= notificationNum)
+                                if(notificationNumber > notificationNum)
                                 {
 
                                     SharedPreferences.Editor e = getPrefs.edit();
