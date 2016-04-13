@@ -59,7 +59,7 @@ public class Preferences extends PreferenceActivity
             {
                 final DownloadDBTask downloadDBTask = new DownloadDBTask(getActivity());
                 progressDialog = new ProgressDialog(getActivity());
-                progressDialog.setMessage("Updating the Database.\nPlease be patience..");
+                progressDialog.setMessage("Updating the Database.\nPlease be patient..");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
@@ -107,7 +107,7 @@ public class Preferences extends PreferenceActivity
             else if(key.equals("updateac"))
             {
                 progressDialog = new ProgressDialog(getActivity());
-                progressDialog.setMessage("Updating the Academic Calendar.\nPlease be patience..");
+                progressDialog.setMessage("Updating the Academic Calendar.\nPlease be patient..");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
@@ -151,7 +151,7 @@ public class Preferences extends PreferenceActivity
             else if(key.equals("updatelist"))
             {
                 progressDialog = new ProgressDialog(getActivity());
-                progressDialog.setMessage("Updating the Advising List.\nPlease be patience..");
+                progressDialog.setMessage("Updating the Advising List.\nPlease be patient..");
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
