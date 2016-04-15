@@ -39,13 +39,14 @@ public class EwuSpirit extends AppCompatActivity
     ProgressDialog progressDialog;
     ProgressDialogQuotes progressDialogQuotes;
     SecureRandom secureRandom;
-
+    private boolean doubleBackToExitPressedOnce;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), EwuSpirit.this);
         secureRandom = new SecureRandom();
         progressDialog = new ProgressDialog(EwuSpirit.this);
@@ -85,11 +86,25 @@ public class EwuSpirit extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Toast toast = Toast.makeText(this,"Press again to go EwuHub Home.", Toast.LENGTH_SHORT);
         if (drawer != null) {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
+            }
+            else {
+                if (doubleBackToExitPressedOnce) {
+                    super.onBackPressed();
+                }
+                this.doubleBackToExitPressedOnce = true;
+                toast.show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
             }
         }
     }

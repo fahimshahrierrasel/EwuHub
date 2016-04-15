@@ -57,7 +57,7 @@ public class ApplicationHome extends AppCompatActivity
     int versionCode;
     NotificationCompat.Builder builder;
     ChromeCustomTab chromeCustomTab;
-
+    private boolean doubleBackToExitPressedOnce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class ApplicationHome extends AppCompatActivity
 
 
         getNotification();
-
+        doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
 
         setContentView(R.layout.activity_application_home);
@@ -232,13 +232,31 @@ public class ApplicationHome extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        Toast toast = Toast.makeText(this, "Press again to Exit.", Toast.LENGTH_SHORT);
         if (drawer != null) {
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
-            } else {
-                super.onBackPressed();
+            }
+            else
+            {
+                if(doubleBackToExitPressedOnce)
+                {
+                    toast.cancel();
+                    super.onBackPressed();
+                }
+                this.doubleBackToExitPressedOnce = true;
+                toast.show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
             }
         }
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -747,4 +765,5 @@ public class ApplicationHome extends AppCompatActivity
         }
         return true;
     }
+
 }
