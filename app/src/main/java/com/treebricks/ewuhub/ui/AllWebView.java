@@ -24,7 +24,7 @@ import java.security.SecureRandom;
 
 public class AllWebView extends AppCompatActivity {
 
-    WebView myWebView;
+    ObservableWebView myWebView;
     private String url;
     ProgressDialog progressDialog;
     SecureRandom secureRandom;
@@ -42,7 +42,7 @@ public class AllWebView extends AppCompatActivity {
 
 
         secureRandom = new SecureRandom();
-        myWebView = (WebView) findViewById(R.id.webview);
+        myWebView = (ObservableWebView) findViewById(R.id.webview);
         progressDialogQuotes = new ProgressDialogQuotes();
         progressDialog = new ProgressDialog(AllWebView.this);
         progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
@@ -68,6 +68,27 @@ public class AllWebView extends AppCompatActivity {
 
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        if(myWebView != null)
+        {
+            myWebView.setOnScrollChangeListener(new ObservableWebView.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(WebView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if(oldScrollY < scrollY)
+                    {
+                        if (fab != null) {
+                            fab.hide();
+                        }
+                    }
+                    else
+                    {
+                        if (fab != null) {
+                            fab.show();
+                        }
+                    }
+                }
+            });
+        }
 
 
     }

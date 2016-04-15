@@ -58,6 +58,7 @@ public class ApplicationHome extends AppCompatActivity
     NotificationCompat.Builder builder;
     ChromeCustomTab chromeCustomTab;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +95,8 @@ public class ApplicationHome extends AppCompatActivity
             }
         });
         t.start();
+
+
         getNotification();
 
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
@@ -105,6 +108,7 @@ public class ApplicationHome extends AppCompatActivity
         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         // Create a new Boolean and preference and set it true
         versionCode = getPrefs.getInt("version_code",1);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -120,6 +124,7 @@ public class ApplicationHome extends AppCompatActivity
         newVersion();
 
     }
+
 
     public void newVersion()
     {

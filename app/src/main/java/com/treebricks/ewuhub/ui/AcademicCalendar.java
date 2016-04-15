@@ -1,9 +1,11 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -25,15 +27,37 @@ public class AcademicCalendar extends AppCompatActivity {
         final String graduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/graduate.html";
         final String graduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacygraduate.html";
 
-        final WebView calendarWebView = (WebView) findViewById(R.id.calendar_web_view);
+        final ObservableWebView calendarWebView = (ObservableWebView) findViewById(R.id.calendar_web_view);
         if (calendarWebView != null) {
             calendarWebView.setWebViewClient(new WebViewClient());
             calendarWebView.loadUrl(undergraduate);
         }
 
 
+
         // Fab menu
         final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
+
+        if (calendarWebView != null) {
+            calendarWebView.setOnScrollChangeListener(new ObservableWebView.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(WebView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if(oldScrollY < scrollY)
+                    {
+                        if (fabmenu != null) {
+                            fabmenu.hideMenu(true);
+                        }
+                    }
+                    else
+                    {
+                        if (fabmenu != null) {
+                            fabmenu.showMenu(true);
+                        }
+                    }
+                }
+            });
+        }
+
         final com.github.clans.fab.FloatingActionButton undergraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.undergraduate);
         if (undergraduateFab != null) {
             undergraduateFab.setOnClickListener(new View.OnClickListener() {
@@ -104,5 +128,8 @@ public class AcademicCalendar extends AppCompatActivity {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
     }
+
+
 }

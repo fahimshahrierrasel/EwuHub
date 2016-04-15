@@ -7,12 +7,12 @@
     tools:context="com.treebricks.ewuhub.ui.AllWebView">
 
 
-    <WebView
+    <com.treebricks.ewuhub.ui.ObservableWebView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/webview">
 
-    </WebView>
+    </com.treebricks.ewuhub.ui.ObservableWebView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -26,7 +26,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="28dp" />
+        android:layout_marginEnd="28dp"
+        />
 
 </RelativeLayout>
 
