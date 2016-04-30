@@ -59,6 +59,7 @@ public class ApplicationHome extends AppCompatActivity
     ChromeCustomTab chromeCustomTab;
     private boolean doubleBackToExitPressedOnce;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +97,6 @@ public class ApplicationHome extends AppCompatActivity
         });
         t.start();
 
-
         getNotification();
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
@@ -104,6 +104,7 @@ public class ApplicationHome extends AppCompatActivity
         setContentView(R.layout.activity_application_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         // Create a new Boolean and preference and set it true
@@ -319,7 +320,7 @@ public class ApplicationHome extends AppCompatActivity
         else if (id == R.id.nav_notice_board)
         {
             progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Getting the notice from the Database.\nPlease be patience..");
+            progressDialog.setMessage("Getting the notice from the Database.\nPlease be patient..");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIndeterminate(true);
             progressDialog.show();

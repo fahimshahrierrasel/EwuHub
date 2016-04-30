@@ -11,7 +11,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/text_icons</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -19,22 +19,17 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="MyHintText" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">#FFDF00</item>
+        <item name="android:textColor">@color/amber</item>
     </style>
 
     <!--Input field style-->
     <style name="MyEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">#ff1494</item>
-        <item name="colorControlActivated">#FFDF00</item>
+        <item name="colorControlActivated">@color/amber</item>
     </style>
 
     <style name="MyButton" parent="Theme.AppCompat.Light">
-        <item name="colorControlHighlight">@color/gold</item>
-    </style>
-
-    <style name="menu_labels_style">
-        <item name="android:background">@drawable/ic_action_tick</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="colorControlHighlight">@color/amber</item>
     </style>
 
 </resources>

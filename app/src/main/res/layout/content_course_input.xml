@@ -32,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="50dp"
-                android:textColor="#fbfbfb"
+                android:textColor="@color/text_icons"
                 android:gravity="center"
                 android:text="@string/course_input_description"
                 android:textSize="30sp"/>
@@ -46,7 +46,7 @@
                 android:layout_below="@+id/course_input_description"
                 app:errorEnabled="true"
                 app:counterMaxLength="7"
-                app:counterOverflowTextAppearance="@color/colorAccent"
+                app:counterOverflowTextAppearance="@color/amber"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
 
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/course_one_edit_text"
                     android:hint="@string/course_input_hint"
-                    android:textColor="#fff"
+                    android:textColor="@color/text_icons"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:inputType="text"
@@ -71,6 +71,7 @@
                 app:hintTextAppearance="@style/MyHintText"
                 android:id="@+id/text_field_two"
                 android:layout_below="@+id/text_field_one"
+                app:counterOverflowTextAppearance="@color/amber"
                 app:errorEnabled="true"
                 app:counterMaxLength="7"
                 app:counterEnabled="true"
@@ -81,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/course_two_edit_text"
                     android:hint="@string/course_input_hint"
-                    android:textColor="#fff"
+                    android:textColor="@color/text_icons"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:inputType="text"
@@ -99,6 +100,7 @@
                 android:id="@+id/text_field_three"
                 android:layout_below="@+id/text_field_two"
                 app:errorEnabled="true"
+                app:counterOverflowTextAppearance="@color/amber"
                 app:counterMaxLength="7"
                 app:counterEnabled="true"
                 android:layout_centerHorizontal="true">
@@ -108,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/course_three_edit_text"
                     android:hint="@string/course_input_hint"
-                    android:textColor="#fff"
+                    android:textColor="@color/text_icons"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:maxLength="7"
@@ -127,6 +129,7 @@
                 app:errorEnabled="true"
                 app:counterMaxLength="7"
                 app:counterEnabled="true"
+                app:counterOverflowTextAppearance="@color/amber"
                 android:layout_centerHorizontal="true">
 
                 <EditText
@@ -134,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/course_four_edit_text"
                     android:hint="@string/course_input_hint"
-                    android:textColor="#fff"
+                    android:textColor="@color/text_icons"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:maxLength="7"

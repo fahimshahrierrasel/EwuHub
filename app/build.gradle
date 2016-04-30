@@ -9,8 +9,8 @@ android {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.0.4 summer_update"
+        versionCode 5
+        versionName "1.0.5 summer_update"
     }
     buildTypes {
         release {
