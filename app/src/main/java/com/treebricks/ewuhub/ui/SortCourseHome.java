@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.treebricks.ewuhub.R;
 
+
 public class SortCourseHome extends AppCompatActivity
 {
 
@@ -25,6 +26,7 @@ public class SortCourseHome extends AppCompatActivity
     TextInputLayout textInputLayout;
     ActionBar actionBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,8 @@ public class SortCourseHome extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
+        totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         if (fab != null) {
@@ -41,13 +45,9 @@ public class SortCourseHome extends AppCompatActivity
                 {
 
                     //Get total number of course from edit text
-                    textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
-                    totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
-
                     if (totalCourseEditText != null) {
                         totalNumberOfCourseString = totalCourseEditText.getText().toString();
                     }
-
 
                     if(!totalNumberOfCourseString.equals(""))
                     {
@@ -76,6 +76,7 @@ public class SortCourseHome extends AppCompatActivity
                     {
                         textInputLayout.setError("Valid number of subject is required!");
                     }
+
                 }
             });
         }

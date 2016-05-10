@@ -43,6 +43,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
+
 public class ApplicationHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public boolean hasInternetConnection = false;
@@ -58,6 +59,7 @@ public class ApplicationHome extends AppCompatActivity
     NotificationCompat.Builder builder;
     ChromeCustomTab chromeCustomTab;
     private boolean doubleBackToExitPressedOnce;
+
 
 
     @Override
@@ -96,6 +98,8 @@ public class ApplicationHome extends AppCompatActivity
             }
         });
         t.start();
+
+
 
         getNotification();
         doubleBackToExitPressedOnce = false;
@@ -451,8 +455,10 @@ public class ApplicationHome extends AppCompatActivity
         return false;
     }
 
-    public void aplicaiton_home_onclick_listener(View view) {
+    public void aplicaiton_home_onclick_listener(View view)
+    {
         progressDialog = new ProgressDialog(this);
+
         progressDialog.setMessage("Going EWU Website");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIndeterminate(true);
@@ -489,6 +495,9 @@ public class ApplicationHome extends AppCompatActivity
                 }
             }
         }, 2000);
+
+
+
 
     }
 
