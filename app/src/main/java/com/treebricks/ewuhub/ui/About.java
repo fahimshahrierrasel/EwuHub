@@ -1,24 +1,23 @@
 package com.treebricks.ewuhub.ui;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-
 import com.treebricks.ewuhub.R;
 
 public class About extends AppCompatActivity {
+    ChromeCustomTab chromeCustomTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        chromeCustomTab = new ChromeCustomTab(getApplicationContext(), About.this);
+
     }
 
     public void aboutDeveloperOnClickHandler(View view) {
@@ -60,10 +59,8 @@ public class About extends AppCompatActivity {
 
     public void officialWebsiteOnClickHandler(View view)
     {
-        String url = "http://www.treebricks.com";
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
+        chromeCustomTab.runOnCustomTab("http://www.treebricks.com");
+
     }
 
     public void privacyPolicyOnClickHandler(View view)

@@ -48,6 +48,7 @@ public class CourseInput extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         // Recived data from previous activity
         Bundle recievedBundle = getIntent().getExtras();
         if(recievedBundle != null)
@@ -77,6 +78,7 @@ public class CourseInput extends AppCompatActivity {
             }
             editText4.setVisibility(View.INVISIBLE);
         }
+
 
 
 

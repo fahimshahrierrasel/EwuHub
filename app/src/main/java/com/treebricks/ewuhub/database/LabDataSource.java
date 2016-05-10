@@ -42,6 +42,7 @@ public class LabDataSource
             } while (cursor.moveToNext());
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
+                dbhelper.close();
             }
         }
         return allLabs;

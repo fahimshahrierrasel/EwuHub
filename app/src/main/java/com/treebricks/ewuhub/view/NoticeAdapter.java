@@ -116,7 +116,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
 
 
     }
-
+    // // TODO: 4/17/16 Add chrome custom tab on notice webview
     @Override
     public int getItemCount() {
         return mDataset.size();
