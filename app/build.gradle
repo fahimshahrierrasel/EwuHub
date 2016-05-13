@@ -7,7 +7,7 @@ android {
     buildToolsVersion "23.0.2"
     defaultConfig {
         applicationId "com.treebricks.ewuhub"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 5
         versionName "1.0.5 summer_update"
@@ -37,4 +37,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.github.paolorotolo:appintro:3.4.0'
     compile 'com.github.clans:fab:1.6.2'
+
 }

@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class SortCourseHome extends AppCompatActivity
         setContentView(R.layout.activity_sort_course_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         textInputLayout = (TextInputLayout) findViewById(R.id.number_input_layout);
         totalCourseEditText = (EditText) findViewById(R.id.total_course_edit_text);
