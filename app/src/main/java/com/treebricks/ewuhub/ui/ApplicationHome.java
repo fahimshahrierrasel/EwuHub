@@ -101,6 +101,7 @@ public class ApplicationHome extends AppCompatActivity
 
 
 
+
         getNotification();
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);

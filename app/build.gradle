@@ -37,4 +37,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.github.paolorotolo:appintro:3.4.0'
     compile 'com.github.clans:fab:1.6.2'
+
 }

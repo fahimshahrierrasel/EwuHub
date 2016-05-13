@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.ui.NoticeWebViewer;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.Random;
 
 
 
-public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder>
+public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeViewHolder>
 {
 
     String jsonData;
@@ -32,23 +34,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     private Context context = null;
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder
-    {
-        public TextView noticeTitle;
-        public TextView noticeDate;
 
-
-        public RelativeLayout relativeLayout;
-
-
-        public ViewHolder(View v)
-        {
-            super(v);
-            noticeTitle = (TextView) v.findViewById(R.id.notice_title);
-            noticeDate = (TextView) v.findViewById(R.id.notice_date);
-
-        }
-    }
 
     public void add(int position, NoticeView item)
     {
@@ -72,51 +58,61 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     }
 
     @Override
-    public NoticeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    public NoticeViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.notice_card,parent,false);
         ((CardView)v).setCardBackgroundColor(Color.parseColor(colors[randomNumber.nextInt(12)]));
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
+        NoticeViewHolder noticeViewHolder = new NoticeViewHolder(v);
+        return noticeViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(NoticeAdapter.ViewHolder holder, int position)
+    public void onBindViewHolder(NoticeViewHolder holder, int position)
     {
-        final String noticeUrl = mDataset.get(position).getNoticeUrl();
+
         final String noticeTitle = mDataset.get(position).getNoticeTitle();
         final String noticeDate = mDataset.get(position).getNoticeDate();
 
-
-
         holder.noticeTitle.setText(noticeTitle);
-        holder.noticeTitle.setSelected(true);
-        holder.noticeTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent webView = new Intent(context, NoticeWebViewer.class);
-                webView.putExtra("URL", noticeUrl);
-                webView.putExtra("JSON_DATA",jsonData);
-                context.startActivity(webView);
-            }
-        });
-
-
-
         holder.noticeDate.setText(noticeDate);
-        holder.noticeDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent webView = new Intent(context, NoticeWebViewer.class);
-                webView.putExtra("URL", noticeUrl);
-                webView.putExtra("JSON_DATA",jsonData);
-                context.startActivity(webView);
-            }
-        });
-
 
     }
     // // TODO: 4/17/16 Add chrome custom tab on notice webview
+
+    public class NoticeViewHolder extends RecyclerView.ViewHolder
+    {
+        public TextView noticeTitle;
+        public TextView noticeDate;
+
+
+
+        public NoticeViewHolder(View itemView)
+        {
+            super(itemView);
+            noticeTitle = (TextView) itemView.findViewById(R.id.notice_title);
+            noticeDate = (TextView) itemView.findViewById(R.id.notice_date);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v)
+                {
+                    int position = getAdapterPosition();
+                    final String noticeUrl = mDataset.get(position).getNoticeUrl();
+
+
+                    Intent webView = new Intent(context, NoticeWebViewer.class);
+                    webView.putExtra("URL", noticeUrl);
+                    webView.putExtra("JSON_DATA",jsonData);
+                    context.startActivity(webView);
+
+                }
+            });
+            
+        }
+    }
+
+
     @Override
     public int getItemCount() {
         return mDataset.size();

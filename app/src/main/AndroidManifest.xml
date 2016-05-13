@@ -2,45 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.treebricks.ewuhub">
 
+    <!-- Android Permissions for EWUHUB -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
+
+        <!-- Splash Screen Activity(This is the first activity to open) -->
         <activity
             android:name=".ui.SplashScreen"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- ApplicationHome activity -->
         <activity
             android:name=".ui.ApplicationHome"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-                <data android:scheme="https" />
-                    <data android:host="www.treebricks.com"
-                    android:pathPrefix="/ewuhub" />
-                <data android:scheme="treebricks"
-                    android:host="ewuhub" />
-            </intent-filter>
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ui.SortCourseHome"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -113,11 +106,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.NoticeActivity" />
         </activity>
-        <activity android:name=".ui.Preferences"/>
+        <activity android:name=".ui.Preferences" />
         <activity
             android:name=".ui.ApplicationIntro"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.CourseDetails"
             android:label="@string/title_activity_course_details"
@@ -136,6 +129,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
+
+        <meta-data
+            android:name="io.branch.sdk.BranchKey"
+            android:value="key_live_hbi0MxBIhyZ8WYIrgy8vbmbiuthzWdSs" />
+
     </application>
 
 </manifest>
