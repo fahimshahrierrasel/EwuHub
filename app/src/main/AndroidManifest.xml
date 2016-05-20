@@ -33,7 +33,18 @@
         <activity
             android:name=".ui.ApplicationHome"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <!--Firebase Notification Service-->
+
+        <service
+            android:name=".services.EwuhubFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
         <activity
             android:name=".ui.SortCourseHome"
             android:configChanges="orientation|screenSize|keyboardHidden"

@@ -4,7 +4,7 @@ android {
     signingConfigs {
     }
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
@@ -37,5 +37,7 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.paolorotolo:appintro:3.4.0'
     compile 'com.github.clans:fab:1.6.2'
+    compile 'com.google.firebase:firebase-messaging:9.0.0'
 
 }
+apply plugin: 'com.google.gms.google-services'
