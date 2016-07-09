@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.treebricks.ewuhub.R;
 
 public class About extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class About extends AppCompatActivity {
 
     public void aboutDeveloperOnClickHandler(View view) {
 
-        String web = "<!DOCTYPE html>\n" +
+        /*String web = "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "\t<body>\n" +
                 "<p><b>treebricks</b> is an application studio build by <b>EWU</b> students.\n" +
@@ -53,7 +55,12 @@ public class About extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        alert.show();
+        alert.show();*/
+
+        new MaterialStyledDialog(this)
+                .setTitle("Awesome!")
+                .setDescription("What can we improve? Your feedback is always welcome.")
+                .show();
 
     }
 
