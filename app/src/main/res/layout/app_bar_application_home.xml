@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -32,8 +30,8 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/application_home_image"
-                android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
+                android:fitsSystemWindows="true"
                 android:contentDescription="@string/mainpage_of_ewuhub" />
 
             <android.support.v7.widget.Toolbar
@@ -52,63 +50,108 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/text_icons"
-            android:paddingTop="2dp"
-            >
+            android:paddingTop="25dp"
+            android:orientation="vertical">
 
-            <TextView
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"
-                android:paddingStart="15dp"
-                android:paddingLeft="15dp"
-                android:paddingEnd="15dp"
-                android:paddingRight="15dp"
-                android:textColor="@color/article_title"
-                android:text="@string/history"/>
-            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:id="@+id/historycard"
+                android:layout_marginTop="2dip"
+                android:layout_marginBottom="2dip"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="5dp"
+                card_view:cardCornerRadius="5dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardPreventCornerOverlap="true">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
+                        android:paddingStart="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingRight="15dp"
+                        android:id="@+id/historytitle"
+                        android:textColor="@color/light_blue"
+                        android:text="@string/history" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16sp"
+                        android:fontFamily="serif"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_below="@+id/historytitle"
+                        android:text="@string/ewu_history"
+                        android:layout_gravity="center" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:fontFamily="serif"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:text="@string/ewu_history"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:paddingStart="15dp"
-                android:paddingLeft="15dp"
-                android:paddingEnd="15dp"
-                android:paddingRight="15dp"
-                android:fontFamily="serif"
-                android:textColor="@color/purple"
-                android:text="@string/mission_statement"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:paddingStart="10dp"
-                android:paddingLeft="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:gravity="start"
-                android:fontFamily="serif"
-                android:text="@string/ewu_mission_statement"/>
-
-
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="2dip"
+                android:layout_marginBottom="2dip"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="5dp"
+                card_view:cardCornerRadius="5dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                card_view:cardPreventCornerOverlap="true">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:paddingStart="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingEnd="15dp"
+                        android:id="@+id/statementtitle"
+                        android:paddingRight="15dp"
+                        android:fontFamily="serif"
+                        android:textColor="@color/purple"
+                        android:text="@string/mission_statement"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:paddingStart="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_below="@+id/statementtitle"
+                        android:gravity="start"
+                        android:fontFamily="serif"
+                        android:text="@string/ewu_mission_statement" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

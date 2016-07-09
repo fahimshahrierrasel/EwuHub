@@ -28,8 +28,5 @@
         <item name="colorControlActivated">@color/amber</item>
     </style>
 
-    <style name="MyButton" parent="Theme.AppCompat.Light">
-        <item name="colorControlHighlight">@color/amber</item>
-    </style>
 
 </resources>

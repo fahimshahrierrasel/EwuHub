@@ -5,7 +5,13 @@
     <color name="colorAccent">#CDDC39</color>
     <color name="text_icons">#FFFFFF</color>
     <color name="purple">#800080</color>
-    <color name="article_title">#3399FF</color>
+    <color name="light_blue">#03A9F4</color>
     <color name="amber">#FFC107</color>
+    <color name="indigo">#3F51B5</color>
+    <color name="green">#4CAF50</color>
+    <color name="yello">#FFEB3B</color>
+    <color name="teal">#009688</color>
+    <color name="red">#F44336</color>
+    <color name="blue_grey">#607D8B</color>
 
 </resources>
