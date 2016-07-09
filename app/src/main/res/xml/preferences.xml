@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.treebricks.ewuhub.ui.Preferences">
-    >
     <Preference
         android:title="Update Course Database"
         android:icon="@drawable/ic_update_db"
@@ -31,12 +30,4 @@
         android:summary="@string/feedback_summary"
         android:key="feedback">
     </Preference>
-
-    <!--<Preference
-        android:title="Open Source"
-        android:icon="@drawable/ic_open_source"
-        android:summary="Soon we will make all our work open source."
-        android:key="opensrc">
-    </Preference>-->
-
 </PreferenceScreen>

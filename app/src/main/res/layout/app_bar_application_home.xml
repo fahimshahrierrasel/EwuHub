@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/text_icons"
-            android:paddingTop="2dp"
+            android:paddingTop="25dp"
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
@@ -87,7 +87,7 @@
                         android:paddingEnd="15dp"
                         android:paddingRight="15dp"
                         android:id="@+id/historytitle"
-                        android:textColor="@color/article_title"
+                        android:textColor="@color/light_blue"
                         android:text="@string/history" />
                     <TextView
                         android:layout_width="match_parent"
@@ -97,6 +97,7 @@
                         android:gravity="center_vertical"
                         android:paddingStart="10dp"
                         android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
                         android:paddingEnd="5dp"
                         android:paddingRight="5dp"
                         android:layout_below="@+id/historytitle"
@@ -142,6 +143,7 @@
                         android:textSize="16sp"
                         android:paddingStart="10dp"
                         android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
                         android:paddingEnd="5dp"
                         android:paddingRight="5dp"
                         android:layout_below="@+id/statementtitle"

@@ -1,83 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true">
 
-        <ImageView
-            android:id="@+id/dev_logo"
-            android:layout_width="200dp"
-            android:layout_height="250dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/treebricks_dev_logo" />
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dev_logo"
-            android:id="@+id/ewuhub_credits"
-            android:fontFamily="serif"
             android:layout_centerHorizontal="true"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:text="EwuHub is a non-profit application of treebricks."/>
+            android:layout_margin="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp"
+            app:cardBackgroundColor="#68EFAD"
+            app:cardPreventCornerOverlap="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:id="@+id/card">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/app_logo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:padding="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/ic_launcher" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/app_logo"
+                    android:id="@+id/ewuhub_credits"
+                    android:padding="5dp"
+                    android:fontFamily="serif"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="22sp"
+                    android:gravity="center"
+                    android:text="EwuHub is a non-profit application of treebricks."/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="14sp"
+                    android:paddingBottom="5dp"
+                    android:layout_below="@id/ewuhub_credits"
+                    android:id="@+id/version_info"
+                    android:text="version"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
 
         <Button
             android:id="@+id/about_developer"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
+            style="@style/Widget.AppCompat.Button"
+            android:theme="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/green"
+            android:layout_centerHorizontal="true"
+            android:layout_width="220dp"
             android:layout_height="60dp"
-            android:layout_below="@+id/ewuhub_credits"
+            android:layout_below="@+id/card"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:text="About Developer"
             android:onClick="aboutDeveloperOnClickHandler"
-            android:theme="@style/MyButton"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/official_website"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
+            android:id="@+id/privacy_policy"
+            style="@style/Widget.AppCompat.Button"
+            android:theme="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/green"
+            android:layout_centerHorizontal="true"
+            android:layout_width="220dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_height="60dp"
             android:layout_below="@+id/about_developer"
-            android:text="Official Website"
-            android:theme="@style/MyButton"
-            android:onClick="officialWebsiteOnClickHandler"
-            android:textAllCaps="false" />
-        <Button
-            android:id="@+id/privacy_policy"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@+id/official_website"
-            android:theme="@style/MyButton"
             android:onClick="privacyPolicyOnClickHandler"
             android:text="Privacy Policy"
             android:textAllCaps="false" />
         <Button
             android:id="@+id/terms_of_use"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
+            style="@style/Widget.AppCompat.Button"
+            android:theme="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/green"
+            android:layout_centerHorizontal="true"
+            android:layout_width="220dp"
             android:layout_height="60dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_below="@+id/privacy_policy"
-            android:theme="@style/MyButton"
             android:onClick="termsOnClickHandler"
             android:text="Terms of Use"
             android:textAllCaps="false" />
         <Button
             android:id="@+id/credits"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
+            style="@style/Widget.AppCompat.Button"
+            android:theme="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/green"
+            android:layout_centerHorizontal="true"
+            android:layout_width="220dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
             android:layout_height="60dp"
             android:layout_below="@+id/terms_of_use"
-            android:theme="@style/MyButton"
             android:onClick="creditsOnClickHandler"
             android:text="Credits"
             android:textAllCaps="false" />
+        <ImageView
+            android:id="@+id/dev_logo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_below="@id/credits"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/treebricks_dev_logo" />
 
     </RelativeLayout>
 

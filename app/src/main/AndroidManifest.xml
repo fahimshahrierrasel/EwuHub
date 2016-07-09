@@ -117,7 +117,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.NoticeActivity" />
         </activity>
-        <activity android:name=".ui.Preferences" />
+        <activity
+            android:name=".ui.Preferences"
+            android:theme="@style/Theme.AppCompat.Light">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
+        </activity>
         <activity
             android:name=".ui.ApplicationIntro"
             android:label="@string/app_name"
