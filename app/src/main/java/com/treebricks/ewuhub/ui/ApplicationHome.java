@@ -24,18 +24,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.treebricks.ewuhub.R;
-import com.treebricks.ewuhub.services.EwuhubFirebaseMessagingService;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -45,9 +40,6 @@ import java.net.URL;
 public class ApplicationHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public boolean hasInternetConnection = false;
-    String jsonString = "NULL";
-    JSONObject jsonObject;
-    JSONArray jsonArray;
     private ProgressDialog progressDialog;
     int versionCode;
     ChromeCustomTab chromeCustomTab;
@@ -74,7 +66,6 @@ public class ApplicationHome extends AppCompatActivity
                     copyFile("undergraduate.html");
                     copyFile("pharmacyundergraduate.html");
                     copyFile("pharmacygraduate.html");
-                    copyFile("ewuspirit.html");
                     copyFile("advising_list.html");
 
 
@@ -92,7 +83,6 @@ public class ApplicationHome extends AppCompatActivity
         });
         t.start();
 
-        //FirebaseMessaging.getInstance();
 
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
@@ -119,15 +109,9 @@ public class ApplicationHome extends AppCompatActivity
         }
 
         newVersion();
-        //startNotificationService();
 
     }
 
-    void startNotificationService()
-    {
-        Intent intent = new Intent(ApplicationHome.this, EwuhubFirebaseMessagingService.class);
-        startService(intent);
-    }
 
 
     public void newVersion()

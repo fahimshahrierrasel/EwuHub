@@ -80,11 +80,9 @@ public class EwuSpirit extends AppCompatActivity
             webSettings.setJavaScriptEnabled(true);
         }
 
-        //final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
         advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
 
         spiritWebView.setWebViewClient(new WebViewClient());
-        //spiritWebView.loadUrl(ewuspirit);
 
         spiritWebView.setVisibility(View.INVISIBLE);
 
