@@ -24,7 +24,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.services.EwuhubFirebaseMessagingService;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -89,7 +92,7 @@ public class ApplicationHome extends AppCompatActivity
         });
         t.start();
 
-
+        //FirebaseMessaging.getInstance();
 
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
@@ -116,7 +119,14 @@ public class ApplicationHome extends AppCompatActivity
         }
 
         newVersion();
+        //startNotificationService();
 
+    }
+
+    void startNotificationService()
+    {
+        Intent intent = new Intent(ApplicationHome.this, EwuhubFirebaseMessagingService.class);
+        startService(intent);
     }
 
 
