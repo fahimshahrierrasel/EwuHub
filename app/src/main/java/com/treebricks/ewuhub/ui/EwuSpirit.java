@@ -16,17 +16,17 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.ProgressDialogQuotes;
-
 import java.security.SecureRandom;
 
 public class EwuSpirit extends AppCompatActivity
@@ -40,18 +40,35 @@ public class EwuSpirit extends AppCompatActivity
     ProgressDialogQuotes progressDialogQuotes;
     SecureRandom secureRandom;
     private boolean doubleBackToExitPressedOnce;
+    CardView instructionCard , facultyCard, routineCard, seatCard, creditCard,
+            advisiorCard, timeCard, advisingListCard, disclamierCard;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        instructionCard = (CardView) findViewById(R.id.instruction_card);
+        facultyCard = (CardView) findViewById(R.id.faculty_card);
+        routineCard = (CardView) findViewById(R.id.routine_card);
+        seatCard = (CardView) findViewById(R.id.seat_card);
+        creditCard = (CardView) findViewById(R.id.credit_card);
+        advisiorCard = (CardView) findViewById(R.id.advisior_card);
+        timeCard = (CardView) findViewById(R.id.advising_time_card);
+        advisingListCard = (CardView) findViewById(R.id.advising_list_card);
+        disclamierCard = (CardView) findViewById(R.id.disclamier_card);
+
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), EwuSpirit.this);
         secureRandom = new SecureRandom();
         progressDialog = new ProgressDialog(EwuSpirit.this);
         progressDialogQuotes = new ProgressDialogQuotes();
         progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+
+
         // spritWebView
         spiritWebView = (WebView) findViewById(R.id.ewu_spirit_webview);
         WebSettings webSettings = null;
@@ -63,11 +80,13 @@ public class EwuSpirit extends AppCompatActivity
             webSettings.setJavaScriptEnabled(true);
         }
 
-        final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
+        //final String ewuspirit = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/ewuspirit.html";
         advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
 
         spiritWebView.setWebViewClient(new WebViewClient());
-        spiritWebView.loadUrl(ewuspirit);
+        //spiritWebView.loadUrl(ewuspirit);
+
+        spiritWebView.setVisibility(View.INVISIBLE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,6 +100,19 @@ public class EwuSpirit extends AppCompatActivity
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
+    }
+
+    void cardHide()
+    {
+        instructionCard.setVisibility(View.INVISIBLE);
+        facultyCard.setVisibility(View.INVISIBLE);
+        routineCard.setVisibility(View.INVISIBLE);
+        seatCard.setVisibility(View.INVISIBLE);
+        creditCard.setVisibility(View.INVISIBLE);
+        advisiorCard.setVisibility(View.INVISIBLE);
+        timeCard.setVisibility(View.INVISIBLE);
+        advisingListCard.setVisibility(View.INVISIBLE);
+        disclamierCard.setVisibility(View.INVISIBLE);;
     }
 
     @Override
@@ -151,6 +183,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -170,6 +204,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -189,6 +225,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -208,6 +246,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -227,6 +267,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -246,6 +288,8 @@ public class EwuSpirit extends AppCompatActivity
 
             if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
             {
+                cardHide();
+                spiritWebView.setVisibility(View.VISIBLE);
                 progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                 progressDialog.show();
                 if(chromeOk())
@@ -277,6 +321,8 @@ public class EwuSpirit extends AppCompatActivity
         }
         else if(id == R.id.advising_sheet)
         {
+            cardHide();
+            spiritWebView.setVisibility(View.VISIBLE);
             progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
             progressDialog.show();
             spiritWebView.setWebViewClient(new MyWebViewClient());
@@ -320,6 +366,8 @@ public class EwuSpirit extends AppCompatActivity
 
             return true;
         }
+
+
 
         @Override
         public void onPageFinished(WebView view, String url) {

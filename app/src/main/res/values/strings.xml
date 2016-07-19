@@ -89,4 +89,38 @@
     <string name="mainpage_of_ewuhub">MainPage of EwuHub</string>
     <string name="history">History</string>
     <string name="mission_statement">Mission Statement</string>
+    <string name="bullet_symbol">\u2022</string>
+    <string name="ewuspirit_li_1">
+        Without connecting to the ewuwifi you can not access any of the services.
+        This means you can only access to this service if you are on East West University.
+    </string>
+    <string name="ewuspirit_li_2">
+        Swipe right from the left edge of your mobile screen to see the options.
+    </string>
+    <string name="ewuspirit_li_3">
+        Not every feature of Ewu Spirit work, but the options given here is still functional.
+    </string>
+    <string name="ewusprit_instruction_head">Instructions To Use Ewu Spirit on Mobile</string>
+    <string name="ewusprit_faculty_head">Faculty Evaluation</string>
+    <string name="ewusprit_faculty_description">Here you can evaluate your instructors of every course you have taken.
+        It\'s very helpful because most of the time ICS Lab PC is busy when you need this.</string>
+    <string name="ewusprit_routine_head">Class Schedule / Routine</string>
+    <string name="ewusprit_routine_description">You can check when will be your class, what is the room number etc.</string>
+    <string name="ewusprit_seat_head">Available Seat</string>
+    <string name="ewusprit_seat_description">You can check if there any available seat of a particular section you want to take.
+         This feature will be very helpful in advising day and for add droping course.</string>
+    <string name="ewusprit_credit_head">Credit Information</string>
+    <string name="ewusprit_credit_description">You can check how many credit you completed.
+        What is your current cgpa etc. This feature will not show the detail result.</string>
+    <string name="ewusprit_advisior_head">Who is your Advisior?</string>
+    <string name="ewusprit_advisior_description">You can check which faculty is your current advisior. Your advisior is your guardian in the university.</string>
+    <string name="ewusprit_advising_sch_head">Advising Schedule</string>
+    <string name="ewusprit_advising_sch_description">Here you can see which time you can advising on advising day. Remember this time is very important,
+        you should not late to go your advisior on advising day.</string>
+    <string name="ewusprit_advising_list_head">Advising Sheet</string>
+    <string name="ewusprit_advising_list_description">Advising Sheet will help you to see all the courses and its section, class start and end time, 
+        lab time, room number of the class</string>
+    <string name="ewuspirit_disclaimer_head">Disclaimer</string>
+    <string name="ewuspirit_disclaimer_des">All the functionality of the ewuspirit is from original ewuspirit website. If original ewuspirit functionality changes then ewuspirit functionality on this App will also change.
+        treebricks will not take any kind of responsibility of the use of ewuspirit.</string>
 </resources>
