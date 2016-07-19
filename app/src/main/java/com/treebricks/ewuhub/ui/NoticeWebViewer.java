@@ -1,31 +1,22 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.ProgressDialogQuotes;
-
 import java.security.SecureRandom;
 
 public class NoticeWebViewer extends AppCompatActivity {
 
 
     android.webkit.WebView noticeWebView;
-    private String jsonData;
-    ActionBar actionBar;
     ProgressDialog progressDialog;
     ProgressDialogQuotes progressDialogQuotes;
     SecureRandom secureRandom;
@@ -35,10 +26,11 @@ public class NoticeWebViewer extends AppCompatActivity {
         setContentView(R.layout.notice_web_viewer_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         progressDialogQuotes = new ProgressDialogQuotes();
         secureRandom = new SecureRandom();
         String url = getIntent().getExtras().getString("URL");
-        jsonData = getIntent().getExtras().getString("JSON_DATA");
+
         noticeWebView = (android.webkit.WebView) findViewById(R.id.notice_web_view);
 
         WebSettings webSettings = null;
@@ -47,7 +39,7 @@ public class NoticeWebViewer extends AppCompatActivity {
             webSettings.setBuiltInZoomControls(true);
             webSettings.setDisplayZoomControls(false);
             webSettings.setSupportZoom(true);
-            //webSettings.setJavaScriptEnabled(true);
+            webSettings.setJavaScriptEnabled(true);
 
             noticeWebView.setInitialScale(1);
             webSettings.setLoadWithOverviewMode(true);
@@ -66,7 +58,6 @@ public class NoticeWebViewer extends AppCompatActivity {
         if((keyCode == KeyEvent.KEYCODE_BACK) && noticeWebView.canGoBack())
         {
             Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
-            notice.putExtra("JSON_DATA", jsonData);
             startActivity(notice);
             finish();
             return true;
@@ -78,7 +69,6 @@ public class NoticeWebViewer extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
-        notice.putExtra("JSON_DATA", jsonData);
         startActivity(notice);
         finish();
     }

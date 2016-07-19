@@ -240,7 +240,7 @@ public class ApplicationHome extends AppCompatActivity
         else if (id == R.id.nav_notice_board)
         {
             progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Getting the notice from the Database.\nPlease be patient..");
+            progressDialog.setMessage("Checking Internet Connection..");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setIndeterminate(true);
             progressDialog.show();
@@ -252,37 +252,10 @@ public class ApplicationHome extends AppCompatActivity
                 public void run() {
                     if (hasInternetConnection)
                     {
-                        new NoticeBackgroundTask().execute();
                         final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
-                        final Bundle sentData = new Bundle();
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (!"NULL".equals(jsonString))
-                                {
-                                    if (jsonString != null && !jsonString.isEmpty()) {
-                                        sentData.putString("JSON_DATA", jsonString);
-                                        notice.putExtras(sentData);
-                                        progressDialog.hide();
-                                        progressDialog.cancel();
-                                        startActivity(notice);
-                                    }
-                                    else
-                                    {
-                                        progressDialog.hide();
-                                        progressDialog.cancel();
-                                        Toast.makeText(ApplicationHome.this, "Failed to Download the Notices!", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                                else
-                                {
-                                    progressDialog.hide();
-                                    progressDialog.cancel();
-                                    Toast.makeText(ApplicationHome.this, "Please, Try Again! Failed to get the Notice.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }, 4000);
+                        progressDialog.hide();
+                        progressDialog.cancel();
+                        startActivity(notice);
                     }
                     else
                     {
@@ -459,52 +432,6 @@ public class ApplicationHome extends AppCompatActivity
     }
 
 
-    public class NoticeBackgroundTask extends AsyncTask<Void, Void, String> {
-        String JSON_STRING;
-        String json_url;
-
-        @Override
-        protected void onPreExecute() {
-            json_url = "http://www.treebricks.com/ewuhub/notice_json_query.php";
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            try {
-                URL url = new URL(json_url);
-                HttpURLConnection httpsURLConnection = (HttpURLConnection) url.openConnection();
-                InputStream inputStream = httpsURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while ((JSON_STRING = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(JSON_STRING).append("\n");
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpsURLConnection.disconnect();
-
-                return stringBuilder.toString().trim();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            Log.i("Notice Board", "Data Recieved from Database");
-            jsonString = result;
-        }
-    }
 
 
 
