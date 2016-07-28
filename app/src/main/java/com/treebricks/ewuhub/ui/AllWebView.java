@@ -25,7 +25,7 @@ import java.security.SecureRandom;
 public class AllWebView extends AppCompatActivity {
 
     ObservableWebView myWebView;
-    private String url;
+    private String url,sheet;
     ProgressDialog progressDialog;
     SecureRandom secureRandom;
     ProgressDialogQuotes progressDialogQuotes;
@@ -38,6 +38,7 @@ public class AllWebView extends AppCompatActivity {
         Bundle recievedBundle = getIntent().getExtras();
         if(recievedBundle != null) {
             url = recievedBundle.getString("URL");
+            sheet = recievedBundle.getString("AdvisingSheet");
         }
 
 
@@ -60,6 +61,10 @@ public class AllWebView extends AppCompatActivity {
             if(!("http://result.ewubd.edu/").equals(url))
             {
                 myWebView.setInitialScale(90);
+            }
+            if(sheet.equals("Yes"))
+            {
+                myWebView.setInitialScale(120);
             }
 
             myWebView.setWebViewClient(new MyWebViewClient());

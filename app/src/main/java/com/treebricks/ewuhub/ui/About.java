@@ -1,11 +1,15 @@
 package com.treebricks.ewuhub.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -14,6 +18,7 @@ import com.treebricks.ewuhub.R;
 
 public class About extends AppCompatActivity {
     ChromeCustomTab chromeCustomTab;
+    ImageButton facebookButton;
     TextView version;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,23 @@ public class About extends AppCompatActivity {
 
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), About.this);
         version = (TextView) findViewById(R.id.version_info);
+        facebookButton = (ImageButton) findViewById(R.id.facebook_button);
 
+        facebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                try {
+                    Context context = view.getContext();
+
+                    context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                    Intent facebook = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/182185502168098"));
+                    startActivity(facebook);
+                } catch (Exception e) {
+                    chromeCustomTab.runOnCustomTab("https://www.facebook.com/treebricks");
+                }
+            }
+        });
         PackageManager manager = this.getPackageManager();
         PackageInfo info = null;
         try {

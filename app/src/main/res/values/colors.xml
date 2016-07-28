@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#1A237E</color>
-    <color name="colorAccent">#CDDC39</color>
-    <color name="text_icons">#FFFFFF</color>
-    <color name="purple">#800080</color>
-    <color name="light_blue">#03A9F4</color>
-    <color name="amber">#FFC107</color>
-    <color name="indigo">#3F51B5</color>
-    <color name="green">#4CAF50</color>
-    <color name="yello">#FFEB3B</color>
-    <color name="teal">#009688</color>
-    <color name="red">#F44336</color>
-    <color name="blue_grey">#607D8B</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#F6402C</color>
+    <color name="pink">#EB1460</color>
+    <color name="purple">#9C1AB1</color>
+    <color name="deep_purple">#6633B9</color>
+    <color name="indigo">#3D4DB7</color>
+    <color name="blue">#1093F5</color>
+    <color name="light_blue">#00A6F6</color>
+    <color name="cyan">#00BBD5</color>
+    <color name="teal">#009687</color>
+    <color name="green">#46AF4A</color>
+    <color name="light_green">#88C440</color>
+    <color name="lime">#CCDD1E</color>
+    <color name="yellow">#FFEC16</color>
+    <color name="amber">#FFC100</color>
+    <color name="orange">#FF9800</color>
+    <color name="deep_orange">#FF5505</color>
+    <color name="brown">#7A5547</color>
+    <color name="grey">#9D9D9D</color>
+    <color name="blue_grey">#5E7C8B</color>
+    <color name="azure">#3B579D</color>
+    <color name="medium_aquamarine">#5BE4B6</color>
 
 </resources>

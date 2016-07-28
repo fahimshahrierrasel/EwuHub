@@ -176,6 +176,18 @@ public class ApplicationHome extends AppCompatActivity
             Intent sortCourse = new Intent(this, SortCourseHome.class);
             startActivity(sortCourse);
         }
+        else if(id == R.id.advising_sheet)
+        {
+            String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
+
+            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+            Bundle sentData = new Bundle();
+            sentData.putString("URL", advising_list);
+            sentData.putString("AdvisingSheet", "Yes");
+            i.putExtras(sentData);
+            startActivity(i);
+
+        }
         else if (id == R.id.nav_result)
         {
             progressDialog = new ProgressDialog(this);

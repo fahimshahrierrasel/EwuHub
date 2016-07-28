@@ -12,7 +12,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        style="@style/SelectableItemBackground">
 
         <WebView
             android:id="@+id/ewu_spirit_webview"
@@ -50,7 +51,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_instruction_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -85,7 +86,7 @@
                     android:paddingRight="5dp"
                     android:paddingStart="0dp"
                     android:text="@string/ewuspirit_li_1"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <TextView
@@ -119,7 +120,7 @@
                     android:paddingRight="5dp"
                     android:paddingStart="0dp"
                     android:text="@string/ewuspirit_li_2"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <TextView
@@ -153,7 +154,7 @@
                     android:paddingRight="5dp"
                     android:paddingStart="0dp"
                     android:text="@string/ewuspirit_li_3"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
 
@@ -245,7 +246,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_routine_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -298,7 +299,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_seat_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -352,7 +353,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_credit_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -405,7 +406,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_advisior_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -459,7 +460,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewusprit_advising_sch_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -480,64 +481,11 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/advising_list_card"
-            android:layout_below="@+id/advising_time_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            card_view:cardBackgroundColor="#34495e"
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="5dp"
-            card_view:cardPreventCornerOverlap="true"
-            card_view:cardUseCompatPadding="true">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/advising_list_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:paddingEnd="15dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingStart="15dp"
-                    android:text="@string/ewusprit_advising_list_head"
-                    android:textColor="@color/text_icons"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/advising_list_head"
-                    android:layout_gravity="center"
-                    android:fontFamily="serif"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/text_icons"
-                    android:paddingBottom="10dp"
-                    android:paddingEnd="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="5dp"
-                    android:paddingStart="10dp"
-                    android:text="@string/ewusprit_advising_list_description"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
 
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/disclamier_card"
-            android:layout_below="@id/advising_list_card"
+            android:layout_below="@id/advisior_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dip"
@@ -567,7 +515,7 @@
                     android:paddingRight="15dp"
                     android:paddingStart="15dp"
                     android:text="@string/ewuspirit_disclaimer_head"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -577,7 +525,7 @@
                     android:layout_below="@+id/disclamier_head"
                     android:layout_gravity="center"
                     android:fontFamily="serif"
-                    android:textColor="@color/text_icons"
+                    android:textColor="@color/white"
                     android:gravity="center_vertical"
                     android:paddingBottom="10dp"
                     android:paddingEnd="5dp"

@@ -7,6 +7,11 @@
             android:icon="@drawable/ic_advising_helper"
             android:title="@string/advising_helper"/>
         <item
+            android:id="@+id/advising_sheet"
+            android:icon="@drawable/ic_advising_sheet"
+            android:title="@string/advising_list"
+            />
+        <item
             android:id="@+id/nav_result"
             android:icon="@drawable/ic_result"
             android:title="@string/result" />
@@ -28,6 +33,7 @@
             android:id="@+id/ewusprit"
             android:icon="@drawable/ic_ewu_sprit"
             android:title="@string/ewuspirit"/>
+
     </group>
     <item android:title="@string/secondary_group_app_home">
         <menu>

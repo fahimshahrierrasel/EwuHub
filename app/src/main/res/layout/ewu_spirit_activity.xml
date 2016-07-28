@@ -19,6 +19,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        style="@style/SelectableItemBackground"
+        android:background="#ffffff"
         app:headerLayout="@layout/nav_header_ewu_spirit"
         app:menu="@menu/ewu_spirit_activity_drawer" />
 

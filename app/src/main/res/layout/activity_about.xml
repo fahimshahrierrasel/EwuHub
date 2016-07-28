@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
+        style="@style/SelectableItemBackground"
         android:clickable="true">
 
         <android.support.v7.widget.CardView
@@ -18,7 +19,7 @@
             android:layout_margin="20dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="15dp"
-            app:cardBackgroundColor="#68EFAD"
+            app:cardBackgroundColor="@color/medium_aquamarine"
             app:cardPreventCornerOverlap="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -61,11 +62,13 @@
             android:id="@+id/about_developer"
             style="@style/Widget.AppCompat.Button"
             android:theme="@style/Widget.AppCompat.Button.Colored"
-            android:textColor="@color/green"
+            android:background="@color/medium_aquamarine"
             android:layout_centerHorizontal="true"
             android:layout_width="220dp"
+            android:layout_margin="5dp"
             android:layout_height="60dp"
             android:layout_below="@+id/card"
+
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:text="About Developer"
@@ -76,8 +79,9 @@
             android:id="@+id/privacy_policy"
             style="@style/Widget.AppCompat.Button"
             android:theme="@style/Widget.AppCompat.Button.Colored"
-            android:textColor="@color/green"
+            android:background="@color/medium_aquamarine"
             android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
             android:layout_width="220dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -90,9 +94,10 @@
             android:id="@+id/terms_of_use"
             style="@style/Widget.AppCompat.Button"
             android:theme="@style/Widget.AppCompat.Button.Colored"
-            android:textColor="@color/green"
+            android:background="@color/medium_aquamarine"
             android:layout_centerHorizontal="true"
             android:layout_width="220dp"
+            android:layout_margin="5dp"
             android:layout_height="60dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -104,9 +109,10 @@
             android:id="@+id/credits"
             style="@style/Widget.AppCompat.Button"
             android:theme="@style/Widget.AppCompat.Button.Colored"
-            android:textColor="@color/green"
+            android:background="@color/medium_aquamarine"
             android:layout_centerHorizontal="true"
             android:layout_width="220dp"
+            android:layout_margin="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_height="60dp"
@@ -114,6 +120,18 @@
             android:onClick="creditsOnClickHandler"
             android:text="Credits"
             android:textAllCaps="false" />
+        <ImageButton
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:id="@+id/facebook_button"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/credits"
+            android:src="@drawable/fb_blue_72"
+            android:background="@color/azure"
+            android:layout_centerHorizontal="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"/>
+
         <ImageView
             android:id="@+id/dev_logo"
             android:layout_width="match_parent"
@@ -123,7 +141,7 @@
             android:layout_marginBottom="10dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_below="@id/credits"
+            android:layout_below="@id/facebook_button"
             android:layout_centerHorizontal="true"
             android:src="@drawable/treebricks_dev_logo" />
 

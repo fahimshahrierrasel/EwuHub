@@ -26,11 +26,6 @@
             android:id="@+id/nav_advising_schedule"
             android:icon="@drawable/ic_advising_time"
             android:title="@string/advising_time_schedule" />
-        <item
-            android:id="@+id/advising_sheet"
-            android:icon="@drawable/ic_advising_sheet"
-            android:title="@string/advising_list"
-            />
     </group>
     <item android:title="@string/additional_info">
         <menu>

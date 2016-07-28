@@ -35,13 +35,13 @@ public class EwuSpirit extends AppCompatActivity
 
     ChromeCustomTab chromeCustomTab;
     WebView spiritWebView;
-    String advising_list;
+
     ProgressDialog progressDialog;
     ProgressDialogQuotes progressDialogQuotes;
     SecureRandom secureRandom;
     private boolean doubleBackToExitPressedOnce;
     CardView instructionCard , facultyCard, routineCard, seatCard, creditCard,
-            advisiorCard, timeCard, advisingListCard, disclamierCard;
+            advisiorCard, timeCard, disclamierCard;
 
 
     @Override
@@ -58,7 +58,6 @@ public class EwuSpirit extends AppCompatActivity
         creditCard = (CardView) findViewById(R.id.credit_card);
         advisiorCard = (CardView) findViewById(R.id.advisior_card);
         timeCard = (CardView) findViewById(R.id.advising_time_card);
-        advisingListCard = (CardView) findViewById(R.id.advising_list_card);
         disclamierCard = (CardView) findViewById(R.id.disclamier_card);
 
         doubleBackToExitPressedOnce = false;
@@ -80,7 +79,7 @@ public class EwuSpirit extends AppCompatActivity
             webSettings.setJavaScriptEnabled(true);
         }
 
-        advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
+
 
         spiritWebView.setWebViewClient(new WebViewClient());
 
@@ -109,7 +108,6 @@ public class EwuSpirit extends AppCompatActivity
         creditCard.setVisibility(View.INVISIBLE);
         advisiorCard.setVisibility(View.INVISIBLE);
         timeCard.setVisibility(View.INVISIBLE);
-        advisingListCard.setVisibility(View.INVISIBLE);
         disclamierCard.setVisibility(View.INVISIBLE);;
     }
 
@@ -316,15 +314,6 @@ public class EwuSpirit extends AppCompatActivity
             {
                 Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
             }
-        }
-        else if(id == R.id.advising_sheet)
-        {
-            cardHide();
-            spiritWebView.setVisibility(View.VISIBLE);
-            progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-            progressDialog.show();
-            spiritWebView.setWebViewClient(new MyWebViewClient());
-            spiritWebView.loadUrl(advising_list);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
