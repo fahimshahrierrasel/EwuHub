@@ -62,7 +62,7 @@ public class AllWebView extends AppCompatActivity {
             {
                 myWebView.setInitialScale(90);
             }
-            if(sheet.equals("Yes"))
+            if(sheet != null && "Yes".equals(sheet))
             {
                 myWebView.setInitialScale(120);
             }

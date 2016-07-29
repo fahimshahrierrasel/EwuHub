@@ -42,6 +42,8 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
         this.context = context;
     }
 
+
+
     @Override
     public NoticeViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {

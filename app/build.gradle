@@ -7,14 +7,13 @@ android {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 5
-        versionName "1.0.5 early_fall_2016"
+        versionCode 7
+        versionName "1.0.7 early_fall_2016_V3"
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
         }
     }
@@ -37,7 +36,7 @@ dependencies {
     compile 'com.github.clans:fab:1.6.2'
     compile 'com.google.firebase:firebase-core:9.2.1'
     compile 'com.google.firebase:firebase-messaging:9.2.1'
-    compile 'com.google.firebase:firebase-database:9.2.1'
+    compile 'com.firebaseui:firebase-ui:0.4.3'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.2'
 }
 apply plugin: 'com.google.gms.google-services'

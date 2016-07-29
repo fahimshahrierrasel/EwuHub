@@ -213,6 +213,7 @@ public class ApplicationHome extends AppCompatActivity
                             Intent i = new Intent(ApplicationHome.this, AllWebView.class);
                             Bundle sentData = new Bundle();
                             sentData.putString("URL", "http://result.ewubd.edu/");
+                            sentData.putString("AdvisingSheet", "No");
                             i.putExtras(sentData);
                             progressDialog.hide();
                             progressDialog.cancel();
@@ -302,6 +303,7 @@ public class ApplicationHome extends AppCompatActivity
                             Intent i = new Intent(ApplicationHome.this, AllWebView.class);
                             Bundle sentData = new Bundle();
                             sentData.putString("URL", "http://lib.ewubd.edu/");
+                            sentData.putString("AdvisingSheet", "No");
                             i.putExtras(sentData);
                             progressDialog.hide();
                             progressDialog.cancel();
@@ -366,6 +368,7 @@ public class ApplicationHome extends AppCompatActivity
                         Intent i = new Intent(ApplicationHome.this, AllWebView.class);
                         Bundle sentData = new Bundle();
                         sentData.putString("URL", "http://www.ewubd.edu");
+                        sentData.putString("AdvisingSheet", "No");
                         i.putExtras(sentData);
                         progressDialog.hide();
                         progressDialog.cancel();
