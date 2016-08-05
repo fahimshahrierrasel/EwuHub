@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.treebricks.ewuhub.ui.Preferences">
     <Preference
-        android:title="Update Course Database"
         android:icon="@drawable/ic_update_db"
+        android:key="updatedb"
         android:summary="@string/update_summary"
-        android:key="updatedb">
-    </Preference>
+        android:title="Update Course Database" />
 
     <Preference
-        android:title="Update Academic Calender"
         android:icon="@drawable/ic_update_calendar"
+        android:key="updateac"
         android:summary="@string/update_academic_calendar"
-        android:key="updateac">
-    </Preference>
+        android:title="Update Academic Calender" />
 
     <Preference
-        android:title="Update Advising List"
         android:icon="@drawable/ic_update_list"
+        android:key="updatelist"
         android:summary="@string/update_advising_list"
-        android:key="updatelist">
-    </Preference>
+        android:title="Update Advising List" />
 
     <Preference
-        android:title="Feedback"
         android:icon="@drawable/ic_feedback"
+        android:key="feedback"
         android:summary="@string/feedback_summary"
-        android:key="feedback">
-    </Preference>
+        android:title="Feedback" />
 </PreferenceScreen>

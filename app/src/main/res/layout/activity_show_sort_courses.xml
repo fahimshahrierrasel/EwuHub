@@ -30,34 +30,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|right"
-        fab:menu_showShadow="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        fab:menu_colorNormal="#DA4336"
+        fab:menu_colorPressed="#E75043"
+        fab:menu_colorRipple="#99FFFFFF"
         fab:menu_shadowColor="#66000000"
         fab:menu_shadowRadius="4dp"
         fab:menu_shadowXOffset="1dp"
         fab:menu_shadowYOffset="3dp"
-        fab:menu_colorNormal="#DA4336"
-        fab:menu_colorPressed="#E75043"
-        fab:menu_colorRipple="#99FFFFFF"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp">
+        fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_action_tick"
-            fab:fab_size="mini"
-            fab:fab_label="Sort by Section" />
+            fab:fab_label="Sort by Section"
+            fab:fab_size="mini" />
 
         <!--<com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_tick"
             fab:fab_size="mini"
-            fab:fab_label="Sort by Weekday" />
+            fab:fab_label="Sort by Weekday"/>
 
 
+            android:src="@drawable/ic_action_tick"
 -->
     </com.github.clans.fab.FloatingActionMenu>
 

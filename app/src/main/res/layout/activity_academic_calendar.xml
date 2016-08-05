@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.treebricks.ewuhub.ui.AcademicCalendar">
@@ -31,8 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/undergraduate"
@@ -68,7 +68,6 @@
 
 
     </com.github.clans.fab.FloatingActionMenu>
-
 
 
 </android.support.design.widget.CoordinatorLayout>

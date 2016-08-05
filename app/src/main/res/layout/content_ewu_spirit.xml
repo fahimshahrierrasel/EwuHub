@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ewu_spirit_placeholder"
@@ -11,23 +10,23 @@
     tools:showIn="@layout/app_bar_ewu_spirit">
 
     <RelativeLayout
+        style="@style/SelectableItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        style="@style/SelectableItemBackground">
+        android:layout_height="match_parent">
 
         <WebView
             android:id="@+id/ewu_spirit_webview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/instruction_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -163,13 +162,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/faculty_card"
-            android:layout_below="@+id/instruction_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@+id/instruction_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -216,13 +215,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/routine_card"
-            android:layout_below="@+id/faculty_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@+id/faculty_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -269,13 +268,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/seat_card"
-            android:layout_below="@+id/routine_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@+id/routine_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -323,13 +322,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/credit_card"
-            android:layout_below="@id/seat_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@id/seat_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -376,13 +375,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/advisior_card"
-            android:layout_below="@id/credit_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@id/credit_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -430,13 +429,13 @@
 
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/advising_time_card"
-            android:layout_below="@+id/advisior_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@+id/advisior_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -482,16 +481,15 @@
         </android.support.v7.widget.CardView>
 
 
-
         <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/disclamier_card"
-            android:layout_below="@id/advisior_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dip"
+            android:layout_below="@id/advisior_card"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="2dip"
+            android:layout_marginTop="2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
@@ -525,7 +523,6 @@
                     android:layout_below="@+id/disclamier_head"
                     android:layout_gravity="center"
                     android:fontFamily="serif"
-                    android:textColor="@color/white"
                     android:gravity="center_vertical"
                     android:paddingBottom="10dp"
                     android:paddingEnd="5dp"
@@ -533,6 +530,7 @@
                     android:paddingRight="5dp"
                     android:paddingStart="10dp"
                     android:text="@string/ewuspirit_disclaimer_des"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
