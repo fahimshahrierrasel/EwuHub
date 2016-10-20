@@ -9,11 +9,17 @@
 
 # Add any project specific keep options here:
 
-#-keep class com.github.paolorotolo.appintro.**
+-keep class com.github.paolorotolo.appintro.**
 
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+   public *;
+}
+
+-keep class model.*
+-keep public class com.treebricks.ewuhub.**
+-keep public class model.*
+-keep class com.afollestad.material-dialogs.**
+-keep class com.flaviofaria.**
