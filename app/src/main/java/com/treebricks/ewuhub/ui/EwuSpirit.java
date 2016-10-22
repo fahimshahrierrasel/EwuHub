@@ -2,9 +2,6 @@ package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
@@ -28,12 +25,12 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.utility.AppInstalled;
 import com.treebricks.ewuhub.view.ProgressDialogQuotes;
 
 import java.security.SecureRandom;
 
 public class EwuSpirit extends AppCompatActivity{
-
 
     ChromeCustomTab chromeCustomTab;
     WebView spiritWebView;
@@ -47,6 +44,7 @@ public class EwuSpirit extends AppCompatActivity{
 
     AccountHeader ewspiritAccountHeadeer = null;
     Drawer ewspiritDrawer = null;
+    private AppInstalled chromeBrowser;
 
 
     @Override
@@ -55,6 +53,8 @@ public class EwuSpirit extends AppCompatActivity{
         setContentView(R.layout.ewu_spirit_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        chromeBrowser = new AppInstalled(this);
 
         instructionCard = (CardView) findViewById(R.id.instruction_card);
         facultyCard = (CardView) findViewById(R.id.faculty_card);
@@ -121,7 +121,7 @@ public class EwuSpirit extends AppCompatActivity{
                                     {
                                         progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                                         progressDialog.show();
-                                        if(chromeOk())
+                                        if(chromeBrowser.isChromeEnabled("com.android.chrome"))
                                         {
                                             Handler handler = new Handler();
                                             handler.postDelayed(new Runnable() {
@@ -263,7 +263,7 @@ public class EwuSpirit extends AppCompatActivity{
                                         spiritWebView.setVisibility(View.VISIBLE);
                                         progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
                                         progressDialog.show();
-                                        if(chromeOk())
+                                        if(chromeBrowser.isChromeEnabled("com.android.chrome"))
                                         {
                                             Handler handler = new Handler();
                                             handler.postDelayed(new Runnable() {
@@ -398,70 +398,5 @@ public class EwuSpirit extends AppCompatActivity{
         }
         return isConnectionAvail;
     }
-    private boolean chromeOk()
-    {
-        boolean result = false;
-        if(isAppInstalled("com.android.chrome") && isAppEnabled("com.android.chrome") && (chromeVersion() >= 45))
-        {
-            result = true;
-        }
-        return result;
-    }
 
-    private boolean isAppInstalled(String packageName) {
-        PackageManager pm = getPackageManager();
-        boolean installed = false;
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            installed = true;
-        } catch (PackageManager.NameNotFoundException e) {
-            installed = false;
-        }
-        return installed;
-    }
-    private boolean isAppEnabled(String packageName)
-    {
-        boolean appStatus = false;
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(packageName, 0);
-            appStatus = ai.enabled;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return appStatus;
-    }
-
-    private int chromeVersion()
-    {
-        int versionCode = 38;
-        String versionNumber;
-        PackageManager pm = getPackageManager();
-        PackageInfo pInfo = null;
-        try {
-            pInfo = pm.getPackageInfo("com.android.chrome", 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (pInfo != null) {
-            String version = pInfo.versionName;
-            versionNumber = version.substring(0,2);
-            if(isNumeric(versionNumber))
-            {
-                versionCode = Integer.parseInt(versionNumber);
-            }
-        }
-        return versionCode;
-    }
-    public static boolean isNumeric(String str)
-    {
-        try
-        {
-            double d = Double.parseDouble(str);
-        }
-        catch(NumberFormatException nfe)
-        {
-            return false;
-        }
-        return true;
-    }
 }

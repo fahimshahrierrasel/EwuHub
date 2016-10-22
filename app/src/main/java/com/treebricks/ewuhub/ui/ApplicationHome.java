@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -29,6 +27,7 @@ import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.utility.AppInstalled;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,6 +47,7 @@ public class ApplicationHome extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce;
     private Drawer homePageDrawer = null;
     private AccountHeader homePageAccountHeader = null;
+    private AppInstalled chromeBrowser;
 
 
 
@@ -94,6 +94,8 @@ public class ApplicationHome extends AppCompatActivity {
         setContentView(R.layout.activity_application_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        chromeBrowser = new AppInstalled(this);
 
 
         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -167,7 +169,7 @@ public class ApplicationHome extends AppCompatActivity {
                                         public void run() {
                                             if (hasInternetConnection)
                                             {
-                                                if(chromeOk())
+                                                if(chromeBrowser.isChromeEnabled("com.android.chrome"))
                                                 {
                                                     chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
                                                     progressDialog.hide();
@@ -245,7 +247,7 @@ public class ApplicationHome extends AppCompatActivity {
                                         public void run() {
                                             if (hasInternetConnection)
                                             {
-                                                if(chromeOk())
+                                                if(chromeBrowser.isChromeEnabled("com.android.chrome"))
                                                 {
                                                     chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
                                                     progressDialog.hide();
@@ -384,8 +386,7 @@ public class ApplicationHome extends AppCompatActivity {
             @Override
             public void run() {
                 if (hasInternetConnection) {
-
-                    if(chromeOk())
+                    if(chromeBrowser.isChromeEnabled("com.android.chrome"))
                     {
                         chromeCustomTab.runOnCustomTab("http://www.ewubd.edu");
                         progressDialog.hide();
@@ -411,10 +412,6 @@ public class ApplicationHome extends AppCompatActivity {
                 }
             }
         }, 2000);
-
-
-
-
     }
 
 
@@ -531,73 +528,6 @@ public class ApplicationHome extends AppCompatActivity {
             } catch (IOException ignored) {
             }
         }
-    }
-
-    private boolean chromeOk()
-    {
-        boolean result = false;
-        if(isAppInstalled("com.android.chrome") && isAppEnabled("com.android.chrome") && (chromeVersion() >= 45))
-        {
-            result = true;
-        }
-        return result;
-    }
-
-    private boolean isAppInstalled(String packageName) {
-        PackageManager pm = getPackageManager();
-        boolean installed = false;
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            installed = true;
-        } catch (PackageManager.NameNotFoundException e) {
-            installed = false;
-        }
-        return installed;
-    }
-    private boolean isAppEnabled(String packageName)
-    {
-        boolean appStatus = false;
-        try {
-            ApplicationInfo ai = getPackageManager().getApplicationInfo(packageName, 0);
-            appStatus = ai.enabled;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return appStatus;
-    }
-
-    private int chromeVersion()
-    {
-        int versionCode = 38;
-        String versionNumber;
-        PackageManager pm = getPackageManager();
-        PackageInfo pInfo = null;
-        try {
-            pInfo = pm.getPackageInfo("com.android.chrome", 0);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (pInfo != null) {
-            String version = pInfo.versionName;
-            versionNumber = version.substring(0,2);
-            if(isNumeric(versionNumber))
-            {
-                versionCode = Integer.parseInt(versionNumber);
-            }
-        }
-        return versionCode;
-    }
-    public static boolean isNumeric(String str)
-    {
-        try
-        {
-            double d = Double.parseDouble(str);
-        }
-        catch(NumberFormatException nfe)
-        {
-            return false;
-        }
-        return true;
     }
 
 }
