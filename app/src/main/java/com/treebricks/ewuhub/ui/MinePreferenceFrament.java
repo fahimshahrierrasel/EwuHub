@@ -185,10 +185,11 @@ public class MinePreferenceFrament extends PreferenceFragment
             Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
             startActivity(Intent.createChooser(Email, "Send Feedback:"));
         }
-            /*else if(key.equals("opensrc"))
-            {
-                Toast.makeText(getActivity(),"Soon you will see us.",Toast.LENGTH_LONG).show();
-            }*/
+        else if(key.equals("developer"))
+        {
+            Intent about = new Intent(getActivity(), About.class);
+            startActivity(about);
+        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 

@@ -11,26 +11,28 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+
 import java.security.SecureRandom;
 
-public class EwuSpirit extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class EwuSpirit extends AppCompatActivity{
 
 
     ChromeCustomTab chromeCustomTab;
@@ -42,6 +44,9 @@ public class EwuSpirit extends AppCompatActivity
     private boolean doubleBackToExitPressedOnce;
     CardView instructionCard , facultyCard, routineCard, seatCard, creditCard,
             advisiorCard, timeCard, disclamierCard;
+
+    AccountHeader ewspiritAccountHeadeer = null;
+    Drawer ewspiritDrawer = null;
 
 
     @Override
@@ -80,23 +85,225 @@ public class EwuSpirit extends AppCompatActivity
         }
 
 
+        // Navigation Drawer Header
+        ewspiritAccountHeadeer = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.ewu_spirit)
+                .withCompactStyle(false)
+                .withSavedInstance(savedInstanceState)
+                .build();
+        // Navigation Drawer
+        ewspiritDrawer = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withAccountHeader(ewspiritAccountHeadeer)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withIcon(R.drawable.evaluate).withName(R.string.faculy_evaluation).withIdentifier(1),
+                        new PrimaryDrawerItem().withIcon(R.drawable.schedule).withName(R.string.class_schedule_routine).withIdentifier(2),
+                        new PrimaryDrawerItem().withIcon(R.drawable.presentation).withName(R.string.check_available_seat).withIdentifier(3),
+                        new PrimaryDrawerItem().withIcon(R.drawable.graph).withName(R.string.credit_info).withIdentifier(4),
+                        new PrimaryDrawerItem().withIcon(R.drawable.man).withName(R.string.check_advisior).withIdentifier(5),
+                        new PrimaryDrawerItem().withIcon(R.drawable.clock).withName(R.string.advising_time_schedule).withIdentifier(6)
+                )
+                .addStickyDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.ewu_spirit_homepage).withIcon(R.drawable.torch).withIdentifier(7)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        if(drawerItem != null)
+                        {
+                            switch ((int) drawerItem.getIdentifier())
+                            {
+                                case 1:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        if(chromeOk())
+                                        {
+                                            Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    chromeCustomTab.runOnCustomTab("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                }
+                                            }, 2000);
+                                        }
+                                        else
+                                        {
+                                            spiritWebView.setWebViewClient(new MyWebViewClient());
+                                            spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
+                                        }
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                                case 2:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        spiritWebView.setWebViewClient(new MyWebViewClient());
+                                        spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/index.php?option=room&op=student&act=check");
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                                case 3:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        spiritWebView.setWebViewClient(new MyWebViewClient());
+                                        spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+
+                                }
+                                case 4:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        spiritWebView.setWebViewClient(new MyWebViewClient());
+                                        spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                                case 5:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        spiritWebView.setWebViewClient(new MyWebViewClient());
+                                        spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                                case 6:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        spiritWebView.setWebViewClient(new MyWebViewClient());
+                                        spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                                case 7:
+                                {
+                                    if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        cardHide();
+                                        spiritWebView.setVisibility(View.VISIBLE);
+                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
+                                        progressDialog.show();
+                                        if(chromeOk())
+                                        {
+                                            Handler handler = new Handler();
+                                            handler.postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    chromeCustomTab.runOnCustomTab("http://172.16.100.31:8020/webnet/");
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                }
+                                            }, 2000);
+                                        }
+                                        else
+                                        {
+                                            spiritWebView.setWebViewClient(new MyWebViewClient());
+                                            spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
+                                        }
+                                    }
+                                    else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+                })
+                .build();
+
+
 
         spiritWebView.setWebViewClient(new WebViewClient());
 
         spiritWebView.setVisibility(View.INVISIBLE);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        if (drawer != null) {
-            drawer.addDrawerListener(toggle);
-        }
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(this);
-        }
     }
 
     void cardHide()
@@ -113,214 +320,25 @@ public class EwuSpirit extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         Toast toast = Toast.makeText(this,"Press again to go EwuHub Home.", Toast.LENGTH_SHORT);
-        if (drawer != null) {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
+
+        if (ewspiritDrawer.isDrawerOpen()) {
+            ewspiritDrawer.closeDrawer();
+        } else {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
             }
-            else {
-                if (doubleBackToExitPressedOnce) {
-                    super.onBackPressed();
+            this.doubleBackToExitPressedOnce = true;
+            toast.show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
                 }
-                this.doubleBackToExitPressedOnce = true;
-                toast.show();
-
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        doubleBackToExitPressedOnce = false;
-                    }
-                }, 2000);
-            }
+            }, 2000);
         }
-    }
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        if (id == R.id.nav_faculty_evaluation)
-        {
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                if(chromeOk())
-                {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            chromeCustomTab.runOnCustomTab("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                        }
-                    }, 2000);
-                }
-                else
-                {
-                    spiritWebView.setWebViewClient(new MyWebViewClient());
-                    spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
-                }
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (id == R.id.nav_class_schedule)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/index.php?option=room&op=student&act=check");
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (id == R.id.nav_available_seat)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/knowseat.php");
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (id == R.id.nav_credit_info)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/crdinfo.php");
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (id == R.id.nav_advisior)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/advisor.php");
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if (id == R.id.nav_advising_schedule)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                spiritWebView.setWebViewClient(new MyWebViewClient());
-                spiritWebView.loadUrl("http://172.16.100.31:8020/registration/webschedule.php");
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-        else if(id == R.id.nav_ewu_sprit_homepage)
-        {
-
-            if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
-            {
-                cardHide();
-                spiritWebView.setVisibility(View.VISIBLE);
-                progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                progressDialog.show();
-                if(chromeOk())
-                {
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            chromeCustomTab.runOnCustomTab("http://172.16.100.31:8020/webnet/");
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                        }
-                    }, 2000);
-                }
-                else
-                {
-                    spiritWebView.setWebViewClient(new MyWebViewClient());
-                    spiritWebView.loadUrl("http://172.16.100.31:8020/webnet/");
-                }
-            }
-            else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to Internet.",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"You are not connected to \"ewuwifi\".",Toast.LENGTH_LONG).show();
-            }
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer != null) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        return true;
     }
 
     public static String getCurrentSsid(Context context) {

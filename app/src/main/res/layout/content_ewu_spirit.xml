@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.treebricks.ewuhub.ui.EwuSpirit"
-    tools:showIn="@layout/app_bar_ewu_spirit">
+    tools:showIn="@layout/ewu_spirit_activity">
 
     <RelativeLayout
         style="@style/SelectableItemBackground"

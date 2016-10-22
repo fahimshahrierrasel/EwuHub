@@ -25,4 +25,11 @@
         android:key="feedback"
         android:summary="@string/feedback_summary"
         android:title="Feedback" />
+
+    <Preference
+        android:icon="@drawable/developer"
+        android:key="developer"
+        android:summary="Hey, Do you want to know more about EwuHub and treebricks?"
+        android:title="About" />
+
 </PreferenceScreen>

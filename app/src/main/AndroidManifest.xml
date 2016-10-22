@@ -90,7 +90,7 @@
             android:label="About">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
+                android:value="com.treebricks.ewuhub.ui.Preferences" />
         </activity>
         <activity
             android:name=".ui.EwuSpirit"
@@ -122,7 +122,7 @@
         </activity>
         <activity
             android:name=".ui.Preferences"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />

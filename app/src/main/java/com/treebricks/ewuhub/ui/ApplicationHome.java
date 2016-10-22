@@ -8,25 +8,28 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,13 +40,14 @@ import java.net.URL;
 
 
 
-public class ApplicationHome extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class ApplicationHome extends AppCompatActivity {
     public boolean hasInternetConnection = false;
     private ProgressDialog progressDialog;
     int versionCode;
     ChromeCustomTab chromeCustomTab;
     private boolean doubleBackToExitPressedOnce;
+    private Drawer homePageDrawer = null;
+    private AccountHeader homePageAccountHeader = null;
 
 
 
@@ -96,17 +100,209 @@ public class ApplicationHome extends AppCompatActivity
         // Create a new Boolean and preference and set it true
         versionCode = getPrefs.getInt("version_code",1);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        if (drawer != null) {
-            drawer.addDrawerListener(toggle);
-        }
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        if (navigationView != null) {
-            navigationView.setNavigationItemSelectedListener(this);
-        }
+        // Navigation Drawer Header
+        homePageAccountHeader = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.long_dark)
+                .withCompactStyle(false)
+                .withSavedInstance(savedInstanceState)
+                .build();
+        // Navigation Drawer
+        homePageDrawer = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withAccountHeader(homePageAccountHeader)
+                .addDrawerItems(
+                        new ExpandableDrawerItem().withName("Advising").withIcon(R.drawable.sign).withArrowColor(Color.parseColor("#009688")).withSubItems(
+                                new PrimaryDrawerItem().withIcon(R.drawable.salvation).withName(R.string.advising_helper).withIdentifier(1),
+                                new PrimaryDrawerItem().withIcon(R.drawable.clipboard).withName(R.string.advising_list).withIdentifier(2)
+                        ),
+                        new PrimaryDrawerItem().withIcon(R.drawable.diploma).withName(R.string.result).withIdentifier(3),
+                        new PrimaryDrawerItem().withIcon(R.drawable.calendar).withName(R.string.academic_calender).withIdentifier(4),
+                        new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
+                        new PrimaryDrawerItem().withIcon(R.drawable.bookshelf).withName(R.string.ewu_library).withIdentifier(6),
+                        new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
+                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName("Newsfeed").withIdentifier(8),
+                        new PrimaryDrawerItem().withIcon(R.drawable.chat).withName("Friendly Chat (Experimental)").withIdentifier(9)
+                )
+                .addStickyDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(10)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        if(drawerItem != null)
+                        {
+                            switch ((int) drawerItem.getIdentifier())
+                            {
+                                case 1:
+                                {
+                                    Intent sortCourse = new Intent(ApplicationHome.this, SortCourseHome.class);
+                                    startActivity(sortCourse);
+                                    break;
+                                }
+                                case 2:
+                                {
+                                    String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
+
+                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                                    Bundle sentData = new Bundle();
+                                    sentData.putString("URL", advising_list);
+                                    sentData.putString("AdvisingSheet", "Yes");
+                                    i.putExtras(sentData);
+                                    startActivity(i);
+                                    break;
+                                }
+                                case 3:
+                                {
+                                    progressDialog = new ProgressDialog(ApplicationHome.this);
+                                    progressDialog.setMessage("Connecting to the Result Server.");
+                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                    progressDialog.setIndeterminate(true);
+                                    progressDialog.show();
+                                    startNewTask();
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (hasInternetConnection)
+                                            {
+                                                if(chromeOk())
+                                                {
+                                                    chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                }
+                                                else
+                                                {
+                                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                                                    Bundle sentData = new Bundle();
+                                                    sentData.putString("URL", "http://result.ewubd.edu/");
+                                                    sentData.putString("AdvisingSheet", "No");
+                                                    i.putExtras(sentData);
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                    startActivity(i);
+                                                }
+
+
+                                            } else {
+                                                progressDialog.hide();
+                                                progressDialog.cancel();
+                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    }, 2000);
+                                    break;
+                                }
+                                case 4:
+                                {
+                                    Intent academicCalender = new Intent(ApplicationHome.this, AcademicCalendar.class);
+                                    startActivity(academicCalender);
+                                    break;
+                                }
+                                case 5:
+                                {
+                                    progressDialog = new ProgressDialog(ApplicationHome.this);
+                                    progressDialog.setMessage("Checking Internet Connection..");
+                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                    progressDialog.setIndeterminate(true);
+                                    progressDialog.show();
+
+                                    startNewTask();
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (hasInternetConnection)
+                                            {
+                                                final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
+                                                progressDialog.hide();
+                                                progressDialog.cancel();
+                                                startActivity(notice);
+                                            }
+                                            else
+                                            {
+                                                progressDialog.hide();
+                                                progressDialog.cancel();
+                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    }, 2000);
+                                    break;
+                                }
+                                case 6:
+                                {
+                                    progressDialog = new ProgressDialog(ApplicationHome.this);
+                                    progressDialog.setMessage("Going to Ewu Library...");
+                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                    progressDialog.setIndeterminate(true);
+                                    progressDialog.show();
+                                    startNewTask();
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if (hasInternetConnection)
+                                            {
+                                                if(chromeOk())
+                                                {
+                                                    chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                }
+                                                else
+                                                {
+                                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                                                    Bundle sentData = new Bundle();
+                                                    sentData.putString("URL", "http://lib.ewubd.edu/");
+                                                    sentData.putString("AdvisingSheet", "No");
+                                                    i.putExtras(sentData);
+                                                    progressDialog.hide();
+                                                    progressDialog.cancel();
+                                                    startActivity(i);
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                progressDialog.hide();
+                                                progressDialog.cancel();
+                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    }, 2000);
+
+                                    break;
+                                }
+                                case 7:
+                                {
+                                    Intent ewuSpirt = new Intent(ApplicationHome.this, EwuSpirit.class);
+                                    startActivity(ewuSpirt);
+                                    break;
+                                }
+                                case 8:
+                                {
+                                    Toast.makeText(ApplicationHome.this, "Newsfeed service is coming soon.", Toast.LENGTH_LONG).show();
+                                    break;
+                                }
+                                case 9:
+                                {
+                                    Toast.makeText(ApplicationHome.this, "Friendly chat is coming soon.", Toast.LENGTH_LONG).show();
+                                    break;
+                                }
+                                case 10:
+                                {
+                                    Intent i = new Intent(ApplicationHome.this, Preferences.class);
+                                    startActivity(i);
+                                    break;
+                                }
+                            }
+                        }
+                        return true;
+                    }
+                })
+                .build();
 
         newVersion();
 
@@ -136,195 +332,27 @@ public class ApplicationHome extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         Toast toast = Toast.makeText(this, "Press again to Exit.", Toast.LENGTH_SHORT);
-        if (drawer != null) {
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START);
-            }
-            else
+        if (homePageDrawer.isDrawerOpen()) {
+            homePageDrawer.closeDrawer();
+        } else {
+            if(doubleBackToExitPressedOnce)
             {
-                if(doubleBackToExitPressedOnce)
-                {
-                    toast.cancel();
-                    super.onBackPressed();
-                }
-                this.doubleBackToExitPressedOnce = true;
-                toast.show();
-
-                new Handler().postDelayed(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        doubleBackToExitPressedOnce = false;
-                    }
-                }, 2000);
+                toast.cancel();
+                super.onBackPressed();
             }
-        }
+            this.doubleBackToExitPressedOnce = true;
+            toast.show();
 
-    }
+            new Handler().postDelayed(new Runnable() {
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_sort_course)
-        {
-            Intent sortCourse = new Intent(this, SortCourseHome.class);
-            startActivity(sortCourse);
-        }
-        else if(id == R.id.advising_sheet)
-        {
-            String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
-
-            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-            Bundle sentData = new Bundle();
-            sentData.putString("URL", advising_list);
-            sentData.putString("AdvisingSheet", "Yes");
-            i.putExtras(sentData);
-            startActivity(i);
-
-        }
-        else if (id == R.id.nav_result)
-        {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Connecting to the Result Server.");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
-            startNewTask();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (hasInternetConnection)
-                    {
-                        if(chromeOk())
-                        {
-                            chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                        }
-                        else
-                        {
-                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                            Bundle sentData = new Bundle();
-                            sentData.putString("URL", "http://result.ewubd.edu/");
-                            sentData.putString("AdvisingSheet", "No");
-                            i.putExtras(sentData);
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                            startActivity(i);
-                        }
-
-
-                    } else {
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                    }
+                    doubleBackToExitPressedOnce = false;
                 }
             }, 2000);
         }
-        else if (id == R.id.nav_academic_calender)
-        {
-            Intent academicCalender = new Intent(this, AcademicCalendar.class);
-            startActivity(academicCalender);
-        }
-        else if (id == R.id.nav_notice_board)
-        {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Checking Internet Connection..");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
 
-            startNewTask();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (hasInternetConnection)
-                    {
-                        final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        startActivity(notice);
-                    }
-                    else
-                    {
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }, 2000);
-        }
-        else if (id == R.id.nav_preferences)
-        {
-            Intent i = new Intent(this, Preferences.class);
-            startActivity(i);
-        }
-        else if (id == R.id.nav_about)
-        {
-            Intent about = new Intent(this, About.class);
-            startActivity(about);
-        }
-        else if (id == R.id.ewusprit)
-        {
-            Intent ewuSpirt = new Intent(this, EwuSpirit.class);
-            startActivity(ewuSpirt);
-        }
-        else if (id == R.id.nav_library)
-        {
-            progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Going to Ewu Library...");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setIndeterminate(true);
-            progressDialog.show();
-            startNewTask();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (hasInternetConnection)
-                    {
-                        if(chromeOk())
-                        {
-                            chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                        }
-                        else
-                        {
-                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                            Bundle sentData = new Bundle();
-                            sentData.putString("URL", "http://lib.ewubd.edu/");
-                            sentData.putString("AdvisingSheet", "No");
-                            i.putExtras(sentData);
-                            progressDialog.hide();
-                            progressDialog.cancel();
-                            startActivity(i);
-                        }
-
-                    }
-                    else
-                    {
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }, 2000);
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer != null) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        return true;
     }
 
     public void startNewTask() {
