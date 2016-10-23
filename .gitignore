@@ -74,8 +74,6 @@ Temporary Items
 *.log.*
 *.sig
 
-pkg/
-src/
 
 ### Google Services JSON ###
 google-services.json

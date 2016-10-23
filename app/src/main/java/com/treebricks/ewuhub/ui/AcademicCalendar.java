@@ -4,16 +4,29 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
 import com.github.clans.fab.FloatingActionMenu;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.view.CalendarEvent;
+import com.treebricks.ewuhub.view.CalendarExpandableAdapter;
+import com.treebricks.ewuhub.view.CalendarParent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AcademicCalendar extends AppCompatActivity {
     ActionBar actionBar;
+
+    CalendarExpandableAdapter calendarExpandableAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +39,12 @@ public class AcademicCalendar extends AppCompatActivity {
         final String undergraduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacyundergraduate.html";
         final String graduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/graduate.html";
         final String graduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacygraduate.html";
-
+/*
         final ObservableWebView calendarWebView = (ObservableWebView) findViewById(R.id.calendar_web_view);
         if (calendarWebView != null) {
             calendarWebView.setWebViewClient(new WebViewClient());
             calendarWebView.loadUrl(undergraduate);
         }
-
 
 
         // Fab menu
@@ -120,7 +132,31 @@ public class AcademicCalendar extends AppCompatActivity {
                     }
                 }
             });
+        }*/
+        ArrayList<CalendarParent> allParents = new ArrayList<>();
+
+        for(int i = 0; i < 10; i++)
+        {
+            ArrayList<CalendarEvent> anEvent = new ArrayList<>();
+            anEvent.add(new CalendarEvent("This is calendar event : " + String.valueOf(i+1)));
+            CalendarParent cp = new CalendarParent();
+            cp.setEventDate(String.valueOf(i+1)+"/" + String.valueOf(i+1)+"/" + String.valueOf(i+1));
+            cp.setEventDay("Day " + String.valueOf(i+1));
+            cp.setChildList(anEvent);
+            allParents.add(cp);
         }
+        RecyclerView expanRecycler = (RecyclerView) findViewById(R.id.calendat_recyclerView);
+
+        calendarExpandableAdapter = new CalendarExpandableAdapter(this, allParents);
+
+
+        expanRecycler.setAdapter(calendarExpandableAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        expanRecycler.setLayoutManager(linearLayoutManager);
+
+
+
+
 
 
         actionBar = getSupportActionBar();
@@ -130,6 +166,7 @@ public class AcademicCalendar extends AppCompatActivity {
         }
 
     }
+
 
 
 }
