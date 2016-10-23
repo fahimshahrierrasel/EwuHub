@@ -1,32 +1,35 @@
 package com.treebricks.ewuhub.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
 import com.github.clans.fab.FloatingActionMenu;
+import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.Gson;
 import com.treebricks.ewuhub.R;
-import com.treebricks.ewuhub.view.CalendarEvent;
-import com.treebricks.ewuhub.view.CalendarExpandableAdapter;
-import com.treebricks.ewuhub.view.CalendarParent;
+import com.treebricks.ewuhub.view.AcademicCalendarEvent;
+import com.treebricks.ewuhub.view.AcademicCalendarAdapter;
+import com.treebricks.ewuhub.view.AcademicCalendarModel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AcademicCalendar extends AppCompatActivity {
     ActionBar actionBar;
-
-    CalendarExpandableAdapter calendarExpandableAdapter;
+    private int mScrollOffset = 4;
+    AcademicCalendarAdapter academicCalendarAdapter;
+    private View mShadowView;
+    FloatingActionMenu fabMenu;
+    String actionBarTitle = "Academic Calendar";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,86 +37,93 @@ public class AcademicCalendar extends AppCompatActivity {
         setContentView(R.layout.activity_academic_calendar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        final String undergraduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/undergraduate.html";
-        final String undergraduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacyundergraduate.html";
-        final String graduate = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/graduate.html";
-        final String graduatePharmacy = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/pharmacygraduate.html";
-/*
-        final ObservableWebView calendarWebView = (ObservableWebView) findViewById(R.id.calendar_web_view);
-        if (calendarWebView != null) {
-            calendarWebView.setWebViewClient(new WebViewClient());
-            calendarWebView.loadUrl(undergraduate);
-        }
+        actionBar = getSupportActionBar();
 
 
-        // Fab menu
-        final FloatingActionMenu fabmenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
 
-        if (calendarWebView != null) {
-            calendarWebView.setOnScrollChangeListener(new ObservableWebView.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(WebView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if(oldScrollY < scrollY)
-                    {
-                        if (fabmenu != null) {
-                            fabmenu.hideMenu(true);
-                        }
-                    }
-                    else
-                    {
-                        if (fabmenu != null) {
-                            fabmenu.showMenu(true);
-                        }
-                    }
+
+        fabMenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
+        mShadowView = findViewById(R.id.shadow_view);
+
+        mShadowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fabMenu.close(true);
+            }
+        });
+
+        mShadowView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                fabMenu.close(true);
+                return false;
+            }
+        });
+
+
+        fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if(fabMenu.isOpened())
+                {
+                    mShadowView.setVisibility(View.VISIBLE);
                 }
-            });
-        }
+                else {
+                    mShadowView.setVisibility(View.GONE);
+                }
+            }
+        });
 
-        final com.github.clans.fab.FloatingActionButton undergraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.undergraduate);
+
+        final FloatingActionButton undergraduateFab = (FloatingActionButton) findViewById(R.id.undergraduate);
         if (undergraduateFab != null) {
             undergraduateFab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
                 {
-                    if (fabmenu != null) {
-                        fabmenu.close(true);
+                    if (fabMenu != null) {
+                        fabMenu.close(true);
                     }
-                    if (calendarWebView != null) {
-                        calendarWebView.loadUrl(undergraduate);
+                    if(actionBar != null)
+                    {
+                        actionBar.setTitle("Undergraduate Fall-2016");
                     }
+
                 }
             });
         }
 
-        final com.github.clans.fab.FloatingActionButton pharmacyUndergraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.pharmacyundergraduate);
+        final FloatingActionButton pharmacyUndergraduateFab = (FloatingActionButton) findViewById(R.id.pharmacyundergraduate);
         if (pharmacyUndergraduateFab != null) {
             pharmacyUndergraduateFab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
                 {
-                    if (fabmenu != null) {
-                        fabmenu.close(true);
+                    if (fabMenu != null) {
+                        fabMenu.close(true);
                     }
-                    if (calendarWebView != null) {
-                        calendarWebView.loadUrl(undergraduatePharmacy);
+                    if(actionBar != null)
+                    {
+                        actionBar.setTitle("Pharmacy Undergrad Fall-2016");
                     }
                 }
             });
         }
 
-        final com.github.clans.fab.FloatingActionButton GraduateFab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.graduate);
+        FloatingActionButton GraduateFab = (FloatingActionButton) findViewById(R.id.graduate);
         if (GraduateFab != null) {
             GraduateFab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
                 {
-                    if (fabmenu != null) {
-                        fabmenu.close(true);
+                    if (fabMenu != null) {
+                        fabMenu.close(true);
                     }
-                    if (calendarWebView != null) {
-                        calendarWebView.loadUrl(graduate);
+                    if(actionBar != null)
+                    {
+                        actionBar.setTitle("Graduate Fall-2016");
                     }
+
                 }
             });
         }
@@ -124,38 +134,58 @@ public class AcademicCalendar extends AppCompatActivity {
                 @Override
                 public void onClick(View view)
                 {
-                    if (fabmenu != null) {
-                        fabmenu.close(true);
+                    if (fabMenu != null) {
+                        fabMenu.close(true);
                     }
-                    if (calendarWebView != null) {
-                        calendarWebView.loadUrl(graduatePharmacy);
+                    if(actionBar != null)
+                    {
+                        actionBar.setTitle("Pharmacy Graduate Fall-2016");
                     }
+
                 }
             });
-        }*/
-        ArrayList<CalendarParent> allParents = new ArrayList<>();
-
-        for(int i = 0; i < 10; i++)
-        {
-            ArrayList<CalendarEvent> anEvent = new ArrayList<>();
-            anEvent.add(new CalendarEvent("This is calendar event : " + String.valueOf(i+1)));
-            CalendarParent cp = new CalendarParent();
-            cp.setEventDate(String.valueOf(i+1)+"/" + String.valueOf(i+1)+"/" + String.valueOf(i+1));
-            cp.setEventDay("Day " + String.valueOf(i+1));
-            cp.setChildList(anEvent);
-            allParents.add(cp);
         }
+
+        String calendarJsonString = loadJSONFromAsset();
+        AcademicCalendarModel academicCalendarModel = new AcademicCalendarModel();
+
+
+        if(calendarJsonString != null || !"".equals(calendarJsonString))
+        {
+            Gson gson = new Gson();
+            academicCalendarModel = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+            actionBarTitle = academicCalendarModel.getLebel() + " " + academicCalendarModel.getSemester();
+        }
+        if(actionBar != null)
+        {
+            actionBar.setTitle(actionBarTitle);
+        }
+
+
         RecyclerView expanRecycler = (RecyclerView) findViewById(R.id.calendat_recyclerView);
 
-        calendarExpandableAdapter = new CalendarExpandableAdapter(this, allParents);
-
-
-        expanRecycler.setAdapter(calendarExpandableAdapter);
+        academicCalendarAdapter = new AcademicCalendarAdapter(academicCalendarModel.getAcademicCalendarEvents(), this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         expanRecycler.setLayoutManager(linearLayoutManager);
 
 
+        expanRecycler.setAdapter(academicCalendarAdapter);
 
+
+        expanRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (Math.abs(dy) > mScrollOffset) {
+                    if (dy > 0) {
+                        fabMenu.hideMenu(true);
+
+                    } else {
+                        fabMenu.showMenu(true);
+                    }
+                }
+            }
+        });
 
 
 
@@ -165,6 +195,26 @@ public class AcademicCalendar extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+    }
+
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            File file = new File(getBaseContext().getApplicationInfo().dataDir+"/json/undergraduate.json");
+            if(file.exists())
+            {
+                InputStream is = new FileInputStream(file);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                json = new String(buffer, "UTF-8");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 
 

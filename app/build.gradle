@@ -47,7 +47,7 @@ dependencies {
     // Repository for Appintro
     compile 'com.github.paolorotolo:appintro:3.4.0'
     // Repository for Fab
-    compile 'com.github.clans:fab:1.6.2'
+    compile 'com.github.clans:fab:1.6.4'
     // Repository for Dialog
     compile 'com.afollestad.material-dialogs:commons:0.8.6.2'
     // Repository for Kenbursview(Image)
@@ -56,7 +56,9 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.6.0@aar') {
         transitive = true
     }
-    // Repository for expandable recyclerview
-    compile 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
+    // Repository for expandable-layout
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
+    // Repository for gson
+    compile 'com.google.code.gson:gson:2.7'
 }
 apply plugin: 'com.google.gms.google-services'

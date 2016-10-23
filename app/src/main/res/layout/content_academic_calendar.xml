@@ -8,10 +8,6 @@
     tools:context="com.treebricks.ewuhub.ui.AcademicCalendar"
     tools:showIn="@layout/activity_academic_calendar">
 
-    <!--<com.treebricks.ewuhub.ui.ObservableWebView
-        android:id="@+id/calendar_web_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

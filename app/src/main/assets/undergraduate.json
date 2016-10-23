@@ -1,0 +1,125 @@
+{
+  "semester": "Fall 2016",
+  "lebel": "Undergraduate",
+  "events": [{
+    "Date": "August 30",
+    "Day": "Tuesday",
+    "Event": "University Reopens"
+  }, {
+    "Date": "September 01",
+    "Day": "Thursday",
+    "Event": "Departmental Orientation and Advising of Newly Admitted Students and Knowing your Campus: Orientation with the academic and other facilities of the University"
+  }, {
+    "Date": "September 04",
+    "Day": "Sunday",
+    "Event": "First Day of Classes Payment of tuition fees for continuing students: As per the Payment Schedule provided in the table below (04 September 2016 to 20 September 2016)"
+  }, {
+    "Date": "September 06",
+    "Day": "Tuesday",
+    "Event": "Last day to Add Courses\n  Last day to Drop Course(s)/Semester with 100% Refund"
+  }, {
+    "Date": "September 09-17",
+    "Day": "Friday-Saturday",
+    "Event": "Holiday: Eid-Ul-Azha *"
+  }, {
+    "Date": "September 18",
+    "Day": "Sunday",
+    "Event": "Regular Classes Resume"
+  }, {
+    "Date": "September 19",
+    "Day": "Monday",
+    "Event": "Last day to clear Incomplete grades ( “I” grade )"
+  }, {
+    "Date": "September 20",
+    "Day": "Tuesday",
+    "Event": "Last day of payment of tuition fees without late fee\n Last day of payment only for adding course(s)"
+  }, {
+    "Date": "September 25",
+    "Day": "Sunday",
+    "Event": "Last day of Tuition Payment with Late Fee of Tk. 500/-"
+  }, {
+    "Date": "September 28",
+    "Day": "Wednesday",
+    "Event": "Last day of Tuition Payment with Late Fee of Tk. 1000/-"
+  }, {
+    "Date": "October 03",
+    "Day": "Monday",
+    "Event": "Last day to Drop Course(s)/Semester with 85% Refund"
+  }, {
+    "Date": "October 04",
+    "Day": "Tuesday",
+    "Event": "Blocking of ID Numbers of Defaulting Students"
+  }, {
+    "Date": "October 10-11",
+    "Day": "Monday-Tuesday",
+    "Event": "Holiday: Durgapuja (Bijoya Nabami & Dashami)"
+  }, {
+    "Date": "October 12",
+    "Day": "Wednesday",
+    "Event": "Holiday: Muharram (Ashura) *"
+  }, {
+    "Date": "October 16-20",
+    "Day": "Sunday-Thursday",
+    "Event": "Mid Term I Examinations"
+  }, {
+    "Date": "October 30",
+    "Day": "Sunday",
+    "Event": "Last Day to Drop Course(s)/Semester with 50% Refund"
+  }, {
+    "Date": "November 13-17",
+    "Day": "Sunday-Thursday",
+    "Event": "Mid Term II Examinations"
+  }, {
+    "Date": "November 26",
+    "Day": "Saturday",
+    "Event": "Advising of Courses for Spring 2017 (ongoing students)"
+  }, {
+    "Date": "November 28",
+    "Day": "Monday",
+    "Event": "Last day of Withdrawal of Course(s)/Semester (“W” grade)"
+  }, {
+    "Date": "December 07",
+    "Day": "Wednesday",
+    "Event": "Last Day of Classes"
+  }, {
+    "Date": "December 10",
+    "Day": "Saturday",
+    "Event": "Admission Test for Spring 2017"
+  }, {
+    "Date": "December 11-18",
+    "Day": "Sunday-Sunday",
+    "Event": "Final Examinations"
+  }, {
+    "Date": "December 12",
+    "Day": "Monday",
+    "Event": "Holiday: Eid-E-Miladdun-Nabi *"
+  }, {
+    "Date": "December 16",
+    "Day": "Friday",
+    "Event": "Holiday: Victory Day"
+  }, {
+    "Date": "December 20",
+    "Day": "Tuesday",
+    "Event": "Submission of Final Grades"
+  }, {
+    "Date": "Dec. 22-Jan. 02",
+    "Day": "Thursday-Monday",
+    "Event": "Semester Break"
+  }, {
+    "Date": "December 25",
+    "Day": "Sunday",
+    "Event": "Holiday: Christmas Day"
+  }, {
+    "Date": "January 03",
+    "Day": "Tuesday",
+    "Event": "University Reopens for Spring 2017"
+  }, {
+    "Date": "January 05",
+    "Day": "Thursday",
+    "Event": "Orientation for Spring 2017"
+  }, {
+    "Date": "January 08",
+    "Day": "Sunday",
+    "Event": "First Day of Classes for Spring 2017"
+  }]
+}

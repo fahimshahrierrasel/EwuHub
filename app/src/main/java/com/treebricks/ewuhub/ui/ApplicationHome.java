@@ -71,6 +71,8 @@ public class ApplicationHome extends AppCompatActivity {
                     copyFile("pharmacyundergraduate.html");
                     copyFile("pharmacygraduate.html");
                     copyFile("advising_list.html");
+                    copyJsonFile("undergraduate.json");
+
 
 
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
@@ -518,6 +520,42 @@ public class ApplicationHome extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("tag", "Exception in copyFile() of "+filename);
             Log.e("tag", "Exception in copyFile() "+e.toString());
+        }
+        finally {
+            try {
+                if (output != null)
+                    output.close();
+                if (input != null)
+                    input.close();
+            } catch (IOException ignored) {
+            }
+        }
+    }
+
+    private void copyJsonFile(String filename) {
+        AssetManager assetManager = this.getAssets();
+
+        InputStream input = null;
+        OutputStream output = null;
+        try {
+            Log.i("JSONFileCopy", "copyFile() "+filename);
+            input = assetManager.open(filename);
+            File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/json");
+            if(!dir.exists()){
+                dir.mkdirs();
+                Log.i("Directory Log :","Directory Created" + dir);
+            }
+
+            output = new FileOutputStream(dir+"/"+filename);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = input.read(buffer)) != -1) {
+                output.write(buffer, 0, read);
+            }
+        } catch (Exception e) {
+            Log.e("JSONFileCopy", "Exception in copyFile() of "+filename);
+            Log.e("JSONFileCopy", "Exception in copyFile() "+e.toString());
         }
         finally {
             try {
