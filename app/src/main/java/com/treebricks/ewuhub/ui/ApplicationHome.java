@@ -37,8 +37,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
-
 public class ApplicationHome extends AppCompatActivity {
     public boolean hasInternetConnection = false;
     private ProgressDialog progressDialog;
@@ -48,8 +46,6 @@ public class ApplicationHome extends AppCompatActivity {
     private Drawer homePageDrawer = null;
     private AccountHeader homePageAccountHeader = null;
     private AppInstalled chromeBrowser;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +66,8 @@ public class ApplicationHome extends AppCompatActivity {
                     copyJsonFile("undergraduate.json");
                     copyJsonFile("pharmacyundergraduate.json");
                     copyJsonFile("pharmacygraduate.json");
-                    copyFile("advising_list.html");
-                    
+                    copyHTMLFile("advising_list.html");
+
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
                     startActivity(i);
                     finish();
@@ -85,6 +81,7 @@ public class ApplicationHome extends AppCompatActivity {
             }
         });
         t.start();
+
 
 
         doubleBackToExitPressedOnce = false;
@@ -464,7 +461,7 @@ public class ApplicationHome extends AppCompatActivity {
         InputStream input = null;
         OutputStream output = null;
         try {
-            Log.i("tag", "copyFile() "+filename);
+            Log.i("tag", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
             File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/databases");
             if(!dir.exists()){
@@ -480,8 +477,8 @@ public class ApplicationHome extends AppCompatActivity {
                 output.write(buffer, 0, read);
             }
         } catch (Exception e) {
-            Log.e("tag", "Exception in copyFile() of "+filename);
-            Log.e("tag", "Exception in copyFile() "+e.toString());
+            Log.e("tag", "Exception in copyHTMLFile() of "+filename);
+            Log.e("tag", "Exception in copyHTMLFile() "+e.toString());
         }
         finally {
             try {
@@ -493,13 +490,13 @@ public class ApplicationHome extends AppCompatActivity {
             }
         }
     }
-    private void copyFile(String filename) {
+    private void copyHTMLFile(String filename) {
         AssetManager assetManager = this.getAssets();
 
         InputStream input = null;
         OutputStream output = null;
         try {
-            Log.i("tag", "copyFile() "+filename);
+            Log.i("tag", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
             File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/html");
             if(!dir.exists()){
@@ -515,8 +512,8 @@ public class ApplicationHome extends AppCompatActivity {
                 output.write(buffer, 0, read);
             }
         } catch (Exception e) {
-            Log.e("tag", "Exception in copyFile() of "+filename);
-            Log.e("tag", "Exception in copyFile() "+e.toString());
+            Log.e("tag", "Exception in copyHTMLFile() of "+filename);
+            Log.e("tag", "Exception in copyHTMLFile() "+e.toString());
         }
         finally {
             try {
@@ -535,7 +532,7 @@ public class ApplicationHome extends AppCompatActivity {
         InputStream input = null;
         OutputStream output = null;
         try {
-            Log.i("JSONFileCopy", "copyFile() "+filename);
+            Log.i("JSONFileCopy", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
             File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/json");
             if(!dir.exists()){
@@ -551,8 +548,8 @@ public class ApplicationHome extends AppCompatActivity {
                 output.write(buffer, 0, read);
             }
         } catch (Exception e) {
-            Log.e("JSONFileCopy", "Exception in copyFile() of "+filename);
-            Log.e("JSONFileCopy", "Exception in copyFile() "+e.toString());
+            Log.e("JSONFileCopy", "Exception in copyHTMLFile() of "+filename);
+            Log.e("JSONFileCopy", "Exception in copyHTMLFile() "+e.toString());
         }
         finally {
             try {
