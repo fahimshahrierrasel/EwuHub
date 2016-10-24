@@ -1,7 +1,8 @@
 {
   "semester": "Fall-2016",
-  "lebel": "Undergraduate",
-  "events": [{
+  "lebel": "Graduate",
+  "events": [
+    {
       "Date": "August 30",
       "Day": "Tuesday",
       "Event": "University Reopens"
@@ -12,9 +13,9 @@
       "Event": "Departmental Orientation and Advising of Newly Admitted Students and Knowing your Campus: Orientation with the academic and other facilities of the University"
     },
     {
-      "Date": "September 04",
-      "Day": "Sunday",
-      "Event": "First Day of Classes Payment of tuition fees for continuing students: As per the Payment Schedule provided in the table below (04 September 2016 to 20 September 2016)"
+      "Date": "September 02",
+      "Day": "Friday",
+      "Event": "First Day of Classes\n  Payment of tuition fees for continuing students: (From 04 September 2016 to 20 September 2016)"
     },
     {
       "Date": "September 06",
@@ -24,7 +25,7 @@
     {
       "Date": "September 09-17",
       "Day": "Friday-Saturday",
-      "Event": "Holiday: Eid-Ul-Azha *"
+      "Event": "Holiday: Eid-Ul-Azha*"
     },
     {
       "Date": "September 18",
@@ -39,7 +40,7 @@
     {
       "Date": "September 20",
       "Day": "Tuesday",
-      "Event": "Last day of payment of tuition fees without late fee\n Last day of payment only for adding course(s)"
+      "Event": "Last date of payment of tuition fees without late fee\n Last day of payment only for adding course(s)"
     },
     {
       "Date": "September 25",
@@ -69,11 +70,11 @@
     {
       "Date": "October 12",
       "Day": "Wednesday",
-      "Event": "Holiday: Muharram (Ashura) *"
+      "Event": "Holiday: Muharram (Ashura)*"
     },
     {
-      "Date": "October 16-20",
-      "Day": "Sunday-Thursday",
+      "Date": "October 14-18",
+      "Day": "Friday-Tuesday",
       "Event": "Mid Term I Examinations"
     },
     {
@@ -82,8 +83,8 @@
       "Event": "Last Day to Drop Course(s)/Semester with 50% Refund"
     },
     {
-      "Date": "November 13-17",
-      "Day": "Sunday-Thursday",
+      "Date": "November 11-15",
+      "Day": "Friday-Tuesday",
       "Event": "Mid Term II Examinations"
     },
     {
@@ -97,18 +98,18 @@
       "Event": "Last day of Withdrawal of Course(s)/Semester (“W” grade)"
     },
     {
-      "Date": "December 07",
-      "Day": "Wednesday",
+      "Date": "December 06",
+      "Day": "Tuesday",
       "Event": "Last Day of Classes"
     },
     {
       "Date": "December 10",
       "Day": "Saturday",
-      "Event": "Admission Test for Spring 2017"
+      "Event": "Admission Test of MBA Program for Spring 2017"
     },
     {
-      "Date": "December 11-18",
-      "Day": "Sunday-Sunday",
+      "Date": "December 09-15",
+      "Day": "Friday-Thursday",
       "Event": "Final Examinations"
     },
     {
@@ -147,8 +148,9 @@
       "Event": "Orientation for Spring 2017"
     },
     {
-      "Date": "January 08",
-      "Day": "Sunday",
+      "Date": "January 06",
+      "Day": "Friday",
       "Event": "First Day of Classes for Spring 2017"
-    }]
+    }
+  ]
 }

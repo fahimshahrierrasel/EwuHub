@@ -1,0 +1,181 @@
+{
+  "semester": "Fall-2016",
+  "lebel": "Pharmacy Undergrad",
+  "events": [
+    {
+      "Date": "June 26",
+      "Day": "Sunday",
+      "Event": "First Day of Classes"
+    },
+    {
+      "Date": "June 30",
+      "Day": "Thursday",
+      "Event": "Last day to Add Courses"
+    },
+    {
+      "Date": "July 01-11",
+      "Day": "Friday-Monday",
+      "Event": "Holiday: Shab-E-Qadr, Jumat-Ul-Wida & Eid-Ul-Fitr *"
+    },
+    {
+      "Date": "July 12",
+      "Day": "Tuesday",
+      "Event": "Payment of tuition fees for continuing students: As per the Payment Schedule provided in the table below (12 -18 July 2016)\n Regular Classes Resume"
+    },
+    {
+      "Date": "July 13",
+      "Day": "Wednesday",
+      "Event": "Last day to clear Incomplete grades ( “I” grade )"
+    },
+    {
+      "Date": "July 18",
+      "Day": "Monday",
+      "Event": "Last day to Drop Course(s)/Semester with 100% Refund"
+    },
+    {
+      "Date": "July 20",
+      "Day": "Wednesday",
+      "Event": "Last day of payment for adding course(s)"
+    },
+    {
+      "Date": "July 24",
+      "Day": "Sunday",
+      "Event": "Last day to Drop Course(s)/Semester with 85% Refund"
+    },
+    {
+      "Date": "July 30",
+      "Day": "Saturday",
+      "Event": "Advising of GEN Courses for Fall 2016 (ongoing students)"
+    },
+    {
+      "Date": "July 31",
+      "Day": "Sunday",
+      "Event": "Last day of Tuition Payment with Late Fee of Tk. 500/-"
+    },
+    {
+      "Date": "August 07",
+      "Day": "Sunday",
+      "Event": "Last day of Tuition Payment with Late Fee of Tk. 1000/-"
+    },
+    {
+      "Date": "August 08",
+      "Day": "Monday",
+      "Event": "Blocking of ID Numbers of Defaulting Students"
+    },
+    {
+      "Date": "August 13",
+      "Day": "Saturday",
+      "Event": "Admission Test for Fall 2016"
+    },
+    {
+      "Date": "August 15",
+      "Day": "Monday",
+      "Event": "Holiday: National Mourning Day"
+    },
+    {
+      "Date": "August 19-28",
+      "Day": "Friday-Sunday",
+      "Event": "Mid Term I Examinations"
+    },
+    {
+      "Date": "August 25",
+      "Day": "Thursday",
+      "Event": "Holiday: Janmastami"
+    },
+    {
+      "Date": "September 09-17",
+      "Day": "Friday-Saturday",
+      "Event": "Holiday: Eid-Ul-Azha *"
+    },
+    {
+      "Date": "September 18",
+      "Day": "Sunday",
+      "Event": "Regular Classes Resume"
+    },
+    {
+      "Date": "September 22",
+      "Day": "Thursday",
+      "Event": "Last Day to Drop Course(s)/Semester with 50% Refund"
+    },
+    {
+      "Date": "October 10-11",
+      "Day": "Monday-Tuesday",
+      "Event": "Holiday: Durgapuja (Bijoya Nabami & Dashami)"
+    },
+    {
+      "Date": "October 12",
+      "Day": "Wednesday",
+      "Event": "Holiday: Muharram (Ashura) *"
+    },
+    {
+      "Date": "October 14-22",
+      "Day": "Friday-Saturday",
+      "Event": "Mid Term II Examinations"
+    },
+    {
+      "Date": "November 24",
+      "Day": "Thursday",
+      "Event": "Last day of Withdrawal of Course(s)/Semester (“W” grade)"
+    },
+    {
+      "Date": "November 26",
+      "Day": "Saturday",
+      "Event": "Advising of Courses for Spring 2017 (ongoing students)"
+    },
+    {
+      "Date": "November 30",
+      "Day": "Wednesday",
+      "Event": "Last Day of Classes"
+    },
+    {
+      "Date": "December 05-17",
+      "Day": "Monday-Saturday",
+      "Event": "Final Examinations"
+    },
+    {
+      "Date": "December 10",
+      "Day": "Saturday",
+      "Event": "Admission Test for Spring 2017"
+    },
+    {
+      "Date": "December 12",
+      "Day": "Monday",
+      "Event": "Holiday: Eid-E-Miladdun-Nabi *"
+    },
+    {
+      "Date": "December 16",
+      "Day": "Friday",
+      "Event": "Holiday: Victory Day"
+    },
+    {
+      "Date": "December 20",
+      "Day": "Tuesday",
+      "Event": "Submission of Final Grades"
+    },
+    {
+      "Date": "Dec. 22-Jan. 02",
+      "Day": "Thursday-Monday",
+      "Event": "Semester Break"
+    },
+    {
+      "Date": "December 25",
+      "Day": "Sunday",
+      "Event": "Holiday: Christmas Day"
+    },
+    {
+      "Date": "January 03",
+      "Day": "Tuesday",
+      "Event": "University Reopens for Spring 2017"
+    },
+    {
+      "Date": "January 05",
+      "Day": "Thursday",
+      "Event": "Orientation for Spring 2017"
+    },
+    {
+      "Date": "January 08",
+      "Day": "Sunday",
+      "Event": "First Day of Classes for Spring 2017"
+    }
+  ]
+}

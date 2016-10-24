@@ -66,15 +66,12 @@ public class ApplicationHome extends AppCompatActivity {
                 {
                     // Lunch app intro
                     // Copy from assets folder
-                    copyFile("graduate.html");
-                    copyFile("undergraduate.html");
-                    copyFile("pharmacyundergraduate.html");
-                    copyFile("pharmacygraduate.html");
-                    copyFile("advising_list.html");
+                    copyJsonFile("graduate.json");
                     copyJsonFile("undergraduate.json");
-
-
-
+                    copyJsonFile("pharmacyundergraduate.json");
+                    copyJsonFile("pharmacygraduate.json");
+                    copyFile("advising_list.html");
+                    
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
                     startActivity(i);
                     finish();
