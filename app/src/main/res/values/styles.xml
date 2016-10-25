@@ -44,5 +44,22 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
+    <!--Used for Advising Fast Scroller-->
+    <style name="StyledScrollerTextAppearance" parent="@android:style/TextAppearance">
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+
+    <style name="AppThemeV2" parent="AppTheme.Base" />
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
 
 </resources>

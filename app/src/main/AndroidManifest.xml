@@ -35,7 +35,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--Firebase Notification Service-->
+        <!-- Firebase Notification Service -->
 
         <service android:name=".services.EwuhubFirebaseMessagingService">
             <intent-filter>
@@ -43,10 +43,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="OPEN_ACTIVITY_1" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
 
         <activity
             android:name=".ui.SortCourseHome"
@@ -149,11 +149,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
+        <activity android:name=".ui.ActivityAdvisingList"
+            android:theme="@style/AppTheme.NoActionBar">
 
-        <meta-data
-            android:name="io.branch.sdk.BranchKey"
-            android:value="key_live_hbi0MxBIhyZ8WYIrgy8vbmbiuthzWdSs" />
-
+        </activity>
     </application>
 
 </manifest>

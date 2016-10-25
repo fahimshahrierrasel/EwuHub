@@ -60,5 +60,9 @@ dependencies {
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     // Repository for gson
     compile 'com.google.code.gson:gson:2.7'
+    // Repository For First Scroller
+    compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'
+    // Repository for MaterialSearchView
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
 }
 apply plugin: 'com.google.gms.google-services'

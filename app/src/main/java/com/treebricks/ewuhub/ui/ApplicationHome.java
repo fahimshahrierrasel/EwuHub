@@ -141,13 +141,13 @@ public class ApplicationHome extends AppCompatActivity {
                                 }
                                 case 2:
                                 {
-                                    String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
+                                    //String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
 
-                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                                    Bundle sentData = new Bundle();
-                                    sentData.putString("URL", advising_list);
-                                    sentData.putString("AdvisingSheet", "Yes");
-                                    i.putExtras(sentData);
+                                    Intent i = new Intent(ApplicationHome.this, ActivityAdvisingList.class);
+                                    //Bundle sentData = new Bundle();
+                                    //sentData.putString("URL", advising_list);
+                                    //sentData.putString("AdvisingSheet", "Yes");
+                                    //i.putExtras(sentData);
                                     startActivity(i);
                                     break;
                                 }

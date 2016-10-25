@@ -64,7 +64,7 @@
                 app:ael_expanded="false">
 
                 <TextView
-                    android:id="@+id/calendar_description"
+                    android:id="@+id/calendar_event"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"

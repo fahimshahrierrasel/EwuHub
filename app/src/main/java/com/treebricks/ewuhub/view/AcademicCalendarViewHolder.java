@@ -1,11 +1,7 @@
 package com.treebricks.ewuhub.view;
 
-import android.animation.ObjectAnimator;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,7 +24,7 @@ public class AcademicCalendarViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         calendarDate = (TextView) itemView.findViewById(R.id.calendar_date);
         calendarDay = (TextView) itemView.findViewById(R.id.calendar_day);
-        calendarDescription = (TextView) itemView.findViewById(R.id.calendar_description);
+        calendarDescription = (TextView) itemView.findViewById(R.id.calendar_event);
         buttonLayout = (RelativeLayout) itemView.findViewById(R.id.triangle_button);
         expandableRelativeLayout = (ExpandableRelativeLayout) itemView.findViewById(R.id.calendar_desc_layout);
 
