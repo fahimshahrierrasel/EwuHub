@@ -9,14 +9,12 @@ EwuHub is an Android application for East West University, Bangladesh. This appl
 By this application they can sort their subjects for advising without any conflict. 
 They can also see their result, notices, routine(EwSpirit), evaluation(EwSpirit) and other thing which is useful to them. We hope this application will help EWUians.
 
-### App Intro
-![appintro](Demo/appintro.jpg) 
 
 ### Application Home
 ![apphome](Demo/apphome.jpg) ![apphomedrawer](Demo/apphomedrawer.jpg) 
 
 ### Application Features
-![result](Demo/result.jpg) ![calendar](Demo/calendar.jpg) ![notice](Demo/notice.jpg) 
+![advisinglist](Demo/advisinglist.jpg) ![result](Demo/result.jpg) ![calendar](Demo/calendar.jpg) ![notice](Demo/notice.jpg)  
 
 ### EwSpirit
 ![ewsprit](Demo/ewspirit.jpg) ![ewspiritdrawer](Demo/ewspiritdrawer.jpg)
