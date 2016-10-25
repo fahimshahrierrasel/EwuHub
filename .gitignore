@@ -134,6 +134,7 @@ gen-external-apklibs
 
 # User-specific stuff:
 .idea/tasks.xml
+.idea/misc.xml
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
