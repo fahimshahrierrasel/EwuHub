@@ -53,7 +53,7 @@ dependencies {
     // Repository for Kenbursview(Image)
     compile 'com.flaviofaria:kenburnsview:1.0.7'
     // Repository for Material Drawer
-    compile('com.mikepenz:materialdrawer:5.6.0@aar') {
+    compile('com.mikepenz:materialdrawer:5.7.0@aar') {
         transitive = true
     }
     // Repository for expandable-layout

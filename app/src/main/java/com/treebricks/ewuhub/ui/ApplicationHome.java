@@ -13,12 +13,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.SlidingDrawer;
 import android.widget.Toast;
 
+import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -118,7 +122,7 @@ public class ApplicationHome extends AppCompatActivity {
                         new PrimaryDrawerItem().withIcon(R.drawable.diploma).withName(R.string.result).withIdentifier(3),
                         new PrimaryDrawerItem().withIcon(R.drawable.calendar).withName(R.string.academic_calender).withIdentifier(4),
                         new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
-                        new PrimaryDrawerItem().withIcon(R.drawable.bookshelf).withName(R.string.ewu_library).withIdentifier(6),
+                        new PrimaryDrawerItem().withIcon(R.drawable.library).withName(R.string.ewu_library).withIdentifier(6),
                         new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
                         new PrimaryDrawerItem().withIcon(R.drawable.rss).withName("Newsfeed").withIdentifier(8),
                         new PrimaryDrawerItem().withIcon(R.drawable.chat).withName("Friendly Chat (Experimental)").withIdentifier(9)
@@ -141,13 +145,7 @@ public class ApplicationHome extends AppCompatActivity {
                                 }
                                 case 2:
                                 {
-                                    //String advising_list = "file://" + getBaseContext().getApplicationInfo().dataDir+"/html/advising_list.html";
-
                                     Intent i = new Intent(ApplicationHome.this, ActivityAdvisingList.class);
-                                    //Bundle sentData = new Bundle();
-                                    //sentData.putString("URL", advising_list);
-                                    //sentData.putString("AdvisingSheet", "Yes");
-                                    //i.putExtras(sentData);
                                     startActivity(i);
                                     break;
                                 }
@@ -301,6 +299,35 @@ public class ApplicationHome extends AppCompatActivity {
                     }
                 })
                 .build();
+
+        final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
+
+        DrawerLayout drawerLayout = homePageDrawer.getDrawerLayout();
+
+        // Drawer Toggle Listener
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                homeImage.pause();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                homeImage.pause();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                homeImage.resume();
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                if(newState == DrawerLayout.STATE_SETTLING)
+                    homeImage.resume();
+            }
+        });
+
 
         newVersion();
 
@@ -463,13 +490,13 @@ public class ApplicationHome extends AppCompatActivity {
         try {
             Log.i("tag", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
-            File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/databases");
-            if(!dir.exists()){
-                dir.mkdirs();
-                Log.i("Directory Log :","Directory Created" + dir);
+            File DatabaseDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/databases");
+            if(!DatabaseDirectory.exists()){
+                DatabaseDirectory.mkdirs();
+                Log.i("Directory Log :","Directory Created" + DatabaseDirectory);
             }
 
-            output = new FileOutputStream(dir+"/"+filename);
+            output = new FileOutputStream(DatabaseDirectory+"/"+filename);
 
             byte[] buffer = new byte[1024];
             int read;
@@ -498,13 +525,13 @@ public class ApplicationHome extends AppCompatActivity {
         try {
             Log.i("tag", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
-            File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/html");
-            if(!dir.exists()){
-                dir.mkdirs();
-                Log.i("Directory Log :","Directory Created" + dir);
+            File HTMLDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/html");
+            if(!HTMLDirectory.exists()){
+                HTMLDirectory.mkdirs();
+                Log.i("Directory Log :","Directory Created" + HTMLDirectory);
             }
 
-            output = new FileOutputStream(dir+"/"+filename);
+            output = new FileOutputStream(HTMLDirectory+"/"+filename);
 
             byte[] buffer = new byte[1024];
             int read;
@@ -534,13 +561,13 @@ public class ApplicationHome extends AppCompatActivity {
         try {
             Log.i("JSONFileCopy", "copyHTMLFile() "+filename);
             input = assetManager.open(filename);
-            File dir = new File(getBaseContext().getApplicationInfo().dataDir + "/json");
-            if(!dir.exists()){
-                dir.mkdirs();
-                Log.i("Directory Log :","Directory Created" + dir);
+            File JsonDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/json");
+            if(!JsonDirectory.exists()){
+                JsonDirectory.mkdirs();
+                Log.i("Directory Log :","Directory Created" + JsonDirectory);
             }
 
-            output = new FileOutputStream(dir+"/"+filename);
+            output = new FileOutputStream(JsonDirectory+"/"+filename);
 
             byte[] buffer = new byte[1024];
             int read;
