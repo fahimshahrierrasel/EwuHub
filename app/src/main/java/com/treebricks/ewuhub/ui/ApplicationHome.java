@@ -469,10 +469,6 @@ public class ApplicationHome extends AppCompatActivity {
         }
     }
 
-
-
-
-
     private void copyDatabase(String filename) {
         AssetManager assetManager = this.getAssets();
 
