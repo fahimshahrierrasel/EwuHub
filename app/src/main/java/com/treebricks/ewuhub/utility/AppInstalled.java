@@ -75,6 +75,39 @@ public class AppInstalled
         return versionCode;
     }
 
+    public int appVersionByPackageName(String packageName)
+    {
+        /*int versionCode = 38;
+        String versionNumber;
+        PackageManager pm = context.getPackageManager();
+        PackageInfo pInfo = null;
+        try {
+            pInfo = pm.getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return pInfo.versionName;*/
+
+        int versionCode = 38;
+        String versionNumber = "NULL";
+        PackageManager pm = context.getPackageManager();
+        PackageInfo pInfo = null;
+        try {
+            pInfo = pm.getPackageInfo(packageName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (pInfo != null) {
+            String version = pInfo.versionName;
+            versionNumber = version.substring(0,2);
+            /*if(isNumeric(versionNumber))
+            {
+                versionCode = Integer.parseInt(versionNumber);
+            }*/
+        }
+        return pInfo.versionCode;
+    }
+
     private static boolean isNumeric(String str)
     {
         try

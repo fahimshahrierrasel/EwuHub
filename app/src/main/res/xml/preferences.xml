@@ -6,19 +6,13 @@
         android:icon="@drawable/ic_update_db"
         android:key="updatedb"
         android:summary="@string/update_summary"
-        android:title="Update Course Database" />
+        android:title="Update Course Database &amp; Advising List" />
 
     <Preference
         android:icon="@drawable/ic_update_calendar"
         android:key="updateac"
         android:summary="@string/update_academic_calendar"
         android:title="Update Academic Calender" />
-
-    <Preference
-        android:icon="@drawable/ic_update_list"
-        android:key="updatelist"
-        android:summary="@string/update_advising_list"
-        android:title="Update Advising List" />
 
     <Preference
         android:icon="@drawable/ic_feedback"

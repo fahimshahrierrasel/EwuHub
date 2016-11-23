@@ -51,6 +51,8 @@ public class ApplicationHome extends AppCompatActivity {
     private AccountHeader homePageAccountHeader = null;
     private AppInstalled chromeBrowser;
 
+    SharedPreferences getPrefs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,26 +60,17 @@ public class ApplicationHome extends AppCompatActivity {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 // Create a new Boolean and preference and set it true
                 boolean isFirstRun = getPrefs.getBoolean("intro_first_start", true);
                 // if the activity never start before
                 if (isFirstRun)
                 {
-                    // Lunch app intro
-                    // Copy from assets folder
-                    copyJsonFile("graduate.json");
-                    copyJsonFile("undergraduate.json");
-                    copyJsonFile("pharmacyundergraduate.json");
-                    copyJsonFile("pharmacygraduate.json");
-                    copyHTMLFile("advising_list.html");
-
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
                     startActivity(i);
                     finish();
                     // make a new preference aditor
                     SharedPreferences.Editor e = getPrefs.edit();
-                    e.putInt("notification_num", 1);
                     // edit preference to make it false because we don't want this run again
                     e.putBoolean("intro_first_start", false);
                     e.apply();
@@ -87,7 +80,6 @@ public class ApplicationHome extends AppCompatActivity {
         t.start();
 
 
-
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
 
@@ -95,12 +87,11 @@ public class ApplicationHome extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        chromeBrowser = new AppInstalled(this);
-
-
-        final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        // Create a new Boolean and preference and set it true
         versionCode = getPrefs.getInt("version_code",1);
+
+        newVersion();
+
+        chromeBrowser = new AppInstalled(this);
 
         // Navigation Drawer Header
         homePageAccountHeader = new AccountHeaderBuilder()
@@ -301,6 +292,7 @@ public class ApplicationHome extends AppCompatActivity {
                 .build();
 
         final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
+        homeImage.pause();
 
         DrawerLayout drawerLayout = homePageDrawer.getDrawerLayout();
 
@@ -329,11 +321,8 @@ public class ApplicationHome extends AppCompatActivity {
         });
 
 
-        newVersion();
 
     }
-
-
 
     public void newVersion()
     {
@@ -343,7 +332,6 @@ public class ApplicationHome extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             // Huh? Really?
         }
-        final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         // Create a new Boolean and preference and set it true
         if(version > versionCode)
         {
@@ -352,6 +340,10 @@ public class ApplicationHome extends AppCompatActivity {
             e.putInt("version_code", version);
             e.apply();
             copyDatabase("CoursesDatabase.db");
+            copyJsonFile("graduate.json");
+            copyJsonFile("undergraduate.json");
+            copyJsonFile("pharmacyundergraduate.json");
+            copyJsonFile("pharmacygraduate.json");
         }
     }
 
@@ -427,7 +419,6 @@ public class ApplicationHome extends AppCompatActivity {
                         startActivity(i);
                     }
 
-
                 } else {
                     progressDialog.hide();
                     progressDialog.cancel();
@@ -497,41 +488,6 @@ public class ApplicationHome extends AppCompatActivity {
             }
 
             output = new FileOutputStream(DatabaseDirectory+"/"+filename);
-
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
-        } catch (Exception e) {
-            Log.e("tag", "Exception in copyHTMLFile() of "+filename);
-            Log.e("tag", "Exception in copyHTMLFile() "+e.toString());
-        }
-        finally {
-            try {
-                if (output != null)
-                    output.close();
-                if (input != null)
-                    input.close();
-            } catch (IOException ignored) {
-            }
-        }
-    }
-    private void copyHTMLFile(String filename) {
-        AssetManager assetManager = this.getAssets();
-
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-            Log.i("tag", "copyHTMLFile() "+filename);
-            input = assetManager.open(filename);
-            File HTMLDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/html");
-            if(!HTMLDirectory.exists()){
-                HTMLDirectory.mkdirs();
-                Log.i("Directory Log :","Directory Created" + HTMLDirectory);
-            }
-
-            output = new FileOutputStream(HTMLDirectory+"/"+filename);
 
             byte[] buffer = new byte[1024];
             int read;

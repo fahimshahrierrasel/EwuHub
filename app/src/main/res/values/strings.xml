@@ -71,7 +71,7 @@
     <string name="ewu_library">Ewu Library</string>
     <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
     <string name="feedback_summary">Send us your feedback about this application if you have any suggestion and if you face any problem. Feel free to feedback us. Your opinion will help us to make this application better</string>
-    <string name="update_summary">Update courses Database. This update needs at the beginning of the Advising and after application update.</string>
+    <string name="update_summary">Update course database &amp; advising list. This update needs at the beginning of the Advising and after application update.</string>
     <string name="slide1des">Slide from left to right of your mobile screen to see the EwuHub\'s features.</string>
     <string name="slide1">Where is the EwuHub features?</string>
     <string name="slide2">EwuHub Features</string>
