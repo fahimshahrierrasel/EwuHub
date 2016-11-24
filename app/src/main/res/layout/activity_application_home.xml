@@ -82,9 +82,9 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:paddingStart="15dp"
-                        android:text="Next Day To Remember"
+                        android:text="Next Calendar Event"
                         android:textColor="@color/purple"
-                        android:textSize="20sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -109,6 +109,7 @@
                         android:id="@+id/calendar_day"
                         android:layout_below="@+id/calendar_header"
                         android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_gravity="center"
                         android:fontFamily="serif"
                         android:gravity="center_vertical"
@@ -147,6 +148,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="2dp"
+                android:id="@+id/home_notice_card"
                 android:focusable="true"
                 app:cardBackgroundColor="@color/medium_aquamarine"
                 app:cardCornerRadius="5dp"
@@ -159,7 +161,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/statementtitle"
+                        android:id="@+id/calendarheader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="serif"
@@ -167,23 +169,96 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:paddingStart="15dp"
-                        android:text="@string/mission_statement"
+                        android:text="Latest Notice"
                         android:textColor="@color/purple"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/noticetitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/statementtitle"
+                        android:layout_below="@+id/calendarheader"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:gravity="center"
+                        android:text="Notice Title"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/noticedate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/noticetitle"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="11-07-1993"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="2dp"
+                android:id="@+id/newsfeed_card"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/medium_aquamarine"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/feedheader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:fontFamily="serif"
-                        android:gravity="start"
-                        android:paddingBottom="10dp"
-                        android:paddingEnd="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="5dp"
-                        android:paddingStart="10dp"
-                        android:text="Hello"
+                        android:paddingEnd="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingStart="15dp"
+                        android:text="Latest News Feed"
+                        android:textColor="@color/purple"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/feedtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/feedheader"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:gravity="center"
+                        android:text="Notice Title"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/feeddate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/feedtitle"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="11-07-1993"
                         android:textSize="16sp" />
 
                 </RelativeLayout>

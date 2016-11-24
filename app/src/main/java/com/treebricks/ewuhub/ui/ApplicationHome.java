@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -34,6 +41,8 @@ import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
 import com.treebricks.ewuhub.view.AcademicCalendarEvent;
 import com.treebricks.ewuhub.view.AcademicCalendarModel;
+import com.treebricks.ewuhub.view.NewsFeedModel;
+import com.treebricks.ewuhub.view.NoticeView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,7 +53,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -70,9 +81,28 @@ public class ApplicationHome extends AppCompatActivity {
     TextView calendarevent;
     TextView calendarday;
     TextView calendardate;
+    TextView noticetitle;
+    TextView noticedate;
+    TextView feedtitle;
+    TextView feeddate;
+
+    CardView noticeCard;
+    CardView feedCard;
 
     // Gson
     Gson gson;
+
+    FirebaseDatabase databaseRef;
+
+    DatabaseReference noticeReference;
+    DatabaseReference feedReference;
+
+    ArrayList<NewsFeedModel> allFeeds = new ArrayList<NewsFeedModel>();
+    ArrayList<NoticeView> allNotices = new ArrayList<NoticeView>();
+
+    String noticeUrl;
+    String feedData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,21 +133,39 @@ public class ApplicationHome extends AppCompatActivity {
         t.start();
 
         setContentView(R.layout.activity_application_home);
-        calendarevent = (TextView) findViewById(R.id.calendar_event);
-        calendarday = (TextView) findViewById(R.id.calendar_day);
-        calendardate = (TextView) findViewById(R.id.calendar_date);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        databaseRef = FirebaseDatabase.getInstance();
+
+        noticeReference = databaseRef.getReference("notices");
+        feedReference = databaseRef.getReference("newsfeeds");
+
         // Gson initialization
         gson = new Gson();
+
+        feedCard = (CardView) findViewById(R.id.newsfeed_card);
+        feeddate = (TextView) findViewById(R.id.feeddate);
+        feedtitle = (TextView) findViewById(R.id.feedtitle);
+
+        noticeCard = (CardView) findViewById(R.id.home_notice_card);
+        noticedate = (TextView) findViewById(R.id.noticedate);
+        noticetitle = (TextView) findViewById(R.id.noticetitle);
+
+        calendarevent = (TextView) findViewById(R.id.calendar_event);
+        calendarday = (TextView) findViewById(R.id.calendar_day);
+        calendardate = (TextView) findViewById(R.id.calendar_date);
 
 
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
 
+        final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
+        homeImage.pause();
+
         versionCode = getPrefs.getInt("version_code",1);
+
+
 
         newVersion();
 
@@ -300,7 +348,8 @@ public class ApplicationHome extends AppCompatActivity {
                                 }
                                 case 8:
                                 {
-                                    Toast.makeText(ApplicationHome.this, "Newsfeed service is coming soon.", Toast.LENGTH_LONG).show();
+                                    Intent newsfeed = new Intent(ApplicationHome.this, Newsfeed.class);
+                                    startActivity(newsfeed);
                                     break;
                                 }
                                 case 9:
@@ -321,8 +370,7 @@ public class ApplicationHome extends AppCompatActivity {
                 })
                 .build();
 
-        final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
-        homeImage.pause();
+
 
         DrawerLayout drawerLayout = homePageDrawer.getDrawerLayout();
 
@@ -351,6 +399,125 @@ public class ApplicationHome extends AppCompatActivity {
         });
 
         populateCalendar();
+
+        startNewTask();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (hasInternetConnection)
+                {
+                    Query feedQuery = feedReference.orderByKey();
+                    feedQuery.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+                            allFeeds.clear();
+                            for (DataSnapshot data : notices) {
+                                Log.d("ON getting notice", "onDataChange: " + data.getValue(NewsFeedModel.class));
+                                NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
+                                allFeeds.add(newsFeedModel);
+                            }
+                            Collections.reverse(allFeeds);
+                            SharedPreferences.Editor editor = getPrefs.edit();
+                            editor.putString("feed_title", allFeeds.get(0).getFeed_title());
+                            editor.putString("feed_date", allFeeds.get(0).getFeed_date());
+                            editor.putString("feed_data", allFeeds.get(0).getFeed_data());
+                            editor.apply();
+
+                            feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+                            feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    Query noticeQuery = noticeReference.orderByKey();
+                    noticeQuery.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+                            allNotices.clear();
+                            for (DataSnapshot data : notices) {
+                                Log.d("ON getting notice", "onDataChange: " + data.getValue(NoticeView.class));
+                                NoticeView noticeView = data.getValue(NoticeView.class);
+                                allNotices.add(noticeView);
+                            }
+                            Collections.reverse(allNotices);
+
+                            SharedPreferences.Editor editor = getPrefs.edit();
+                            editor.putString("notice_title",allNotices.get(0).getNotice_title());
+                            editor.putString("notice_date",allNotices.get(0).getNotice_date());
+                            editor.putString("notice_url",allNotices.get(0).getNotice_url());
+                            editor.apply();
+
+                            noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+                            noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+                else
+                {
+                    feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+                    feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+
+                    noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+                    noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+
+                }
+            }
+        }, 2000);
+
+        feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+        feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+
+        noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+        noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+
+
+        noticeCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noticeUrl = getPrefs.getString("notice_url", "NULL");
+                if("NULL".equals(noticeUrl))
+                {
+                    Toast.makeText(ApplicationHome.this, "Sorry No Notice", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent webView = new Intent(ApplicationHome.this, NoticeWebViewer.class);
+                    webView.putExtra("URL", noticeUrl);
+                    startActivity(webView);
+                }
+            }
+        });
+
+        feedCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                feedData = getPrefs.getString("feed_data", "NULL");
+                if("NULL".equals(feedData))
+                {
+                    Toast.makeText(ApplicationHome.this, "Sorry No News Feed", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent markdownView = new Intent(ApplicationHome.this, FeedMarkDownView.class);
+                    markdownView.putExtra("FEED_DATA", feedData);
+                    startActivity(markdownView);
+                }
+            }
+        });
 
     }
 

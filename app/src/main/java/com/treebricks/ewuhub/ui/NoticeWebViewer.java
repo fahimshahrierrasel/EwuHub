@@ -57,9 +57,6 @@ public class NoticeWebViewer extends AppCompatActivity {
     {
         if((keyCode == KeyEvent.KEYCODE_BACK) && noticeWebView.canGoBack())
         {
-            Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
-            startActivity(notice);
-            finish();
             return true;
         }
 
@@ -68,9 +65,6 @@ public class NoticeWebViewer extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent notice = new Intent(getApplicationContext(), NoticeActivity.class);
-        startActivity(notice);
-        finish();
     }
     private class MyWebViewClient extends WebViewClient {
         @Override

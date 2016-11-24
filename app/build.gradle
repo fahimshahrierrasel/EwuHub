@@ -65,5 +65,7 @@ dependencies {
     compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'
     // Repository for MaterialSearchView
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    // Repository for MarkedView
+    compile 'com.mittsu:markedview:1.0.4@aar'
 }
 apply plugin: 'com.google.gms.google-services'
