@@ -92,6 +92,7 @@ public class ActivityAdvisingList extends AppCompatActivity {
 
         if(getSupportActionBar() != null)
         {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("Advising List");
         }
 

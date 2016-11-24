@@ -27,7 +27,7 @@
                 android:id="@+id/kbv_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/application_home_image"
+                android:src="@drawable/home_image"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"
                 />

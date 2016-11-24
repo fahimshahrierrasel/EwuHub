@@ -19,7 +19,6 @@
 }
 
 -keep class model.*
--keep public class com.treebricks.ewuhub.**
--keep public class model.*
+-keep class com.treebricks.ewuhub.**
 -keep class com.afollestad.material-dialogs.**
 -keep class com.flaviofaria.**

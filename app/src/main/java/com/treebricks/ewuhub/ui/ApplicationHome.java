@@ -161,11 +161,8 @@ public class ApplicationHome extends AppCompatActivity {
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
 
         final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
-        homeImage.pause();
 
         versionCode = getPrefs.getInt("version_code",1);
-
-
 
         newVersion();
 
@@ -174,7 +171,7 @@ public class ApplicationHome extends AppCompatActivity {
         // Navigation Drawer Header
         homePageAccountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.long_dark)
+                .withHeaderBackground(R.drawable.drawer)
                 .withCompactStyle(false)
                 .withSavedInstance(savedInstanceState)
                 .build();
@@ -370,8 +367,6 @@ public class ApplicationHome extends AppCompatActivity {
                 })
                 .build();
 
-
-
         DrawerLayout drawerLayout = homePageDrawer.getDrawerLayout();
 
         // Drawer Toggle Listener
@@ -414,7 +409,6 @@ public class ApplicationHome extends AppCompatActivity {
                             Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
                             allFeeds.clear();
                             for (DataSnapshot data : notices) {
-                                Log.d("ON getting notice", "onDataChange: " + data.getValue(NewsFeedModel.class));
                                 NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
                                 allFeeds.add(newsFeedModel);
                             }
@@ -442,7 +436,6 @@ public class ApplicationHome extends AppCompatActivity {
                             Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
                             allNotices.clear();
                             for (DataSnapshot data : notices) {
-                                Log.d("ON getting notice", "onDataChange: " + data.getValue(NoticeView.class));
                                 NoticeView noticeView = data.getValue(NoticeView.class);
                                 allNotices.add(noticeView);
                             }

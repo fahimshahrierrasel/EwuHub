@@ -155,7 +155,11 @@
 
         <activity
             android:name=".ui.ActivityAdvisingList"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ui.ApplicationHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
         <activity android:name=".ui.Newsfeed">
