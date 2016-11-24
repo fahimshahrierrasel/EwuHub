@@ -2,6 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.treebricks.ewuhub.ui.Preferences">
+
+    <ListPreference
+        android:icon="@drawable/list"
+        android:title="Default Calendar"
+        android:summary="Please select the default calendar for calendar card in Application Home"
+        android:entries="@array/level_array"
+        android:entryValues="@array/level_array_values"
+        android:defaultValue="undergrad"
+        android:dialogIcon="@drawable/list"
+        android:key="level"/>
+
     <Preference
         android:icon="@drawable/ic_update_db"
         android:key="updatedb"

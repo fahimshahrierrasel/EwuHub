@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
@@ -41,6 +41,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     compile 'com.android.support:support-v4:25.0.1'
     // Firebase Repositories
+    compile 'com.google.firebase:firebase-database:10.0.0'
     compile 'com.google.firebase:firebase-messaging:10.0.0'
     compile 'com.google.firebase:firebase-storage:10.0.0'
     compile 'com.firebaseui:firebase-ui-database:1.0.0'

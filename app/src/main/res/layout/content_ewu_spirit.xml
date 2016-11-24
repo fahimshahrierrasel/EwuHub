@@ -41,7 +41,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/instructiontitle"
+                    android:id="@+id/calendar_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
@@ -58,7 +58,7 @@
                     android:id="@+id/list_bullet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/instructiontitle"
+                    android:layout_below="@+id/calendar_header"
                     android:fontFamily="serif"
                     android:gravity="center_vertical"
                     android:paddingBottom="10dp"
@@ -73,7 +73,7 @@
                     android:id="@+id/li_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/instructiontitle"
+                    android:layout_below="@+id/calendar_header"
                     android:layout_gravity="center"
                     android:layout_toEndOf="@+id/list_bullet"
                     android:layout_toRightOf="@+id/list_bullet"

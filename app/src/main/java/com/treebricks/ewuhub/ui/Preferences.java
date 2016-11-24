@@ -16,6 +16,11 @@ public class Preferences extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        if(getSupportActionBar() != null)
+        {
+            getSupportActionBar().setTitle("Preferences");
+        }
+
         MinePreferenceFrament prefFragment = new MinePreferenceFrament();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

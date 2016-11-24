@@ -11,6 +11,9 @@ public class AcademicCalendarEvent
     @SerializedName("Date")
     String calDate;
 
+    @SerializedName("ActualDate")
+    String calADate;
+
     @SerializedName("Day")
     String calDay;
 
@@ -20,8 +23,9 @@ public class AcademicCalendarEvent
     public AcademicCalendarEvent() {
     }
 
-    public AcademicCalendarEvent(String calDate, String calDay, String calEvent) {
+    public AcademicCalendarEvent(String calDate, String calADate, String calDay, String calEvent) {
         this.calDate = calDate;
+        this.calADate = calADate;
         this.calDay = calDay;
         this.calEvent = calEvent;
     }
@@ -32,6 +36,14 @@ public class AcademicCalendarEvent
 
     public void setCalDate(String calDate) {
         this.calDate = calDate;
+    }
+
+    public String getCalADate() {
+        return calADate;
+    }
+
+    public void setCalADate(String calADate) {
+        this.calADate = calADate;
     }
 
     public String getCalDay() {
@@ -48,5 +60,15 @@ public class AcademicCalendarEvent
 
     public void setCalEvent(String calEvent) {
         this.calEvent = calEvent;
+    }
+
+    @Override
+    public String toString() {
+        return "AcademicCalendarEvent{" +
+                "calDate='" + calDate + '\'' +
+                ", calADate='" + calADate + '\'' +
+                ", calDay='" + calDay + '\'' +
+                ", calEvent='" + calEvent + '\'' +
+                '}';
     }
 }

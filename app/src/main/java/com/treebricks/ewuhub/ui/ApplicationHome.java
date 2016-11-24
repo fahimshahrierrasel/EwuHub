@@ -14,15 +14,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.SlidingDrawer;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.google.gson.Gson;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -32,14 +32,22 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
+import com.treebricks.ewuhub.view.AcademicCalendarEvent;
+import com.treebricks.ewuhub.view.AcademicCalendarModel;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class ApplicationHome extends AppCompatActivity {
     public boolean hasInternetConnection = false;
@@ -53,14 +61,29 @@ public class ApplicationHome extends AppCompatActivity {
 
     SharedPreferences getPrefs;
 
+    // Academic Calendar
+    String calendarJsonString = null;
+
+    // Object for Academic Calendar
+    AcademicCalendarModel academicCalendar;
+
+    TextView calendarevent;
+    TextView calendarday;
+    TextView calendardate;
+
+    // Gson
+    Gson gson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
         // Intro Activity Start
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 // Create a new Boolean and preference and set it true
                 boolean isFirstRun = getPrefs.getBoolean("intro_first_start", true);
                 // if the activity never start before
@@ -79,13 +102,20 @@ public class ApplicationHome extends AppCompatActivity {
         });
         t.start();
 
+        setContentView(R.layout.activity_application_home);
+        calendarevent = (TextView) findViewById(R.id.calendar_event);
+        calendarday = (TextView) findViewById(R.id.calendar_day);
+        calendardate = (TextView) findViewById(R.id.calendar_date);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Gson initialization
+        gson = new Gson();
+
 
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
-
-        setContentView(R.layout.activity_application_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         versionCode = getPrefs.getInt("version_code",1);
 
@@ -320,8 +350,110 @@ public class ApplicationHome extends AppCompatActivity {
             }
         });
 
+        populateCalendar();
 
+    }
 
+    void populateCalendar() {
+        String educationLevel = getPrefs.getString("level", "undergrad");
+
+        switch (educationLevel) {
+            case "undergrad":
+            {
+                calendarJsonString = readJSONStringFromFile("undergraduate.json");
+                academicCalendar = new AcademicCalendarModel();
+
+                // Gson converting Json String to Object and setting Actionbar title
+                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+                }
+
+                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+                int calendarIndex = nextEventIndex(allEvents);
+
+                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                break;
+            }
+            case "grad":
+            {
+                calendarJsonString = readJSONStringFromFile("graduate.json");
+                academicCalendar = new AcademicCalendarModel();
+
+                // Gson converting Json String to Object and setting Actionbar title
+                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+                }
+
+                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+                int calendarIndex = nextEventIndex(allEvents);
+
+                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                break;
+            }
+            case "pundergrad":
+            {
+                calendarJsonString = readJSONStringFromFile("pharmacyundergraduate.json");
+                academicCalendar = new AcademicCalendarModel();
+
+                // Gson converting Json String to Object and setting Actionbar title
+                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+                }
+
+                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+                int calendarIndex = nextEventIndex(allEvents);
+
+                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                break;
+            }
+            case "pgrad":
+            {
+                calendarJsonString = readJSONStringFromFile("pharmacygraduate.json");
+                academicCalendar = new AcademicCalendarModel();
+
+                // Gson converting Json String to Object and setting Actionbar title
+                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+                }
+
+                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+                int calendarIndex = nextEventIndex(allEvents);
+
+                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                break;
+            }
+            default:
+            {
+                calendarJsonString = readJSONStringFromFile("undergraduate.json");
+                academicCalendar = new AcademicCalendarModel();
+
+                // Gson converting Json String to Object and setting Actionbar title
+                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+                }
+
+                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+                int calendarIndex = nextEventIndex(allEvents);
+
+                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                break;
+            }
+        }
     }
 
     public void newVersion()
@@ -427,7 +559,6 @@ public class ApplicationHome extends AppCompatActivity {
             }
         }, 2000);
     }
-
 
     public class NetworkUtility extends AsyncTask<Void, Void, Void> {
         boolean connect = false;
@@ -539,6 +670,61 @@ public class ApplicationHome extends AppCompatActivity {
             } catch (IOException ignored) {
             }
         }
+    }
+
+    // Function for read JSON String from file.
+    public String readJSONStringFromFile(String fileName) {
+        String json = null;
+        try {
+            File file = new File(getBaseContext().getApplicationInfo().dataDir + "/json/" + fileName);
+            if (file.exists()) {
+                InputStream is = new FileInputStream(file);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                json = new String(buffer, "UTF-8");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public int nextEventIndex(List<AcademicCalendarEvent> allEvents) {
+        long differenceDates = 0;
+        int calendarIndex = 0;
+        try {
+            Calendar calendar = Calendar.getInstance();
+            Date currentDate;
+            Date nextDate;
+            SimpleDateFormat dates = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+            String sCurrentDate = dates.format(calendar.getTime());
+            currentDate = dates.parse(sCurrentDate);
+
+            for (int i = 0; i < allEvents.size(); i++) {
+                AcademicCalendarEvent academicCalendarEvent = allEvents.get(i);
+                nextDate = dates.parse(academicCalendarEvent.getCalADate());
+
+                long difference = nextDate.getTime() - currentDate.getTime();
+                differenceDates = difference / (24 * 60 * 60 * 1000);
+
+                if (differenceDates >= 0) {
+                    calendarIndex = i;
+                    break;
+                }
+
+            }
+        } catch (Exception exception) {
+            Log.e("DIDN'T WORK", "exception " + exception);
+        }
+
+        if (calendarIndex == 0) {
+            return allEvents.size() - 1;
+        }
+
+        return calendarIndex;
     }
 
 }

@@ -28,6 +28,7 @@ public class NoticeActivity extends AppCompatActivity
     ActionBar actionBar;
     DatabaseReference mDatabase;
     ProgressDialog progressDialog;
+    FirebaseDatabase databaseRef;
 
 
     @Override
@@ -44,7 +45,9 @@ public class NoticeActivity extends AppCompatActivity
         progressDialog.setIndeterminate(true);
         progressDialog.show();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("notices");
+        databaseRef = FirebaseDatabase.getInstance();
+
+        mDatabase = databaseRef.getReference("notices");
 
         final RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.notice_recycler_view);
 
@@ -60,21 +63,11 @@ public class NoticeActivity extends AppCompatActivity
         }
 
         final RecyclerView.Adapter mAdapter = new NoticeAdapter(recycleView, NoticeActivity.this);
-        /*FirebaseRecyclerAdapter<NoticeView, NoticeViewHolder> mAdapter = new FirebaseRecyclerAdapter<NoticeView, NoticeViewHolder>(
-                NoticeView.class, R.layout.notice_card, NoticeViewHolder.class,mDatabase) {
-            @Override
-            protected void populateViewHolder(NoticeViewHolder viewHolder, NoticeView model, int position) {
-                viewHolder.setnoticeTitle(model.getNotice_title());
-                viewHolder.setnoticeDate(model.getNotice_date());
-            }
-        };*/
 
         if (mRecyclerView != null) {
             mRecyclerView.setAdapter(mAdapter);
 
         }
-
-
 
         Query query = mDatabase.orderByKey();
         query.addValueEventListener(new ValueEventListener() {
@@ -116,47 +109,4 @@ public class NoticeActivity extends AppCompatActivity
         super.onBackPressed();
         this.finish();
     }
-
-    /*public static class NoticeViewHolder extends RecyclerView.ViewHolder
-    {
-        *//*public TextView noticeTitle;
-        public TextView noticeDate;*//*
-        View mView;
-
-        public NoticeViewHolder(View itemView)
-        {
-            super(itemView);
-            *//*noticeTitle = (TextView) itemView.findViewById(R.id.notice_title);
-            noticeDate = (TextView) itemView.findViewById(R.id.notice_date);
-
-            itemView.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View v)
-                {
-                    int position = getAdapterPosition();
-                    final String noticeUrl = mDataset.get(position).getNotice_url();
-                    Intent webView = new Intent(context, NoticeWebViewer.class);
-                    webView.putExtra("URL", noticeUrl);
-                    context.startActivity(webView);
-                }
-            });*//*
-            mView = itemView;
-        }
-        public void setnoticeTitle(String title)
-        {
-            TextView noticeTitle = (TextView) mView.findViewById(R.id.notice_title);
-            noticeTitle.setText(title);
-        }
-
-        public void setnoticeDate(String date)
-        {
-            TextView noticeDate = (TextView) mView.findViewById(R.id.notice_date);
-            noticeDate.setText(date);
-        }
-    }*/
-    /*@Override
-    public int getItemCount() {
-        return mDataset.size();
-    }*/
 }

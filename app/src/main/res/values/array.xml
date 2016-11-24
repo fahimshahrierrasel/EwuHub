@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Level array -->
+    <string-array name="level_array">
+        <item>Undergraduate</item>
+        <!--item>undergrad</item-->
+
+        <item>Graduate</item>
+        <!--item>grad</item-->
+
+        <item>Pharmacy Undergraduate</item>
+        <!--item>pundergrad</item-->
+
+        <item>Pharmacy Graduate</item>
+        <!--item>pgrad</item-->
+
+    </string-array>
+
+    <!-- Distance array values -->
+    <string-array name="level_array_values">
+        <!--item>Undergraduate</item-->
+        <item>undergrad</item>
+
+        <!--item>Graduate</item-->
+        <item>grad</item>
+
+        <!--item>Pharmacy Undergraduate</item-->
+        <item>pundergrad</item>
+
+        <!--item>Pharmacy Graduate</item-->
+        <item>pgrad</item>
+    </string-array>
+</resources>

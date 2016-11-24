@@ -169,7 +169,6 @@ public class AcademicCalendar extends AppCompatActivity {
 
                 if(pharmaUndergradJsonString == null || "".equals(pharmaUndergradJsonString))
                 {
-
                     pharmaUndergradJsonString = readJSONStringFromFile("pharmacyundergraduate.json");
                     pharmaUndergradCalendar = gson.fromJson(pharmaUndergradJsonString, AcademicCalendarModel.class);
                 }
