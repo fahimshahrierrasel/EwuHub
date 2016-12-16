@@ -61,6 +61,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ApplicationHome extends AppCompatActivity {
+    private static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
     public boolean hasInternetConnection = false;
     private ProgressDialog progressDialog;
     int versionCode;
@@ -205,8 +206,8 @@ public class ApplicationHome extends AppCompatActivity {
                             {
                                 case 1:
                                 {
-                                    Intent sortCourse = new Intent(ApplicationHome.this, SortCourseHome.class);
-                                    startActivity(sortCourse);
+                                    Intent courseInputIntent = new Intent(ApplicationHome.this, CoursesInput.class);
+                                    startActivity(courseInputIntent);
                                     break;
                                 }
                                 case 2:

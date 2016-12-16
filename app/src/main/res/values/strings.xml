@@ -51,7 +51,7 @@
     <string name="sort_section_dialog_text">"Enter the section of "</string>
     <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semister.</string>
     <string name="update_advising_list">Update the advising list for advising.</string>
-    <string name="course_input_hint">Name of Subject-1(Ex:CSE107)</string>
+    <string name="course_input_hint">Name of Course</string>
     <string name="mainpage_of_ewuhub">MainPage of EwuHub</string>
     <string name="history">History</string>
     <string name="mission_statement">Mission Statement</string>

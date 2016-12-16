@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.treebricks.ewuhub">
 
     <!-- Android Permissions for EWUHUB -->
@@ -12,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <!-- Splash Screen Activity(This is the first activity to open) -->
+        <!-- SplashScreen Activity -->
         <activity
             android:name=".ui.SplashScreen"
             android:launchMode="singleTask"
@@ -33,51 +34,28 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- Firebase Notification Service -->
-
         <service android:name=".services.EwuhubFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="OPEN_ACTIVITY_1" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".ui.SortCourseHome"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/title_activity_sort_course_home"
-            android:parentActivityName=".ui.ApplicationHome"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.ApplicationHome" />
-        </activity>
-
-        <activity
-            android:name=".ui.CourseInput"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/title_activity_course_input"
-            android:parentActivityName=".ui.SortCourseHome"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
-        </activity>
-
+        <!-- ShowSortCourses Activity -->
         <activity
             android:name=".ui.ShowSortCourses"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_activity_show_sort_courses"
-            android:parentActivityName=".ui.SortCourseHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.SortCourseHome" />
+                android:value="com.treebricks.ewuhub.ui.CoursesInput" />
         </activity>
 
+        <!-- AllWebView Activity -->
         <activity
             android:name=".ui.AllWebView"
             android:label="@string/app_name">
@@ -86,6 +64,7 @@
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
+        <!-- About Activity -->
         <activity
             android:name=".ui.About"
             android:label="About">
@@ -94,6 +73,7 @@
                 android:value="com.treebricks.ewuhub.ui.Preferences" />
         </activity>
 
+        <!-- EwuSpirit Activity -->
         <activity
             android:name=".ui.EwuSpirit"
             android:label="@string/title_activity_ewu_spirit"
@@ -104,6 +84,7 @@
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
+        <!-- Notice Activity -->
         <activity
             android:name=".ui.NoticeActivity"
             android:label="@string/title_activity_notice"
@@ -114,12 +95,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
+
+        <!-- NoticeWebView Activity -->
         <activity
             android:name=".ui.NoticeWebViewer"
             android:label="@string/title_activity_notice_web_viewer"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <!-- Preferences Activity -->
         <activity
             android:name=".ui.Preferences"
             android:theme="@style/AppTheme">
@@ -128,11 +112,13 @@
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
+        <!-- ApplicationIntro Activity -->
         <activity
             android:name=".ui.ApplicationIntro"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <!-- CourseDetails Activity -->
         <activity
             android:name=".ui.CourseDetails"
             android:label="@string/title_activity_course_details"
@@ -143,6 +129,7 @@
                 android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
         </activity>
 
+        <!-- AcademicCalendar Activity -->
         <activity
             android:name=".ui.AcademicCalendar"
             android:label="@string/title_activity_academic_calendar"
@@ -153,23 +140,36 @@
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
+        <!-- AdvisingList Activity -->
         <activity
             android:name=".ui.ActivityAdvisingList"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".ui.ApplicationHome">
+            android:parentActivityName=".ui.ApplicationHome"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
+        <!-- NewsFeed Activity -->
         <activity android:name=".ui.Newsfeed">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
-            </activity>
+        </activity>
 
-        <activity android:name=".ui.FeedMarkDownView"
+        <!-- FeedMarkdown Activity -->
+        <activity
+            android:name=".ui.FeedMarkDownView"
             android:label="Markdown">
+        </activity>
+
+        <!-- CoursesInput Activity -->
+        <activity android:name=".ui.CoursesInput"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
     </application>
