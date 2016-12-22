@@ -118,17 +118,6 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!-- CourseDetails Activity -->
-        <activity
-            android:name=".ui.CourseDetails"
-            android:label="@string/title_activity_course_details"
-            android:parentActivityName=".ui.ShowSortCourses"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.treebricks.ewuhub.ui.ShowSortCourses" />
-        </activity>
-
         <!-- AcademicCalendar Activity -->
         <activity
             android:name=".ui.AcademicCalendar"

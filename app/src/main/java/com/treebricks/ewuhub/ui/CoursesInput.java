@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.PersistableBundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -51,6 +52,9 @@ public class CoursesInput extends AppCompatActivity {
     RelativeLayout container;
     private int numberOfSubject = 3;
     ArrayAdapter<String> autoCompleteCourseAdapter;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -62,7 +66,6 @@ public class CoursesInput extends AppCompatActivity {
         if(getSupportActionBar() != null)
         {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
         editText1 = (AutoCompleteTextView) findViewById(R.id.course_one_edit_text);
@@ -70,6 +73,11 @@ public class CoursesInput extends AppCompatActivity {
         editText3 = (AutoCompleteTextView) findViewById(R.id.course_three_edit_text);
         addCourseButton = (ImageButton) findViewById(R.id.add_course);
         container = (RelativeLayout) findViewById(R.id.secondary_frame_rl_sv_rl);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Advising Helper");
+        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(CoursesInput.this, android.R.color.transparent));
 
         allCoursesDataSource = new AllCoursesDataSource();
         ArrayList<String> allCrs = allCoursesDataSource.findAll(CoursesInput.this);

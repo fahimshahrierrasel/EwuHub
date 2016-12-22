@@ -23,7 +23,7 @@ import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.CourseDataSource;
 import com.treebricks.ewuhub.database.CourseLDataSource;
 import com.treebricks.ewuhub.database.LabDataSource;
-import com.treebricks.ewuhub.view.SortCourseAdapter;
+import com.treebricks.ewuhub.view.SortedCourseAdapter;
 import com.treebricks.ewuhub.view.SortedCourses;
 
 import java.util.ArrayList;
@@ -111,7 +111,7 @@ public class ShowSortCourses extends AppCompatActivity
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-        mAdapter = new SortCourseAdapter(allSortedCourses, numberOfCourse, ShowSortCourses.this);
+        mAdapter = new SortedCourseAdapter(allSortedCourses, numberOfCourse);
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -207,7 +207,7 @@ public class ShowSortCourses extends AppCompatActivity
 
                                 allSortedCourses.clear();
                                 findConflictFreeSortCourse();
-                                mAdapter = new SortCourseAdapter(allSortedCourses, numberOfCourse, ShowSortCourses.this);
+                                mAdapter = new SortedCourseAdapter(allSortedCourses, numberOfCourse);
                                 mRecyclerView.setAdapter(mAdapter);
                             }
                             else

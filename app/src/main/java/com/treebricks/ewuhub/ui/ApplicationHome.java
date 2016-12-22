@@ -13,6 +13,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -90,6 +92,8 @@ public class ApplicationHome extends AppCompatActivity {
     CardView noticeCard;
     CardView feedCard;
 
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
     // Gson
     Gson gson;
 
@@ -156,6 +160,12 @@ public class ApplicationHome extends AppCompatActivity {
         calendarevent = (TextView) findViewById(R.id.calendar_event);
         calendarday = (TextView) findViewById(R.id.calendar_day);
         calendardate = (TextView) findViewById(R.id.calendar_date);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("EwuHub");
+        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(ApplicationHome.this, android.R.color.transparent));
 
 
         doubleBackToExitPressedOnce = false;
