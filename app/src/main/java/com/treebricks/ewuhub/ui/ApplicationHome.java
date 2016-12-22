@@ -13,6 +13,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -61,6 +63,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ApplicationHome extends AppCompatActivity {
+    private static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
     public boolean hasInternetConnection = false;
     private ProgressDialog progressDialog;
     int versionCode;
@@ -88,6 +91,8 @@ public class ApplicationHome extends AppCompatActivity {
 
     CardView noticeCard;
     CardView feedCard;
+
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     // Gson
     Gson gson;
@@ -156,6 +161,12 @@ public class ApplicationHome extends AppCompatActivity {
         calendarday = (TextView) findViewById(R.id.calendar_day);
         calendardate = (TextView) findViewById(R.id.calendar_date);
 
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("EwuHub");
+        collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(ApplicationHome.this, android.R.color.transparent));
+
 
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
@@ -205,8 +216,8 @@ public class ApplicationHome extends AppCompatActivity {
                             {
                                 case 1:
                                 {
-                                    Intent sortCourse = new Intent(ApplicationHome.this, SortCourseHome.class);
-                                    startActivity(sortCourse);
+                                    Intent courseInputIntent = new Intent(ApplicationHome.this, CoursesInput.class);
+                                    startActivity(courseInputIntent);
                                     break;
                                 }
                                 case 2:

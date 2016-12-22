@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.1'
+    buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
@@ -33,6 +33,7 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+
     // Android Repositories
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
@@ -41,10 +42,10 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
     // Firebase Repositories
-    compile 'com.google.firebase:firebase-database:10.0.0'
-    compile 'com.google.firebase:firebase-messaging:10.0.0'
-    compile 'com.google.firebase:firebase-storage:10.0.0'
-    compile 'com.firebaseui:firebase-ui-database:1.0.0'
+    compile 'com.google.firebase:firebase-database:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.google.firebase:firebase-storage:10.0.1'
+    compile 'com.firebaseui:firebase-ui-database:1.0.1'
     // Repository for Appintro
     compile 'com.github.paolorotolo:appintro:4.1.0'
     // Repository for Fab
@@ -54,7 +55,7 @@ dependencies {
     // Repository for Kenbursview(Image)
     compile 'com.flaviofaria:kenburnsview:1.0.7'
     // Repository for Material Drawer
-    compile('com.mikepenz:materialdrawer:5.8.0@aar') {
+    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
         transitive = true
     }
     // Repository for expandable-layout
@@ -67,5 +68,7 @@ dependencies {
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
     // Repository for MarkedView
     compile 'com.mittsu:markedview:1.0.4@aar'
+
 }
+
 apply plugin: 'com.google.gms.google-services'

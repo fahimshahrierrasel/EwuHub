@@ -4,19 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,22 +23,21 @@ import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.CourseDataSource;
 import com.treebricks.ewuhub.database.CourseLDataSource;
 import com.treebricks.ewuhub.database.LabDataSource;
-import com.treebricks.ewuhub.view.MyAdapter;
-import com.treebricks.ewuhub.view.Viewer;
+import com.treebricks.ewuhub.view.SortedCourseAdapter;
+import com.treebricks.ewuhub.view.SortedCourses;
+
 import java.util.ArrayList;
 import model.Course;
 import model.CourseL;
 
 public class ShowSortCourses extends AppCompatActivity
 {
-
-
     public static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
     public static final String FIRSTCOURSE = "FIRSTCOURSE";
     public static final String SECONDCOURSE = "SECONDCOURSE";
     public static final String THIRDCOURSE = "THIRDCOURSE";
     public static final String FOURTHCOURSE = "FOURTHCOURSE";
-    public static final String LOGTAG = "EwuHuB";
+    public static final String LOGTAG = ShowSortCourses.class.getSimpleName();
 
     Bundle bundle;
     private ArrayList<ArrayList<CourseL>> wLabCourses = new ArrayList<ArrayList<CourseL>>();
@@ -58,7 +53,6 @@ public class ShowSortCourses extends AppCompatActivity
             fourthCourse = "NULL";
 
     // Variable for database
-
     CourseDataSource courseDataSource;
     CourseLDataSource courseLDataSource;
     LabDataSource labDataSource;
@@ -66,9 +60,12 @@ public class ShowSortCourses extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    ArrayList<Viewer> recycleView = new ArrayList<Viewer>();
+    ArrayList<SortedCourses> allSortedCourses = new ArrayList<SortedCourses>();
     ActionBar actionBar;
-    int firstSection = 1,secondSection = 1,thirdSection = 1,fourthSection = 1 ;
+    int firstSection = 1,
+            secondSection = 1,
+            thirdSection = 1,
+            fourthSection = 1 ;
 
 
     @Override
@@ -84,8 +81,6 @@ public class ShowSortCourses extends AppCompatActivity
         ArrayList<String> lCrs = labDataSource.findAll(ShowSortCourses.this);
         labCourse = lCrs.toArray();
 
-
-
         bundle = getIntent().getExtras();
         if(bundle != null)
         {
@@ -97,18 +92,12 @@ public class ShowSortCourses extends AppCompatActivity
             Log.i(LOGTAG, firstCourse + "," + secondCourse + "," + thirdCourse + "," + fourthCourse + " Recived by ShowSortCourse!");
         }
 
-
-
-
-
-
         // add course to subjects.
         setSubjects();
         totalLabCourse = findTotalLabCourse();
         getCourseFromDataBase();
         fillShowSubjects();
         findConflictFreeCourse();
-
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -122,7 +111,7 @@ public class ShowSortCourses extends AppCompatActivity
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-        mAdapter = new MyAdapter(recycleView, numberOfCourse, ShowSortCourses.this, bundle);
+        mAdapter = new SortedCourseAdapter(allSortedCourses, numberOfCourse);
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -216,9 +205,9 @@ public class ShowSortCourses extends AppCompatActivity
                                     fourthSection = Integer.parseInt(fourthInputText);
                                 }
 
-                                recycleView.clear();
+                                allSortedCourses.clear();
                                 findConflictFreeSortCourse();
-                                mAdapter = new MyAdapter(recycleView, numberOfCourse, ShowSortCourses.this, bundle);
+                                mAdapter = new SortedCourseAdapter(allSortedCourses, numberOfCourse);
                                 mRecyclerView.setAdapter(mAdapter);
                             }
                             else
@@ -227,8 +216,6 @@ public class ShowSortCourses extends AppCompatActivity
                                 dialog.cancel();
                                 Toast.makeText(ShowSortCourses.this, "Please input the section numbers!",Toast.LENGTH_SHORT).show();
                             }
-
-
                         }
                     });
                     builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -237,19 +224,10 @@ public class ShowSortCourses extends AppCompatActivity
                             dialog.cancel();
                         }
                     });
-
                     builder.show();
-
                 }
             });
         }
-
-        //
-
-
-
-
-
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBar = getSupportActionBar();
@@ -316,8 +294,6 @@ public class ShowSortCourses extends AppCompatActivity
     }
 
     // Method for sorting
-
-
     public void setSubjects()
     {
         if(numberOfCourse == 3)
@@ -402,14 +378,11 @@ public class ShowSortCourses extends AppCompatActivity
                                     && withOutLab2.get(loop2).findConfliction(withOutLab3.get(loop3)))
                             {
 
-
-                                String header = withOutLab1.get(loop1).courseName() + ", " +
-                                        withOutLab2.get(loop2).courseName() + ", " +
-                                        withOutLab3.get(loop3).courseName();
-                                Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+                                SortedCourses sortedCourses = new SortedCourses(
+                                        withOutLab1.get(loop1),
                                         withOutLab2.get(loop2),
                                         withOutLab3.get(loop3));
-                                recycleView.add(viewer);
+                                allSortedCourses.add(sortedCourses);
                             }
                         }
                     }
@@ -431,15 +404,11 @@ public class ShowSortCourses extends AppCompatActivity
                                     && withOutLab1.get(loop2).findConfliction(withOutLab2.get(loop3)))
                             {
 
-                                String header = withLab1.get(loop1).courseName() + ", " +
-                                        withOutLab1.get(loop2).courseName() + ", " +
-                                        withOutLab2.get(loop3).courseName();
-
-                                Viewer viewer = new Viewer(header,
+                                SortedCourses sortedCourses = new SortedCourses(
                                         withLab1.get(loop1),
                                         withOutLab1.get(loop2),
                                         withOutLab2.get(loop3));
-                                recycleView.add(viewer);
+                                allSortedCourses.add(sortedCourses);
                             }
                         }
                     }
@@ -460,16 +429,11 @@ public class ShowSortCourses extends AppCompatActivity
                                     && withLab2.get(loop2).findConfliction(withOutLab1.get(loop3)))
                             {
 
-
-                                String header = withLab1.get(loop1).courseName() + ", " +
-                                        withLab2.get(loop2).courseName() + ", " +
-                                        withOutLab1.get(loop3).courseName();
-
-
-                                Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                SortedCourses sortedCourses = new SortedCourses(
+                                        withLab1.get(loop1),
                                         withLab2.get(loop2),
                                         withOutLab1.get(loop3));
-                                recycleView.add(viewer);
+                                allSortedCourses.add(sortedCourses);
                             }
                         }
                     }
@@ -489,16 +453,11 @@ public class ShowSortCourses extends AppCompatActivity
                             if(withLab1.get(loop1).findConfliction(withLab2.get(loop2)) && withLab1.get(loop1).findConfliction(withLab3.get(loop3))
                                     && withLab2.get(loop2).findConfliction(withLab3.get(loop3)))
                             {
-
-
-                                String header = withLab1.get(loop1).courseName() + ", " +
-                                        withLab2.get(loop2).courseName() + ", " +
-                                        withLab3.get(loop3).courseName();
-
-                                Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                SortedCourses sortedCourses = new SortedCourses(
+                                        withLab1.get(loop1),
                                         withLab2.get(loop2),
                                         withLab3.get(loop3));
-                                recycleView.add(viewer);
+                                allSortedCourses.add(sortedCourses);
                             }
                         }
                     }
@@ -525,17 +484,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         && withOutLab1.get(loop1).findConfliction(withOutLab4.get(loop4)) && withOutLab2.get(loop2).findConfliction(withOutLab3.get(loop3))
                                         && withOutLab2.get(loop2).findConfliction(withOutLab4.get(loop4)) && withOutLab3.get(loop3).findConfliction(withOutLab4.get(loop4)))
                                 {
-
-
-                                    String header = withOutLab1.get(loop1).courseName() + ", " +
-                                            withOutLab2.get(loop2).courseName() + ", " +
-                                            withOutLab3.get(loop3).courseName() + "," +
-                                            withOutLab4.get(loop4).courseName();
-
-                                    Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withOutLab1.get(loop1),
                                             withOutLab2.get(loop2),
-                                            withOutLab3.get(loop3),withOutLab4.get(loop4));
-                                    recycleView.add(viewer);
+                                            withOutLab3.get(loop3),
+                                            withOutLab4.get(loop4));
+                                    allSortedCourses.add(sortedCourses);
                                 }
                             }
                         }
@@ -561,16 +515,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         && withOutLab1.get(loop2).findConfliction(withOutLab3.get(loop4)) && withOutLab2.get(loop3).findConfliction(withOutLab3.get(loop4)))
                                 {
 
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withOutLab1.get(loop2).courseName() + ", " +
-                                            withOutLab2.get(loop3).courseName() +
-                                            "," + withOutLab3.get(loop4).courseName();
-
-                                    Viewer viewer = new Viewer(header,
+                                    SortedCourses sortedCourses = new SortedCourses(
                                             withLab1.get(loop1),
                                             withOutLab1.get(loop2),
-                                            withOutLab2.get(loop3),withOutLab3.get(loop4));
-                                    recycleView.add(viewer);
+                                            withOutLab2.get(loop3),
+                                            withOutLab3.get(loop4));
+                                    allSortedCourses.add(sortedCourses);
                                 }
                             }
                         }
@@ -596,17 +546,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         && withLab2.get(loop2).findConfliction(withOutLab2.get(loop4)) && withOutLab1.get(loop3).findConfliction(withOutLab2.get(loop4)))
                                 {
 
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withLab2.get(loop2).courseName() + ", " +
-                                            withOutLab1.get(loop3).courseName() +
-                                            "," + withOutLab2.get(loop4).courseName();
-
-
-                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withOutLab1.get(loop3),
                                             withOutLab2.get(loop4));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
                                 }
                             }
                         }
@@ -632,18 +577,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         && withLab2.get(loop2).findConfliction(withOutLab1.get(loop4)) && withLab3.get(loop3).findConfliction(withOutLab1.get(loop4)))
                                 {
 
-
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withLab2.get(loop2).courseName() + ", " +
-                                            withLab3.get(loop3).courseName() + "," +
-                                            withOutLab1.get(loop4).courseName();
-
-
-                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3),
                                             withOutLab1.get(loop4));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
 
                                 }
                             }
@@ -669,18 +608,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         && withLab1.get(loop1).findConfliction(withLab4.get(loop4)) && withLab2.get(loop2).findConfliction(withLab3.get(loop3))
                                         && withLab2.get(loop2).findConfliction(withLab4.get(loop4)) && withLab3.get(loop3).findConfliction(withLab4.get(loop4)))
                                 {
-
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withLab2.get(loop2).courseName() + ", " +
-                                            withLab3.get(loop3).courseName() + "," +
-                                            withLab4.get(loop4).courseName();
-
-
-                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3),
                                             withLab4.get(loop4));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
 
                                 }
                             }
@@ -719,14 +652,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         thirdSection == withOutLab3.get(loop3).getSection()) || (secondSection == withOutLab2.get(loop2).getSection() &&
                                         thirdSection == withOutLab3.get(loop3).getSection()))
                                 {
-                                    String header = withOutLab1.get(loop1).courseName() + ", " +
-                                            withOutLab2.get(loop2).courseName() + ", " +
-                                            withOutLab3.get(loop3).courseName();
 
-                                    Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withOutLab1.get(loop1),
                                             withOutLab2.get(loop2),
                                             withOutLab3.get(loop3));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
                                 }
                             }
                         }
@@ -755,15 +686,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         thirdSection == withOutLab2.get(loop3).getSection()) || (secondSection == withOutLab1.get(loop2).getSection() &&
                                         thirdSection == withOutLab2.get(loop3).getSection()))
                                 {
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withOutLab1.get(loop2).courseName() + ", " +
-                                            withOutLab2.get(loop3).courseName();
 
-                                    Viewer viewer = new Viewer(header,
+                                    SortedCourses sortedCourses = new SortedCourses(
                                             withLab1.get(loop1),
                                             withOutLab1.get(loop2),
                                             withOutLab2.get(loop3));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
 
                                 }
 
@@ -795,15 +723,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         thirdSection == withOutLab1.get(loop3).getSection()))
 
                                 {
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withLab2.get(loop2).courseName() + ", " +
-                                            withOutLab1.get(loop3).courseName();
 
-
-                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withOutLab1.get(loop3));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
                                 }
 
                             }
@@ -832,14 +757,12 @@ public class ShowSortCourses extends AppCompatActivity
                                         thirdSection == withLab3.get(loop3).getSection()) || (secondSection == withLab2.get(loop2).getSection() &&
                                         thirdSection == withLab3.get(loop3).getSection()))
                                 {
-                                    String header = withLab1.get(loop1).courseName() + ", " +
-                                            withLab2.get(loop2).courseName() + ", " +
-                                            withLab3.get(loop3).courseName();
 
-                                    Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                    SortedCourses sortedCourses = new SortedCourses(
+                                            withLab1.get(loop1),
                                             withLab2.get(loop2),
                                             withLab3.get(loop3));
-                                    recycleView.add(viewer);
+                                    allSortedCourses.add(sortedCourses);
                                 }
                             }
                         }
@@ -882,15 +805,14 @@ public class ShowSortCourses extends AppCompatActivity
                                             (secondSection == withOutLab2.get(loop2).getSection() && thirdSection == withOutLab3.get(loop3).getSection() &&
                                                     fourthSection == withOutLab4.get(loop4).getSection()))
                                     {
-                                        String header = withOutLab1.get(loop1).courseName() + ", " +
-                                                withOutLab2.get(loop2).courseName() + ", " +
-                                                withOutLab3.get(loop3).courseName() + "," +
-                                                withOutLab4.get(loop4).courseName();
 
-                                        Viewer viewer = new Viewer(header, withOutLab1.get(loop1),
+
+                                        SortedCourses sortedCourses = new SortedCourses(
+                                                withOutLab1.get(loop1),
                                                 withOutLab2.get(loop2),
-                                                withOutLab3.get(loop3),withOutLab4.get(loop4));
-                                        recycleView.add(viewer);
+                                                withOutLab3.get(loop3),
+                                                withOutLab4.get(loop4));
+                                        allSortedCourses.add(sortedCourses);
                                     }
                                 }
                             }
@@ -933,16 +855,13 @@ public class ShowSortCourses extends AppCompatActivity
                                             (secondSection == withOutLab1.get(loop2).getSection() && thirdSection == withOutLab2.get(loop3).getSection() &&
                                                     fourthSection == withOutLab3.get(loop4).getSection()))
                                     {
-                                        String header = withLab1.get(loop1).courseName() + ", " +
-                                                withOutLab1.get(loop2).courseName() + ", " +
-                                                withOutLab2.get(loop3).courseName() +
-                                                "," + withOutLab3.get(loop4).courseName();
 
-                                        Viewer viewer = new Viewer(header,
+                                        SortedCourses sortedCourses = new SortedCourses(
                                                 withLab1.get(loop1),
                                                 withOutLab1.get(loop2),
-                                                withOutLab2.get(loop3),withOutLab3.get(loop4));
-                                        recycleView.add(viewer);
+                                                withOutLab2.get(loop3),
+                                                withOutLab3.get(loop4));
+                                        allSortedCourses.add(sortedCourses);
                                     }
 
 
@@ -986,17 +905,13 @@ public class ShowSortCourses extends AppCompatActivity
                                             (secondSection == withLab2.get(loop2).getSection() && thirdSection == withOutLab1.get(loop3).getSection() &&
                                                     fourthSection == withOutLab2.get(loop4).getSection()))
                                     {
-                                        String header = withLab1.get(loop1).courseName() + ", " +
-                                                withLab2.get(loop2).courseName() + ", " +
-                                                withOutLab1.get(loop3).courseName() +
-                                                "," + withOutLab2.get(loop4).courseName();
 
-
-                                        Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                        SortedCourses sortedCourses = new SortedCourses(
+                                                withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withOutLab1.get(loop3),
                                                 withOutLab2.get(loop4));
-                                        recycleView.add(viewer);
+                                        allSortedCourses.add(sortedCourses);
                                     }
                                 }
                             }
@@ -1038,17 +953,13 @@ public class ShowSortCourses extends AppCompatActivity
                                             (secondSection == withLab2.get(loop2).getSection() && thirdSection == withLab3.get(loop3).getSection() &&
                                                     fourthSection == withOutLab1.get(loop4).getSection()))
                                     {
-                                        String header = withLab1.get(loop1).courseName() + ", " +
-                                                withLab2.get(loop2).courseName() + ", " +
-                                                withLab3.get(loop3).courseName() + "," +
-                                                withOutLab1.get(loop4).courseName();
 
-
-                                        Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                        SortedCourses sortedCourses = new SortedCourses(
+                                                withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withLab3.get(loop3),
                                                 withOutLab1.get(loop4));
-                                        recycleView.add(viewer);
+                                        allSortedCourses.add(sortedCourses);
                                     }
 
 
@@ -1093,17 +1004,13 @@ public class ShowSortCourses extends AppCompatActivity
                                             (secondSection == withLab2.get(loop2).getSection() && thirdSection == withLab3.get(loop3).getSection() &&
                                                     fourthSection == withLab4.get(loop4).getSection()))
                                     {
-                                        String header = withLab1.get(loop1).courseName() + ", " +
-                                                withLab2.get(loop2).courseName() + ", " +
-                                                withLab3.get(loop3).courseName() + "," +
-                                                withLab4.get(loop4).courseName();
 
-
-                                        Viewer viewer = new Viewer(header, withLab1.get(loop1),
+                                        SortedCourses sortedCourses = new SortedCourses(
+                                                withLab1.get(loop1),
                                                 withLab2.get(loop2),
                                                 withLab3.get(loop3),
                                                 withLab4.get(loop4));
-                                        recycleView.add(viewer);
+                                        allSortedCourses.add(sortedCourses);
                                     }
                                 }
                             }

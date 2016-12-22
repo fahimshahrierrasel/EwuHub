@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secondary_frame_rl_sv_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.treebricks.ewuhub.ui.CoursesInput"
+    tools:showIn="@layout/activity_courses_input">
+
+    <AutoCompleteTextView
+        android:id="@+id/course_one_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:inputType="text"
+        android:maxLength="7"
+        android:maxLines="1" />
+
+    <AutoCompleteTextView
+        android:id="@+id/course_two_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/course_one_edit_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:inputType="text"
+        android:maxLength="7"
+        android:maxLines="1" />
+
+    <AutoCompleteTextView
+        android:id="@+id/course_three_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/course_two_edit_text"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:inputType="text"
+        android:maxLength="7"
+        android:maxLines="1" />
+
+    <ImageButton
+        android:id="@+id/add_course"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/course_three_edit_text"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/course_three_edit_text"
+        android:layout_toRightOf="@+id/course_three_edit_text"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plus" />
+
+</RelativeLayout>
