@@ -51,7 +51,7 @@
                 <View
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:background="@drawable/triangle" />
+                    android:background="@drawable/triangle_green" />
             </RelativeLayout>
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout

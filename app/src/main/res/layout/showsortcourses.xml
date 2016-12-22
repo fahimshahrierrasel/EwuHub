@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:id="@+id/threecard"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/all_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:text="CSE301LAB" />
+
+            <RelativeLayout
+                android:id="@+id/sorted_triangle_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/triangle_black" />
+            </RelativeLayout>
+
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/sorted_expand_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sorted_triangle_button"
+                android:orientation="vertical"
+                app:ael_duration="400"
+                app:ael_expanded="false">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course1">
+                    <TextView
+                        android:id="@+id/course_name_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="CSE301LAB" />
+
+                    <TextView
+                        android:id="@+id/course_section_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Section:10"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/course_faculty_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="Faculty: DMRH" />
+
+                    <TextView
+                        android:id="@+id/course_weekday_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WeekDay: MW"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_name_1"/>
+
+
+                    <TextView
+                        android:id="@+id/course_timefrom_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_weekday_1"
+                        android:paddingLeft="8dp"
+                        android:text="Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_timeto_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_weekday_1"
+                        android:paddingRight="8dp"
+                        android:text="Time To: 11:40" />
+                    <TextView
+                        android:id="@+id/course_labweekday_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Lab WeekDay: M"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_timefrom_1"/>
+
+                    <TextView
+                        android:id="@+id/course_labtimefrom_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_labweekday_1"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_labtimeto_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_labweekday_1"
+                        android:paddingRight="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time To: 11:40" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course2"
+                    android:layout_below="@+id/course1"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:id="@+id/course_name_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="CSE301LAB" />
+
+                    <TextView
+                        android:id="@+id/course_section_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Section:10"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/course_faculty_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="Faculty: DMRH" />
+
+                    <TextView
+                        android:id="@+id/course_weekday_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WeekDay: MW"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_name_2"/>
+
+
+                    <TextView
+                        android:id="@+id/course_timefrom_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_weekday_2"
+                        android:paddingLeft="8dp"
+                        android:text="Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_timeto_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_weekday_2"
+                        android:paddingRight="8dp"
+                        android:text="Time To: 11:40" />
+                    <TextView
+                        android:id="@+id/course_labweekday_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Lab WeekDay: M"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_timefrom_2"/>
+
+                    <TextView
+                        android:id="@+id/course_labtimefrom_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_labweekday_2"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_labtimeto_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_labweekday_2"
+                        android:paddingRight="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time To: 11:40" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course3"
+                    android:layout_below="@+id/course2"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:id="@+id/course_name_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="CSE301LAB" />
+
+                    <TextView
+                        android:id="@+id/course_section_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Section:10"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/course_faculty_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="Faculty: DMRH" />
+
+                    <TextView
+                        android:id="@+id/course_weekday_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WeekDay: MW"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_name_3"/>
+
+
+                    <TextView
+                        android:id="@+id/course_timefrom_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_weekday_3"
+                        android:paddingLeft="8dp"
+                        android:text="Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_timeto_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_weekday_3"
+                        android:paddingRight="8dp"
+                        android:text="Time To: 11:40" />
+                    <TextView
+                        android:id="@+id/course_labweekday_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Lab WeekDay: M"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_timefrom_3"/>
+
+                    <TextView
+                        android:id="@+id/course_labtimefrom_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_labweekday_3"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_labtimeto_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_labweekday_3"
+                        android:paddingRight="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time To: 11:40" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/course4"
+                    android:layout_below="@+id/course3"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:id="@+id/course_name_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:text="CSE301LAB" />
+
+                    <TextView
+                        android:id="@+id/course_section_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:gravity="center"
+                        android:text="Section:10"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/course_faculty_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="8dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="Faculty: DMRH" />
+
+                    <TextView
+                        android:id="@+id/course_weekday_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="WeekDay: MW"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_name_4"/>
+
+
+                    <TextView
+                        android:id="@+id/course_timefrom_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_weekday_4"
+                        android:paddingLeft="8dp"
+                        android:text="Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_timeto_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_weekday_4"
+                        android:paddingRight="8dp"
+                        android:text="Time To: 11:40" />
+                    <TextView
+                        android:id="@+id/course_labweekday_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="serif"
+                        android:text="Lab WeekDay: M"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/course_timefrom_4"/>
+
+                    <TextView
+                        android:id="@+id/course_labtimefrom_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/course_labweekday_4"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time From: 10:10" />
+
+                    <TextView
+                        android:id="@+id/course_labtimeto_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/course_labweekday_4"
+                        android:paddingRight="8dp"
+                        android:paddingTop="8dp"
+                        android:text="Lab Time To: 11:40" />
+
+                </RelativeLayout>
+
+
+
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/course_name"
+                android:id="@+id/course_name_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
@@ -26,19 +26,19 @@
                 android:text="CSE301LAB" />
 
             <TextView
-                android:id="@+id/course_section"
+                android:id="@+id/course_section_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/course_name"
-                android:layout_toLeftOf="@+id/course_weekday"
-                android:layout_toRightOf="@+id/course_name"
-                android:layout_toStartOf="@+id/course_weekday"
+                android:layout_toEndOf="@+id/course_name_1"
+                android:layout_toLeftOf="@+id/course_weekday_1"
+                android:layout_toRightOf="@+id/course_name_1"
+                android:layout_toStartOf="@+id/course_weekday_1"
                 android:fontFamily="serif"
                 android:gravity="center"
                 android:text="Section:10" />
 
             <TextView
-                android:id="@+id/course_weekday"
+                android:id="@+id/course_weekday_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/advising_triangle_button"
@@ -59,27 +59,27 @@
                 <View
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:background="@drawable/triangle" />
+                    android:background="@drawable/triangle_green" />
             </RelativeLayout>
 
             <com.github.aakira.expandablelayout.ExpandableRelativeLayout
                 android:id="@+id/advising_expand_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/course_section"
+                android:layout_below="@+id/course_section_1"
                 android:orientation="vertical"
                 app:ael_duration="400"
                 app:ael_expanded="false">
 
                 <TextView
-                    android:id="@+id/course_timefrom"
+                    android:id="@+id/course_timefrom_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Time From: 10:10" />
 
                 <TextView
-                    android:id="@+id/course_timeto"
+                    android:id="@+id/course_timeto_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -88,31 +88,28 @@
                     android:text="Time To: 11:40" />
 
                 <TextView
-                    android:id="@+id/course_faculty"
+                    android:id="@+id/course_faculty_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/course_timefrom"
+                    android:layout_below="@+id/course_timefrom_1"
                     android:paddingBottom="6dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:text="Faculty: DMRH" />
 
                 <TextView
-                    android:id="@+id/course_room"
+                    android:id="@+id/course_room_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/course_timeto"
+                    android:layout_below="@+id/course_timeto_1"
                     android:paddingBottom="6dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:text="Room: 220(Media Room)" />
 
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
-
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-
 </LinearLayout>
