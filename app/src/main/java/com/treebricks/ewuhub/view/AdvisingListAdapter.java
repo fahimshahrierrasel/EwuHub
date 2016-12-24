@@ -1,7 +1,6 @@
 package com.treebricks.ewuhub.view;
 
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -16,22 +15,17 @@ import com.treebricks.ewuhub.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by fahim on 10/25/16.
- */
 
 public class AdvisingListAdapter extends RecyclerView.Adapter<AdvisingListViewHolder>
     implements SectionTitleProvider
 {
 
-    ArrayList<AdvisingList> allCoursesList;
-    Context context;
+    private ArrayList<AdvisingList> allCoursesList;
     private SparseBooleanArray expandState = new SparseBooleanArray();
 
-    public AdvisingListAdapter(ArrayList<AdvisingList> allCoursesList, Context context)
+    public AdvisingListAdapter(ArrayList<AdvisingList> allCoursesList)
     {
         this.allCoursesList = allCoursesList;
-        this.context = context;
         for (int i = 0; i < allCoursesList.size(); i++) {
             expandState.append(i, false);
         }
@@ -45,14 +39,16 @@ public class AdvisingListAdapter extends RecyclerView.Adapter<AdvisingListViewHo
     }
 
     @Override
-    public void onBindViewHolder(final AdvisingListViewHolder holder, final int position)
+    public void onBindViewHolder(final AdvisingListViewHolder holder, int position)
     {
-        AdvisingList advisingList = allCoursesList.get(position);
+        final int currentPosition = position;
+
+        AdvisingList advisingList = allCoursesList.get(currentPosition);
 
         holder.dataBind(advisingList);
 
         holder.setIsRecyclable(false);
-        if(!expandState.get(position))
+        if(!expandState.get(currentPosition))
         {
             holder.expandableRelativeLayout.collapse();
         }
@@ -62,19 +58,25 @@ public class AdvisingListAdapter extends RecyclerView.Adapter<AdvisingListViewHo
             @Override
             public void onPreOpen() {
                 createRotateAnimator(holder.buttonLayout, 0f, 180f).start();
-                expandState.put(position, true);
+                expandState.put(currentPosition, true);
             }
 
             @Override
             public void onPreClose() {
                 createRotateAnimator(holder.buttonLayout, 180f, 0f).start();
-                expandState.put(position, false);
+                expandState.put(currentPosition, false);
             }
         });
         holder.buttonLayout.setRotation(expandState.get(position) ? 180f : 0f);
         holder.buttonLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onClickButton(holder.expandableRelativeLayout);
+            }
+        });
+        holder.advisingListCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 onClickButton(holder.expandableRelativeLayout);
             }
         });
@@ -89,7 +91,7 @@ public class AdvisingListAdapter extends RecyclerView.Adapter<AdvisingListViewHo
         expandableLayout.toggle();
     }
 
-    public ObjectAnimator createRotateAnimator(final View target, final float from, final float to) {
+    private ObjectAnimator createRotateAnimator(final View target, final float from, final float to) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(target, "rotation", from, to);
         animator.setDuration(300);
         animator.setInterpolator(Utils.createInterpolator(Utils.LINEAR_INTERPOLATOR));

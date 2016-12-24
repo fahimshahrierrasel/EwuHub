@@ -222,7 +222,7 @@ public class ApplicationHome extends AppCompatActivity {
                                 }
                                 case 2:
                                 {
-                                    Intent i = new Intent(ApplicationHome.this, ActivityAdvisingList.class);
+                                    Intent i = new Intent(ApplicationHome.this, AdvisingListViewer.class);
                                     startActivity(i);
                                     break;
                                 }

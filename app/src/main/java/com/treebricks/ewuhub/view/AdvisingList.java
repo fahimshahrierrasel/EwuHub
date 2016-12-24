@@ -85,7 +85,7 @@ public class AdvisingList {
 
     @Override
     public String toString() {
-        return "AdvisingList{" +
+        return "AdvisingListViewer{" +
                 "courseName='" + courseName + '\'' +
                 ", courseSection='" + courseSection + '\'' +
                 ", courseTimefrom='" + courseTimefrom + '\'' +

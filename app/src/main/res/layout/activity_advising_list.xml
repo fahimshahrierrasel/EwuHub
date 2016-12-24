@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.treebricks.ewuhub.ui.ActivityAdvisingList">
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.treebricks.ewuhub.ui.AdvisingListViewer">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/advising_appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:background="@color/search_layover_bg">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <FrameLayout
             android:id="@+id/toolbar_container"
@@ -23,23 +24,33 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary" />
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-            <com.miguelcatalan.materialsearchview.MaterialSearchView
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autocompletecourse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="70dp"
+                        android:layout_marginRight="70dp"
+                        android:hint="Search Course...."
+                        android:paddingTop="23dp"
+                        android:theme="@style/Autocomplete" />
+                </FrameLayout>
+            </android.support.v7.widget.Toolbar>
         </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-
     <RelativeLayout
         android:id="@+id/activity_advising_list"
-        android:paddingTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/advising_recycler"

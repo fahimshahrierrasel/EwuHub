@@ -129,9 +129,9 @@
                 android:value="com.treebricks.ewuhub.ui.ApplicationHome" />
         </activity>
 
-        <!-- AdvisingList Activity -->
+        <!-- AdvisingListViewer Activity -->
         <activity
-            android:name=".ui.ActivityAdvisingList"
+            android:name=".ui.AdvisingListViewer"
             android:parentActivityName=".ui.ApplicationHome"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

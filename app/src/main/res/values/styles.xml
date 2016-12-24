@@ -51,7 +51,6 @@
     </style>
 
 
-
     <style name="AppThemeV2" parent="AppTheme.Base" />
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
@@ -59,6 +58,12 @@
         <item name="colorPrimaryDark">#1976D2</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Autocomplete" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:background">@color/md_green_500</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
     </style>
 
 

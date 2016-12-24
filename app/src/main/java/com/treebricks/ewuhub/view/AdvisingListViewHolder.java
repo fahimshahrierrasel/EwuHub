@@ -1,6 +1,7 @@
 package com.treebricks.ewuhub.view;
 
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,7 +25,8 @@ public class AdvisingListViewHolder extends RecyclerView.ViewHolder {
     TextView courseRoom;
 
     ExpandableRelativeLayout expandableRelativeLayout;
-    public RelativeLayout buttonLayout;
+    RelativeLayout buttonLayout;
+    CardView advisingListCard;
 
     public AdvisingListViewHolder(View itemView) {
         super(itemView);
@@ -37,6 +39,7 @@ public class AdvisingListViewHolder extends RecyclerView.ViewHolder {
         courseRoom = (TextView) itemView.findViewById(R.id.course_room_1);
         expandableRelativeLayout = (ExpandableRelativeLayout) itemView.findViewById(R.id.advising_expand_layout);
         buttonLayout = (RelativeLayout) itemView.findViewById(R.id.advising_triangle_button);
+        advisingListCard = (CardView) itemView.findViewById(R.id.advising_list_card);
     }
 
     public void dataBind(AdvisingList advisingList)
