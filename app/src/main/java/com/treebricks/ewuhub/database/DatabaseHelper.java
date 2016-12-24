@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,34 +12,31 @@ import java.io.OutputStream;
 import java.sql.SQLException;
 
 
-public class DatabaseHelper extends SQLiteOpenHelper
+class DatabaseHelper extends SQLiteOpenHelper
 {
-    String DATABASE_PATH = null;
+    private String DATABASE_PATH = null;
     private static String DATABASE_NAME = "CoursesDatabase.db";
+    private static int DATABASE_VERSION = 1;
     private SQLiteDatabase myDataBase;
     private final Context myContext;
 
-    public DatabaseHelper(Context context)
+    DatabaseHelper(Context context)
     {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.myContext = context;
         this.DATABASE_PATH = context.getApplicationInfo().dataDir + "/databases/";
-
-        Log.e("DataBase Path : ", DATABASE_PATH);
     }
 
-
-    private boolean checkDataBase()
+    private boolean checkDatabase()
     {
         SQLiteDatabase checkDatabase = null;
         try
         {
-            String myPath = DATABASE_PATH + DATABASE_NAME;
-            checkDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+            String databasePath = DATABASE_PATH + DATABASE_NAME;
+            checkDatabase = SQLiteDatabase.openDatabase(databasePath, null, SQLiteDatabase.OPEN_READONLY);
         }
-        catch (SQLiteException sqle){
+        catch (SQLiteException ignored){}
 
-        }
         if(checkDatabase != null)
         {
             checkDatabase.close();
@@ -48,36 +44,33 @@ public class DatabaseHelper extends SQLiteOpenHelper
         return (checkDatabase != null);
     }
 
-    private void copyDataBase() throws IOException
+    private void copyDatabase() throws IOException
     {
-        InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
-        String outFileName = DATABASE_PATH + DATABASE_NAME;
-        OutputStream myOutPut = new FileOutputStream(outFileName);
+        InputStream databaseIS = myContext.getAssets().open(DATABASE_NAME);
+        String databaseFile = DATABASE_PATH + DATABASE_NAME;
+        OutputStream databaseOS = new FileOutputStream(databaseFile);
         byte[] buffer = new byte[10];
         int length;
-        while((length = myInput.read(buffer)) > 0)
+        while((length = databaseIS.read(buffer)) > 0)
         {
-            myOutPut.write(buffer, 0, length);
+            databaseOS.write(buffer, 0, length);
         }
-        Log.e("DataBase Information : ", "Database copying from assets.");
-        myOutPut.flush();
-        myOutPut.close();
-        myInput.close();
+        databaseOS.flush();
+        databaseOS.close();
+        databaseIS.close();
     }
 
 
 
-    public void createDataBase() throws IOException
+    void createDatabase() throws IOException
     {
-        boolean dataBaseExist = checkDataBase();
-        if(dataBaseExist)
-        {}
-        else
+        boolean dataBaseExist = checkDatabase();
+        if(!dataBaseExist)
         {
             this.getReadableDatabase();
             try
             {
-                copyDataBase();
+                copyDatabase();
             }
             catch (IOException ioe)
             {
@@ -86,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
     }
 
-    public void openDataBase() throws SQLException
+    void openDatabase() throws SQLException
     {
         String myPath= DATABASE_PATH + DATABASE_NAME;
         myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
@@ -115,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         {
             try
             {
-                copyDataBase();
+                copyDatabase();
             }
             catch (IOException ioe)
             {
@@ -124,8 +117,16 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
     }
 
+    /*
+    Cursor query(String table, String[] columns,
+                 String selection, String[] selectionArgs,
+                 String groupBy, String having, String orderBy) {
+        return myDataBase.query(table, columns, selection, selectionArgs, groupBy, having, orderBy);
+    }
+    */
 
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy) {
-        return myDataBase.query(table, null, null, null, null, null, null);
+    Cursor rawQuery(String sqlQuery, String[] id)
+    {
+        return myDataBase.rawQuery(sqlQuery, id);
     }
 }
