@@ -1,5 +1,6 @@
 package com.treebricks.ewuhub.view;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -19,6 +20,7 @@ public class AcademicCalendarViewHolder extends RecyclerView.ViewHolder {
     TextView calendarDescription;
     ExpandableRelativeLayout expandableRelativeLayout;
     public RelativeLayout buttonLayout;
+    CardView calendarCard;
 
     public AcademicCalendarViewHolder(View itemView) {
         super(itemView);
@@ -27,6 +29,7 @@ public class AcademicCalendarViewHolder extends RecyclerView.ViewHolder {
         calendarDescription = (TextView) itemView.findViewById(R.id.calendar_event);
         buttonLayout = (RelativeLayout) itemView.findViewById(R.id.triangle_button);
         expandableRelativeLayout = (ExpandableRelativeLayout) itemView.findViewById(R.id.calendar_desc_layout);
+        calendarCard = (CardView) itemView.findViewById(R.id.calendar_viewer_card);
 
     }
     public void bindData(String calDate, String calDay, String calDescription)

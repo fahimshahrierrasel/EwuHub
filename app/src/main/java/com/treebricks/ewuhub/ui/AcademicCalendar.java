@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class AcademicCalendar extends AppCompatActivity {
-    public static final String TAG = "AcademicCalendar";
     // ActionBar
     String actionBarTitle = "Academic Calendar";
     ActionBar actionBar;
@@ -103,7 +102,7 @@ public class AcademicCalendar extends AppCompatActivity {
         }
 
         // Initializing RecyclerAdapter and set the adapter for Recycler
-        academicCalendarAdapter = new AcademicCalendarAdapter(undergradCalendar.getAcademicCalendarEvents(), AcademicCalendar.this);
+        academicCalendarAdapter = new AcademicCalendarAdapter(undergradCalendar.getAcademicCalendarEvents());
         acdemicCalendarRecycler.setAdapter(academicCalendarAdapter);
 
 
@@ -151,7 +150,7 @@ public class AcademicCalendar extends AppCompatActivity {
                 {
                     actionBar.setTitle(actionBarTitle);
                 }
-                academicCalendarAdapter = new AcademicCalendarAdapter(undergradCalendar.getAcademicCalendarEvents(), AcademicCalendar.this);
+                academicCalendarAdapter = new AcademicCalendarAdapter(undergradCalendar.getAcademicCalendarEvents());
                 acdemicCalendarRecycler.setAdapter(academicCalendarAdapter);
 
             }
@@ -179,7 +178,7 @@ public class AcademicCalendar extends AppCompatActivity {
                     actionBar.setTitle(actionBarTitle);
                 }
 
-                academicCalendarAdapter = new AcademicCalendarAdapter(pharmaUndergradCalendar.getAcademicCalendarEvents(), AcademicCalendar.this);
+                academicCalendarAdapter = new AcademicCalendarAdapter(pharmaUndergradCalendar.getAcademicCalendarEvents());
                 acdemicCalendarRecycler.setAdapter(academicCalendarAdapter);
 
             }
@@ -205,7 +204,7 @@ public class AcademicCalendar extends AppCompatActivity {
                     actionBar.setTitle(actionBarTitle);
                 }
 
-                academicCalendarAdapter = new AcademicCalendarAdapter(graduateCalendar.getAcademicCalendarEvents(), AcademicCalendar.this);
+                academicCalendarAdapter = new AcademicCalendarAdapter(graduateCalendar.getAcademicCalendarEvents());
                 acdemicCalendarRecycler.setAdapter(academicCalendarAdapter);
 
             }
@@ -230,7 +229,7 @@ public class AcademicCalendar extends AppCompatActivity {
                     actionBar.setTitle(actionBarTitle);
                 }
 
-                academicCalendarAdapter = new AcademicCalendarAdapter(pharmaGraduateCalendar.getAcademicCalendarEvents(), AcademicCalendar.this);
+                academicCalendarAdapter = new AcademicCalendarAdapter(pharmaGraduateCalendar.getAcademicCalendarEvents());
                 acdemicCalendarRecycler.setAdapter(academicCalendarAdapter);
 
             }
