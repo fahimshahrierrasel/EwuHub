@@ -21,7 +21,7 @@ public class Preferences extends AppCompatActivity
             getSupportActionBar().setTitle("Preferences");
         }
 
-        MinePreferenceFrament prefFragment = new MinePreferenceFrament();
+        PreferenceFragment prefFragment = new PreferenceFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(android.R.id.content, prefFragment);

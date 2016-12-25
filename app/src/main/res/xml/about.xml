@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <Preference
+      android:icon="@mipmap/ic_launcher"
+      android:key="app"
+      android:summary="Version"
+      android:title="EwuHub" />
+
+  <Preference
+    android:icon="@drawable/developer"
+    android:key="developer"
+    android:summary="Meet with the developer of EwuHub"
+    android:title="Developer" />
+  <Preference
+      android:icon="@drawable/privacy"
+      android:key="privacy"
+      android:summary="Please read the privacy policy of EwuHub"
+      android:title="Privacy Policy" />
+  <Preference
+      android:icon="@drawable/terms"
+      android:key="terms"
+      android:summary="Please read the terms of use of EwuHub"
+      android:title="Terms of Use" />
+  <Preference
+    android:icon="@drawable/credit"
+    android:key="credit"
+    android:summary="Know about our friends. Who help use to build this applicaiton."
+    android:title="Credits" />
+
+  <Preference
+      android:icon="@drawable/fb_blue_72"
+      android:key="facebook"
+      android:summary="Stay up to date with our facebook page."
+      android:title="Connect with Us" />
+
+</PreferenceScreen>

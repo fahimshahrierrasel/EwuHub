@@ -32,8 +32,8 @@
         android:title="Feedback" />
 
     <Preference
-        android:icon="@drawable/developer"
-        android:key="developer"
+        android:icon="@drawable/about"
+        android:key="about"
         android:summary="Hey, Do you want to know more about EwuHub and treebricks?"
         android:title="About" />
 

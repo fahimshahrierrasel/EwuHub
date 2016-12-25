@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -29,12 +28,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by fahim on 7/9/16.
- */
-public class MinePreferenceFrament extends PreferenceFragment
+
+public class PreferenceFragment extends android.preference.PreferenceFragment
 {
-    public static final String TAG = MinePreferenceFrament.class.getSimpleName();
+    public static final String TAG = PreferenceFragment.class.getSimpleName();
     ProgressDialog progressDialog;
     public boolean hasInternetConnection = false;
     FirebaseStorage storage;
@@ -59,163 +56,151 @@ public class MinePreferenceFrament extends PreferenceFragment
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         String key = preference.getKey();
 
-        if(key.equals("updatedb"))
-        {
+      switch (key) {
+        case "updatedb": {
 
-            progressDialog.setMessage("Updating the Database\nPlease be patient..");
-            progressDialog.show();
+          progressDialog.setMessage("Updating the Database\nPlease be patient..");
+          progressDialog.show();
 
-            new NetworkUtility().execute();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if(hasInternetConnection)
-                    {
-                        if(playServiceUpdated())
-                        {
-                            StorageReference databaseReference = storageReference.child("databases/CoursesDatabase.db");
+          new NetworkUtility().execute();
+          Handler handler = new Handler();
+          handler.postDelayed(new Runnable() {
+            @Override public void run() {
+              if (hasInternetConnection) {
+                if (playServiceUpdated()) {
+                  StorageReference databaseReference =
+                      storageReference.child("databases/CoursesDatabase.db");
 
-                            final long ONE_MEGABYTE = 1024 * 1024;
+                  final long ONE_MEGABYTE = 1024 * 1024;
 
-                            databaseReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                @Override
-                                public void onSuccess(byte[] bytes) {
+                  databaseReference.getBytes(ONE_MEGABYTE)
+                      .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                        @Override public void onSuccess(byte[] bytes) {
 
-                                    OutputStream output = null;
+                          OutputStream output = null;
 
-                                    try {
+                          try {
 
-                                        File dir = new File(getActivity().getApplicationInfo().dataDir + "/databases");
-                                        if(!dir.exists()){
-                                            dir.mkdirs();
-                                            Log.i("Directory Log :","Directory Created" + dir);
-                                        }
-                                        output = new FileOutputStream(dir+ "/CoursesDatabase.db");
-                                        output.write(bytes);
-                                    }
-                                    catch (IOException e)
-                                    {
-                                        e.getMessage();
-                                    } finally {
-                                        try {
-                                            if (output != null) {
-                                                output.close();
-                                                output = null;
-                                            }
-                                        } catch (IOException ignored) {
-                                            ignored.getStackTrace();
-                                        }
-                                    }
-                                    progressDialog.dismiss();
-                                    Toast.makeText(getActivity(), "Course Database Updated Successfully :)", Toast.LENGTH_SHORT).show();
-
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-
-                                    progressDialog.dismiss();
-                                    progressDialog.cancel();
-                                    Toast.makeText(getActivity(), "Course Database Updated Failed :(", Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
+                            File dir =
+                                new File(getActivity().getApplicationInfo().dataDir + "/databases");
+                            if (!dir.exists()) {
+                              dir.mkdirs();
+                              Log.i("Directory Log :", "Directory Created" + dir);
+                            }
+                            output = new FileOutputStream(dir + "/CoursesDatabase.db");
+                            output.write(bytes);
+                          } catch (IOException e) {
+                            e.getMessage();
+                          } finally {
+                            try {
+                              if (output != null) {
+                                output.close();
+                                output = null;
+                              }
+                            } catch (IOException ignored) {
+                              ignored.getStackTrace();
+                            }
+                          }
+                          progressDialog.dismiss();
+                          Toast.makeText(getActivity(), "Course Database Updated Successfully :)",
+                              Toast.LENGTH_SHORT).show();
                         }
-                        else
-                        {
-                            progressDialog.dismiss();
-                            progressDialog.cancel();
-                            Toast.makeText(getActivity(), "Google Play Service is Outdated :(\nMake sure Google Play Service is updated!", Toast.LENGTH_SHORT).show();
-                        }
+                      })
+                      .addOnFailureListener(new OnFailureListener() {
+                        @Override public void onFailure(@NonNull Exception e) {
 
-                    }
-                    else
-                    {
+                          progressDialog.dismiss();
+                          progressDialog.cancel();
+                          Toast.makeText(getActivity(), "Course Database Updated Failed :(",
+                              Toast.LENGTH_SHORT).show();
+                        }
+                      });
+                } else {
+                  progressDialog.dismiss();
+                  progressDialog.cancel();
+                  Toast.makeText(getActivity(),
+                      "Google Play Service is Outdated :(\nMake sure Google Play Service is updated!",
+                      Toast.LENGTH_SHORT).show();
+                }
+              } else {
+                progressDialog.dismiss();
+                progressDialog.cancel();
+                Toast.makeText(getActivity(), "You are not connected to internet",
+                    Toast.LENGTH_LONG).show();
+              }
+            }
+          }, 2000);
+
+          break;
+        }
+        case "updateac": {
+          progressDialog.setMessage("Updating the Academic Calendar.\nPlease be patient..");
+          progressDialog.show();
+
+          new NetworkUtility().execute();
+          Handler handler = new Handler();
+          handler.postDelayed(new Runnable() {
+            @Override public void run() {
+              if (hasInternetConnection) {
+
+                if (playServiceUpdated()) {
+                  undergraduateTask();
+                  graduateTask();
+                  pharmacyUndergraduateTask();
+                  pharmacyGraduateTask();
+
+                  Handler handler = new Handler();
+                  handler.postDelayed(new Runnable() {
+                    @Override public void run() {
+                      boolean sucess = true;
+                      for (boolean aCalenderDownloaded : calenderDownloaded) {
+                        if (!aCalenderDownloaded) {
+                          progressDialog.dismiss();
+                          progressDialog.cancel();
+                          Toast.makeText(getActivity(), "Academic Calendars Update Failed :( ",
+                              Toast.LENGTH_SHORT).show();
+                          sucess = false;
+                          break;
+                        }
+                      }
+                      if (sucess) {
                         progressDialog.dismiss();
                         progressDialog.cancel();
-                        Toast.makeText(getActivity(),"You are not connected to internet",Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(getActivity(), "Academic Calendar Updated Successfully :) ",
+                            Toast.LENGTH_SHORT).show();
+                      }
                     }
+                  }, 4000);
+                } else {
+                  progressDialog.dismiss();
+                  progressDialog.cancel();
+                  Toast.makeText(getActivity(),
+                      "Google Play Service is Outdated :(\nMake sure Google Play Service is updated!",
+                      Toast.LENGTH_SHORT).show();
                 }
-            }, 2000);
+              } else {
+                progressDialog.dismiss();
+                progressDialog.cancel();
+                Toast.makeText(getActivity(), "You are not connected to internet :( ",
+                    Toast.LENGTH_LONG).show();
+              }
+            }
+          }, 2000);
 
+          break;
         }
-        else if(key.equals("updateac"))
-        {
-            progressDialog.setMessage("Updating the Academic Calendar.\nPlease be patient..");
-            progressDialog.show();
-
-            new NetworkUtility().execute();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if(hasInternetConnection)
-                    {
-
-                        if(playServiceUpdated())
-                        {
-                            undergraduateTask();
-                            graduateTask();
-                            pharmacyUndergraduateTask();
-                            pharmacyGraduateTask();
-
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    boolean sucess = true;
-                                    for (boolean aCalenderDownloaded : calenderDownloaded) {
-                                        if (!aCalenderDownloaded) {
-                                            progressDialog.dismiss();
-                                            progressDialog.cancel();
-                                            Toast.makeText(getActivity(), "Academic Calendars Update Failed :( ", Toast.LENGTH_SHORT).show();
-                                            sucess = false;
-                                            break;
-                                        }
-                                    }
-                                    if(sucess)
-                                    {
-                                        progressDialog.dismiss();
-                                        progressDialog.cancel();
-                                        Toast.makeText(getActivity(),"Academic Calendar Updated Successfully :) ",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }, 4000);
-                        }
-                        else
-                        {
-                            progressDialog.dismiss();
-                            progressDialog.cancel();
-                            Toast.makeText(getActivity(), "Google Play Service is Outdated :(\nMake sure Google Play Service is updated!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    else
-                    {
-                        progressDialog.dismiss();
-                        progressDialog.cancel();
-                        Toast.makeText(getActivity(),"You are not connected to internet :( ",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            }, 2000);
-
-        }
-
-        else if(key.equals("feedback"))
-        {
-            Intent Email = new Intent(Intent.ACTION_SEND);
-            Email.setType("text/email");
-            Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "feedback@treebricks.com" });
-            Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
-            startActivity(Intent.createChooser(Email, "Send Feedback:"));
-        }
-        else if(key.equals("developer"))
-        {
-            Intent about = new Intent(getActivity(), About.class);
-            startActivity(about);
-        }
+        case "feedback":
+          Intent Email = new Intent(Intent.ACTION_SEND);
+          Email.setType("text/email");
+          Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "feedback@treebricks.com" });
+          Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
+          startActivity(Intent.createChooser(Email, "Send Feedback:"));
+          break;
+        case "about":
+          Intent about = new Intent(getActivity(), About.class);
+          startActivity(about);
+          break;
+      }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 

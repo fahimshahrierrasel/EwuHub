@@ -144,6 +144,7 @@ gen-external-apklibs
 .idea/dynamic.xml
 .idea/uiDesigner.xml
 .idea/dbnavigator.xml
+.idea/codeStyleSettings.xml
 
 # Gradle:
 .idea/gradle.xml

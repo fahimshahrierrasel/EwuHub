@@ -1,61 +1,61 @@
 <resources>
-    <string name="app_name">EwuHub</string>
+  <string name="app_name">EwuHub</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="sort_course_description">Please, Enter the total number of subjects you want to conflict free for advising.</string>
-    <string name="title_activity_sort_course_home">Advising Helper</string>
-    <string name="title_activity_course_input">Sort Courses</string>
-    <string name="course_input_description">Please, Input name of the subjects you want to conflict free.</string>
-    <string name="title_activity_show_sort_courses">Conflict Free Combination</string>
-    <string name="title_activity_course_details">Subject Details</string>
-    <string name="title_activity_ewu_spirit">Ewu Spirit</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_academic_calendar">Academic Calendar</string>
-    <string name="title_activity_notice">Notice Board</string>
-    <string name="title_activity_notice_web_viewer">Notice Viewer</string>
-    <string name="title_activity_course_details_activty">Course Detail</string>
-    <string name="title_activity_details">Course Details</string>
-    <string name="title_activity_preferences">Preferences</string>
-    <string name="advising_helper">Advising Helper</string>
-    <string name="result">Result</string>
-    <string name="academic_calender">Academic Calender</string>
-    <string name="notice_board">Notice Board</string>
-    <string name="ewuspirit">EwuSpirit</string>
-    <string name="secondary_group_app_home">Settings and Communication</string>
-    <string name="preferences">Preferences</string>
-    <string name="about">About</string>
-    <string name="faculy_evaluation">Faculy Evaluation</string>
-    <string name="class_schedule_routine">Class Schedule/Routine</string>
-    <string name="check_available_seat">Check Available Seat</string>
-    <string name="credit_info">Credit Info</string>
-    <string name="check_advisior">Check Advisior</string>
-    <string name="advising_time_schedule">Advising Time Schedule</string>
-    <string name="additional_info">Additional Info</string>
-    <string name="ewu_spirit_homepage">Ewu Spirit HomePage</string>
-    <string name="advising_list">Advising List</string>
-    <string name="ewu_library">Ewu Library</string>
-    <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
-    <string name="feedback_summary">Send us your feedback about this application if you have any suggestion and if you face any problem. Feel free to feedback us. Your opinion will help us to make this application better</string>
-    <string name="update_summary">Update course database &amp; advising list. This update needs at the beginning of the Advising and after application update.</string>
-    <string name="slide1des">Slide from left to right of your mobile screen to see the EwuHub\'s features.</string>
-    <string name="slide1">Where is the EwuHub features?</string>
-    <string name="slide2">EwuHub Features</string>
-    <string name="slide2des">Select features from Drawer. Be patience and give EwuHub sometime to load the feature.</string>
-    <string name="slide3">Advising Helper</string>
-    <string name="slide3des">Advising Helper will help you to find the combination of sections of the courses without any conflict between section.</string>
-    <string name="slide4">Input the Subjects for Advising Helper</string>
-    <string name="slide4des">For finding conflict free combination of sections input the course names properly.</string>
-    <string name="slide5">EwuSpirit now on Pocket</string>
-    <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
-    <string name="sort_section_dialog_text">"Enter the section of "</string>
-    <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semister.</string>
-    <string name="update_advising_list">Update the advising list for advising.</string>
-    <string name="course_input_hint">Name of Course</string>
-    <string name="mainpage_of_ewuhub">MainPage of EwuHub</string>
-    <string name="history">History</string>
-    <string name="mission_statement">Mission Statement</string>
-    <string name="bullet_symbol">\u2022</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="sort_course_description">Please, Enter the total number of subjects you want to conflict free for advising.</string>
+  <string name="title_activity_sort_course_home">Advising Helper</string>
+  <string name="title_activity_course_input">Sort Courses</string>
+  <string name="course_input_description">Please, Input name of the subjects you want to conflict free.</string>
+  <string name="title_activity_show_sort_courses">Conflict Free Combination</string>
+  <string name="title_activity_course_details">Subject Details</string>
+  <string name="title_activity_ewu_spirit">Ewu Spirit</string>
+  <string name="action_settings">Settings</string>
+  <string name="title_activity_academic_calendar">Academic Calendar</string>
+  <string name="title_activity_notice">Notice Board</string>
+  <string name="title_activity_notice_web_viewer">Notice Viewer</string>
+  <string name="title_activity_course_details_activty">Course Detail</string>
+  <string name="title_activity_details">Course Details</string>
+  <string name="title_activity_preferences">Preferences</string>
+  <string name="advising_helper">Advising Helper</string>
+  <string name="result">Result</string>
+  <string name="academic_calender">Academic Calender</string>
+  <string name="notice_board">Notice Board</string>
+  <string name="ewuspirit">EwuSpirit</string>
+  <string name="secondary_group_app_home">Settings and Communication</string>
+  <string name="preferences">Preferences</string>
+  <string name="about">About</string>
+  <string name="faculy_evaluation">Faculy Evaluation</string>
+  <string name="class_schedule_routine">Class Schedule/Routine</string>
+  <string name="check_available_seat">Check Available Seat</string>
+  <string name="credit_info">Credit Info</string>
+  <string name="check_advisior">Check Advisior</string>
+  <string name="advising_time_schedule">Advising Time Schedule</string>
+  <string name="additional_info">Additional Info</string>
+  <string name="ewu_spirit_homepage">Ewu Spirit HomePage</string>
+  <string name="advising_list">Advising List</string>
+  <string name="ewu_library">Ewu Library</string>
+  <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
+  <string name="feedback_summary">Send us your feedback about this application if you have any suggestion and if you face any problem. Feel free to feedback us. Your opinion will help us to make this application better</string>
+  <string name="update_summary">Update course database &amp; advising list. This update needs at the beginning of the Advising and after application update.</string>
+  <string name="slide1des">Slide from left to right of your mobile screen to see the EwuHub\'s features.</string>
+  <string name="slide1">Where is the EwuHub features?</string>
+  <string name="slide2">EwuHub Features</string>
+  <string name="slide2des">Select features from Drawer. Be patience and give EwuHub sometime to load the feature.</string>
+  <string name="slide3">Advising Helper</string>
+  <string name="slide3des">Advising Helper will help you to find the combination of sections of the courses without any conflict between section.</string>
+  <string name="slide4">Input the Subjects for Advising Helper</string>
+  <string name="slide4des">For finding conflict free combination of sections input the course names properly.</string>
+  <string name="slide5">EwuSpirit now on Pocket</string>
+  <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
+  <string name="sort_section_dialog_text">"Enter the section of "</string>
+  <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semister.</string>
+  <string name="update_advising_list">Update the advising list for advising.</string>
+  <string name="course_input_hint">Name of Course</string>
+  <string name="mainpage_of_ewuhub">MainPage of EwuHub</string>
+  <string name="history">History</string>
+  <string name="mission_statement">Mission Statement</string>
+  <string name="bullet_symbol">\u2022</string>
     <string name="ewuspirit_li_1">
         Without connecting to the ewuwifi you can not access any of the services.
         This means you can only access to this service if you are on East West University.
@@ -66,39 +66,39 @@
     <string name="ewuspirit_li_3">
         Not every feature of Ewu Spirit work, but the options given here is still functional.
     </string>
-    <string name="ewusprit_instruction_head">Instructions To Use Ewu Spirit on Mobile</string>
-    <string name="ewusprit_faculty_head">Faculty Evaluation</string>
+  <string name="ewusprit_instruction_head">Instructions To Use Ewu Spirit on Mobile</string>
+  <string name="ewusprit_faculty_head">Faculty Evaluation</string>
     <string name="ewusprit_faculty_description">Here you can evaluate your instructors of every course you have taken.
         It\'s very helpful because most of the time ICS Lab PC is busy when you need this.</string>
-    <string name="ewusprit_routine_head">Class Schedule / Routine</string>
-    <string name="ewusprit_routine_description">You can check when will be your class, what is the room number etc.</string>
-    <string name="ewusprit_seat_head">Available Seat</string>
+  <string name="ewusprit_routine_head">Class Schedule / Routine</string>
+  <string name="ewusprit_routine_description">You can check when will be your class, what is the room number etc.</string>
+  <string name="ewusprit_seat_head">Available Seat</string>
     <string name="ewusprit_seat_description">You can check if there any available seat of a particular section you want to take.
          This feature will be very helpful in advising day and for add droping course.</string>
-    <string name="ewusprit_credit_head">Credit Information</string>
+  <string name="ewusprit_credit_head">Credit Information</string>
 
     <string name="ewusprit_credit_description">
         You can check how many credit you completed.
         What is your current cgpa etc. This feature will not show the detail result.</string>
 
-    <string name="ewusprit_advisior_head">Who is your Advisior?</string>
+  <string name="ewusprit_advisior_head">Who is your Advisior?</string>
 
     <string name="ewusprit_advisior_description">
         You can check which faculty is your current advisior. Your advisior is your guardian in the university.</string>
 
-    <string name="ewusprit_advising_sch_head">Advising Schedule</string>
+  <string name="ewusprit_advising_sch_head">Advising Schedule</string>
 
     <string name="ewusprit_advising_sch_description">
         Here you can see which time you can advising on advising day. Remember this time is very important,
         you should not late to go your advisior on advising day.</string>
 
-    <string name="ewusprit_advising_list_head">Advising Sheet</string>
+  <string name="ewusprit_advising_list_head">Advising Sheet</string>
 
     <string name="ewusprit_advising_list_description">
         Advising Sheet will help you to see all the courses and its section, class start and end time,
         lab time, room number of the class</string>
 
-    <string name="ewuspirit_disclaimer_head">Disclaimer</string>
+  <string name="ewuspirit_disclaimer_head">Disclaimer</string>
 
     <string name="ewuspirit_disclaimer_des">
         All the functionality of the ewuspirit is from original ewuspirit website.
@@ -107,7 +107,7 @@
 
     <string name="treebricks_description">treebricks is an application studio build by EWU students. EwuHub is treebricks first application.
         We worked a long time to bring this application before you.
-        treebricks hope users will love this application.\t\ntreebricks</string>
+        treebricks hope users will love this application.</string>
 
     <string name="privacy_policy">
         EwuHub does not obtain any kind of personal information from your device and also when you use this application.
@@ -121,8 +121,8 @@
     <string name="credits">
         treebricks is very happy bring this application to main stream. This can not be done without
         the help of many people. First we like to thank our sir K.M. Imtiaz Ud-Din
-        for his advice and inspiration. Without his inspiration this application can not here today. We specially
-        thanks Sathil Islam for his beautiful photograph. We also grateful to our friends who also help us to improve
+        for his advice and inspiration. Without his inspiration this application can not here today.<!-- We specially
+        thanks Sathil Islam for his beautiful photograph.--> We also grateful to our friends who also help us to improve
         our algorithm for the application. We also grateful to our beta and alpha tester who advice us how we can
         better this application. Thanks to our friends who helped us to update the database. Without them we could not
         bring the update of the database so quickly. We are also very grateful who are using this application.
