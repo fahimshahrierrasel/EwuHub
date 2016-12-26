@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.ui;
+package com.treebricks.ewuhub.utility;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,17 +21,18 @@ import java.util.List;
 
 public class ChromeCustomTab
 {
-    public static String PACKAGE_NAME = "com.android.chrome";
+    private static String PACKAGE_NAME = "com.android.chrome";
     private CustomTabsClient mClient;
-    Context context;
-    Uri uri;
-    Activity activity;
+    private Context context;
+    private Uri uri;
+    private Activity activity;
+    private CustomTabsServiceConnection mConnection;
     public ChromeCustomTab(Context context, Activity activity)
     {
         this.context = context;
         this.activity = activity;
         uri = null;
-        CustomTabsServiceConnection mConnection = new CustomTabsServiceConnection() {
+        mConnection = new CustomTabsServiceConnection() {
             @Override
             public void onCustomTabsServiceConnected(ComponentName componentName, CustomTabsClient customTabsClient) {
                 mClient = customTabsClient;
@@ -81,5 +82,10 @@ public class ChromeCustomTab
         }
 
         customTabsIntent.launchUrl(activity, uri);
+    }
+
+    public void serviceUnbind()
+    {
+        context.unbindService(mConnection);
     }
 }

@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.ui;
+package com.treebricks.ewuhub.utility;
 
 import android.content.Context;
 import android.util.AttributeSet;

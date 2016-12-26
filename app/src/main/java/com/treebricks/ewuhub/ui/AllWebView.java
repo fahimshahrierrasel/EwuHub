@@ -1,23 +1,16 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
-import android.content.ComponentName;
-import android.net.Uri;
-import android.support.customtabs.CustomTabsClient;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.customtabs.CustomTabsServiceConnection;
-import android.support.customtabs.CustomTabsSession;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.utility.ObservableWebView;
 import com.treebricks.ewuhub.view.ProgressDialogQuotes;
 
 import java.security.SecureRandom;
@@ -35,10 +28,10 @@ public class AllWebView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_web_view);
 
-        Bundle recievedBundle = getIntent().getExtras();
-        if(recievedBundle != null) {
-            url = recievedBundle.getString("URL");
-            sheet = recievedBundle.getString("AdvisingSheet");
+        Bundle receivedBundle = getIntent().getExtras();
+        if(receivedBundle != null) {
+            url = receivedBundle.getString("URL");
+            sheet = receivedBundle.getString("AdvisingSheet");
         }
 
 

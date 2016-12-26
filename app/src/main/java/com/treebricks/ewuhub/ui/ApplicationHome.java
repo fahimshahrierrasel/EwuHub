@@ -41,6 +41,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
+import com.treebricks.ewuhub.utility.ChromeCustomTab;
 import com.treebricks.ewuhub.view.AcademicCalendarEvent;
 import com.treebricks.ewuhub.view.AcademicCalendarModel;
 import com.treebricks.ewuhub.view.NewsFeedModel;

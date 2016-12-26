@@ -13,7 +13,7 @@ import android.support.annotation.NonNull;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.treebricks.ewuhub.R;
-
+import com.treebricks.ewuhub.utility.ChromeCustomTab;
 
 public class AboutFragment extends PreferenceFragment {
 
@@ -28,15 +28,13 @@ public class AboutFragment extends PreferenceFragment {
     Preference customPref = findPreference("app");
 
     PackageManager manager = getActivity().getPackageManager();
-    PackageInfo info = null;
+    PackageInfo info;
     try {
       info = manager.getPackageInfo(getActivity().getPackageName(), 0);
       customPref.setSummary(info.versionName);
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
     }
-
-
 
   }
 
@@ -136,5 +134,10 @@ public class AboutFragment extends PreferenceFragment {
     }
 
     return super.onPreferenceTreeClick(preferenceScreen, preference);
+  }
+
+  @Override public void onDestroy() {
+    super.onDestroy();
+    chromeCustomTab.serviceUnbind();
   }
 }
