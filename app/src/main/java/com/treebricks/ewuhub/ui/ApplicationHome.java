@@ -82,14 +82,13 @@ public class ApplicationHome extends AppCompatActivity {
     // Object for Academic Calendar
     AcademicCalendarModel academicCalendar;
 
-    TextView calendarevent;
-    TextView calendarday;
-    TextView calendardate;
-    TextView noticetitle;
-    TextView noticedate;
-    TextView feedtitle;
-    TextView feeddate;
-
+    TextView calendarEvent;
+    TextView calendarDay;
+    TextView calendarDate;
+    TextView noticeTitle;
+    TextView noticeDate;
+    TextView feedTitle;
+    TextView feedDate;
     CardView noticeCard;
     CardView feedCard;
 
@@ -128,7 +127,7 @@ public class ApplicationHome extends AppCompatActivity {
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
                     startActivity(i);
                     finish();
-                    // make a new preference aditor
+                    // make a new preference editor
                     SharedPreferences.Editor e = getPrefs.edit();
                     // edit preference to make it false because we don't want this run again
                     e.putBoolean("intro_first_start", false);
@@ -151,16 +150,16 @@ public class ApplicationHome extends AppCompatActivity {
         gson = new Gson();
 
         feedCard = (CardView) findViewById(R.id.newsfeed_card);
-        feeddate = (TextView) findViewById(R.id.feeddate);
-        feedtitle = (TextView) findViewById(R.id.feedtitle);
+        feedDate = (TextView) findViewById(R.id.feeddate);
+        feedTitle = (TextView) findViewById(R.id.feedtitle);
 
         noticeCard = (CardView) findViewById(R.id.home_notice_card);
-        noticedate = (TextView) findViewById(R.id.noticedate);
-        noticetitle = (TextView) findViewById(R.id.noticetitle);
+        noticeDate = (TextView) findViewById(R.id.noticedate);
+        noticeTitle = (TextView) findViewById(R.id.noticetitle);
 
-        calendarevent = (TextView) findViewById(R.id.calendar_event);
-        calendarday = (TextView) findViewById(R.id.calendar_day);
-        calendardate = (TextView) findViewById(R.id.calendar_date);
+        calendarEvent = (TextView) findViewById(R.id.calendar_event);
+        calendarDay = (TextView) findViewById(R.id.calendar_day);
+        calendarDate = (TextView) findViewById(R.id.calendar_date);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
@@ -431,8 +430,8 @@ public class ApplicationHome extends AppCompatActivity {
                             editor.putString("feed_data", allFeeds.get(0).getFeed_data());
                             editor.apply();
 
-                            feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                            feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+                            feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+                            feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
                         }
 
                         @Override
@@ -459,8 +458,8 @@ public class ApplicationHome extends AppCompatActivity {
                             editor.putString("notice_url",allNotices.get(0).getNotice_url());
                             editor.apply();
 
-                            noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                            noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+                            noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+                            noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
 
                         }
 
@@ -473,21 +472,21 @@ public class ApplicationHome extends AppCompatActivity {
                 }
                 else
                 {
-                    feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                    feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+                    feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+                    feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
 
-                    noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                    noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+                    noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+                    noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
 
                 }
             }
         }, 2000);
 
-        feedtitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-        feeddate.setText(getPrefs.getString("feed_date","2016/11/22"));
+        feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+        feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
 
-        noticetitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-        noticedate.setText(getPrefs.getString("notice_date","2016/11/22"));
+        noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+        noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
 
 
         noticeCard.setOnClickListener(new View.OnClickListener() {
@@ -544,9 +543,9 @@ public class ApplicationHome extends AppCompatActivity {
 
                 int calendarIndex = nextEventIndex(allEvents);
 
-                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
                 break;
             }
             case "grad":
@@ -563,9 +562,9 @@ public class ApplicationHome extends AppCompatActivity {
 
                 int calendarIndex = nextEventIndex(allEvents);
 
-                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
                 break;
             }
             case "pundergrad":
@@ -582,9 +581,9 @@ public class ApplicationHome extends AppCompatActivity {
 
                 int calendarIndex = nextEventIndex(allEvents);
 
-                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
                 break;
             }
             case "pgrad":
@@ -601,9 +600,9 @@ public class ApplicationHome extends AppCompatActivity {
 
                 int calendarIndex = nextEventIndex(allEvents);
 
-                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
                 break;
             }
             default:
@@ -620,9 +619,9 @@ public class ApplicationHome extends AppCompatActivity {
 
                 int calendarIndex = nextEventIndex(allEvents);
 
-                calendardate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarday.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarevent.setText(allEvents.get(calendarIndex).getCalEvent());
+                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
                 break;
             }
         }

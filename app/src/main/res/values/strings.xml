@@ -29,27 +29,34 @@
   <string name="class_schedule_routine">Class Schedule/Routine</string>
   <string name="check_available_seat">Check Available Seat</string>
   <string name="credit_info">Credit Info</string>
-  <string name="check_advisior">Check Advisior</string>
+  <string name="check_advisior">Check Adviser</string>
   <string name="advising_time_schedule">Advising Time Schedule</string>
   <string name="additional_info">Additional Info</string>
   <string name="ewu_spirit_homepage">Ewu Spirit HomePage</string>
   <string name="advising_list">Advising List</string>
   <string name="ewu_library">Ewu Library</string>
   <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
-  <string name="feedback_summary">Send us your feedback about this application if you have any suggestion and if you face any problem. Feel free to feedback us. Your opinion will help us to make this application better</string>
-  <string name="update_summary">Update course database &amp; advising list. This update needs at the beginning of the Advising and after application update.</string>
-  <string name="slide1des">Slide from left to right of your mobile screen to see the EwuHub\'s features.</string>
-  <string name="slide1">Where is the EwuHub features?</string>
-  <string name="slide2">EwuHub Features</string>
-  <string name="slide2des">Select features from Drawer. Be patience and give EwuHub sometime to load the feature.</string>
-  <string name="slide3">Advising Helper</string>
-  <string name="slide3des">Advising Helper will help you to find the combination of sections of the courses without any conflict between section.</string>
-  <string name="slide4">Input the Subjects for Advising Helper</string>
-  <string name="slide4des">For finding conflict free combination of sections input the course names properly.</string>
+  <string name="feedback_summary">Send us your feedback about this application if you have any
+      suggestion and if you face any problem.
+      Feel free to feedback us. Your opinion will help us to make this application better</string>
+  <string name="update_summary">Update course database &amp; advising list.
+      This update needs at the beginning of the Advising and after application update.</string>
+  <string name="slide1">Welcome to EwuHub</string>
+  <string name="slide1des">EwuHub is an unofficial companion app for the students of EWU</string>
+  <string name="slide2">Advising Helper</string>
+  <string name="slide2des">Advising Helper &amp; Advising List will help you to find the combination
+      of sections of the courses without any conflict between section</string>
+  <string name="slide3">Academic Calendar</string>
+  <string name="slide3des">Academic Calendar will help you to find the important dates in the semester</string>
+  <string name="slide4">Notice</string>
+  <string name="slide4des">Using Notice Board you will be up to date with what is happening on the University</string>
   <string name="slide5">EwuSpirit now on Pocket</string>
-  <string name="slide5des">Use most useful EwuSpirit features from EwuHub. Get rid of memorizing EwuSpirit IP address.</string>
+  <string name="slide5des">Some of the important feature of EWUSpirit will on your hand when you needed.
+      EWUSpirit feature will be only accessible when you connected with \'ewuwifi\'</string>
+  <string name="slide6">Good luck with EWU</string>
+  <string name="slide6des">We hope you will have an excellent journey in your University Life.</string>
   <string name="sort_section_dialog_text">"Enter the section of "</string>
-  <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semister.</string>
+  <string name="update_academic_calendar">Update the Academic Calendar. This is needed for beginning of the semester.</string>
   <string name="update_advising_list">Update the advising list for advising.</string>
   <string name="course_input_hint">Name of Course</string>
   <string name="mainpage_of_ewuhub">MainPage of EwuHub</string>
