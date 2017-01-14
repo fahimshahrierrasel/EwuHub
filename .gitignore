@@ -135,6 +135,7 @@ gen-external-apklibs
 # User-specific stuff:
 .idea/tasks.xml
 .idea/misc.xml
+.idea/vcs.xml
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
@@ -159,6 +160,7 @@ gen-external-apklibs
 
 # IntelliJ
 /out/
+.idea/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
