@@ -28,10 +28,7 @@
         android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_gravity="bottom|end"
         fab:menu_colorNormal="#DA4336"
         fab:menu_colorPressed="#E75043"
         fab:menu_colorRipple="#99FFFFFF"
@@ -49,16 +46,6 @@
             fab:fab_label="Sort by Section"
             fab:fab_size="mini" />
 
-        <!--<com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_size="mini"
-            fab:fab_label="Sort by Weekday"/>
-
-
-            android:src="@drawable/ic_action_tick"
--->
     </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

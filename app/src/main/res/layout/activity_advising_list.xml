@@ -56,8 +56,10 @@
             android:id="@+id/advising_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin">
         </android.support.v7.widget.RecyclerView>
 
         <com.futuremind.recyclerviewfastscroll.FastScroller
