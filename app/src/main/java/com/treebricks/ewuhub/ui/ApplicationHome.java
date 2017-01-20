@@ -192,7 +192,7 @@ public class ApplicationHome extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withAccountHeader(homePageAccountHeader)
                 .addDrawerItems(
-                        new ExpandableDrawerItem().withName("Advising").withIcon(R.drawable.sign).withArrowColor(Color.parseColor("#009688")).withSubItems(
+                        new ExpandableDrawerItem().withName(R.string.advising).withIcon(R.drawable.sign).withArrowColor(ContextCompat.getColor(this, R.color.md_teal_500)).withSubItems(
                                 new PrimaryDrawerItem().withIcon(R.drawable.salvation).withName(R.string.advising_helper).withIdentifier(1),
                                 new PrimaryDrawerItem().withIcon(R.drawable.clipboard).withName(R.string.advising_list).withIdentifier(2)
                         ),
@@ -201,11 +201,10 @@ public class ApplicationHome extends AppCompatActivity {
                         new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
                         new PrimaryDrawerItem().withIcon(R.drawable.library).withName(R.string.ewu_library).withIdentifier(6),
                         new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
-                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName("Newsfeed").withIdentifier(8),
-                        new PrimaryDrawerItem().withIcon(R.drawable.chat).withName("Friendly Chat (Experimental)").withIdentifier(9)
+                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName(R.string.newsfeed).withIdentifier(8)
                 )
                 .addStickyDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(10)
+                        new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(9)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -361,11 +360,6 @@ public class ApplicationHome extends AppCompatActivity {
                                     break;
                                 }
                                 case 9:
-                                {
-                                    Toast.makeText(ApplicationHome.this, "Friendly chat is coming soon.", Toast.LENGTH_LONG).show();
-                                    break;
-                                }
-                                case 10:
                                 {
                                     Intent i = new Intent(ApplicationHome.this, Preferences.class);
                                     startActivity(i);

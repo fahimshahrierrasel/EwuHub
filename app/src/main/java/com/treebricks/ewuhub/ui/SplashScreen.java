@@ -8,17 +8,14 @@ import android.os.Handler;
 
 public class SplashScreen extends Activity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
     }
     @Override
     public void onStart() {
         super.onStart();
-
 
         int SPLASH_TIME_OUT = 1200;
         new Handler().postDelayed(new Runnable()
@@ -26,15 +23,11 @@ public class SplashScreen extends Activity
             @Override
             public void run()
             {
-
-                Intent applicaitonHome = new Intent(SplashScreen.this, ApplicationHome.class);
-                startActivity(applicaitonHome);
+                Intent applicationHome = new Intent(SplashScreen.this, ApplicationHome.class);
+                startActivity(applicationHome);
                 finish();
             }
         }, SPLASH_TIME_OUT);
-
-
-
     }
 
     @Override

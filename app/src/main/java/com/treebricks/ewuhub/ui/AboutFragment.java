@@ -70,7 +70,7 @@ public class AboutFragment extends PreferenceFragment {
               }
             })
             .negativeText("Cancel")
-            .iconRes(R.drawable.treebricks_dev_logo)
+            .iconRes(R.drawable.treebricks_logo_short)
             .maxIconSize(120)
             .show();
 

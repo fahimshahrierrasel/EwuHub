@@ -1,156 +1,165 @@
 {
-  "semester": "Fall-2016",
+  "semester": "Spring-2017",
   "lebel": "Graduate",
-  "events": [
-    {"Date": "August 30",
-      "ActualDate": "08/30/2016",
+  "events": [{
+  	  "Date": "January 03",
+      "ActualDate": "01/03/2017",
       "Day": "Tuesday",
       "Event": "University Reopens"
     },
-    {"Date": "September 01",
-      "ActualDate": "09/01/2016",
+    { "Date": "January 05",
+      "ActualDate": "01/05/2017",
       "Day": "Thursday",
       "Event": "Departmental Orientation and Advising of Newly Admitted Students and Knowing your Campus: Orientation with the academic and other facilities of the University"
     },
-    {"Date": "September 02",
-      "ActualDate": "09/02/2016",
-      "Day": "Friday",
-      "Event": "First Day of Classes\n  Payment of tuition fees for continuing students: (From 04 September 2016 to 20 September 2016)"
+    { "Date": "January 08",
+      "ActualDate": "01/08/2017",
+      "Day": "Sunday",
+      "Event": "First Day of Classes Payment of tuition fees for continuing students: As per the Payment Schedule provided in the table below (04 January 2017 to 20 January 2017)"
     },
-    {"Date": "September 06",
-      "ActualDate": "09/06/2016",
+    { "Date": "January 10",
+      "ActualDate": "01/10/2017",
       "Day": "Tuesday",
       "Event": "Last day to Add Courses\n  Last day to Drop Course(s)/Semester with 100% Refund"
     },
-    {"Date": "September 09",
-      "ActualDate": "09/09/2016",
-      "Day": "Friday-Saturday",
-      "Event": "Holiday: Eid-Ul-Azha*"
-    },
-    {"Date": "September 18",
-      "ActualDate": "09/18/2016",
-      "Day": "Sunday",
-      "Event": "Regular Classes Resume"
-    },
-    {"Date": "September 19",
-      "ActualDate": "09/19/2016",
+    {"Date": "January 16",
+      "ActualDate": "01/16/2017",
       "Day": "Monday",
       "Event": "Last day to clear Incomplete grades ( “I” grade )"
     },
-    {"Date": "September 20",
-      "ActualDate": "09/20/2016",
+    {"Date": "January 17",
+      "ActualDate": "01/17/2017",
       "Day": "Tuesday",
-      "Event": "Last ActualDate of payment of tuition fees without late fee\n Last day of payment only for adding course(s)"
+      "Event": "Last day of payment of tuition fees without late fee\n Last day of payment only for adding course(s)"
     },
-    {"Date": "September 25",
-      "ActualDate": "09/25/2016",
+    {"Date": "January 22",
+      "ActualDate": "01/22/2017",
       "Day": "Sunday",
       "Event": "Last day of Tuition Payment with Late Fee of Tk. 500/-"
     },
-    {"Date": "September 28",
-      "ActualDate": "09/28/2016",
+    {"Date": "January 25",
+      "ActualDate": "01/25/2017",
       "Day": "Wednesday",
       "Event": "Last day of Tuition Payment with Late Fee of Tk. 1000/-"
     },
-    {"Date": "October 03",
-      "ActualDate": "10/03/2016",
-      "Day": "Monday",
+    {"Date": "January 29",
+      "ActualDate": "01/29/2017",
+      "Day": "Sunday",
       "Event": "Last day to Drop Course(s)/Semester with 85% Refund"
     },
-    {"Date": "October 04",
-      "ActualDate": "10/04/2016",
-      "Day": "Tuesday",
+    {"Date": "January 30",
+      "ActualDate": "01/30/2017",
+      "Day": "Monday",
       "Event": "Blocking of ID Numbers of Defaulting Students"
     },
-    {"Date": "October 10",
-      "ActualDate": "10/10/2016",
-      "Day": "Monday-Tuesday",
-      "Event": "Holiday: Durgapuja (Bijoya Nabami & Dashami)"
-    },
-    {"Date": "October 12",
-      "ActualDate": "10/12/2016",
+    {"Date": "February 01",
+      "ActualDate": "02/01/2017",
       "Day": "Wednesday",
-      "Event": "Holiday: Muharram (Ashura)*"
+      "Event": "Holiday: Sarawati Puja"
     },
-    {"Date": "October 14",
-      "ActualDate": "10/14/2016",
-      "Day": "Friday-Tuesday",
+    {"Date": "February 07",
+      "ActualDate": "02/07/2017",
+      "Day": "Tuesday",
+      "Event": "Classes suspended on account of Convocation"
+    },
+    {"Date": "February 08",
+      "ActualDate": "02/08/2017",
+      "Day": "Wednesday",
+      "Event": "16th Convocation (2017)"
+    },
+    {"Date": "February 09",
+      "ActualDate": "02/09/2017",
+      "Day": "Thursday",
+      "Event": "Hoilday on account of Convocation"
+    },
+    {"Date": "February 12-16",
+      "ActualDate": "02/12/2017",
+      "Day": "Sunday-Thursday",
       "Event": "Mid Term I Examinations"
     },
-    {"Date": "October 30",
-      "ActualDate": "10/30/2016",
+    {"Date": "February 21",
+      "ActualDate": "02/21/2017",
+      "Day": "Tuesday",
+      "Event": "Holiday: Shaheed Day & International Mother Language Day"
+    },
+    {"Date": "February 26",
+      "ActualDate": "02/26/2017",
       "Day": "Sunday",
       "Event": "Last Day to Drop Course(s)/Semester with 50% Refund"
     },
-    {"Date": "November 11",
-      "ActualDate": "11/11/2016",
-      "Day": "Friday-Tuesday",
+    {"Date": "March 12-16",
+      "ActualDate": "03/12/2017",
+      "Day": "Sunday-Thursday",
       "Event": "Mid Term II Examinations"
+    }, 
+     {"Date": "March 17",
+      "ActualDate": "03/17/2017",
+      "Day": "Friday",
+      "Event": "Holiday: Birthday of the Father of the Nation Bangabandhu Sheikh Mujibur Rahma"
     },
-    {"Date": "November 26",
-      "ActualDate": "11/26/2016",
-      "Day": "Saturday",
-      "Event": "Advising of Courses for Spring 2017 (ongoing students)"
+     {"Date": "March 26",
+      "ActualDate": "03/26/2017",
+      "Day": "Sunday",
+      "Event": "Holiday: Independence & National Day"
     },
-    {"Date": "November 28",
-      "ActualDate": "11/28/2016",
+    {"Date": "March 27",
+      "ActualDate": "03/27/2017",
       "Day": "Monday",
       "Event": "Last day of Withdrawal of Course(s)/Semester (“W” grade)"
     },
-    {"Date": "December 06",
-      "ActualDate": "12/06/2016",
-      "Day": "Tuesday",
+    {"Date": "April 01",
+      "ActualDate": "04/01/2017",
+      "Day": "Saturday",
+      "Event": "Advising of Courses for Summer 2017 (ongoing students)"
+    },
+    {"Date": "April 08",
+      "ActualDate": "04/08/2017",
+      "Day": "Saturday",
+      "Event": "Admission Test of MBA Program for Summer 2017"
+    },
+    {"Date": "April 13",
+      "ActualDate": "04/13/2017",
+      "Day": "Thrusday",
       "Event": "Last Day of Classes"
     },
-    {"Date": "December 10",
-      "ActualDate": "12/10/2016",
-      "Day": "Saturday",
-      "Event": "Admission Test of MBA Program for Spring 2017"
+    {"Date": "April 14",
+      "ActualDate": "04/14/2017",
+      "Day": "Friday",
+      "Event": "Holiday: Bengali New Year'd Day"
     },
-    {"Date": "December 09",
-      "ActualDate": "12/9/2016",
-      "Day": "Friday-Thursday",
+    {"Date": "April 16-20",
+      "ActualDate": "04/16/2017",
+      "Day": "Sunday-Thrusday",
       "Event": "Final Examinations"
     },
-    {"Date": "December 12",
-      "ActualDate": "12/12/2016",
+    {"Date": "April 24",
+      "ActualDate": "04/24/2017",
       "Day": "Monday",
-      "Event": "Holiday: Eid-E-Miladdun-Nabi *"
-    },
-    {"Date": "December 16",
-      "ActualDate": "12/16/2016",
-      "Day": "Friday",
-      "Event": "Holiday: Victory Day"
-    },
-    {"Date": "December 20",
-      "ActualDate": "12/20/2016",
-      "Day": "Tuesday",
       "Event": "Submission of Final Grades"
     },
-    {"Date": "December 22",
-      "ActualDate": "12/22/2016",
-      "Day": "Thursday-Monday",
+    {"Date": "April 26-30",
+      "ActualDate": "04/26/2017",
+      "Day": "Wednesday-Sunday",
       "Event": "Semester Break"
     },
-    {"Date": "December 25",
-      "ActualDate": "12/25/2016",
-      "Day": "Sunday",
-      "Event": "Holiday: Christmas Day"
+    {"Date": "May 01",
+      "ActualDate": "05/01/2017",
+      "Day": "Monday",
+      "Event": "Holiday: May Day"
     },
-    {"Date": "January 03",
-      "ActualDate": "01/03/2017",
+    {"Date": "May 02",
+      "ActualDate": "05/02/2017",
       "Day": "Tuesday",
-      "Event": "University Reopens for Spring 2017"
+      "Event": "University Reopens for Summer 2017"
     },
-    {"Date": "January 05",
-      "ActualDate": "01/05/2017",
+    {"Date": "May 04",
+      "ActualDate": "05/04/2017",
       "Day": "Thursday",
-      "Event": "Orientation for Spring 2017"
+      "Event": "Orientation for Summer 2017"
     },
-    {"Date": "January 06",
-      "ActualDate": "01/06/2017",
-      "Day": "Friday",
-      "Event": "First Day of Classes for Spring 2017"
-    }
-  ]
+    {"Date": "May 07",
+      "ActualDate": "05/07/2017",
+      "Day": "Sunday",
+      "Event": "First Day of Classes for Summer 2017"
+    }]
 }

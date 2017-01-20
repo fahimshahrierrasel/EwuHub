@@ -26,7 +26,7 @@ public class FeedMarkDownView extends AppCompatActivity {
 
         if(getSupportActionBar() != null)
         {
-            getSupportActionBar().setTitle("News Feed SortedCourses");
+            getSupportActionBar().setTitle("News Feed");
         }
     }
 }

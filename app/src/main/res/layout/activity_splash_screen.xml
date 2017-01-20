@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3746a1"
+    android:background="@color/white"
     tools:context="com.treebricks.ewuhub.ui.SplashScreen">
 
     <TextView
@@ -11,20 +11,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:fontFamily="serif"
         android:text="@string/app_name"
-        android:textColor="@color/white"
+        android:textColor="#3746a1"
         android:textSize="72sp" />
 
     <ImageView
         android:id="@+id/splash_dev_logo"
-        android:layout_width="220dp"
-        android:layout_height="180dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="220dp"
         android:contentDescription="@string/tree_bricks_logo"
-        android:src="@drawable/treebricks_dev_logo" />
+        android:src="@drawable/treebricks_logo" />
 
 </RelativeLayout>
