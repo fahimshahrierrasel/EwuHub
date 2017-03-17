@@ -2,12 +2,17 @@ package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +23,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -89,7 +96,7 @@ public class EwuSpirit extends AppCompatActivity{
         // Navigation Drawer Header
         ewspiritAccountHeadeer = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.ewu_spirit)
+                .withHeaderBackground(R.drawable.spirit_drawer)
                 .withCompactStyle(false)
                 .withSavedInstance(savedInstanceState)
                 .build();
@@ -120,25 +127,19 @@ public class EwuSpirit extends AppCompatActivity{
                                 {
                                     if("ewuwifi".equals(getCurrentSsid(getApplicationContext())))
                                     {
-                                        progressDialog.setMessage(progressDialogQuotes.getQuote(secureRandom.nextInt(28)));
-                                        progressDialog.show();
-                                        if(chromeBrowser.isChromeEnabled("com.android.chrome"))
-                                        {
-                                            Handler handler = new Handler();
-                                            handler.postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    chromeCustomTab.runOnCustomTab("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
-                                                    progressDialog.hide();
-                                                    progressDialog.cancel();
-                                                }
-                                            }, 2000);
-                                        }
-                                        else
-                                        {
-                                            spiritWebView.setWebViewClient(new MyWebViewClient());
-                                            spiritWebView.loadUrl("http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation");
-                                        }
+                                        final String url = "http:172.16.100.31:8020/webnet/index.php?option=assess&op=student&act=evaluation";
+                                        new MaterialDialog.Builder(EwuSpirit.this)
+                                                .title("Warning")
+                                                .content("Due to the behaviour of Evaluation page you can not evaluation within this app." +
+                                                        " You need a browser to open this press OK to open evaluation on a browser")
+                                                .positiveText("Open a Browser")
+                                                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                                    @Override
+                                                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                                        startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
+                                                    }
+                                                })
+                                                .show();
                                     }
                                     else if("NotConnected".equals(getCurrentSsid(getApplicationContext())))
                                     {

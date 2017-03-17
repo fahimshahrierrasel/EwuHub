@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.ui;
+package com.treebricks.ewuhub.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -62,15 +62,15 @@ public class AboutFragment extends PreferenceFragment {
         new MaterialDialog.Builder(getActivity())
             .title("treebricks")
             .content(R.string.treebricks_description)
-            .positiveText("treebricks.com")
+            .positiveText("treebricks Website")
             .onPositive(new MaterialDialog.SingleButtonCallback() {
               @Override
               public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                chromeCustomTab.runOnCustomTab("http://treebricks.com/");
+                chromeCustomTab.runOnCustomTab("https://treebricks.github.io/");
               }
             })
             .negativeText("Cancel")
-            .iconRes(R.drawable.treebricks_logo_short)
+            .iconRes(R.drawable.treebricks_logo)
             .maxIconSize(120)
             .show();
 
@@ -89,7 +89,7 @@ public class AboutFragment extends PreferenceFragment {
               }
             })
             .negativeText("Cancel")
-            .iconRes(R.mipmap.ic_launcher)
+            .iconRes(R.drawable.privacy)
             .maxIconSize(120)
             .show();
 
@@ -102,7 +102,7 @@ public class AboutFragment extends PreferenceFragment {
             .content(R.string.terms_of_use)
             .positiveText("Ok")
             .negativeText("Cancel")
-            .iconRes(R.mipmap.ic_launcher)
+            .iconRes(R.drawable.terms)
             .maxIconSize(120)
             .show();
 
@@ -114,7 +114,7 @@ public class AboutFragment extends PreferenceFragment {
             .content(R.string.credits)
             .positiveText("Ok")
             .negativeText("Cancel")
-            .iconRes(R.mipmap.ic_launcher)
+            .iconRes(R.drawable.credit)
             .maxIconSize(120)
             .show();
 

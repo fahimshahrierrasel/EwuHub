@@ -8,7 +8,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 9
-        versionName "1.0.9 New Year"
+        versionName "1.0.9 early ending"
     }
     buildTypes {
         release {
@@ -35,35 +35,35 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     // Android Repositories
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:cardview-v7:25.1.0'
-    compile 'com.android.support:customtabs:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:customtabs:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
     // Firebase Repositories
-    compile 'com.google.firebase:firebase-database:10.0.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
-    compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.firebaseui:firebase-ui-database:1.0.1'
+    compile 'com.google.firebase:firebase-database:10.2.0'
+    compile 'com.google.firebase:firebase-messaging:10.2.0'
+    compile 'com.google.firebase:firebase-storage:10.2.0'
+    compile 'com.firebaseui:firebase-ui-database:1.2.0'
     // Repository for Appintro
     compile 'com.github.paolorotolo:appintro:4.1.0'
     // Repository for Fab
     compile 'com.github.clans:fab:1.6.4'
     // Repository for Dialog
-    compile 'com.afollestad.material-dialogs:commons:0.9.1.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.4.1'
     // Repository for Kenbursview(Image)
     compile 'com.flaviofaria:kenburnsview:1.0.7'
     // Repository for Material Drawer
-    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
+    compile('com.mikepenz:materialdrawer:5.8.2@aar') {
         transitive = true
     }
     // Repository for expandable-layout
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     // Repository for gson
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.0'
     // Repository For First Scroller
-    compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'
+    compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
     // Repository for MarkedView
     compile 'com.mittsu:markedview:1.0.4@aar'
 

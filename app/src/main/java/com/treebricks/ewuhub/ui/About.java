@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.fragments.AboutFragment;
 
 public class About extends AppCompatActivity {
 

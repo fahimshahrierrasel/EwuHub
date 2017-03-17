@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.ui;
+package com.treebricks.ewuhub.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.ui.About;
 import com.treebricks.ewuhub.utility.AppInstalled;
 
 import java.io.File;
@@ -192,7 +193,7 @@ public class PreferenceFragment extends android.preference.PreferenceFragment
         case "feedback":
           Intent Email = new Intent(Intent.ACTION_SEND);
           Email.setType("text/email");
-          Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "feedback@treebricks.com" });
+          Email.putExtra(Intent.EXTRA_EMAIL, new String[] { "treebricksstudio@gmail.com" });
           Email.putExtra(Intent.EXTRA_SUBJECT, "EwuHub Feedback");
           startActivity(Intent.createChooser(Email, "Send Feedback:"));
           break;

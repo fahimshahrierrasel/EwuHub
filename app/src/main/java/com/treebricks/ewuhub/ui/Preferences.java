@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.fragments.PreferenceFragment;
 
 
 public class Preferences extends AppCompatActivity

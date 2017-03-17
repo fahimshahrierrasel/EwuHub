@@ -11,10 +11,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -108,6 +110,8 @@ public class ApplicationHome extends AppCompatActivity {
     String noticeUrl;
     String feedData;
 
+    CountDownTimer countDownTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +186,7 @@ public class ApplicationHome extends AppCompatActivity {
         // Navigation Drawer Header
         homePageAccountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.drawer)
+                .withHeaderBackground(R.drawable.main_drawer)
                 .withCompactStyle(false)
                 .withSavedInstance(savedInstanceState)
                 .build();
@@ -454,7 +458,6 @@ public class ApplicationHome extends AppCompatActivity {
 
                             noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
                             noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
-
                         }
 
                         @Override
@@ -516,6 +519,25 @@ public class ApplicationHome extends AppCompatActivity {
                 }
             }
         });
+
+        final int[] flag = {0};
+
+        countDownTimer = new CountDownTimer(30000, 5000) {
+
+            public void onTick(long millisUntilFinished) {
+                if (flag[0] == 0) {
+                    homeImage.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.home_one, null));
+                    flag[0] = 1;
+                } else{
+                    homeImage.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.home_two, null));
+                    flag[0] = 0;
+                }
+            }
+            public void onFinish() {
+                countDownTimer.start();
+            }
+        };
+        countDownTimer.start();
 
     }
 

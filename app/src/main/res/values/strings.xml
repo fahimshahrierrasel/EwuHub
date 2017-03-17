@@ -25,7 +25,7 @@
   <string name="secondary_group_app_home">Settings and Communication</string>
   <string name="preferences">Preferences</string>
   <string name="about">About</string>
-  <string name="faculy_evaluation">Faculy Evaluation</string>
+  <string name="faculy_evaluation">Faculty Evaluation</string>
   <string name="class_schedule_routine">Class Schedule/Routine</string>
   <string name="check_available_seat">Check Available Seat</string>
   <string name="credit_info">Credit Info</string>
@@ -36,9 +36,9 @@
   <string name="advising_list">Advising List</string>
   <string name="ewu_library">Ewu Library</string>
   <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
-  <string name="feedback_summary">Send us your feedback about this application if you have any
-      suggestion and if you face any problem.
-      Feel free to feedback us. Your opinion will help us to make this application better</string>
+  <string name="feedback_summary">
+      Send us your feedback about this application if you have any suggestion and if you face any problem.
+      Feel free to feedback us. Your opinion will help us to make this application better.</string>
   <string name="update_summary">Update course database &amp; advising list.
       This update needs at the beginning of the Advising and after application update.</string>
   <string name="slide1">Welcome to EwuHub</string>
@@ -88,16 +88,16 @@
         You can check how many credit you completed.
         What is your current cgpa etc. This feature will not show the detail result.</string>
 
-  <string name="ewusprit_advisior_head">Who is your Advisior?</string>
+  <string name="ewusprit_advisior_head">Who is your Adviser?</string>
 
     <string name="ewusprit_advisior_description">
-        You can check which faculty is your current advisior. Your advisior is your guardian in the university.</string>
+        You can check which faculty is your current adviser. Your adviser is your guardian in the university.</string>
 
   <string name="ewusprit_advising_sch_head">Advising Schedule</string>
 
     <string name="ewusprit_advising_sch_description">
         Here you can see which time you can advising on advising day. Remember this time is very important,
-        you should not late to go your advisior on advising day.</string>
+        you should not late to go your adviser on advising day.</string>
 
   <string name="ewusprit_advising_list_head">Advising Sheet</string>
 
@@ -126,15 +126,18 @@
         User are responsible what they are doing with this Application.</string>
 
     <string name="credits">
-        treebricks is very happy bring this application to main stream. This can not be done without
-        the help of many people. First we like to thank our sir K.M. Imtiaz Ud-Din
-        for his advice and inspiration. Without his inspiration this application can not here today.<!-- We specially
-        thanks Sathil Islam for his beautiful photograph.--> We also grateful to our friends who also help us to improve
-        our algorithm for the application. We also grateful to our beta and alpha tester who advice us how we can
-        better this application. Thanks to our friends who helped us to update the database. Without them we could not
-        bring the update of the database so quickly. We are also very grateful who are using this application.
-        Don\'t bother to feedback about this application. This is for you. With your help we can make this application
-        even better..</string>
+        treebricks is very happy bring this application to main stream. This can not be done without the help of many people.
+        First we like to thank our sir <b>K.M. Imtiaz Ud-Din</b> for his advice and inspiration.
+        Without his inspiration this application can not here today.
+        We also grateful to our friends who also help us to improve our algorithm for the application.
+        We also grateful to our beta and alpha tester who advice us how we can better this application.
+        Thanks to our friend <b>Riajul Islam</b> from <b>Ritz Photography</b> who provide us such beautiful photograph of East West University.
+        Thanks to our friends who helped us to update the database.
+        Without them we could not bring the update of the database so quickly.
+        We are also very grateful who are using this application.
+        Don\'t bother to feedback about this application. This is for you.
+        With your help we can make this application even better..
+    </string>
 
     <string name="terms_of_use">
         All the information of EwuHub is taken from <b>www.ewubd.edu</b> and it is the private property of East West University.
