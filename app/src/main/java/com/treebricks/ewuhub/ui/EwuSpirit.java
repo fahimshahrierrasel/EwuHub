@@ -310,6 +310,7 @@ public class EwuSpirit extends AppCompatActivity{
 
     void cardHide()
     {
+        ewspiritDrawer.closeDrawer();
         instructionCard.setVisibility(View.INVISIBLE);
         facultyCard.setVisibility(View.INVISIBLE);
         routineCard.setVisibility(View.INVISIBLE);
