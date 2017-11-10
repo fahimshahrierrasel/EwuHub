@@ -87,12 +87,12 @@ public class ApplicationHome extends AppCompatActivity {
     TextView calendarEvent;
     TextView calendarDay;
     TextView calendarDate;
-    TextView noticeTitle;
-    TextView noticeDate;
-    TextView feedTitle;
-    TextView feedDate;
-    CardView noticeCard;
-    CardView feedCard;
+//    TextView noticeTitle;
+//    TextView noticeDate;
+//    TextView feedTitle;
+//    TextView feedDate;
+//    CardView noticeCard;
+//    CardView feedCard;
 
     CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -101,14 +101,14 @@ public class ApplicationHome extends AppCompatActivity {
 
     FirebaseDatabase databaseRef;
 
-    DatabaseReference noticeReference;
-    DatabaseReference feedReference;
-
-    ArrayList<NewsFeedModel> allFeeds = new ArrayList<NewsFeedModel>();
-    ArrayList<NoticeView> allNotices = new ArrayList<NoticeView>();
-
-    String noticeUrl;
-    String feedData;
+//    DatabaseReference noticeReference;
+//    DatabaseReference feedReference;
+//
+//    ArrayList<NewsFeedModel> allFeeds = new ArrayList<NewsFeedModel>();
+//    ArrayList<NoticeView> allNotices = new ArrayList<NoticeView>();
+//
+//    String noticeUrl;
+//    String feedData;
 
     CountDownTimer countDownTimer;
 
@@ -147,19 +147,19 @@ public class ApplicationHome extends AppCompatActivity {
 
         databaseRef = FirebaseDatabase.getInstance();
 
-        noticeReference = databaseRef.getReference("notices");
-        feedReference = databaseRef.getReference("newsfeeds");
+//        noticeReference = databaseRef.getReference("notices");
+//        feedReference = databaseRef.getReference("newsfeeds");
 
         // Gson initialization
         gson = new Gson();
 
-        feedCard = (CardView) findViewById(R.id.newsfeed_card);
-        feedDate = (TextView) findViewById(R.id.feeddate);
-        feedTitle = (TextView) findViewById(R.id.feedtitle);
-
-        noticeCard = (CardView) findViewById(R.id.home_notice_card);
-        noticeDate = (TextView) findViewById(R.id.noticedate);
-        noticeTitle = (TextView) findViewById(R.id.noticetitle);
+//        feedCard = (CardView) findViewById(R.id.newsfeed_card);
+//        feedDate = (TextView) findViewById(R.id.feeddate);
+//        feedTitle = (TextView) findViewById(R.id.feedtitle);
+//
+//        noticeCard = (CardView) findViewById(R.id.home_notice_card);
+//        noticeDate = (TextView) findViewById(R.id.noticedate);
+//        noticeTitle = (TextView) findViewById(R.id.noticetitle);
 
         calendarEvent = (TextView) findViewById(R.id.calendar_event);
         calendarDay = (TextView) findViewById(R.id.calendar_day);
@@ -202,10 +202,10 @@ public class ApplicationHome extends AppCompatActivity {
                         ),
                         new PrimaryDrawerItem().withIcon(R.drawable.diploma).withName(R.string.result).withIdentifier(3),
                         new PrimaryDrawerItem().withIcon(R.drawable.calendar).withName(R.string.academic_calender).withIdentifier(4),
-                        new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
+//                        new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
                         new PrimaryDrawerItem().withIcon(R.drawable.library).withName(R.string.ewu_library).withIdentifier(6),
-                        new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
-                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName(R.string.newsfeed).withIdentifier(8)
+                        new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7)
+//                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName(R.string.newsfeed).withIdentifier(8)
                 )
                 .addStickyDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(9)
@@ -277,36 +277,36 @@ public class ApplicationHome extends AppCompatActivity {
                                     startActivity(academicCalender);
                                     break;
                                 }
-                                case 5:
-                                {
-                                    progressDialog = new ProgressDialog(ApplicationHome.this);
-                                    progressDialog.setMessage("Checking Internet Connection..");
-                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                    progressDialog.setIndeterminate(true);
-                                    progressDialog.show();
-
-                                    startNewTask();
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (hasInternetConnection)
-                                            {
-                                                final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                startActivity(notice);
-                                            }
-                                            else
-                                            {
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-                                    }, 2000);
-                                    break;
-                                }
+//                                case 5:
+//                                {
+//                                    progressDialog = new ProgressDialog(ApplicationHome.this);
+//                                    progressDialog.setMessage("Checking Internet Connection..");
+//                                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//                                    progressDialog.setIndeterminate(true);
+//                                    progressDialog.show();
+//
+//                                    startNewTask();
+//                                    Handler handler = new Handler();
+//                                    handler.postDelayed(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            if (hasInternetConnection)
+//                                            {
+//                                                final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
+//                                                progressDialog.hide();
+//                                                progressDialog.cancel();
+//                                                startActivity(notice);
+//                                            }
+//                                            else
+//                                            {
+//                                                progressDialog.hide();
+//                                                progressDialog.cancel();
+//                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+//                                            }
+//                                        }
+//                                    }, 2000);
+//                                    break;
+//                                }
                                 case 6:
                                 {
                                     progressDialog = new ProgressDialog(ApplicationHome.this);
@@ -357,12 +357,12 @@ public class ApplicationHome extends AppCompatActivity {
                                     startActivity(ewuSpirt);
                                     break;
                                 }
-                                case 8:
-                                {
-                                    Intent newsfeed = new Intent(ApplicationHome.this, Newsfeed.class);
-                                    startActivity(newsfeed);
-                                    break;
-                                }
+//                                case 8:
+//                                {
+//                                    Intent newsfeed = new Intent(ApplicationHome.this, Newsfeed.class);
+//                                    startActivity(newsfeed);
+//                                    break;
+//                                }
                                 case 9:
                                 {
                                     Intent i = new Intent(ApplicationHome.this, Preferences.class);
@@ -405,120 +405,120 @@ public class ApplicationHome extends AppCompatActivity {
         populateCalendar();
 
         startNewTask();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (hasInternetConnection)
-                {
-                    Query feedQuery = feedReference.orderByKey();
-                    feedQuery.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
-                            allFeeds.clear();
-                            for (DataSnapshot data : notices) {
-                                NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
-                                allFeeds.add(newsFeedModel);
-                            }
-                            Collections.reverse(allFeeds);
-                            SharedPreferences.Editor editor = getPrefs.edit();
-                            editor.putString("feed_title", allFeeds.get(0).getFeed_title());
-                            editor.putString("feed_date", allFeeds.get(0).getFeed_date());
-                            editor.putString("feed_data", allFeeds.get(0).getFeed_data());
-                            editor.apply();
-
-                            feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                            feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                    Query noticeQuery = noticeReference.orderByKey();
-                    noticeQuery.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
-                            allNotices.clear();
-                            for (DataSnapshot data : notices) {
-                                NoticeView noticeView = data.getValue(NoticeView.class);
-                                allNotices.add(noticeView);
-                            }
-                            Collections.reverse(allNotices);
-
-                            SharedPreferences.Editor editor = getPrefs.edit();
-                            editor.putString("notice_title",allNotices.get(0).getNotice_title());
-                            editor.putString("notice_date",allNotices.get(0).getNotice_date());
-                            editor.putString("notice_url",allNotices.get(0).getNotice_url());
-                            editor.apply();
-
-                            noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                            noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                }
-                else
-                {
-                    feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                    feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
-
-                    noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                    noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
-
-                }
-            }
-        }, 2000);
-
-        feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-        feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
-
-        noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-        noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
-
-
-        noticeCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                noticeUrl = getPrefs.getString("notice_url", "NULL");
-                if("NULL".equals(noticeUrl))
-                {
-                    Toast.makeText(ApplicationHome.this, "Sorry No Notice", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Intent webView = new Intent(ApplicationHome.this, NoticeWebViewer.class);
-                    webView.putExtra("URL", noticeUrl);
-                    startActivity(webView);
-                }
-            }
-        });
-
-        feedCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                feedData = getPrefs.getString("feed_data", "NULL");
-                if("NULL".equals(feedData))
-                {
-                    Toast.makeText(ApplicationHome.this, "Sorry No News Feed", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Intent markdownView = new Intent(ApplicationHome.this, FeedMarkDownView.class);
-                    markdownView.putExtra("FEED_DATA", feedData);
-                    startActivity(markdownView);
-                }
-            }
-        });
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (hasInternetConnection)
+//                {
+//                    Query feedQuery = feedReference.orderByKey();
+//                    feedQuery.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+//                            allFeeds.clear();
+//                            for (DataSnapshot data : notices) {
+//                                NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
+//                                allFeeds.add(newsFeedModel);
+//                            }
+//                            Collections.reverse(allFeeds);
+//                            SharedPreferences.Editor editor = getPrefs.edit();
+//                            editor.putString("feed_title", allFeeds.get(0).getFeed_title());
+//                            editor.putString("feed_date", allFeeds.get(0).getFeed_date());
+//                            editor.putString("feed_data", allFeeds.get(0).getFeed_data());
+//                            editor.apply();
+//
+//                            feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+//                            feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//
+//                    Query noticeQuery = noticeReference.orderByKey();
+//                    noticeQuery.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+//                            allNotices.clear();
+//                            for (DataSnapshot data : notices) {
+//                                NoticeView noticeView = data.getValue(NoticeView.class);
+//                                allNotices.add(noticeView);
+//                            }
+//                            Collections.reverse(allNotices);
+//
+//                            SharedPreferences.Editor editor = getPrefs.edit();
+//                            editor.putString("notice_title",allNotices.get(0).getNotice_title());
+//                            editor.putString("notice_date",allNotices.get(0).getNotice_date());
+//                            editor.putString("notice_url",allNotices.get(0).getNotice_url());
+//                            editor.apply();
+//
+//                            noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+//                            noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//
+//                }
+//                else
+//                {
+//                    feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+//                    feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
+//
+//                    noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+//                    noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
+//
+//                }
+//            }
+//        }, 2000);
+//
+//        feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
+//        feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
+//
+//        noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
+//        noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
+//
+//
+//        noticeCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                noticeUrl = getPrefs.getString("notice_url", "NULL");
+//                if("NULL".equals(noticeUrl))
+//                {
+//                    Toast.makeText(ApplicationHome.this, "Sorry No Notice", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
+//                    Intent webView = new Intent(ApplicationHome.this, NoticeWebViewer.class);
+//                    webView.putExtra("URL", noticeUrl);
+//                    startActivity(webView);
+//                }
+//            }
+//        });
+//
+//        feedCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                feedData = getPrefs.getString("feed_data", "NULL");
+//                if("NULL".equals(feedData))
+//                {
+//                    Toast.makeText(ApplicationHome.this, "Sorry No News Feed", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
+//                    Intent markdownView = new Intent(ApplicationHome.this, FeedMarkDownView.class);
+//                    markdownView.putExtra("FEED_DATA", feedData);
+//                    startActivity(markdownView);
+//                }
+//            }
+//        });
 
         final int[] flag = {0};
 

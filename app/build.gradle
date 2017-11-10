@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
@@ -67,6 +68,7 @@ dependencies {
     compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
     // Repository for MarkedView
     compile 'com.mittsu:markedview:1.0.4@aar'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
 }
 
