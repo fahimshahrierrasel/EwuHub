@@ -1,19 +1,14 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
@@ -26,6 +21,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.NetworkUtils;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,25 +35,17 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
 import com.treebricks.ewuhub.utility.ChromeCustomTab;
+import com.treebricks.ewuhub.utility.EwuHubHelper;
 import com.treebricks.ewuhub.view.AcademicCalendarEvent;
 import com.treebricks.ewuhub.view.AcademicCalendarModel;
 import com.treebricks.ewuhub.view.NewsFeedModel;
 import com.treebricks.ewuhub.view.NoticeView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,23 +55,14 @@ import java.util.List;
 import java.util.Locale;
 
 public class ApplicationHome extends AppCompatActivity {
-    private static final String NUMBEROFCOURSES = "NUMBEROFCOURSES";
-    public boolean hasInternetConnection = false;
     private ProgressDialog progressDialog;
     int versionCode;
     ChromeCustomTab chromeCustomTab;
     private boolean doubleBackToExitPressedOnce;
     private Drawer homePageDrawer = null;
-    private AccountHeader homePageAccountHeader = null;
     private AppInstalled chromeBrowser;
 
     SharedPreferences getPrefs;
-
-    // Academic Calendar
-    String calendarJsonString = null;
-
-    // Object for Academic Calendar
-    AcademicCalendarModel academicCalendar;
 
     TextView calendarEvent;
     TextView calendarDay;
@@ -104,14 +84,13 @@ public class ApplicationHome extends AppCompatActivity {
     DatabaseReference noticeReference;
     DatabaseReference feedReference;
 
-    ArrayList<NewsFeedModel> allFeeds = new ArrayList<NewsFeedModel>();
-    ArrayList<NoticeView> allNotices = new ArrayList<NoticeView>();
+    ArrayList<NewsFeedModel> allFeeds = new ArrayList<>();
+    ArrayList<NoticeView> allNotices = new ArrayList<>();
 
     String noticeUrl;
     String feedData;
 
     CountDownTimer countDownTimer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,8 +105,7 @@ public class ApplicationHome extends AppCompatActivity {
                 // Create a new Boolean and preference and set it true
                 boolean isFirstRun = getPrefs.getBoolean("intro_first_start", true);
                 // if the activity never start before
-                if (isFirstRun)
-                {
+                if (isFirstRun) {
                     Intent i = new Intent(ApplicationHome.this, ApplicationIntro.class);
                     startActivity(i);
                     finish();
@@ -142,8 +120,10 @@ public class ApplicationHome extends AppCompatActivity {
         t.start();
 
         setContentView(R.layout.activity_application_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        LogUtils.d("On Create ApplicationHome");
 
         databaseRef = FirebaseDatabase.getInstance();
 
@@ -153,21 +133,20 @@ public class ApplicationHome extends AppCompatActivity {
         // Gson initialization
         gson = new Gson();
 
-        feedCard = (CardView) findViewById(R.id.newsfeed_card);
-        feedDate = (TextView) findViewById(R.id.feeddate);
-        feedTitle = (TextView) findViewById(R.id.feedtitle);
+        feedCard = findViewById(R.id.newsfeed_card);
+        feedDate = findViewById(R.id.feeddate);
+        feedTitle = findViewById(R.id.feedtitle);
 
-        noticeCard = (CardView) findViewById(R.id.home_notice_card);
-        noticeDate = (TextView) findViewById(R.id.noticedate);
-        noticeTitle = (TextView) findViewById(R.id.noticetitle);
+        noticeCard = findViewById(R.id.home_notice_card);
+        noticeDate = findViewById(R.id.noticedate);
+        noticeTitle = findViewById(R.id.noticetitle);
 
-        calendarEvent = (TextView) findViewById(R.id.calendar_event);
-        calendarDay = (TextView) findViewById(R.id.calendar_day);
-        calendarDate = (TextView) findViewById(R.id.calendar_date);
+        calendarEvent = findViewById(R.id.calendar_event);
+        calendarDay = findViewById(R.id.calendar_day);
+        calendarDate = findViewById(R.id.calendar_date);
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
 
-        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("EwuHub");
         collapsingToolbarLayout.setExpandedTitleColor(ContextCompat.getColor(ApplicationHome.this, android.R.color.transparent));
 
@@ -175,16 +154,16 @@ public class ApplicationHome extends AppCompatActivity {
         doubleBackToExitPressedOnce = false;
         chromeCustomTab = new ChromeCustomTab(getApplicationContext(), ApplicationHome.this);
 
-        final KenBurnsView homeImage = (KenBurnsView) findViewById(R.id.kbv_image);
+        final KenBurnsView homeImage = findViewById(R.id.kbv_image);
 
-        versionCode = getPrefs.getInt("version_code",1);
+        versionCode = getPrefs.getInt("version_code", 1);
 
         newVersion();
 
         chromeBrowser = new AppInstalled(this);
 
         // Navigation Drawer Header
-        homePageAccountHeader = new AccountHeaderBuilder()
+        AccountHeader homePageAccountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.main_drawer)
                 .withCompactStyle(false)
@@ -196,16 +175,15 @@ public class ApplicationHome extends AppCompatActivity {
                 .withToolbar(toolbar)
                 .withAccountHeader(homePageAccountHeader)
                 .addDrawerItems(
-                        new ExpandableDrawerItem().withName(R.string.advising).withIcon(R.drawable.sign).withArrowColor(ContextCompat.getColor(this, R.color.md_teal_500)).withSubItems(
-                                new PrimaryDrawerItem().withIcon(R.drawable.salvation).withName(R.string.advising_helper).withIdentifier(1),
-                                new PrimaryDrawerItem().withIcon(R.drawable.clipboard).withName(R.string.advising_list).withIdentifier(2)
-                        ),
+                        new PrimaryDrawerItem().withIcon(R.drawable.salvation).withName(R.string.advising_helper).withIdentifier(1),
+                        new PrimaryDrawerItem().withIcon(R.drawable.clipboard).withName(R.string.course_list).withIdentifier(2),
                         new PrimaryDrawerItem().withIcon(R.drawable.diploma).withName(R.string.result).withIdentifier(3),
                         new PrimaryDrawerItem().withIcon(R.drawable.calendar).withName(R.string.academic_calender).withIdentifier(4),
                         new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
                         new PrimaryDrawerItem().withIcon(R.drawable.library).withName(R.string.ewu_library).withIdentifier(6),
                         new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
-                        new PrimaryDrawerItem().withIcon(R.drawable.rss).withName(R.string.newsfeed).withIdentifier(8)
+                        new PrimaryDrawerItem().withIcon(R.drawable.ic_rss_feed_black_24dp).withName(R.string.newsfeed).withIdentifier(8),
+                        new PrimaryDrawerItem().withIcon(R.drawable.ic_calendar_star_symbol).withName(R.string.events).withIdentifier(10)
                 )
                 .addStickyDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(9)
@@ -213,158 +191,114 @@ public class ApplicationHome extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if(drawerItem != null)
-                        {
-                            switch ((int) drawerItem.getIdentifier())
-                            {
-                                case 1:
-                                {
+                        if (drawerItem != null) {
+                            switch ((int) drawerItem.getIdentifier()) {
+                                case 1: {
                                     Intent courseInputIntent = new Intent(ApplicationHome.this, CoursesInput.class);
                                     startActivity(courseInputIntent);
                                     break;
                                 }
-                                case 2:
-                                {
+                                case 2: {
                                     Intent i = new Intent(ApplicationHome.this, AdvisingListViewer.class);
                                     startActivity(i);
                                     break;
                                 }
-                                case 3:
-                                {
+                                case 3: {
                                     progressDialog = new ProgressDialog(ApplicationHome.this);
                                     progressDialog.setMessage("Connecting to the Result Server.");
                                     progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                                     progressDialog.setIndeterminate(true);
                                     progressDialog.show();
-                                    startNewTask();
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (hasInternetConnection)
-                                            {
-                                                if(chromeBrowser.isChromeEnabled("com.android.chrome"))
-                                                {
-                                                    chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
-                                                    progressDialog.hide();
-                                                    progressDialog.cancel();
-                                                }
-                                                else
-                                                {
-                                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                                                    Bundle sentData = new Bundle();
-                                                    sentData.putString("URL", "http://result.ewubd.edu/");
-                                                    sentData.putString("AdvisingSheet", "No");
-                                                    i.putExtras(sentData);
-                                                    progressDialog.hide();
-                                                    progressDialog.cancel();
-                                                    startActivity(i);
-                                                }
 
-
-                                            } else {
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                                            }
+                                    if (isInternetAvailable()) {
+                                        if (chromeBrowser.isChromeEnabled("com.android.chrome")) {
+                                            chromeCustomTab.runOnCustomTab("http://result.ewubd.edu/");
+                                            progressDialog.hide();
+                                            progressDialog.cancel();
+                                        } else {
+                                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                                            Bundle sentData = new Bundle();
+                                            sentData.putString("URL", "http://result.ewubd.edu/");
+                                            sentData.putString("AdvisingSheet", "No");
+                                            i.putExtras(sentData);
+                                            progressDialog.hide();
+                                            progressDialog.cancel();
+                                            startActivity(i);
                                         }
-                                    }, 2000);
+                                    } else {
+                                        progressDialog.hide();
+                                        progressDialog.cancel();
+                                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                    }
+
                                     break;
                                 }
-                                case 4:
-                                {
+                                case 4: {
                                     Intent academicCalender = new Intent(ApplicationHome.this, AcademicCalendar.class);
                                     startActivity(academicCalender);
                                     break;
                                 }
-                                case 5:
-                                {
+                                case 5: {
                                     progressDialog = new ProgressDialog(ApplicationHome.this);
                                     progressDialog.setMessage("Checking Internet Connection..");
                                     progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                                     progressDialog.setIndeterminate(true);
                                     progressDialog.show();
 
-                                    startNewTask();
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (hasInternetConnection)
-                                            {
-                                                final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                startActivity(notice);
-                                            }
-                                            else
-                                            {
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-                                    }, 2000);
+                                    if (isInternetAvailable()) {
+                                        final Intent notice = new Intent(ApplicationHome.this, NoticeActivity.class);
+                                        progressDialog.hide();
+                                        progressDialog.cancel();
+                                        startActivity(notice);
+                                    } else {
+                                        progressDialog.hide();
+                                        progressDialog.cancel();
+                                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                    }
+
                                     break;
                                 }
-                                case 6:
-                                {
+                                case 6: {
                                     progressDialog = new ProgressDialog(ApplicationHome.this);
                                     progressDialog.setMessage("Going to Ewu Library...");
                                     progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                                     progressDialog.setIndeterminate(true);
                                     progressDialog.show();
-                                    startNewTask();
-                                    Handler handler = new Handler();
-                                    handler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (hasInternetConnection)
-                                            {
-                                                if(chromeBrowser.isChromeEnabled("com.android.chrome"))
-                                                {
-                                                    chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
-                                                    progressDialog.hide();
-                                                    progressDialog.cancel();
-                                                }
-                                                else
-                                                {
-                                                    Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                                                    Bundle sentData = new Bundle();
-                                                    sentData.putString("URL", "http://lib.ewubd.edu/");
-                                                    sentData.putString("AdvisingSheet", "No");
-                                                    i.putExtras(sentData);
-                                                    progressDialog.hide();
-                                                    progressDialog.cancel();
-                                                    startActivity(i);
-                                                }
-
-                                            }
-                                            else
-                                            {
-                                                progressDialog.hide();
-                                                progressDialog.cancel();
-                                                Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                                            }
+                                    if (isInternetAvailable()) {
+                                        if (chromeBrowser.isChromeEnabled("com.android.chrome")) {
+                                            chromeCustomTab.runOnCustomTab("http://lib.ewubd.edu/");
+                                            progressDialog.hide();
+                                            progressDialog.cancel();
+                                        } else {
+                                            Intent i = new Intent(ApplicationHome.this, AllWebView.class);
+                                            Bundle sentData = new Bundle();
+                                            sentData.putString("URL", "http://lib.ewubd.edu/");
+                                            sentData.putString("AdvisingSheet", "No");
+                                            i.putExtras(sentData);
+                                            progressDialog.hide();
+                                            progressDialog.cancel();
+                                            startActivity(i);
                                         }
-                                    }, 2000);
+
+                                    } else {
+                                        progressDialog.hide();
+                                        progressDialog.cancel();
+                                        Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
+                                    }
 
                                     break;
                                 }
-                                case 7:
-                                {
+                                case 7: {
                                     Intent ewuSpirt = new Intent(ApplicationHome.this, EwuSpirit.class);
                                     startActivity(ewuSpirt);
                                     break;
                                 }
-                                case 8:
-                                {
+                                case 8: {
                                     Intent newsfeed = new Intent(ApplicationHome.this, Newsfeed.class);
                                     startActivity(newsfeed);
                                     break;
                                 }
-                                case 9:
-                                {
+                                case 9: {
                                     Intent i = new Intent(ApplicationHome.this, Preferences.class);
                                     startActivity(i);
                                     break;
@@ -381,121 +315,108 @@ public class ApplicationHome extends AppCompatActivity {
         // Drawer Toggle Listener
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
                 homeImage.pause();
             }
 
             @Override
-            public void onDrawerOpened(View drawerView) {
+            public void onDrawerOpened(@NonNull View drawerView) {
                 homeImage.pause();
             }
 
             @Override
-            public void onDrawerClosed(View drawerView) {
+            public void onDrawerClosed(@NonNull View drawerView) {
                 homeImage.resume();
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                if(newState == DrawerLayout.STATE_SETTLING)
+                if (newState == DrawerLayout.STATE_SETTLING)
                     homeImage.resume();
             }
         });
 
         populateCalendar();
 
-        startNewTask();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (hasInternetConnection)
-                {
-                    Query feedQuery = feedReference.orderByKey();
-                    feedQuery.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
-                            allFeeds.clear();
-                            for (DataSnapshot data : notices) {
-                                NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
-                                allFeeds.add(newsFeedModel);
-                            }
-                            Collections.reverse(allFeeds);
-                            SharedPreferences.Editor editor = getPrefs.edit();
-                            editor.putString("feed_title", allFeeds.get(0).getFeed_title());
-                            editor.putString("feed_date", allFeeds.get(0).getFeed_date());
-                            editor.putString("feed_data", allFeeds.get(0).getFeed_data());
-                            editor.apply();
+        if (isInternetAvailable()) {
+            Query feedQuery = feedReference.orderByKey();
+            feedQuery.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+                    allFeeds.clear();
+                    for (DataSnapshot data : notices) {
+                        NewsFeedModel newsFeedModel = data.getValue(NewsFeedModel.class);
+                        allFeeds.add(newsFeedModel);
+                    }
+                    Collections.reverse(allFeeds);
+                    SharedPreferences.Editor editor = getPrefs.edit();
+                    editor.putString("feed_title", allFeeds.get(0).getFeed_title());
+                    editor.putString("feed_date", allFeeds.get(0).getFeed_date());
+                    editor.putString("feed_data", allFeeds.get(0).getFeed_data());
+                    editor.apply();
 
-                            feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                            feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
-                        }
+                    feedTitle.setText(getPrefs.getString("feed_title", "Sorry No Feed"));
+                    feedDate.setText(getPrefs.getString("feed_date", "2016/11/22"));
+                }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                    Query noticeQuery = noticeReference.orderByKey();
-                    noticeQuery.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
-                            allNotices.clear();
-                            for (DataSnapshot data : notices) {
-                                NoticeView noticeView = data.getValue(NoticeView.class);
-                                allNotices.add(noticeView);
-                            }
-                            Collections.reverse(allNotices);
-
-                            SharedPreferences.Editor editor = getPrefs.edit();
-                            editor.putString("notice_title",allNotices.get(0).getNotice_title());
-                            editor.putString("notice_date",allNotices.get(0).getNotice_date());
-                            editor.putString("notice_url",allNotices.get(0).getNotice_url());
-                            editor.apply();
-
-                            noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                            noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
                 }
-                else
-                {
-                    feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-                    feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
+            });
 
-                    noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-                    noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
+            Query noticeQuery = noticeReference.orderByKey();
+            noticeQuery.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Iterable<DataSnapshot> notices = dataSnapshot.getChildren();
+                    allNotices.clear();
+                    for (DataSnapshot data : notices) {
+                        NoticeView noticeView = data.getValue(NoticeView.class);
+                        allNotices.add(noticeView);
+                    }
+                    Collections.reverse(allNotices);
+
+                    SharedPreferences.Editor editor = getPrefs.edit();
+                    editor.putString("notice_title", allNotices.get(0).getNotice_title());
+                    editor.putString("notice_date", allNotices.get(0).getNotice_date());
+                    editor.putString("notice_url", allNotices.get(0).getNotice_url());
+                    editor.apply();
+
+                    noticeTitle.setText(getPrefs.getString("notice_title", "Sorry No Notice"));
+                    noticeDate.setText(getPrefs.getString("notice_date", "2016/11/22"));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
                 }
-            }
-        }, 2000);
+            });
 
-        feedTitle.setText(getPrefs.getString("feed_title","Sorry No Feed"));
-        feedDate.setText(getPrefs.getString("feed_date","2016/11/22"));
+        } else {
+            feedTitle.setText(getPrefs.getString("feed_title", "Sorry No Feed"));
+            feedDate.setText(getPrefs.getString("feed_date", "2016/11/22"));
 
-        noticeTitle.setText(getPrefs.getString("notice_title","Sorry No Notice"));
-        noticeDate.setText(getPrefs.getString("notice_date","2016/11/22"));
+            noticeTitle.setText(getPrefs.getString("notice_title", "Sorry No Notice"));
+            noticeDate.setText(getPrefs.getString("notice_date", "2016/11/22"));
+
+        }
+
+        feedTitle.setText(getPrefs.getString("feed_title", "Sorry No Feed"));
+        feedDate.setText(getPrefs.getString("feed_date", "2016/11/22"));
+
+        noticeTitle.setText(getPrefs.getString("notice_title", "Sorry No Notice"));
+        noticeDate.setText(getPrefs.getString("notice_date", "2016/11/22"));
 
 
         noticeCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 noticeUrl = getPrefs.getString("notice_url", "NULL");
-                if("NULL".equals(noticeUrl))
-                {
+                if ("NULL".equals(noticeUrl)) {
                     Toast.makeText(ApplicationHome.this, "Sorry No Notice", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     Intent webView = new Intent(ApplicationHome.this, NoticeWebViewer.class);
                     webView.putExtra("URL", noticeUrl);
                     startActivity(webView);
@@ -507,12 +428,9 @@ public class ApplicationHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 feedData = getPrefs.getString("feed_data", "NULL");
-                if("NULL".equals(feedData))
-                {
+                if ("NULL".equals(feedData)) {
                     Toast.makeText(ApplicationHome.this, "Sorry No News Feed", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     Intent markdownView = new Intent(ApplicationHome.this, FeedMarkDownView.class);
                     markdownView.putExtra("FEED_DATA", feedData);
                     startActivity(markdownView);
@@ -523,128 +441,73 @@ public class ApplicationHome extends AppCompatActivity {
         final int[] flag = {0};
 
         countDownTimer = new CountDownTimer(30000, 5000) {
-
             public void onTick(long millisUntilFinished) {
                 if (flag[0] == 0) {
                     homeImage.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.home_one, null));
                     flag[0] = 1;
-                } else{
+                } else {
                     homeImage.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.home_two, null));
                     flag[0] = 0;
                 }
             }
+
             public void onFinish() {
                 countDownTimer.start();
             }
         };
         countDownTimer.start();
+    }
 
+    private boolean isInternetAvailable() {
+        return NetworkUtils.isConnected() && NetworkUtils.isAvailableByPing("8.8.8.8");
     }
 
     void populateCalendar() {
+        String calendarJsonString;
         String educationLevel = getPrefs.getString("level", "undergrad");
-
         switch (educationLevel) {
-            case "undergrad":
-            {
-                calendarJsonString = readJSONStringFromFile("undergraduate.json");
-                academicCalendar = new AcademicCalendarModel();
-
-                // Gson converting Json String to Object and setting Actionbar title
-                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
-                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
-                }
-
-                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
-
-                int calendarIndex = nextEventIndex(allEvents);
-
-                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+            case "undergrad": {
+                calendarJsonString = EwuHubHelper.readJSONStringFromFile(ApplicationHome.this, "undergraduate.json");
                 break;
             }
-            case "grad":
-            {
-                calendarJsonString = readJSONStringFromFile("graduate.json");
-                academicCalendar = new AcademicCalendarModel();
-
-                // Gson converting Json String to Object and setting Actionbar title
-                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
-                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
-                }
-
-                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
-
-                int calendarIndex = nextEventIndex(allEvents);
-
-                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+            case "grad": {
+                calendarJsonString = EwuHubHelper.readJSONStringFromFile(ApplicationHome.this, "graduate.json");
                 break;
             }
-            case "pundergrad":
-            {
-                calendarJsonString = readJSONStringFromFile("pharmacyundergraduate.json");
-                academicCalendar = new AcademicCalendarModel();
-
-                // Gson converting Json String to Object and setting Actionbar title
-                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
-                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
-                }
-
-                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
-
-                int calendarIndex = nextEventIndex(allEvents);
-
-                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+            case "pundergrad": {
+                calendarJsonString = EwuHubHelper.readJSONStringFromFile(ApplicationHome.this, "pharmacyundergraduate.json");
                 break;
             }
-            case "pgrad":
-            {
-                calendarJsonString = readJSONStringFromFile("pharmacygraduate.json");
-                academicCalendar = new AcademicCalendarModel();
-
-                // Gson converting Json String to Object and setting Actionbar title
-                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
-                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
-                }
-
-                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
-
-                int calendarIndex = nextEventIndex(allEvents);
-
-                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+            case "pgrad": {
+                calendarJsonString = EwuHubHelper.readJSONStringFromFile(ApplicationHome.this, "pharmacygraduate.json");
                 break;
             }
-            default:
-            {
-                calendarJsonString = readJSONStringFromFile("undergraduate.json");
-                academicCalendar = new AcademicCalendarModel();
-
-                // Gson converting Json String to Object and setting Actionbar title
-                if (calendarJsonString != null && !"".equals(calendarJsonString)) {
-                    academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
-                }
-
-                List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
-
-                int calendarIndex = nextEventIndex(allEvents);
-
-                calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
-                calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
-                calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+            default: {
+                calendarJsonString = EwuHubHelper.readJSONStringFromFile(ApplicationHome.this, "undergraduate.json");
                 break;
             }
         }
+        setCalendarEvent(calendarJsonString);
     }
 
-    public void newVersion()
-    {
+    private void setCalendarEvent(String calendarJsonString) {
+        AcademicCalendarModel academicCalendar = new AcademicCalendarModel();
+
+        // Gson converting Json String to Object and setting Actionbar title
+        if (calendarJsonString != null && !"".equals(calendarJsonString)) {
+            academicCalendar = gson.fromJson(calendarJsonString, AcademicCalendarModel.class);
+        }
+
+        List<AcademicCalendarEvent> allEvents = academicCalendar.getAcademicCalendarEvents();
+
+        int calendarIndex = nextEventIndex(allEvents);
+
+        calendarDate.setText(allEvents.get(calendarIndex).getCalDate());
+        calendarDay.setText(allEvents.get(calendarIndex).getCalDay());
+        calendarEvent.setText(allEvents.get(calendarIndex).getCalEvent());
+    }
+
+    public void newVersion() {
         int version = 0;
         try {
             version = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
@@ -652,17 +515,16 @@ public class ApplicationHome extends AppCompatActivity {
             // Huh? Really?
         }
         // Create a new Boolean and preference and set it true
-        if(version > versionCode)
-        {
+        if (version > versionCode) {
             SharedPreferences.Editor e = getPrefs.edit();
             // edit preference to make it false because we don't want this run again
             e.putInt("version_code", version);
             e.apply();
-            copyDatabase("CoursesDatabase.db");
-            copyJsonFile("graduate.json");
-            copyJsonFile("undergraduate.json");
-            copyJsonFile("pharmacyundergraduate.json");
-            copyJsonFile("pharmacygraduate.json");
+            EwuHubHelper.copyDatabase(ApplicationHome.this, "CoursesDatabase.db");
+            EwuHubHelper.copyJsonFile(ApplicationHome.this, "graduate.json");
+            EwuHubHelper.copyJsonFile(ApplicationHome.this, "undergraduate.json");
+            EwuHubHelper.copyJsonFile(ApplicationHome.this, "pharmacyundergraduate.json");
+            EwuHubHelper.copyJsonFile(ApplicationHome.this, "pharmacygraduate.json");
         }
     }
 
@@ -672,8 +534,7 @@ public class ApplicationHome extends AppCompatActivity {
         if (homePageDrawer.isDrawerOpen()) {
             homePageDrawer.closeDrawer();
         } else {
-            if(doubleBackToExitPressedOnce)
-            {
+            if (doubleBackToExitPressedOnce) {
                 toast.cancel();
                 super.onBackPressed();
             }
@@ -691,196 +552,8 @@ public class ApplicationHome extends AppCompatActivity {
 
     }
 
-    public void startNewTask() {
-        NetworkUtility networkUtility = new NetworkUtility();
-        networkUtility.execute();
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-            return true;
-        }
-        return false;
-    }
-
-    public void aplicaiton_home_onclick_listener(View view)
-    {
-        progressDialog = new ProgressDialog(this);
-
-        progressDialog.setMessage("Going EWU Website");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setIndeterminate(true);
-        progressDialog.show();
-        startNewTask();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (hasInternetConnection) {
-                    if(chromeBrowser.isChromeEnabled("com.android.chrome"))
-                    {
-                        chromeCustomTab.runOnCustomTab("http://www.ewubd.edu");
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                    }
-                    else
-                    {
-                        Intent i = new Intent(ApplicationHome.this, AllWebView.class);
-                        Bundle sentData = new Bundle();
-                        sentData.putString("URL", "http://www.ewubd.edu");
-                        sentData.putString("AdvisingSheet", "No");
-                        i.putExtras(sentData);
-                        progressDialog.hide();
-                        progressDialog.cancel();
-                        startActivity(i);
-                    }
-
-                } else {
-                    progressDialog.hide();
-                    progressDialog.cancel();
-                    Toast.makeText(ApplicationHome.this, "You are not connected to internet", Toast.LENGTH_LONG).show();
-                }
-            }
-        }, 2000);
-    }
-
-    public class NetworkUtility extends AsyncTask<Void, Void, Void> {
-        boolean connect = false;
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            if (isNetworkAvailable()) {
-                try {
-                    HttpURLConnection urlc = (HttpURLConnection)
-                            (new URL("http://clients3.google.com/generate_204")
-                                    .openConnection());
-                    urlc.setRequestProperty("User-Agent", "Android");
-                    urlc.setRequestProperty("Connection", "close");
-                    urlc.setConnectTimeout(1500);
-                    urlc.setReadTimeout(2000);
-                    urlc.connect();
-
-                    if (urlc.getResponseCode() == 204 &&
-                            urlc.getContentLength() == 0) {
-                        Log.i("Internet Connection", "network available!");
-                        connect = true;
-                    }
-                } catch (IOException e) {
-                    Log.e("Internet Connection", "Error checking internet connection", e);
-                    connect = false;
-                }
-            } else {
-                Log.d("Internet Connection", "No network available!");
-                connect = false;
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            hasInternetConnection = connect;
-            Log.i("On Threads", "execution complete");
-        }
-    }
-
-    private void copyDatabase(String filename) {
-        AssetManager assetManager = this.getAssets();
-
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-            Log.i("tag", "copyHTMLFile() "+filename);
-            input = assetManager.open(filename);
-            File DatabaseDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/databases");
-            if(!DatabaseDirectory.exists()){
-                DatabaseDirectory.mkdirs();
-                Log.i("Directory Log :","Directory Created" + DatabaseDirectory);
-            }
-
-            output = new FileOutputStream(DatabaseDirectory+"/"+filename);
-
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
-        } catch (Exception e) {
-            Log.e("tag", "Exception in copyHTMLFile() of "+filename);
-            Log.e("tag", "Exception in copyHTMLFile() "+e.toString());
-        }
-        finally {
-            try {
-                if (output != null)
-                    output.close();
-                if (input != null)
-                    input.close();
-            } catch (IOException ignored) {
-            }
-        }
-    }
-
-    private void copyJsonFile(String filename) {
-        AssetManager assetManager = this.getAssets();
-
-        InputStream input = null;
-        OutputStream output = null;
-        try {
-            Log.i("JSONFileCopy", "copyHTMLFile() "+filename);
-            input = assetManager.open(filename);
-            File JsonDirectory = new File(getBaseContext().getApplicationInfo().dataDir + "/json");
-            if(!JsonDirectory.exists()){
-                JsonDirectory.mkdirs();
-                Log.i("Directory Log :","Directory Created" + JsonDirectory);
-            }
-
-            output = new FileOutputStream(JsonDirectory+"/"+filename);
-
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = input.read(buffer)) != -1) {
-                output.write(buffer, 0, read);
-            }
-        } catch (Exception e) {
-            Log.e("JSONFileCopy", "Exception in copyHTMLFile() of "+filename);
-            Log.e("JSONFileCopy", "Exception in copyHTMLFile() "+e.toString());
-        }
-        finally {
-            try {
-                if (output != null)
-                    output.close();
-                if (input != null)
-                    input.close();
-            } catch (IOException ignored) {
-            }
-        }
-    }
-
-    // Function for read JSON String from file.
-    public String readJSONStringFromFile(String fileName) {
-        String json = null;
-        try {
-            File file = new File(getBaseContext().getApplicationInfo().dataDir + "/json/" + fileName);
-            if (file.exists()) {
-                InputStream is = new FileInputStream(file);
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
-                json = new String(buffer, "UTF-8");
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-
     public int nextEventIndex(List<AcademicCalendarEvent> allEvents) {
-        long differenceDates = 0;
+        long differenceDates;
         int calendarIndex = 0;
         try {
             Calendar calendar = Calendar.getInstance();

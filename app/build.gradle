@@ -67,6 +67,8 @@ dependencies {
     implementation 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
     // Repository for MarkedView
     implementation 'com.mittsu:markedview:1.0.4@aar'
+    // AndroidUtilCode
+    implementation 'com.blankj:utilcode:1.15.0'
 
 }
 

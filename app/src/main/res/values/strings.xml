@@ -33,7 +33,7 @@
   <string name="advising_time_schedule">Advising Time Schedule</string>
   <string name="additional_info">Additional Info</string>
   <string name="ewu_spirit_homepage">Ewu Spirit HomePage</string>
-  <string name="advising_list">Advising List</string>
+  <string name="course_list">Course List</string>
   <string name="ewu_library">Ewu Library</string>
   <string name="tree_bricks_logo">Tree Bricks Developer logo</string>
   <string name="feedback_summary">
@@ -146,5 +146,12 @@
         applicable on EwuHub. Users are advised to read the privacy policy of EwuHub.</string>
     <string name="advising">Advising</string>
     <string name="newsfeed">News Feed</string>
+    <string name="notice_title">Notice Title</string>
+    <string name="latest_news_feed">Latest News Feed</string>
+    <string name="date">11-07-1993</string>
+    <string name="latest_notice">Latest Notice</string>
+    <string name="next_calendar_event">Next Calendar Event</string>
+    <string name="date_word">25 May</string>
+    <string name="events">Events</string>
 
 </resources>
