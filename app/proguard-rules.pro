@@ -18,7 +18,7 @@
    public *;
 }
 
--keep class model.*
+-keep class com.treebricks.ewuhub.model.*
 -keep class com.treebricks.ewuhub.**
 -keep class com.afollestad.material-dialogs.**
 -keep class com.flaviofaria.**

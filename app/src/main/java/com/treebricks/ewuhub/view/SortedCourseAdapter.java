@@ -20,8 +20,8 @@ import com.treebricks.ewuhub.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import model.Course;
-import model.CourseL;
+import com.treebricks.ewuhub.model.Course;
+import com.treebricks.ewuhub.model.CourseL;
 
 public class SortedCourseAdapter extends RecyclerView.Adapter<SortedCourseAdapter.ShortCourseViewHolder>
 {

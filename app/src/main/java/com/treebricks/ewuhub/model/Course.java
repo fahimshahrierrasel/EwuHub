@@ -1,4 +1,4 @@
-package model;
+package com.treebricks.ewuhub.model;
 
 public class Course
 {

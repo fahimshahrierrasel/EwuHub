@@ -5,7 +5,7 @@ import android.database.Cursor;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import model.Course;
+import com.treebricks.ewuhub.model.Course;
 
 
 public class CourseDataSource

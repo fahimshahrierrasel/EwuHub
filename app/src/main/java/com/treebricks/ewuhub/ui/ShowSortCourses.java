@@ -27,8 +27,8 @@ import com.treebricks.ewuhub.view.SortedCourseAdapter;
 import com.treebricks.ewuhub.view.SortedCourses;
 
 import java.util.ArrayList;
-import model.Course;
-import model.CourseL;
+import com.treebricks.ewuhub.model.Course;
+import com.treebricks.ewuhub.model.CourseL;
 
 public class ShowSortCourses extends AppCompatActivity
 {
