@@ -7,23 +7,23 @@ android {
         applicationId "com.treebricks.ewuhub"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 11
+        versionCode 12
         versionName "1.2.0 new hope"
     }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
-            shrinkResources true
+            //minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //shrinkResources true
             zipAlignEnabled true
+            //debuggable true
         }
-        debug{
+        debug {
             minifyEnabled false
             shrinkResources false
-
         }
     }
+
 }
 
 repositories {
@@ -34,7 +34,6 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-
     // Android Repositories
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
@@ -69,7 +68,6 @@ dependencies {
     implementation 'com.mittsu:markedview:1.0.4@aar'
     // AndroidUtilCode
     implementation 'com.blankj:utilcode:1.15.0'
-
 }
 
 apply plugin: 'com.google.gms.google-services'
