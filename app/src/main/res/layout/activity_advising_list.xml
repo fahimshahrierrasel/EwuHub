@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context="com.treebricks.ewuhub.ui.AdvisingListViewer">
@@ -56,22 +55,12 @@
             android:id="@+id/advising_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="0dp"
-            android:paddingStart="0dp"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingEnd="@dimen/activity_horizontal_margin">
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp"
+            android:paddingRight="8dp"
+            android:paddingEnd="8dp">
         </android.support.v7.widget.RecyclerView>
 
-        <com.futuremind.recyclerviewfastscroll.FastScroller
-            android:id="@+id/fastscroll"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:orientation="vertical"
-            app:fastscroll__bubbleColor="#5e64ce"
-            app:fastscroll__bubbleTextAppearance="@style/StyledScrollerTextAppearance"
-            app:fastscroll__handleColor="#8f93d1" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

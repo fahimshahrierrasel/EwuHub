@@ -182,8 +182,8 @@ public class ApplicationHome extends AppCompatActivity {
                         new PrimaryDrawerItem().withIcon(R.drawable.notes).withName(R.string.notice_board).withIdentifier(5),
                         new PrimaryDrawerItem().withIcon(R.drawable.library).withName(R.string.ewu_library).withIdentifier(6),
                         new PrimaryDrawerItem().withIcon(R.drawable.torch).withName(R.string.ewuspirit).withIdentifier(7),
-                        new PrimaryDrawerItem().withIcon(R.drawable.ic_rss_feed_black_24dp).withName(R.string.newsfeed).withIdentifier(8),
-                        new PrimaryDrawerItem().withIcon(R.drawable.ic_calendar_star_symbol).withName(R.string.events).withIdentifier(10)
+                        new PrimaryDrawerItem().withIcon(R.drawable.ic_rss_feed_black_24dp).withName(R.string.newsfeed).withIdentifier(8)
+//                        new PrimaryDrawerItem().withIcon(R.drawable.ic_calendar_star_symbol).withName(R.string.events).withIdentifier(10)
                 )
                 .addStickyDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.preferences).withIcon(R.drawable.settings).withIdentifier(9)

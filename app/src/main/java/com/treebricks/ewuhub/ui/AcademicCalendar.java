@@ -61,18 +61,18 @@ public class AcademicCalendar extends AppCompatActivity {
         setContentView(R.layout.activity_academic_calendar);
 
         // Toolbar Setup
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
 
         // Binding view
-        acdemicCalendarRecycler = (RecyclerView) findViewById(R.id.calendat_recyclerView);
+        acdemicCalendarRecycler = findViewById(R.id.calendat_recyclerView);
         mShadowView = findViewById(R.id.shadow_view);
-        fabMenu = (FloatingActionMenu) findViewById(R.id.calendar_fab_menu);
-        pharmacyGraduateFab = (FloatingActionButton) findViewById(R.id.pharmacygraduate);
-        undergraduateFab = (FloatingActionButton) findViewById(R.id.undergraduate);
-        graduateFab = (FloatingActionButton) findViewById(R.id.graduate);
-        pharmacyUndergraduateFab = (FloatingActionButton) findViewById(R.id.pharmacyundergraduate);
+        fabMenu = findViewById(R.id.calendar_fab_menu);
+        pharmacyGraduateFab = findViewById(R.id.pharmacygraduate);
+        undergraduateFab = findViewById(R.id.undergraduate);
+        graduateFab = findViewById(R.id.graduate);
+        pharmacyUndergraduateFab = findViewById(R.id.pharmacyundergraduate);
 
         // Gson initialization
         gson = new Gson();

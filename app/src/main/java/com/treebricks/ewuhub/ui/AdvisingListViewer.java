@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
-import com.futuremind.recyclerviewfastscroll.FastScroller;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.AdvisingListSource;
 import com.treebricks.ewuhub.database.AllCoursesDataSource;
@@ -27,7 +26,6 @@ public class AdvisingListViewer extends AppCompatActivity {
     ArrayList<AdvisingList> allCoursesList;
     ArrayList<String> allCourses;
     AdvisingListAdapter advisingListAdapter;
-    FastScroller fastScroller;
     AutoCompleteTextView autoCompleteCourse;
     Toolbar toolbar;
     AllCoursesDataSource allCoursesDataSource;
@@ -37,10 +35,9 @@ public class AdvisingListViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advising_list);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        advisingRecyclerView = (RecyclerView) findViewById(R.id.advising_recycler);
-        fastScroller = (FastScroller) findViewById(R.id.fastscroll);
-        autoCompleteCourse = (AutoCompleteTextView) findViewById(R.id.autocompletecourse);
+        toolbar = findViewById(R.id.toolbar);
+        advisingRecyclerView = findViewById(R.id.advising_recycler);
+        autoCompleteCourse = findViewById(R.id.autocompletecourse);
         setSupportActionBar(toolbar);
 
         // Initializing Database Data Source Object
@@ -55,7 +52,6 @@ public class AdvisingListViewer extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         advisingRecyclerView.setLayoutManager(linearLayoutManager);
         advisingRecyclerView.setAdapter(advisingListAdapter);
-        fastScroller.setRecyclerView(advisingRecyclerView);
 
         // Get the data from database for suggesting
         allCourses = allCoursesDataSource.findAll(this);

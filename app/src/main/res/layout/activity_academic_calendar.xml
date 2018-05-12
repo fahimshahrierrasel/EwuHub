@@ -26,10 +26,10 @@
 
     <View
         android:id="@+id/shadow_view"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"/>
+        android:background="#80000000"
+        android:visibility="gone" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/calendar_fab_menu"
@@ -45,58 +45,34 @@
             android:id="@+id/undergraduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/undergraduate"
             fab:fab_label="Undergraduate"
-            fab:fab_colorNormal="#00000000"
-            fab:fab_shadowColor="#00000000"
-            fab:fab_colorPressed="#00000000"
-            fab:fab_colorRipple="#00000000"
-            fab:fab_size="mini"
-            />
+            android:src="@drawable/ic_arrow_back"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/pharmacyundergraduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pharma_undergraduate"
             fab:fab_label="Pharmacy Undergraduate"
-            fab:fab_colorNormal="#00000000"
-            fab:fab_shadowColor="#00000000"
-            fab:fab_colorPressed="#00000000"
-            fab:fab_colorRipple="#00000000"
-            fab:fab_size="mini"
-            />
+            android:src="@drawable/ic_arrow_back"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/graduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/graduate"
+            android:src="@drawable/ic_arrow_back"
             fab:fab_label="Graduate"
-            fab:fab_colorNormal="#00000000"
-            fab:fab_shadowColor="#00000000"
-            fab:fab_colorPressed="#00000000"
-            fab:fab_colorRipple="#00000000"
-            fab:fab_size="mini"
-            />
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/pharmacygraduate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/pharma_graduate"
             fab:fab_label="Pharmacy Graduate"
-            fab:fab_colorNormal="#00000000"
-            fab:fab_shadowColor="#00000000"
-            fab:fab_colorPressed="#00000000"
-            fab:fab_colorRipple="#00000000"
-            fab:fab_size="mini"
-            />
-
-
+            android:src="@drawable/ic_arrow_back"
+            fab:fab_size="mini" />
     </com.github.clans.fab.FloatingActionMenu>
-
-
 
 
 </android.support.design.widget.CoordinatorLayout>
