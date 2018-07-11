@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.model.AdvisingList;
 
 /**
  * Created by fahim on 10/25/16.

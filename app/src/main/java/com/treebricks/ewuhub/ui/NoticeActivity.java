@@ -17,7 +17,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.NoticeAdapter;
-import com.treebricks.ewuhub.view.NoticeView;
+import com.treebricks.ewuhub.model.NoticeView;
 
 import java.util.ArrayList;
 import java.util.Collections;

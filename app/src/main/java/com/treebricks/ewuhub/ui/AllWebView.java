@@ -11,7 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.ObservableWebView;
-import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+import com.treebricks.ewuhub.model.ProgressDialogQuotes;
 
 import java.security.SecureRandom;
 

@@ -1,6 +1,7 @@
-package com.treebricks.ewuhub.view;
+package com.treebricks.ewuhub.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.treebricks.ewuhub.model.AcademicCalendarEvent;
 
 import java.util.ArrayList;
 import java.util.List;

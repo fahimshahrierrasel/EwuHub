@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.model.NewsFeedModel;
 import com.treebricks.ewuhub.ui.FeedMarkDownView;
 
 import java.util.ArrayList;

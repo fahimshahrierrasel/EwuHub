@@ -13,7 +13,7 @@ import com.github.clans.fab.FloatingActionMenu;
 import com.google.gson.Gson;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.view.AcademicCalendarAdapter;
-import com.treebricks.ewuhub.view.AcademicCalendarModel;
+import com.treebricks.ewuhub.model.AcademicCalendarModel;
 
 import java.io.File;
 import java.io.FileInputStream;

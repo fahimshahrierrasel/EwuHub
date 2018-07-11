@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.view;
+package com.treebricks.ewuhub.model;
 
 import com.google.gson.annotations.SerializedName;
 

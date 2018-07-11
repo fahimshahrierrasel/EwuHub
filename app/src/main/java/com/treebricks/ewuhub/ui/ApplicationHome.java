@@ -41,10 +41,10 @@ import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
 import com.treebricks.ewuhub.utility.ChromeCustomTab;
 import com.treebricks.ewuhub.utility.EwuHubHelper;
-import com.treebricks.ewuhub.view.AcademicCalendarEvent;
-import com.treebricks.ewuhub.view.AcademicCalendarModel;
-import com.treebricks.ewuhub.view.NewsFeedModel;
-import com.treebricks.ewuhub.view.NoticeView;
+import com.treebricks.ewuhub.model.AcademicCalendarEvent;
+import com.treebricks.ewuhub.model.AcademicCalendarModel;
+import com.treebricks.ewuhub.model.NewsFeedModel;
+import com.treebricks.ewuhub.model.NoticeView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

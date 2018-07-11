@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.view;
+package com.treebricks.ewuhub.model;
 
 public class SortedCourses
 {

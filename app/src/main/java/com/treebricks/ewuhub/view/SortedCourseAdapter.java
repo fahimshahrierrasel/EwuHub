@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import com.treebricks.ewuhub.model.Course;
 import com.treebricks.ewuhub.model.CourseL;
+import com.treebricks.ewuhub.model.SortedCourses;
 
 public class SortedCourseAdapter extends RecyclerView.Adapter<SortedCourseAdapter.ShortCourseViewHolder>
 {

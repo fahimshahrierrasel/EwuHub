@@ -1,7 +1,6 @@
 package com.treebricks.ewuhub.ui;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.treebricks.ewuhub.R;
-import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+import com.treebricks.ewuhub.model.ProgressDialogQuotes;
 import java.security.SecureRandom;
 
 public class NoticeWebViewer extends AppCompatActivity {

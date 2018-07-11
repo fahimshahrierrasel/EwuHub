@@ -1,4 +1,4 @@
-package com.treebricks.ewuhub.view;
+package com.treebricks.ewuhub.model;
 
 /**
  * Created by fahim on 11/24/16.

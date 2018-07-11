@@ -2,7 +2,7 @@ package com.treebricks.ewuhub.database;
 
 import android.content.Context;
 import android.database.Cursor;
-import com.treebricks.ewuhub.view.AdvisingList;
+import com.treebricks.ewuhub.model.AdvisingList;
 import java.io.IOException;
 import java.util.ArrayList;
 

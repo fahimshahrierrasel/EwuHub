@@ -3,7 +3,6 @@ package com.treebricks.ewuhub.ui;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -12,7 +11,6 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -34,7 +32,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.utility.AppInstalled;
 import com.treebricks.ewuhub.utility.ChromeCustomTab;
-import com.treebricks.ewuhub.view.ProgressDialogQuotes;
+import com.treebricks.ewuhub.model.ProgressDialogQuotes;
 
 import java.security.SecureRandom;
 

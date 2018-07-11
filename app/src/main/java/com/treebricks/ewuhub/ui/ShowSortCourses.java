@@ -24,7 +24,7 @@ import com.treebricks.ewuhub.database.CourseDataSource;
 import com.treebricks.ewuhub.database.CourseLDataSource;
 import com.treebricks.ewuhub.database.LabDataSource;
 import com.treebricks.ewuhub.view.SortedCourseAdapter;
-import com.treebricks.ewuhub.view.SortedCourses;
+import com.treebricks.ewuhub.model.SortedCourses;
 
 import java.util.ArrayList;
 import com.treebricks.ewuhub.model.Course;

@@ -14,7 +14,7 @@ import android.widget.AutoCompleteTextView;
 import com.treebricks.ewuhub.R;
 import com.treebricks.ewuhub.database.AdvisingListSource;
 import com.treebricks.ewuhub.database.AllCoursesDataSource;
-import com.treebricks.ewuhub.view.AdvisingList;
+import com.treebricks.ewuhub.model.AdvisingList;
 import com.treebricks.ewuhub.view.AdvisingListAdapter;
 
 import java.util.ArrayList;

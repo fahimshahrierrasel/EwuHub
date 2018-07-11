@@ -11,6 +11,8 @@ import com.github.aakira.expandablelayout.ExpandableLayout;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.Utils;
 import com.treebricks.ewuhub.R;
+import com.treebricks.ewuhub.model.AcademicCalendarEvent;
+
 import java.util.List;
 
 
